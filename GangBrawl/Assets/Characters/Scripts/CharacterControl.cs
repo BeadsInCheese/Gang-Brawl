@@ -44,8 +44,11 @@ public class CharacterControl : MonoBehaviour
     void Update()
     {
         if(playerInput.actions["Jump"].triggered){
-            if(isgrounded || doubleJump){
+            if(isgrounded){
                 physicsBody.AddForce(new Vector2(0,jumpHeight));
+            }else if(doubleJump){
+                physicsBody.AddForce(new Vector2(0,jumpHeight));
+                doubleJump=false;
             }
             
         }
