@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 /** 
- * This class is currently unused and all of it's functionality is in character controller class.asd
+ * How to use Attach this script to the platform which you want to enable user to fall through. Curretnly falling through is binded to s-key. 
  */
 public class FallThroughPlatform : MonoBehaviour
 {
     private Collider2D _collider;
+    private GameObject player;
     private bool _playerOnPlarform;
     // Start is called before the first frame update
     PlayerInput playerInput;
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerInput = player.GetComponent<PlayerInput>();
         _collider = GetComponent<Collider2D>();
     }
 
@@ -28,13 +31,13 @@ public class FallThroughPlatform : MonoBehaviour
 
     private IEnumerator EnableCollider()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         _collider.enabled = true;
     }
 
     private void setPlayerOnPlatform(Collision2D other, bool value)
     {
-        Debug.Log("PassThroughPlatform script");
+        //Debug.Log("PassThroughPlatform script");
         var player = other.gameObject.GetComponent<CharacterControl>();
         if (player != null)
         {
