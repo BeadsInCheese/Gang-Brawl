@@ -12,10 +12,12 @@ public class FallThroughPlatform : MonoBehaviour
     private bool _playerOnPlarform;
     // Start is called before the first frame update
     PlayerInput playerInput;
+    BoxCollider2D body;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         playerInput = player.GetComponent<PlayerInput>();
+        body = player.GetComponent<BoxCollider2D>();
         _collider = GetComponent<Collider2D>();
     }
 
@@ -24,7 +26,7 @@ public class FallThroughPlatform : MonoBehaviour
     {
         if (_playerOnPlarform && playerInput.actions["FallThroughPlatform"].triggered)
         {
-            _collider.enabled = false;
+            Physics2D.IgnoreCollision(body, _collider);
             StartCoroutine(EnableCollider());
         }
     }
@@ -32,7 +34,7 @@ public class FallThroughPlatform : MonoBehaviour
     private IEnumerator EnableCollider()
     {
         yield return new WaitForSeconds(1f);
-        _collider.enabled = true;
+        Physics2D.IgnoreCollision(body, _collider, false);
     }
 
     private void setPlayerOnPlatform(Collision2D other, bool value)
