@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 /** 
  * This class is currently unused and all of it's functionality is in character controller class.
  */
@@ -9,6 +10,7 @@ public class PassThroughPlatform : MonoBehaviour
     private Collider2D _collider;
     private bool _playerOnPlarform;
     // Start is called before the first frame update
+    PlayerInput playerInput;
     void Start()
     {
         _collider = GetComponent<Collider2D>();
@@ -17,7 +19,7 @@ public class PassThroughPlatform : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_playerOnPlarform && Input.GetAxis("Vertical") < 0)
+        if (_playerOnPlarform && playerInput.actions["FallThroughPlatform"].triggered)
         {
             _collider.enabled = false;
             StartCoroutine(EnableCollider());

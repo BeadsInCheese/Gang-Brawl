@@ -58,6 +58,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "FallThroughPlatform",
+                    "type": "Button",
+                    "id": "11ad1794-76a7-4f0b-bb36-125b5d2a012f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -258,6 +267,17 @@
                     "action": "Aim",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "1e8c3d59-70c0-4214-995a-82675fde27d8",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FallThroughPlatform",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
