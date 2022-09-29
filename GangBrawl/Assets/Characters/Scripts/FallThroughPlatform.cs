@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 /** 
- * This class is currently unused and all of it's functionality is in character controller class.
+ * This class is currently unused and all of it's functionality is in character controller class.asd
  */
-public class PassThroughPlatform : MonoBehaviour
+public class FallThroughPlatform : MonoBehaviour
 {
     private Collider2D _collider;
     private bool _playerOnPlarform;
