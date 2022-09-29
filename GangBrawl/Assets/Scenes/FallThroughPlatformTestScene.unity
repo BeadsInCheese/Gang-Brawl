@@ -822,8 +822,8 @@ MonoBehaviour:
   - {fileID: 1496965588}
   - {fileID: 1013530236}
   m_Bounds:
-    m_Center: {x: -0.2279346, y: 1.2724936, z: 0}
-    m_Extent: {x: 2.787315, y: 3.8575065, z: 0}
+    m_Center: {x: -0.2279346, y: 1.2724941, z: 0}
+    m_Extent: {x: 2.787315, y: 3.8575072, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -911,6 +911,7 @@ GameObject:
   - component: {fileID: 1720670337}
   - component: {fileID: 1720670336}
   - component: {fileID: 1720670339}
+  - component: {fileID: 1720670340}
   m_Layer: 0
   m_Name: Square (1)
   m_TagString: Platform
@@ -1030,6 +1031,18 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
+--- !u!114 &1720670340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1720670335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b21686bb5aee18e4bb67256693e83f2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1867385020
 GameObject:
   m_ObjectHideFlags: 0
@@ -1048,7 +1061,7 @@ GameObject:
   - component: {fileID: 1867385027}
   m_Layer: 0
   m_Name: Character
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1065,6 +1078,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 203fbfa7014d23a9c8b05a4da40ad932, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInput: {fileID: 0}
 --- !u!4 &1867385022
 Transform:
   m_ObjectHideFlags: 0
@@ -1221,6 +1235,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 8149a8a9-cab7-4bfc-849e-37c0868f5b63
     m_ActionName: Land/Aim[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 11ad1794-76a7-4f0b-bb36-125b5d2a012f
+    m_ActionName: Land/FallThroughPlatform[/Keyboard/s]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Land
