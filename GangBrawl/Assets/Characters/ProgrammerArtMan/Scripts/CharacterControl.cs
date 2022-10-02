@@ -17,7 +17,8 @@ public class CharacterControl : MonoBehaviour
 
     public GameObject HeavyAttackHitbox;
     public GameObject LightAttackHitbox;
-
+    public float maxFallSpeed=30;
+    public float minFallSpeed=-300;
 
 
 
@@ -110,7 +111,7 @@ public class CharacterControl : MonoBehaviour
 
         }
         
-        vel.y=physicsBody.velocity.y;
+        vel.y=Mathf.Clamp(physicsBody.velocity.y,minFallSpeed,maxFallSpeed);
         if(isgrounded){
             animationControl.SetBool("OnGround",true);
             vel.x=playerInput.actions["Walk"].ReadValue<float>()*speed;

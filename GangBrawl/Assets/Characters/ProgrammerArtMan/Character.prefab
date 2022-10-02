@@ -121,6 +121,8 @@ MonoBehaviour:
   HeavyAttackCancelTime: 0.25000006
   HeavyAttackHitbox: {fileID: 512132734317969021}
   LightAttackHitbox: {fileID: 512132735629636743}
+  maxFallSpeed: 15
+  minFallSpeed: -8
 --- !u!50 &512132733879327772
 Rigidbody2D:
   serializedVersion: 4
