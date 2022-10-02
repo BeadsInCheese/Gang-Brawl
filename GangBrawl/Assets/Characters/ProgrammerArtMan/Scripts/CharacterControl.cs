@@ -14,7 +14,9 @@ public class CharacterControl : MonoBehaviour
     public float HeavyAttackCancelTime=0.3f;
     private float ConcurrentAttackCancelTime=0;
     private int attackBuffer=0;
-
+    private bool jumpButtonDown=false;
+    public float jumpBuffer=0.5f;
+    private float jumpLastPressed=0;
     public float jumpEndEarlyGravityModifier=5;
 
     public GameObject HeavyAttackHitbox;
@@ -33,12 +35,28 @@ public class CharacterControl : MonoBehaviour
    bool isgrounded=false;
    bool doubleJump=true;
 
+private void jump(){
+    physicsBody.AddForce(new Vector2(0,jumpHeight*physicsBody.gravityScale));
+}
+private void applyJumpReleasedEarlyModifier(){
+    physicsBody.AddForce(new Vector2(0,jumpEndEarlyGravityModifier*physicsBody.gravityScale));
+}
+
  void OnCollisionEnter2D(Collision2D theCollision)
  {
      if (theCollision.gameObject.tag == "Platform")
      {
+        if(jumpLastPressed+jumpBuffer>Time.time){
+            if(jumpButtonDown){
+                jump();
+            }else{
+                jump();
+                applyJumpReleasedEarlyModifier();
+            }
+        }
         doubleJump=true;
-         isgrounded = true;
+        isgrounded = true;
+
      }
  }
  
@@ -103,18 +121,25 @@ public class CharacterControl : MonoBehaviour
 
 
         if(playerInput.actions["Jump"].triggered){
+            jumpButtonDown=true;
             if(isgrounded){
-                physicsBody.AddForce(new Vector2(0,jumpHeight*physicsBody.gravityScale));
+                jump();
             }else if(doubleJump){
-                physicsBody.AddForce(new Vector2(0,jumpHeight*physicsBody.gravityScale));
+                jump();
                 doubleJump=false;
+            }else{
+                jumpLastPressed=Time.time;
             }
+        
             
 
         }
 
-        if(playerInput.actions["Jump"].WasReleasedThisFrame() && physicsBody.velocity.y>0){
-            physicsBody.AddForce(new Vector2(0,jumpEndEarlyGravityModifier*physicsBody.gravityScale));
+        if(playerInput.actions["Jump"].WasReleasedThisFrame()){
+            if(physicsBody.velocity.y>0){
+            applyJumpReleasedEarlyModifier();
+        }
+        jumpButtonDown=false;
         }        
         vel.y=Mathf.Clamp(physicsBody.velocity.y,minFallSpeed,maxFallSpeed);
 
