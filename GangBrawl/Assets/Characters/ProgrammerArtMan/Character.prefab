@@ -119,6 +119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LightAttackCancelTime: 0.11666669
   HeavyAttackCancelTime: 0.25000006
+  jumpEndEarlyGravityModifier: -100
   HeavyAttackHitbox: {fileID: 512132734317969021}
   LightAttackHitbox: {fileID: 512132735629636743}
   maxFallSpeed: 15

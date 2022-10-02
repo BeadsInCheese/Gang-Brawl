@@ -15,6 +15,8 @@ public class CharacterControl : MonoBehaviour
     private float ConcurrentAttackCancelTime=0;
     private int attackBuffer=0;
 
+    public float jumpEndEarlyGravityModifier=5;
+
     public GameObject HeavyAttackHitbox;
     public GameObject LightAttackHitbox;
     public float maxFallSpeed=30;
@@ -102,16 +104,20 @@ public class CharacterControl : MonoBehaviour
 
         if(playerInput.actions["Jump"].triggered){
             if(isgrounded){
-                physicsBody.AddForce(new Vector2(0,jumpHeight));
+                physicsBody.AddForce(new Vector2(0,jumpHeight*physicsBody.gravityScale));
             }else if(doubleJump){
-                physicsBody.AddForce(new Vector2(0,jumpHeight));
+                physicsBody.AddForce(new Vector2(0,jumpHeight*physicsBody.gravityScale));
                 doubleJump=false;
             }
             
 
         }
-        
+
+        if(playerInput.actions["Jump"].WasReleasedThisFrame() && physicsBody.velocity.y>0){
+            physicsBody.AddForce(new Vector2(0,jumpEndEarlyGravityModifier*physicsBody.gravityScale));
+        }        
         vel.y=Mathf.Clamp(physicsBody.velocity.y,minFallSpeed,maxFallSpeed);
+
         if(isgrounded){
             animationControl.SetBool("OnGround",true);
             vel.x=playerInput.actions["Walk"].ReadValue<float>()*speed;
