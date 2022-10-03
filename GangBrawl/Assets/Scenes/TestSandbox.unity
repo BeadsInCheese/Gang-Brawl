@@ -1013,6 +1013,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character
       objectReference: {fileID: 0}
+    - target: {fileID: 512132733879327841, guid: 6738c8a5f644cf123a8a7fabe0403883, type: 3}
+      propertyPath: fallSpeedAtApex
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 512132733879327842, guid: 6738c8a5f644cf123a8a7fabe0403883, type: 3}
       propertyPath: m_RootOrder
       value: 2

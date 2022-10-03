@@ -22,7 +22,7 @@ public class CharacterControl : MonoBehaviour
     public GameObject HeavyAttackHitbox;
     public GameObject LightAttackHitbox;
     public float maxFallSpeed=30;
-    float fallSpeedAtApex=-1;
+    public float fallSpeedAtApex=-2;
     public float jumpApexThreshold=3;
     public float _apexBonus=3;
     public float minFallSpeed=-300;
@@ -156,9 +156,8 @@ private void applyJumpReleasedEarlyModifier(){
             float apexPoint=Mathf.InverseLerp(jumpApexThreshold,0,Mathf.Abs(vel.y));
             float apexBonus=Mathf.Abs(xin)>0?Mathf.Sign(xin)*_apexBonus*apexPoint:0;
             vel.x=speed*xin+apexBonus*Time.deltaTime;
-            vel.y+=Mathf.Lerp(fallSpeedAtApex,minFallSpeed,apexPoint);
-            vel.y=Mathf.Clamp(physicsBody.velocity.y,maxFallSpeed,minFallSpeed);
-            Debug.Log(vel.y);
+            vel.y+=Mathf.Sign(vel.y)*fallSpeedAtApex*(0.1f+apexPoint)*Time.deltaTime;
+            vel.y=Mathf.Clamp(vel.y,maxFallSpeed,minFallSpeed);
         }
         animationControl.SetBool("Moving",vel.x!=0);
         if(vel.x!=0){
