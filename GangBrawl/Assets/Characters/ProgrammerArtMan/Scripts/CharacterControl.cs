@@ -22,6 +22,9 @@ public class CharacterControl : MonoBehaviour
     public GameObject HeavyAttackHitbox;
     public GameObject LightAttackHitbox;
     public float maxFallSpeed=30;
+    float fallSpeedAtApex=-1;
+    public float jumpApexThreshold=3;
+    public float _apexBonus=3;
     public float minFallSpeed=-300;
 
 
@@ -36,6 +39,7 @@ public class CharacterControl : MonoBehaviour
    bool doubleJump=true;
 
 private void jump(){
+    physicsBody.velocity=new Vector2(physicsBody.velocity.x,0);
     physicsBody.AddForce(new Vector2(0,jumpHeight*physicsBody.gravityScale));
 }
 private void applyJumpReleasedEarlyModifier(){
@@ -141,21 +145,27 @@ private void applyJumpReleasedEarlyModifier(){
         }
         jumpButtonDown=false;
         }        
-        vel.y=Mathf.Clamp(physicsBody.velocity.y,minFallSpeed,maxFallSpeed);
-
+        vel.y=physicsBody.velocity.y;
         if(isgrounded){
             animationControl.SetBool("OnGround",true);
             vel.x=playerInput.actions["Walk"].ReadValue<float>()*speed;
         }else{
             animationControl.SetBool("OnGround",false);
-            vel.x=Mathf.Max(Mathf.Min(vel.x+playerInput.actions["Walk"].ReadValue<float>(),speed),-speed);
-            
+
+            float xin=Mathf.Max(Mathf.Min(playerInput.actions["Walk"].ReadValue<float>(),speed),-speed);
+            float apexPoint=Mathf.InverseLerp(jumpApexThreshold,0,Mathf.Abs(vel.y));
+            float apexBonus=Mathf.Abs(xin)>0?Mathf.Sign(xin)*_apexBonus*apexPoint:0;
+            vel.x=speed*xin+apexBonus*Time.deltaTime;
+            vel.y+=Mathf.Lerp(fallSpeedAtApex,minFallSpeed,apexPoint);
+            vel.y=Mathf.Clamp(physicsBody.velocity.y,maxFallSpeed,minFallSpeed);
+            Debug.Log(vel.y);
         }
         animationControl.SetBool("Moving",vel.x!=0);
         if(vel.x!=0){
             spriteFlipped = vel.x>0;
         }
         transform.rotation=Quaternion.Euler(new Vector3(0f,spriteFlipped ? 180:0f,0f));
+
         physicsBody.velocity=vel;
     }
 }
