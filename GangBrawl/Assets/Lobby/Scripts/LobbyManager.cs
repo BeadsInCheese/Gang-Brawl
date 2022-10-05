@@ -27,7 +27,6 @@ public class LobbyManager : MonoBehaviour
     public void OnPlayerJoined(PlayerInput playerInput){
         InputDevice[] d;
         d=playerInput.devices.ToArray();
-        Debug.Log(d[0]);
         playerData.Add(new PlayerData("",-1,playerInput.currentControlScheme,d));
         playersInGame+=1;
         playerInput.transform.SetParent(row1.transform,false);
