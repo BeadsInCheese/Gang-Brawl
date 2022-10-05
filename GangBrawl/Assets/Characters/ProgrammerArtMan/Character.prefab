@@ -121,12 +121,15 @@ MonoBehaviour:
   HeavyAttackCancelTime: 0.25000006
   jumpBuffer: 0.3
   jumpEndEarlyGravityModifier: -100
+  coyoteTimeThreshold: 0.1
   HeavyAttackHitbox: {fileID: 512132734317969021}
   LightAttackHitbox: {fileID: 512132735629636743}
   maxFallSpeed: -15
+  fallSpeedAtApex: 3
   jumpApexThreshold: 5
   _apexBonus: 312
   minFallSpeed: 20
+  playerInput: {fileID: 0}
 --- !u!50 &512132733879327772
 Rigidbody2D:
   serializedVersion: 4
@@ -142,7 +145,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 4
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1

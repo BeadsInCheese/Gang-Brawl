@@ -9,6 +9,7 @@ public class ArenaDataManager : MonoBehaviour
     public float arenaSideBound=20;
 
     public static ArenaDataManager instance;
+    
     void Awake()
     {
         if(instance!=null && instance!=this){
@@ -17,5 +18,6 @@ public class ArenaDataManager : MonoBehaviour
             instance=this;
         }
     }
+    
 
 }

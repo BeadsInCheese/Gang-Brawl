@@ -32,7 +32,7 @@ public class CharacterControl : MonoBehaviour
 
 
     Vector2 vel = new Vector2(0, 0);
-    PlayerInput playerInput;
+    public PlayerInput playerInput;
     bool spriteFlipped = false;
     Animator animationControl;
 
@@ -86,7 +86,8 @@ public class CharacterControl : MonoBehaviour
         animationControl = this.transform.GetChild(0).GetComponent<Animator>();
         playerInput = GetComponent<PlayerInput>();
         physicsBody = GetComponent<Rigidbody2D>();
-
+        transform.position=GameObject.Find("Player-"+playerInput.playerIndex+"-SpawnPoint").transform.position;
+ 
     }
 
     // Update is called once per frame
