@@ -30,7 +30,7 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         // The if clause is directly taken from diesOutOfBounds 
-        if (this.transform.position.y < ArenaDataManager.instance.arenaLowerBound || Mathf.Abs(this.transform.position.x) > ArenaDataManager.instance.arenaSideBound)
+        if (Helpers.isOutOfArena(gameObject))
         {
             Destroy(gameObject);
         }

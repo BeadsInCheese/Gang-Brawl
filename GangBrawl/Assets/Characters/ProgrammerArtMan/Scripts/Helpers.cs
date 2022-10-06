@@ -21,4 +21,13 @@ public static class Helpers
             collisionGO.GetComponent<Rigidbody2D>().AddForce(gameObject.transform.rotation.eulerAngles.y != 0 ? new Vector2(knockback, knockback) : new Vector2(-knockback, knockback));
         }
     }
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="gameObject"></param>
+    /// <returns>True if the gameObject is out of arena from side or bottom (currently arena has no sealing bound)</returns>
+    public static bool isOutOfArena(GameObject gameObject)
+    {
+        return gameObject.transform.position.y < ArenaDataManager.instance.arenaLowerBound || Mathf.Abs(gameObject.transform.position.x) > ArenaDataManager.instance.arenaSideBound;
+    }
 }
