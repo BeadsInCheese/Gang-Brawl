@@ -86,8 +86,8 @@ public class CharacterControl : MonoBehaviour
         animationControl = this.transform.GetChild(0).GetComponent<Animator>();
         playerInput = GetComponent<PlayerInput>();
         physicsBody = GetComponent<Rigidbody2D>();
-        transform.position=GameObject.Find("Player-"+playerInput.playerIndex+"-SpawnPoint").transform.position;
- 
+        transform.position = GameObject.Find("Player-" + playerInput.playerIndex + "-SpawnPoint").transform.position;
+
     }
 
     // Update is called once per frame
@@ -196,5 +196,14 @@ public class CharacterControl : MonoBehaviour
         transform.rotation = Quaternion.Euler(new Vector3(0f, spriteFlipped ? 180 : 0f, 0f));
 
         physicsBody.velocity = vel;
+    }
+
+    public bool isSpriteFlipped()
+    {
+        return spriteFlipped;
+    }
+    public void setSpriteFlipped(bool spriteFlipped)
+    {
+        this.spriteFlipped = spriteFlipped;
     }
 }
