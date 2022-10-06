@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-
+using TMPro;
 public class LobbyManager : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -15,7 +15,7 @@ public class LobbyManager : MonoBehaviour
     int playersInGame=0;
     int playersReady=0;
     float countdown=5;
-
+    public TMPro.TextMeshProUGUI countdownText;
     public static List<PlayerData> playerData=new List<PlayerData>();
     public void playerPressedReady(){
         playersReady+=1;
@@ -66,11 +66,13 @@ public class LobbyManager : MonoBehaviour
     {
         if(playersReady>=playersInGame&&playersInGame>1){
             countdown-=Time.deltaTime;
+            countdownText.text=Mathf.Ceil(countdown).ToString();
             if(countdown<=0){
                 SceneManager.LoadScene("TestSandbox");
             }
         }else{
             countdown=5;
+            countdownText.text="";
         }
     }
 }
