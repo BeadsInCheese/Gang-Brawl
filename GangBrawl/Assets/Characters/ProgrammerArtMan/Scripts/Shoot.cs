@@ -11,6 +11,9 @@ public class Shoot : MonoBehaviour
     private PlayerInput playerInput;
     private CharacterControl charControl;
 
+    private float x, y;
+    double radians, angle;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,11 +25,11 @@ public class Shoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float x = playerInput.actions["Aim"].ReadValue<Vector2>().x;
-        float y = playerInput.actions["Aim"].ReadValue<Vector2>().y;
+        x = playerInput.actions["Aim"].ReadValue<Vector2>().x;
+        y = playerInput.actions["Aim"].ReadValue<Vector2>().y;
         //Debug.Log(playerInput.actions["Aim"].ReadValue<Vector2>().x);
-        double radians = Math.Atan2(y - 0, x - 0);
-        double angle = radians * (180 / Math.PI);
+        radians = Math.Atan2(y - 0, x - 0);
+        angle = radians * (180 / Math.PI);
         if (angle > -90 && angle < 90)
         {
             charControl.setSpriteFlipped(true);
