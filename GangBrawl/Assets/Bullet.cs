@@ -34,6 +34,7 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // The if clause is directly taken from diesOutOfBounds 
         if (this.transform.position.y < ArenaDataManager.instance.arenaLowerBound || Mathf.Abs(this.transform.position.x) > ArenaDataManager.instance.arenaSideBound)
         {
             Destroy(gameObject);
