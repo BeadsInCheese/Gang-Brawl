@@ -10,6 +10,6 @@ public class MeleeAttack : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Helpers.HitPlayer(damage, collision.gameObject, gameObject, knockback);
+        Helpers.HitPlayer(damage, gameObject, collision.gameObject, knockback);
     }
 }

@@ -13,7 +13,7 @@ public class Bullet : MonoBehaviour
     // Directly taken from meleeAttack.cs Should probably be changed to use the same code instead of copy paste
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Helpers.HitPlayer(damage, collision.gameObject, gameObject, knockback);
+        Helpers.HitPlayer(damage, gameObject, collision.gameObject, knockback);
         Destroy(gameObject);
 
     }

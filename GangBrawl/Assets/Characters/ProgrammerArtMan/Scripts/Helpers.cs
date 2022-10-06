@@ -10,10 +10,10 @@ public static class Helpers
     /// Helper script to hit player
     /// </summary>
     /// <param name="damage"> Damage taken </param>
-    /// <param name="collisionGO"> Collider2D collision.gameObject, Object which collided</param>
     /// <param name="gameObject"> Gameobject that the script is attached ("this")</param>
+    /// <param name="collisionGO"> Collider2D collision.gameObject, Object which collided</param>
     /// <param name="knockback">How far player should be knocked back</param>
-    public static void HitPlayer(int damage, GameObject collisionGO, GameObject gameObject, float knockback)
+    public static void HitPlayer(int damage, GameObject gameObject, GameObject collisionGO, float knockback)
     {
         if (collisionGO.tag.Equals("Player"))
         {
