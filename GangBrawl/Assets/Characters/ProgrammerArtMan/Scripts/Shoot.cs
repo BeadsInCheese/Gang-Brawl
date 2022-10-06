@@ -27,7 +27,6 @@ public class Shoot : MonoBehaviour
         //Debug.Log(playerInput.actions["Aim"].ReadValue<Vector2>().x);
         double radians = Math.Atan2(y - 0, x - 0);
         double angle = radians * (180 / Math.PI);
-        Debug.Log(angle);
         if (angle > -90 && angle < 90)
         {
             charControl.setSpriteFlipped(true);
