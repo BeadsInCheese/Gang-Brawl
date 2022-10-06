@@ -189,19 +189,12 @@ public class CharacterControl : MonoBehaviour
             vel.y = Mathf.Clamp(vel.y, maxFallSpeed, minFallSpeed);
         }
         animationControl.SetBool("Moving", vel.x != 0);
-        if (vel.x != 0)
-        {
-            spriteFlipped = vel.x > 0;
-        }
+
         transform.rotation = Quaternion.Euler(new Vector3(0f, spriteFlipped ? 180 : 0f, 0f));
 
         physicsBody.velocity = vel;
     }
 
-    public bool isSpriteFlipped()
-    {
-        return spriteFlipped;
-    }
     public void setSpriteFlipped(bool spriteFlipped)
     {
         this.spriteFlipped = spriteFlipped;
