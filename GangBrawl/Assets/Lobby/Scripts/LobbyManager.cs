@@ -30,15 +30,22 @@ public class LobbyManager : MonoBehaviour
         playerData.Add(new PlayerData("",-1,playerInput.currentControlScheme,d));
         playersInGame+=1;
         playerInput.transform.SetParent(row1.transform,false);
-        if(player1.transform.parent==row1.transform){
-            player1.transform.SetParent(playerInput.transform,false);
-        }else if(player2.transform.parent==row1.transform){
-            player2.transform.SetParent(playerInput.transform,false);
-        }else if(player3.transform.parent==row1.transform){
-            player3.transform.parent.SetParent(playerInput.transform,false);
-        }else if(player4.transform.parent==row1.transform){
-            player4.transform.parent.SetParent(playerInput.transform,false);
+        if(!player1.tag.Equals("Player")){
+            //player1.transform.SetParent(playerInput.transform,false);
+            playerInput.transform.gameObject.GetComponent<lobbyPlayer>().LobbyObject=player1;
+            player1.tag="Player";
+        }else if(!player2.tag.Equals("Player")){
+            //player2.transform.SetParent(playerInput.transform,false);
+            playerInput.transform.gameObject.GetComponent<lobbyPlayer>().LobbyObject=player2;
+            player2.tag="Player";
+        }else if(!player3.tag.Equals("Player")){
+            playerInput.transform.gameObject.GetComponent<lobbyPlayer>().LobbyObject=player3;
+            player3.tag="Player";
+        }else if(player4.tag.Equals("Player")){
+            playerInput.transform.gameObject.GetComponent<lobbyPlayer>().LobbyObject=player4;
+            player4.tag="Player";
         }
+        
 
     }
         void Awake()
@@ -57,7 +64,7 @@ public class LobbyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(playersReady>=playersInGame&&playersInGame>=1){
+        if(playersReady>=playersInGame&&playersInGame>1){
             countdown-=Time.deltaTime;
             if(countdown<=0){
                 SceneManager.LoadScene("TestSandbox");

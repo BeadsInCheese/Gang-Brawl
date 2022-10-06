@@ -9,7 +9,7 @@ public class lobbyPlayer : MonoBehaviour
 {
     // Start is called before the first frame update
     Image characterImage;
-    GameObject LobbyObject;
+    public GameObject LobbyObject;
     PlayerInput input;
     public GameObject selectedPlayerPrefab;
     private bool ready=false;
@@ -17,7 +17,7 @@ public class lobbyPlayer : MonoBehaviour
 
     private void removeJoinText(){
 
-            tex=this.transform.GetComponentInChildren<TMPro.TextMeshProUGUI>();
+            tex=this.LobbyObject.GetComponentInChildren<TMPro.TextMeshProUGUI>();
             tex.text="";
     }
     void Start()
