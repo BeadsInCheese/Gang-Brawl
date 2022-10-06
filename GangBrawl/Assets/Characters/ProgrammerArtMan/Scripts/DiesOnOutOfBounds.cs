@@ -9,13 +9,14 @@ public class DiesOnOutOfBounds : MonoBehaviour
     HPSystem hpSystem;
     void Start()
     {
-        hpSystem=GetComponent<HPSystem>();
+        hpSystem = GetComponent<HPSystem>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(this.transform.position.y<ArenaDataManager.instance.arenaLowerBound||Mathf.Abs(this.transform.position.x) > ArenaDataManager.instance.arenaSideBound){
+        if (Helpers.isOutOfArena(gameObject))
+        {
             hpSystem.die();
         }
     }
