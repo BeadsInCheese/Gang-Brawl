@@ -150,7 +150,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &512132733879327843
 BoxCollider2D:
@@ -368,8 +368,8 @@ MonoBehaviour:
   - {fileID: 512132734249727240}
   - {fileID: 512132734733068960}
   m_Bounds:
-    m_Center: {x: -0.2279346, y: 1.2724941, z: 0}
-    m_Extent: {x: 2.787315, y: 3.8575072, z: 0}
+    m_Center: {x: -0.2279346, y: 1.2318611, z: 0}
+    m_Extent: {x: 2.787315, y: 3.898139, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -416,14 +416,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 512132734249727247}
-  m_LocalRotation: {x: 0, y: 0, z: -0.99994576, w: 0.010415323}
+  m_LocalRotation: {x: -0, y: -0, z: -0.99920624, w: 0.039836623}
   m_LocalPosition: {x: -0.6513173, y: -2.289207, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 512132734166966827}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -175.434}
 --- !u!1 &512132734317969021
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,14 +573,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 512132734733068967}
-  m_LocalRotation: {x: 0, y: 0, z: -0.9993645, w: 0.035646114}
+  m_LocalRotation: {x: -0, y: -0, z: -0.9988609, w: 0.047717687}
   m_LocalPosition: {x: 0.80928445, y: -2.211707, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 512132734166966827}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -174.53}
 --- !u!1 &512132735038761068
 GameObject:
   m_ObjectHideFlags: 0
