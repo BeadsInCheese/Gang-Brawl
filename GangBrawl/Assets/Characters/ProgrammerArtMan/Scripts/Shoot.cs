@@ -30,7 +30,6 @@ public class Shoot : MonoBehaviour
         //Debug.Log(playerInput.actions["Aim"].ReadValue<Vector2>().x);
         radians = Math.Atan2(y - 0, x - 0);
         angle = radians * (180 / Math.PI);
-        if (angle > -90 && angle < 90)
         // angle is zero if player is currently aiming
         if (isPlayerAiming(playerInput) && angle > -90 && angle < 90)
         {
