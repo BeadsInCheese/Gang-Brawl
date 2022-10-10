@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class CharacterControl : MonoBehaviour
 {
     // Start is called before the first frame update
-    Rigidbody2D physicsBody;
+    public Rigidbody2D physicsBody;
 
     float speed = 6f;
     float jumpHeight = 400;
@@ -33,7 +33,11 @@ public class CharacterControl : MonoBehaviour
 
     Vector2 vel = new Vector2(0, 0);
     public PlayerInput playerInput;
+    /// <summary>
+    /// True when character is facing right
+    /// </summary>
     bool spriteFlipped = false;
+
     Animator animationControl;
 
     //jump Control
@@ -189,14 +193,42 @@ public class CharacterControl : MonoBehaviour
             vel.y = Mathf.Clamp(vel.y, maxFallSpeed, minFallSpeed);
         }
         animationControl.SetBool("Moving", vel.x != 0);
+        //Debug.Log(spriteFlipped);
+        // Character is moving right
+        if (vel.x > 0 && !isPlayerAiming(playerInput))
+        {
+            // Change sprite to right'
+            spriteFlipped = true;
+        }
+        if (vel.x < 0 && !isPlayerAiming(playerInput))
+        {
+            // Character is moving left
+            spriteFlipped = false;
+
+        }
+        else
+        {
+            // DO NOTHING, because
+            // character is still, keep the orientation of the character
+
+        }
 
         transform.rotation = Quaternion.Euler(new Vector3(0f, spriteFlipped ? 180 : 0f, 0f));
 
         physicsBody.velocity = vel;
     }
 
+    private bool isPlayerAiming(PlayerInput playerInput)
+    {
+        return (playerInput.actions["Aim"].ReadValue<Vector2>().x != 0 || playerInput.actions["Aim"].ReadValue<Vector2>().y != 0);
+    }
+
     public void setSpriteFlipped(bool spriteFlipped)
     {
         this.spriteFlipped = spriteFlipped;
+    }
+    public bool isSpriteFlipped()
+    {
+        return spriteFlipped;
     }
 }

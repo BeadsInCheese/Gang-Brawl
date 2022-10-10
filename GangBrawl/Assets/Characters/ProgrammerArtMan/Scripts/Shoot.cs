@@ -36,14 +36,39 @@ public class Shoot : MonoBehaviour
         }
         else
         {
+            // Character is aiming left
+
             charControl.setSpriteFlipped(false);
         }
         if (playerInput.actions["Shoot"].triggered)
         {
-            Quaternion rotation = Quaternion.Euler(0, 0, (float)angle);
+            float fAngle = isPlayerAiming(playerInput) ? (float)angle : getShootingDirection(charControl);
+            Quaternion rotation = Quaternion.Euler(0, 0, fAngle);
 
             Instantiate(bulletPrefab, shootingPoint.position, rotation);
-            //Instantiate(bulletPrefab, shootingPoint.position, transform.rotation);
         }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="charControl"></param>
+    /// <returns>0 if player is shooting right, 180 if player is shooting left</returns>
+    private float getShootingDirection(CharacterControl charControl)
+    {
+        // Character is moving right
+        if (charControl.physicsBody.velocity.x > 0)
+        {
+            return 0f;
+        }
+        else
+        {
+            return 180f;
+        }
+    }
+
+    private bool isPlayerAiming(PlayerInput playerInput)
+    {
+        return (playerInput.actions["Aim"].ReadValue<Vector2>().x != 0 || playerInput.actions["Aim"].ReadValue<Vector2>().y != 0);
     }
 }
