@@ -50,7 +50,8 @@ public class Shoot : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    ///  <para>Get basic shooting direction if aiming is not happening </para>
+    /// NOTE: Does not check that the player is not aiming
     /// </summary>
     /// <param name="charControl"></param>
     /// <returns>0 if player is shooting right, 180 if player is shooting left</returns>
@@ -61,9 +62,13 @@ public class Shoot : MonoBehaviour
         {
             return 0f;
         }
+        if (charControl.physicsBody.velocity.x < 0)
+        {
+            return 180;
+        }
         else
         {
-            return 180f;
+            return charControl.isSpriteFlipped() ? 0 : 180;
         }
     }
 
