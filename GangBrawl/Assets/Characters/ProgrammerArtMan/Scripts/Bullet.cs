@@ -8,7 +8,6 @@ public class Bullet : MonoBehaviour
     private Rigidbody2D rb;
     public int damage = 10;
     public float knockback = 10;
-    // Start is called before the first frame update
 
     // Directly taken from meleeAttack.cs Should probably be changed to use the same code instead of copy paste
     void OnTriggerEnter2D(Collider2D collision)
@@ -21,7 +20,7 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        speed = 5;
+        speed = 10;
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = transform.right * speed;
     }
