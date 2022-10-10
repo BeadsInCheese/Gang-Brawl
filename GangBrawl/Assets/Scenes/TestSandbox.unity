@@ -134,9 +134,9 @@ GameObject:
   - component: {fileID: 168963801}
   - component: {fileID: 168963800}
   - component: {fileID: 168963799}
-  - component: {fileID: 168963798}
   - component: {fileID: 168963797}
   - component: {fileID: 168963796}
+  - component: {fileID: 168963802}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Player
@@ -177,20 +177,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &168963798
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 168963795}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7f52b0f5f44c3581a9d5286c53e902f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHp: 100
-  currentHp: 100
 --- !u!58 &168963799
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -274,6 +260,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &168963802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 168963795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afe774eaabb9ff673a3d4d115aa6c9b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHp: 100
+  currentHp: 100
+  explosion: {fileID: 1321848076755306698, guid: add91e78018b76b478ad79004695b3c8, type: 3}
 --- !u!1 &335905212
 GameObject:
   m_ObjectHideFlags: 0
@@ -638,7 +639,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 722120139}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ff077026f28be19048f6602504a6f28c, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -781,7 +782,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 846452615}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ff077026f28be19048f6602504a6f28c, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 1
   m_UsedByComposite: 0
@@ -881,9 +882,9 @@ PlatformEffector2D:
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
   m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
+  m_UseSideFriction: 1
+  m_UseSideBounce: 1
+  m_SideArc: 0
 --- !u!1 &1657130496
 GameObject:
   m_ObjectHideFlags: 0
@@ -1001,7 +1002,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1720670335}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ff077026f28be19048f6602504a6f28c, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 1
   m_UsedByComposite: 0
@@ -1103,7 +1104,7 @@ PlatformEffector2D:
   m_SurfaceArc: 180
   m_UseSideFriction: 0
   m_UseSideBounce: 0
-  m_SideArc: 1
+  m_SideArc: 0
 --- !u!1 &2012719420
 GameObject:
   m_ObjectHideFlags: 0

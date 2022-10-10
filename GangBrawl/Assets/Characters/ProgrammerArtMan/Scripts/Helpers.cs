@@ -21,6 +21,15 @@ public static class Helpers
             collisionGO.GetComponent<Rigidbody2D>().AddForce(gameObject.transform.rotation.eulerAngles.y != 0 ? new Vector2(knockback, knockback) : new Vector2(-knockback, knockback));
         }
     }
+
+    public static void HitPlayer(int damage, GameObject collisionGO, Vector2 knockback)
+    {
+        if (collisionGO.tag.Equals("Player"))
+        {
+            collisionGO.GetComponent<HPSystem>().takeDamage(damage);
+            collisionGO.GetComponent<Rigidbody2D>().AddForce(knockback);
+        }
+    }
     /// <summary>
     /// 
     /// </summary>

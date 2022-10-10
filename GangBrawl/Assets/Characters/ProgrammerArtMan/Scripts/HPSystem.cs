@@ -7,7 +7,7 @@ public class HPSystem : MonoBehaviour
     // Start is called before the first frame update
     public int maxHp=100;
     public int currentHp=100;
-    public void die(){
+    public virtual void die(){
         HealToFull();
         this.transform.position=new Vector2(0,5);
 

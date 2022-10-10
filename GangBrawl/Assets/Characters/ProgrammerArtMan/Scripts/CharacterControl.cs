@@ -28,6 +28,7 @@ public class CharacterControl : MonoBehaviour
     public float jumpApexThreshold = 3;
     public float _apexBonus = 3;
     public float minFallSpeed = -300;
+    public float JumpAnimationDuration = 0.5f;
 
 
 
@@ -43,9 +44,13 @@ public class CharacterControl : MonoBehaviour
     //jump Control
     bool isgrounded = false;
     bool doubleJump = true;
-
+private void turnOffJumpAnimation(){
+    animationControl.SetBool("Jumping",false);
+} 
     private void jump()
     {
+        animationControl.SetBool("Jumping",true);
+        Invoke("turnOffJumpAnimation",JumpAnimationDuration);
         physicsBody.velocity = new Vector2(physicsBody.velocity.x, 0);
         physicsBody.AddForce(new Vector2(0, jumpHeight * physicsBody.gravityScale));
     }
@@ -58,11 +63,13 @@ public class CharacterControl : MonoBehaviour
     {
         if (theCollision.gameObject.tag == "Platform")
         {
+            
             if (jumpLastPressed + jumpBuffer > Time.time)
             {
                 if (jumpButtonDown)
                 {
                     jump();
+                    
                 }
                 else
                 {
