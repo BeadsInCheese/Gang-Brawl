@@ -31,14 +31,20 @@ public class Shoot : MonoBehaviour
         radians = Math.Atan2(y - 0, x - 0);
         angle = radians * (180 / Math.PI);
         if (angle > -90 && angle < 90)
+        // angle is zero if player is currently aiming
+        if (isPlayerAiming(playerInput) && angle > -90 && angle < 90)
         {
             charControl.setSpriteFlipped(true);
         }
         else
         {
             // Character is aiming left
-
-            charControl.setSpriteFlipped(false);
+            if (isPlayerAiming(playerInput))
+            {
+                // Character sprite should only be flipped here if player is aiming 
+                // (aiming sprite flipping overrides flip character by which direction character is moving)
+                charControl.setSpriteFlipped(false);
+            }
         }
         if (playerInput.actions["Shoot"].triggered)
         {
