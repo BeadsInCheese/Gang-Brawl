@@ -44,13 +44,14 @@ public class CharacterControl : MonoBehaviour
     //jump Control
     bool isgrounded = false;
     bool doubleJump = true;
-private void turnOffJumpAnimation(){
-    animationControl.SetBool("Jumping",false);
-} 
+    private void turnOffJumpAnimation()
+    {
+        animationControl.SetBool("Jumping", false);
+    }
     private void jump()
     {
-        animationControl.SetBool("Jumping",true);
-        Invoke("turnOffJumpAnimation",JumpAnimationDuration);
+        animationControl.SetBool("Jumping", true);
+        Invoke("turnOffJumpAnimation", JumpAnimationDuration);
         physicsBody.velocity = new Vector2(physicsBody.velocity.x, 0);
         physicsBody.AddForce(new Vector2(0, jumpHeight * physicsBody.gravityScale));
     }
@@ -63,13 +64,13 @@ private void turnOffJumpAnimation(){
     {
         if (theCollision.gameObject.tag == "Platform")
         {
-            
+
             if (jumpLastPressed + jumpBuffer > Time.time)
             {
                 if (jumpButtonDown)
                 {
                     jump();
-                    
+
                 }
                 else
                 {
@@ -98,7 +99,6 @@ private void turnOffJumpAnimation(){
         playerInput = GetComponent<PlayerInput>();
         physicsBody = GetComponent<Rigidbody2D>();
         transform.position = GameObject.Find("Player-" + playerInput.playerIndex + "-SpawnPoint").transform.position;
-
     }
 
     // Update is called once per frame

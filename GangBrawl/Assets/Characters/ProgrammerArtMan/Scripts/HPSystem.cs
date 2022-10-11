@@ -5,28 +5,35 @@ using UnityEngine;
 public class HPSystem : MonoBehaviour
 {
     // Start is called before the first frame update
-    public int maxHp=100;
-    public int currentHp=100;
-    public virtual void die(){
+    public int maxHp = 100;
+    public int currentHp;
+    public Health_bar health_Bar;
+    public virtual void die()
+    {
         HealToFull();
-        this.transform.position=new Vector2(0,5);
+        this.transform.position = new Vector2(0, 5);
 
     }
-    public void takeDamage(int amount){
-        
-        currentHp-=amount;
-        if(currentHp<=0){
+    public void takeDamage(int amount)
+    {
+        currentHp -= amount;
+        health_Bar.SetHealth(currentHp);
+
+        if (currentHp <= 0)
+        {
             die();
         }
 
     }
-    public void HealToFull(){
+    public void HealToFull()
+    {
         currentHp = maxHp;
+        health_Bar.SetHealth(currentHp);
     }
     void Start()
     {
-        currentHp=maxHp;
-        
+        currentHp = maxHp;
+        health_Bar.SetMaxHealth(maxHp);
     }
 
 }
