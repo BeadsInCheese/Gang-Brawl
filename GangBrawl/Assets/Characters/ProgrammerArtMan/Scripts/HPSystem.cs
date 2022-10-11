@@ -14,7 +14,7 @@ public class HPSystem : MonoBehaviour
         this.transform.position = new Vector2(0, 5);
 
     }
-    public void takeDamage(int amount)
+    public virtual void takeDamage(int amount)
     {
         currentHp -= amount;
         health_Bar.SetHealth(currentHp);
@@ -25,7 +25,7 @@ public class HPSystem : MonoBehaviour
         }
 
     }
-    public void HealToFull()
+    public virtual void HealToFull()
     {
         currentHp = maxHp;
         health_Bar.SetHealth(currentHp);
