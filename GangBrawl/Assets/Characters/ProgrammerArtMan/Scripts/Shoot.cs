@@ -7,7 +7,7 @@ public class Shoot : MonoBehaviour
 {
     public Transform shootingPoint;
     public GameObject bulletPrefab;
-
+    public GameObject gun;
     private PlayerInput playerInput;
     private CharacterControl charControl;
 
@@ -25,7 +25,23 @@ public class Shoot : MonoBehaviour
         charControl = gameObject.GetComponentInParent<CharacterControl>();
         
     }
+    private float spread=0;
+    private float cooldown=2;
+    private int ammo=5;
+    private bool canShoot=true;
 
+    private int bulletsShotAtOnce=5; 
+public void newGunSetup(){
+    gun.transform.SetParent(shootingArm);
+    Gun g=gun.GetComponentInChildren<Gun>();
+    spread=g.spread/2;
+    cooldown=g.cooldown;
+    ammo=g.ammo;
+    bulletsShotAtOnce=g.bulletsShotAtOnce;
+}
+private void reload(){
+    canShoot=true;
+}
     // Update is called once per frame
     void Update()
     {
@@ -37,8 +53,15 @@ public class Shoot : MonoBehaviour
         angle = radians * (180 / Math.PI);
         // angle is zero if player is currently aiming
     if (isPlayerAiming(playerInput)){
-        shootingArm.position=new Vector2(body.position.x+(MathF.Cos((float)radians)),body.position.y+(MathF.Sin((float)radians)));
+        shootingArm.position=new Vector3(body.position.x+(MathF.Cos((float)radians)),body.position.y+(MathF.Sin((float)radians)),body.position.z+body.up.z);
         shootingPoint.position=new Vector2(shootingArm.position.x+(MathF.Cos((float)radians)),shootingArm.position.y+(MathF.Sin((float)radians)));
+        float rx=MathF.Cos((float)radians);
+        //calculate arm rotation
+        shootingArm.transform.right=new Vector2(Mathf.Abs(rx),(MathF.Sin((float)radians)));
+        if(rx<0){
+            Vector3 Eangles=shootingArm.rotation.eulerAngles;
+            shootingArm.rotation=Quaternion.Euler(new Vector3(Eangles.x,  180 , Eangles.z));
+        }
         if ( angle > -90 && angle < 90)
         {
 
@@ -57,14 +80,26 @@ public class Shoot : MonoBehaviour
         }else{
             shootingArm.position=body.position+body.up;
             shootingPoint.position=shootingArm.position+body.up*2;
+            shootingArm.transform.right=new Vector2(Mathf.Abs(body.up.x),body.up.y);
+            if(body.up.x<=0){
+            Vector3 Eangles=shootingArm.rotation.eulerAngles;
+            shootingArm.rotation=Quaternion.Euler(new Vector3(Eangles.x,  180 , Eangles.z));
+            }
         }
-        if (playerInput.actions["Shoot"].triggered)
+        if (playerInput.actions["Shoot"].triggered && gun!=null && canShoot)
         {
-            
+            for(int i=0; i<bulletsShotAtOnce;i++){
             float fAngle = isPlayerAiming(playerInput) ? (float)angle : getShootingDirection(charControl);
-            Quaternion rotation = Quaternion.Euler(0, 0, fAngle);
+            Quaternion rotation = Quaternion.Euler(0, 0, fAngle+UnityEngine.Random.Range(-spread,spread));
             Instantiate(bulletPrefab, shootingPoint.position, rotation);
+            }
+            ammo-=1;
+            if(ammo<=0){Destroy(gun);}
+            canShoot=false;
+         Invoke("reload",cooldown);
         }
+
+           
     }
     
 
