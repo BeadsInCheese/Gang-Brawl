@@ -29,15 +29,18 @@ public class Shoot : MonoBehaviour
     private float cooldown=2;
     private int ammo=5;
     private bool canShoot=true;
-
+    private Transform barrel;
     private int bulletsShotAtOnce=5; 
+    private AudioSource gunSound;
 public void newGunSetup(){
     gun.transform.SetParent(shootingArm);
     Gun g=gun.GetComponentInChildren<Gun>();
     spread=g.spread/2;
     cooldown=g.cooldown;
     ammo=g.ammo;
+    barrel=g.barrel;
     bulletsShotAtOnce=g.bulletsShotAtOnce;
+    gunSound=g.gameObject.GetComponent<AudioSource>();
 }
 private void reload(){
     canShoot=true;
@@ -88,9 +91,12 @@ private void reload(){
         }
         if (playerInput.actions["Shoot"].triggered && gun!=null && canShoot)
         {
+            gunSound.pitch=UnityEngine.Random.Range(0.9f,1.1f);
+            gunSound.Play();
             for(int i=0; i<bulletsShotAtOnce;i++){
             float fAngle = isPlayerAiming(playerInput) ? (float)angle : getShootingDirection(charControl);
             Quaternion rotation = Quaternion.Euler(0, 0, fAngle+UnityEngine.Random.Range(-spread,spread));
+            shootingPoint.position=barrel.position;
             Instantiate(bulletPrefab, shootingPoint.position, rotation);
             }
             ammo-=1;
