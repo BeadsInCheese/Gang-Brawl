@@ -41,7 +41,7 @@ public class LobbyManager : MonoBehaviour
         }else if(!player3.tag.Equals("Player")){
             playerInput.transform.gameObject.GetComponent<lobbyPlayer>().LobbyObject=player3;
             player3.tag="Player";
-        }else if(player4.tag.Equals("Player")){
+        }else if(!player4.tag.Equals("Player")){
             playerInput.transform.gameObject.GetComponent<lobbyPlayer>().LobbyObject=player4;
             player4.tag="Player";
         }
