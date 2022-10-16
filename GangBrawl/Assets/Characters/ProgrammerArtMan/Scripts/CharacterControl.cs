@@ -8,8 +8,10 @@ public class CharacterControl : MonoBehaviour
     // Start is called before the first frame update
     public Rigidbody2D physicsBody;
 
-    float speed = 6f;
-    float jumpHeight = 400;
+    public float speed = 6f;
+    public float maxMovementSpeed=20;
+    public float jumpHeight = 400;
+    public float maxJumpHeight = 800;
     public float LightAttackCancelTime = 0;
     public float HeavyAttackCancelTime = 0.3f;
     private float ConcurrentAttackCancelTime = 0;
