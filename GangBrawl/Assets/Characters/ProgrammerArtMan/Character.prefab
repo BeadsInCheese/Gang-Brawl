@@ -80,6 +80,7 @@ GameObject:
   - component: {fileID: 512132733879327774}
   - component: {fileID: 512132733879327768}
   - component: {fileID: 512132733879327775}
+  - component: {fileID: 7207197898894411218}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -119,6 +120,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   physicsBody: {fileID: 0}
+  speed: 6
+  maxMovementSpeed: 20
+  jumpHeight: 400
+  maxJumpHeight: 800
   LightAttackCancelTime: 0.11666669
   HeavyAttackCancelTime: 0.25000006
   jumpBuffer: 0.3
@@ -261,6 +266,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 128823ecd0db85116bde212ce2f859d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7207197898894411218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512132733879327840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ce97531fe7992843865e68a043d49df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &512132734166966826
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,8 +388,8 @@ MonoBehaviour:
   - {fileID: 512132734249727240}
   - {fileID: 512132734733068960}
   m_Bounds:
-    m_Center: {x: -0.2279346, y: 1.2318611, z: 0}
-    m_Extent: {x: 2.787315, y: 3.898139, z: 0}
+    m_Center: {x: -0.2279346, y: 1.2318614, z: 0}
+    m_Extent: {x: 2.787315, y: 3.8981395, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -895,6 +912,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingPoint: {fileID: 7971185651825727799}
   bulletPrefab: {fileID: 6777275443525427548, guid: 4d1c0716896657c4dad567fcfb90da20, type: 3}
+  gun: {fileID: 0}
   shootingArm: {fileID: 512132735300724998}
   body: {fileID: 512132733711734152}
 --- !u!1 &7274402712978698018
