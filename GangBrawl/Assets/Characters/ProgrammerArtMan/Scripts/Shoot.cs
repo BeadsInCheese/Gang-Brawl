@@ -33,6 +33,7 @@ public class Shoot : MonoBehaviour
     private int bulletsShotAtOnce=5; 
     private AudioSource gunSound;
 public void newGunSetup(){
+
     gun.transform.SetParent(shootingArm);
     Gun g=gun.GetComponentInChildren<Gun>();
     spread=g.spread/2;

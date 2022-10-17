@@ -12,9 +12,12 @@ public class weaponGrate : MonoBehaviour
      void OnCollisionEnter2D(Collision2D col){
         if(col.gameObject.tag.Equals("Player")){
             Shoot s= col.gameObject.GetComponentInChildren<Shoot>();
+            if(s.gun!=null){
+                Destroy(s.gun);
+            }
             s.gun=Instantiate(guntemplates[(int)Random.Range(0,guntemplates.Count)],s.shootingArm.position,s.shootingArm.rotation);
             s.newGunSetup();
-            Destroy(gameObject);
+            Destroy(transform.parent.gameObject);
         }
 
      }
