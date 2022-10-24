@@ -81,6 +81,7 @@ GameObject:
   - component: {fileID: 512132733879327768}
   - component: {fileID: 512132733879327775}
   - component: {fileID: 7207197898894411218}
+  - component: {fileID: 828428759685739343}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -234,6 +235,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 8149a8a9-cab7-4bfc-849e-37c0868f5b63
     m_ActionName: Land/Aim[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 74f810b7-9c58-4fdd-83d8-5f16b9fbf361
+    m_ActionName: Land/FallThroughPlatform[/Keyboard/s,/Gamepad/dpad/down,/Gamepad/leftStick/down]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Land
@@ -278,6 +283,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ce97531fe7992843865e68a043d49df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &828428759685739343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512132733879327840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04d43261fb1fbe5d386ea508c42c1a81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lives: 5
 --- !u!1 &512132734166966826
 GameObject:
   m_ObjectHideFlags: 0
@@ -388,8 +406,8 @@ MonoBehaviour:
   - {fileID: 512132734249727240}
   - {fileID: 512132734733068960}
   m_Bounds:
-    m_Center: {x: -0.2279346, y: 1.2318614, z: 0}
-    m_Extent: {x: 2.787315, y: 3.8981395, z: 0}
+    m_Center: {x: -0.2279346, y: 1.2318611, z: 0}
+    m_Extent: {x: 2.787315, y: 3.898139, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
