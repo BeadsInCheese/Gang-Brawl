@@ -7,6 +7,7 @@ TagManager:
   - Platform
   - Bullet
   - ExplosivesBarrel
+  - ObjectSpawner
   layers:
   - Default
   - TransparentFX
