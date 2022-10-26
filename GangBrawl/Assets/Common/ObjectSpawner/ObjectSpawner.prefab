@@ -49,7 +49,7 @@ MonoBehaviour:
   - {fileID: 8336248614094019405, guid: a9531c9796804434782f325f390b8ce7, type: 3}
   - {fileID: 6614459214473391359, guid: 2e051ed000f600ccfad735c8c7c73295, type: 3}
   minTime: 10
-  maxTime: 15
+  maxTime: 25
 --- !u!61 &4227013761278231616
 BoxCollider2D:
   m_ObjectHideFlags: 0
