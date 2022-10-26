@@ -9,7 +9,7 @@ public class CharacterControl : MonoBehaviour
     public Rigidbody2D physicsBody;
 
     public float speed = 6f;
-    public float maxMovementSpeed=20;
+    public float maxMovementSpeed = 20;
     public float jumpHeight = 400;
     public float maxJumpHeight = 800;
     public float LightAttackCancelTime = 0;
@@ -40,7 +40,6 @@ public class CharacterControl : MonoBehaviour
     /// True when character is facing right
     /// </summary>
     bool spriteFlipped = false;
-
     Animator animationControl;
 
     //jump Control
@@ -223,7 +222,6 @@ public class CharacterControl : MonoBehaviour
         }
 
         transform.rotation = Quaternion.Euler(new Vector3(0f, spriteFlipped ? 180 : 0f, 0f));
-
         physicsBody.velocity = vel;
     }
 
