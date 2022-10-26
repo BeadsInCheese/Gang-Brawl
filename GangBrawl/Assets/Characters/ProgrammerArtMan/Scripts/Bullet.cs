@@ -13,7 +13,8 @@ public class Bullet : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         Helpers.HitPlayer(damage, gameObject, collision.gameObject, knockback);
-        if(!collision.gameObject.tag.Equals("Bullet")){
+        if (!collision.gameObject.tag.Equals("Bullet") && !collision.tag.Equals("ObjectSpawner"))
+        {
             Destroy(gameObject);
         }
 
