@@ -7,6 +7,7 @@ public class DirectorBehaviour : MonoBehaviour
 {
     BTTree tree;
     float intensity=11;
+    public int MaxLives=5;
     public float intensityTreshold=10;
     public static Dictionary<string,int> PlayersAlive=new Dictionary<string, int>();
     float countdown=5;

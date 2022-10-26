@@ -5,7 +5,9 @@ using UnityEngine;
 public class PlayerScore : MonoBehaviour
 {
     // Start is called before the first frame update
-    public int lives=5;
+    public DeathCounter death;
+    public int MaxLives=5;
+     int lives=5;
     void Start()
     {
         this.gameObject.name="player"+DirectorBehaviour.PlayersAlive.Count;
@@ -15,6 +17,7 @@ public class PlayerScore : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        lives=MaxLives-death.deathCount;
         DirectorBehaviour.PlayersAlive[this.gameObject.name]=lives;
     }
 }
