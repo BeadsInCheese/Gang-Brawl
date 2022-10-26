@@ -701,6 +701,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnObjects:
   - {fileID: 8336248614094019405, guid: a9531c9796804434782f325f390b8ce7, type: 3}
+  minTime: 10
+  maxTime: 15
 --- !u!4 &678443262
 Transform:
   m_ObjectHideFlags: 0
