@@ -8,9 +8,11 @@ public class HPSystem : MonoBehaviour
     public int maxHp = 100;
     public int currentHp;
     public Health_bar health_Bar;
+    public DeathCounter deathcounter;
     public virtual void die()
     {
         HealToFull();
+        deathcounter.deathCount = deathcounter.deathCount + 1;
         this.transform.position = new Vector2(0, 5);
 
     }
