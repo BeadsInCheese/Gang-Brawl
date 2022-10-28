@@ -21,7 +21,7 @@ public class Explosion : MonoBehaviour
             Vector2 dir=(this.transform.position-col.gameObject.transform.position);
             float distance = dir.magnitude;
             float aoeProximityMultiplier=(aoe.radius-distance)*30;
-            Helpers.HitPlayer((int)(damage*aoeProximityMultiplier),col.gameObject,-dir.normalized*aoeProximityMultiplier);
+            Helpers.HitPlayer((int)(damage*aoeProximityMultiplier),col.gameObject,knockback*-dir.normalized*aoeProximityMultiplier);
             Debug.Log("Exploded player");
         }
     }

@@ -139,6 +139,7 @@ MonoBehaviour:
   _apexBonus: 312
   minFallSpeed: 20
   JumpAnimationDuration: 0.5
+  friction: 1
   playerInput: {fileID: 0}
 --- !u!50 &512132733879327772
 Rigidbody2D:

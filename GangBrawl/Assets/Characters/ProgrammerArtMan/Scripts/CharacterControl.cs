@@ -32,7 +32,7 @@ public class CharacterControl : MonoBehaviour
     public float minFallSpeed = -300;
     public float JumpAnimationDuration = 0.5f;
 
-
+    public float friction=1;
 
     Vector2 vel = new Vector2(0, 0);
     public PlayerInput playerInput;
@@ -184,19 +184,34 @@ public class CharacterControl : MonoBehaviour
             jumpButtonDown = false;
         }
         vel.y = physicsBody.velocity.y;
+        float xin= playerInput.actions["Walk"].ReadValue<float>() * speed;
+            vel.x=physicsBody.velocity.x;
+            if(vel.x-speed<=0 && xin>=0){
+                vel.x+=xin*Time.deltaTime*speed;
+            }
+            else if(vel.x+speed>=0 && xin<=0){
+                vel.x+=xin*Time.deltaTime*speed;
+            }
+            if(vel.x!=0&&xin==0){
+                if(Mathf.Abs(vel.x)<=1){
+                    vel.x=0;
+                }else{
+                    vel.x-=Mathf.Sign(vel.x)*friction;
+                }
+            }
         if (isgrounded)
         {
             animationControl.SetBool("OnGround", true);
-            vel.x = playerInput.actions["Walk"].ReadValue<float>() * speed;
+            
         }
         else
         {
             animationControl.SetBool("OnGround", false);
 
-            float xin = Mathf.Max(Mathf.Min(playerInput.actions["Walk"].ReadValue<float>(), speed), -speed);
             float apexPoint = Mathf.InverseLerp(jumpApexThreshold, 0, Mathf.Abs(vel.y));
             float apexBonus = Mathf.Abs(xin) > 0 ? Mathf.Sign(xin) * _apexBonus * apexPoint : 0;
-            vel.x = speed * xin + apexBonus * Time.deltaTime;
+            
+            //vel.x = speed * xin + apexBonus * Time.deltaTime;
             vel.y += Mathf.Sign(vel.y) * fallSpeedAtApex * (0.1f + apexPoint) * Time.deltaTime;
             vel.y = Mathf.Clamp(vel.y, maxFallSpeed, minFallSpeed);
         }

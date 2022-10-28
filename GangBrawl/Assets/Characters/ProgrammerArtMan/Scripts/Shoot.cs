@@ -32,6 +32,7 @@ public class Shoot : MonoBehaviour
     private Transform barrel;
     private int bulletsShotAtOnce = 5;
     private AudioSource gunSound;
+    private float recoil=5;
     public void newGunSetup()
     {
 
@@ -41,6 +42,7 @@ public class Shoot : MonoBehaviour
         cooldown = g.cooldown;
         ammo = g.ammo;
         barrel = g.barrel;
+        this.recoil=g.recoil;
         bulletsShotAtOnce = g.bulletsShotAtOnce;
         gunSound = g.gameObject.GetComponent<AudioSource>();
     }
@@ -98,7 +100,8 @@ public class Shoot : MonoBehaviour
             }
         }
         if (playerInput.actions["Shoot"].triggered && gun != null && canShoot)
-        {
+        {   Debug.Log((body.transform.position-shootingPoint.position).normalized*recoil);
+            charControl.physicsBody.AddForce((body.transform.position-shootingPoint.position).normalized*recoil);
             gunSound.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
             gunSound.Play();
             for (int i = 0; i < bulletsShotAtOnce; i++)

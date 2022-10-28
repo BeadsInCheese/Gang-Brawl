@@ -27,6 +27,7 @@ public static class Helpers
         if (collisionGO.tag.Equals("Player")||collisionGO.tag.Equals("ExplosivesBarrel"))
         {
             collisionGO.GetComponent<HPSystem>().takeDamage(damage);
+            Debug.Log("Explosion strenght: "+knockback);
             collisionGO.GetComponent<Rigidbody2D>().AddForce(knockback);
         }
     }

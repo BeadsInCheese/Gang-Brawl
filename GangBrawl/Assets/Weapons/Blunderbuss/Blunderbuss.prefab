@@ -167,6 +167,8 @@ MonoBehaviour:
   ammo: 5
   barrel: {fileID: 2118086106956085914}
   bulletsShotAtOnce: 5
+  recoil: 600
+  bulletKnockback: 5
 --- !u!82 &1792386945564148003
 AudioSource:
   m_ObjectHideFlags: 0
