@@ -33,6 +33,7 @@ public class Shoot : MonoBehaviour
     private int bulletsShotAtOnce = 5;
     private AudioSource gunSound;
     private float recoil=5;
+    private float knockback;
     public void newGunSetup()
     {
 
@@ -43,6 +44,7 @@ public class Shoot : MonoBehaviour
         ammo = g.ammo;
         barrel = g.barrel;
         this.recoil=g.recoil;
+        this.knockback=g.bulletKnockback;
         bulletsShotAtOnce = g.bulletsShotAtOnce;
         gunSound = g.gameObject.GetComponent<AudioSource>();
     }
@@ -100,7 +102,7 @@ public class Shoot : MonoBehaviour
             }
         }
         if (playerInput.actions["Shoot"].triggered && gun != null && canShoot)
-        {   Debug.Log((body.transform.position-shootingPoint.position).normalized*recoil);
+        {   //Debug.Log((body.transform.position-shootingPoint.position).normalized*recoil);
             charControl.physicsBody.AddForce((body.transform.position-shootingPoint.position).normalized*recoil);
             gunSound.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
             gunSound.Play();
@@ -109,7 +111,8 @@ public class Shoot : MonoBehaviour
                 float fAngle = isPlayerAiming(playerInput) ? (float)angle : getShootingDirection(charControl);
                 Quaternion rotation = Quaternion.Euler(0, 0, fAngle + UnityEngine.Random.Range(-spread, spread));
                 shootingPoint.position = barrel.position;
-                Instantiate(bulletPrefab, shootingPoint.position, rotation);
+                var bullet=Instantiate(bulletPrefab, shootingPoint.position, rotation);
+                bullet.GetComponent<Bullet>().knockback=this.knockback;
             }
             ammo -= 1;
             if (ammo <= 0) { Destroy(gun); }
@@ -130,18 +133,9 @@ public class Shoot : MonoBehaviour
     private float getShootingDirection(CharacterControl charControl)
     {
         // Character is moving right
-        if (charControl.physicsBody.velocity.x > 0)
-        {
-            return 0f;
-        }
-        if (charControl.physicsBody.velocity.x < 0)
-        {
-            return 180;
-        }
-        else
-        {
+
             return charControl.isSpriteFlipped() ? 0 : 180;
-        }
+        
     }
 
     private bool isPlayerAiming(PlayerInput playerInput)

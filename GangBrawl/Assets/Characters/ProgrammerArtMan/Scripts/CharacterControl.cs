@@ -215,15 +215,15 @@ public class CharacterControl : MonoBehaviour
             vel.y += Mathf.Sign(vel.y) * fallSpeedAtApex * (0.1f + apexPoint) * Time.deltaTime;
             vel.y = Mathf.Clamp(vel.y, maxFallSpeed, minFallSpeed);
         }
-        animationControl.SetBool("Moving", vel.x != 0);
+        animationControl.SetBool("Moving", xin != 0);
         //Debug.Log(spriteFlipped);
         // Character is moving right
-        if (vel.x > 0 && !isPlayerAiming(playerInput))
+        if (xin > 0 && !isPlayerAiming(playerInput))
         {
             // Change sprite to right'
             spriteFlipped = true;
         }
-        if (vel.x < 0 && !isPlayerAiming(playerInput))
+        if (xin < 0 && !isPlayerAiming(playerInput))
         {
             // Character is moving left
             spriteFlipped = false;
