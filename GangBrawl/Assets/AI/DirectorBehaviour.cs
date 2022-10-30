@@ -17,7 +17,9 @@ public class DirectorBehaviour : MonoBehaviour
     public TMPro.TextMeshProUGUI countdownText;
     public Node.Status IsLowIntensity(){
         if(intensity>intensityTreshold){
+            Earthquake.shaking=false;
             return Node.Status.SUCCESS;
+
 
 
         }
@@ -26,6 +28,9 @@ public class DirectorBehaviour : MonoBehaviour
     }
     public Node.Status GameEnded(){
         int alive=0;
+        if(PlayersAlive.Count<=1){
+            return Node.Status.FAILURE;
+        }
         foreach(var i in PlayersAlive.Keys){
             if(PlayersAlive[i]>0){
                 alive++;
@@ -39,6 +44,7 @@ public class DirectorBehaviour : MonoBehaviour
     }
     public Node.Status AnnounceVictor(){
         countdown-=Time.deltaTime;
+        
         string playername="";
         foreach(var i in PlayersAlive.Keys){
             if(PlayersAlive[i]>0){
@@ -57,9 +63,10 @@ public class DirectorBehaviour : MonoBehaviour
 
     }
     public Node.Status debugTest(){
-        Debug.Log("The intensity is low");
+        Earthquake.shaking=true;
         return Node.Status.SUCCESS;
     }
+    
     //init tree
     public BTTree CreateTree(){
         BTTree root=new BTTree();
