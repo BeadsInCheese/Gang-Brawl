@@ -82,13 +82,9 @@ public class CharacterControl : MonoBehaviour
             }
 
             var ray=Physics2D.Raycast(transform.position+new Vector3(-colliderDims.x/2,-colliderDims.y/2,0),Vector2.right,colliderDims.x);
-            Debug.DrawRay(transform.position+new Vector3(-colliderDims.x/2,-colliderDims.y/2,0),Vector2.right*colliderDims,Color.red,10);
             if(ray.collider!=null){
-                Debug.Log(ray.collider.gameObject.name);
                 isgrounded = true;
                 doubleJump = true;
-            }else{
-                Debug.Log("not on ground");
             }
         }
     }
