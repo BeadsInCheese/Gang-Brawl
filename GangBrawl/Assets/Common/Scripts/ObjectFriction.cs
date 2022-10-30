@@ -7,7 +7,7 @@ public class ObjectFriction : MonoBehaviour
     // Start is called before the first frame update
     Rigidbody2D rigidbody2d;
     public float friction=1;
-    bool grounded=false;
+    bool grounded=true;
     void Start()
     {
         rigidbody2d=this.GetComponent<Rigidbody2D>();

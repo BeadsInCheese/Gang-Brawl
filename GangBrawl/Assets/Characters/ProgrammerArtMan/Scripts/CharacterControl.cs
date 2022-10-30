@@ -21,6 +21,7 @@ public class CharacterControl : MonoBehaviour
     private float jumpLastPressed = 0;
     private float timeLeftGrounded;
     public float jumpEndEarlyGravityModifier = 5;
+    private Vector2 colliderDims;
     [SerializeField] private float coyoteTimeThreshold = 0.1f;
 
     public GameObject HeavyAttackHitbox;
@@ -79,9 +80,16 @@ public class CharacterControl : MonoBehaviour
                     applyJumpReleasedEarlyModifier();
                 }
             }
-            doubleJump = true;
-            isgrounded = true;
 
+            var ray=Physics2D.Raycast(transform.position+new Vector3(-colliderDims.x/2,-colliderDims.y/2,0),Vector2.right,colliderDims.x);
+            Debug.DrawRay(transform.position+new Vector3(-colliderDims.x/2,-colliderDims.y/2,0),Vector2.right*colliderDims,Color.red,10);
+            if(ray.collider!=null){
+                Debug.Log(ray.collider.gameObject.name);
+                isgrounded = true;
+                doubleJump = true;
+            }else{
+                Debug.Log("not on ground");
+            }
         }
     }
 
@@ -100,6 +108,7 @@ public class CharacterControl : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         physicsBody = GetComponent<Rigidbody2D>();
         transform.position = GameObject.Find("Player-" + playerInput.playerIndex + "-SpawnPoint").transform.position;
+        colliderDims=GetComponent<BoxCollider2D>().size;
     }
 
     // Update is called once per frame
