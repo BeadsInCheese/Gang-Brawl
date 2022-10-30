@@ -29,7 +29,7 @@ public class LobbyManager : MonoBehaviour
         d=playerInput.devices.ToArray();
         playerData.Add(new PlayerData("",-1,playerInput.currentControlScheme,d));
         playersInGame+=1;
-        playerInput.transform.SetParent(row1.transform,false);
+        //playerInput.transform.SetParent(row1.transform,false);
         if(!player1.tag.Equals("Player")){
             //player1.transform.SetParent(playerInput.transform,false);
             playerInput.transform.gameObject.GetComponent<lobbyPlayer>().LobbyObject=player1;
@@ -51,7 +51,8 @@ public class LobbyManager : MonoBehaviour
         void Awake()
     {
         if(instance!=null && instance!=this){
-            Destroy(this);
+            Destroy(instance);
+            instance=this;
         }else{
             instance=this;
         }

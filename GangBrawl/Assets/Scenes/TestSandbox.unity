@@ -1400,7 +1400,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxLives: 5
   intensityTreshold: 10
-  debugMode: 1
+  debugMode: 0
   gameOverText: {fileID: 1680856006}
   countdownText: {fileID: 1807889560}
 --- !u!4 &1254755913
@@ -1450,7 +1450,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_NotificationBehavior: 2
   m_MaxPlayerCount: -1
-  m_AllowJoining: 1
+  m_AllowJoining: 0
   m_JoinBehavior: 0
   m_PlayerJoinedEvent:
     m_PersistentCalls:
