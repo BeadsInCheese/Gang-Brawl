@@ -4,14 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class DeathCounter : MonoBehaviour
+public class KillCounter : MonoBehaviour
 {
     public UIflipper uiflip;
-    public int deathCount = 0;
-    public TextMeshProUGUI deaths;
+    public int KillCount = 0;
+    public TextMeshProUGUI kills;
     void Update()
     {
-        deaths.text = "Deaths: " + deathCount.ToString();
+        kills.text = "Kills: " + KillCount.ToString();
         uiflip.FlipUIElement();
     }
 }

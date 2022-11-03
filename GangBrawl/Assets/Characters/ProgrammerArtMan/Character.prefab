@@ -410,8 +410,8 @@ MonoBehaviour:
   - {fileID: 512132734249727240}
   - {fileID: 512132734733068960}
   m_Bounds:
-    m_Center: {x: -0.2279346, y: 1.2318614, z: 0}
-    m_Extent: {x: 2.787315, y: 3.8981395, z: 0}
+    m_Center: {x: -0.2279346, y: 1.2318611, z: 0}
+    m_Extent: {x: 2.787315, y: 3.898139, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
   m_AutoRebind: 0
@@ -937,6 +937,7 @@ MonoBehaviour:
   gun: {fileID: 0}
   shootingArm: {fileID: 512132735300724998}
   body: {fileID: 512132733711734152}
+  shooter: 
 --- !u!1 &5418402341519962673
 GameObject:
   m_ObjectHideFlags: 0
@@ -1085,6 +1086,7 @@ GameObject:
   - component: {fileID: 2375478316814116750}
   - component: {fileID: 8553183949968211198}
   - component: {fileID: 7748358103384006885}
+  - component: {fileID: 6904623402193313728}
   m_Layer: 0
   m_Name: DeathCounter
   m_TagString: Untagged
@@ -1186,9 +1188,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0311e62f40cc03945b9fb190ee1b34cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiflip: {fileID: 6904623402193313728}
   deathCount: 0
   charcontrol: {fileID: 512132733879327841}
   deaths: {fileID: 4364247909287226378}
+--- !u!114 &6904623402193313728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5965719481036029392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d81ab297027c834780144b4deacc340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charcontrol: {fileID: 512132733879327841}
 --- !u!1 &7274402712978698018
 GameObject:
   m_ObjectHideFlags: 0
@@ -1377,6 +1393,7 @@ GameObject:
   - component: {fileID: 8275995505438850248}
   - component: {fileID: 8201344288160520658}
   - component: {fileID: 6013716671772605161}
+  - component: {fileID: 5525404089229485924}
   m_Layer: 0
   m_Name: Health bar
   m_TagString: Untagged
@@ -1391,7 +1408,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8961230597696513129}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1403,7 +1420,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00000017881393, y: 0}
+  m_AnchoredPosition: {x: 0, y: -0}
   m_SizeDelta: {x: 15.19, y: 4.055}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8201344288160520658
@@ -1500,3 +1517,17 @@ MonoBehaviour:
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
   fill: {fileID: 5126950269993598907}
+  uiflipper: {fileID: 5525404089229485924}
+--- !u!114 &5525404089229485924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8961230597696513129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d81ab297027c834780144b4deacc340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charcontrol: {fileID: 512132733879327841}
