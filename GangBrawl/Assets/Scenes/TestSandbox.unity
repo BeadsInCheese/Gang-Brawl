@@ -756,7 +756,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arenaLowerBound: -20
-  arenaSideBound: 20
+  arenaSideBound: 30
 --- !u!4 &335905214
 Transform:
   m_ObjectHideFlags: 0

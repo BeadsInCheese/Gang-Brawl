@@ -6,7 +6,7 @@ public class ArenaDataManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public float arenaLowerBound=-20;
-    public float arenaSideBound=20;
+    public float arenaSideBound=30;
 
     public static ArenaDataManager instance;
     
