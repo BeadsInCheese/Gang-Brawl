@@ -8,6 +8,8 @@ public class Health_bar : MonoBehaviour
     public Slider slider;
     public Gradient gradient;
     public Image fill;
+    public UIflipper uiflipper;
+
     public void SetMaxHealth(int health)
     {
         slider.maxValue = health;
@@ -19,5 +21,10 @@ public class Health_bar : MonoBehaviour
     {
         slider.value = health;
         fill.color = gradient.Evaluate(slider.normalizedValue);
+    }
+
+    void Update()
+    {
+        uiflipper.FlipUIElement();
     }
 }
