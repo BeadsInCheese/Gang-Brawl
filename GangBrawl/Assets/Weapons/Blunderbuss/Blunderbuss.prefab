@@ -167,6 +167,7 @@ MonoBehaviour:
   ammo: 5
   barrel: {fileID: 2118086106956085914}
   bulletsShotAtOnce: 5
+  BulletPrefab: {fileID: 6777275443525427548, guid: 4d1c0716896657c4dad567fcfb90da20, type: 3}
   recoil: 600
   bulletKnockback: 100
 --- !u!82 &1792386945564148003

@@ -9,6 +9,7 @@ public class Gun : MonoBehaviour
     public int ammo=5;
     public Transform barrel;
     public int bulletsShotAtOnce=5; 
+    public GameObject BulletPrefab;
 
     public float recoil=5;
     public float bulletKnockback=5;

@@ -47,6 +47,7 @@ public class Shoot : MonoBehaviour
         this.knockback=g.bulletKnockback;
         bulletsShotAtOnce = g.bulletsShotAtOnce;
         gunSound = g.gameObject.GetComponent<AudioSource>();
+        bulletPrefab=g.BulletPrefab;
     }
     private void reload()
     {
