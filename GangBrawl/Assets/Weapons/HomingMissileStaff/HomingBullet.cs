@@ -10,6 +10,7 @@ public class HomingBullet : Bullet
     public float max_force=5;
     public float mass=5;
     public float max_speed=5;
+    public GameObject explosion;
     public GameObject SeekTarget(int density){
         for (int i=0; i<density; i++){
         float x=Mathf.Cos(i*2*Mathf.PI/density);
@@ -22,6 +23,25 @@ public class HomingBullet : Bullet
     }
     return null;
     }
+        void OnTriggerEnter2D(Collider2D collision)
+    {
+if (collision.gameObject.tag.Equals("Player")||collision.gameObject.tag.Equals("ExplosivesBarrel"))
+        {
+        var ex = Instantiate(explosion);
+        ex.transform.position=new Vector2(transform.position.x,transform.position.y);
+        }
+        Helpers.HitPlayer(damage,  collision.gameObject,rb.velocity.normalized*knockback);
+        if (!collision.gameObject.tag.Equals("Bullet") && !collision.tag.Equals("ObjectSpawner"))
+        {
+
+            var ex = Instantiate(explosion);
+            ex.transform.position=new Vector2(transform.position.x,transform.position.y);
+            Destroy(gameObject);
+        }
+
+
+    }
+
     // Update is called once per frame
     void Update()
     {

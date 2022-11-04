@@ -109,6 +109,7 @@ MonoBehaviour:
   max_force: 5
   mass: 100
   max_speed: 20
+  explosion: {fileID: 1321848076755306698, guid: add91e78018b76b478ad79004695b3c8, type: 3}
 --- !u!1 &8647181542678641914
 GameObject:
   m_ObjectHideFlags: 0
