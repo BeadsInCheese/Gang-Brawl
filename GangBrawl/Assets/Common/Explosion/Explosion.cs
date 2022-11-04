@@ -19,10 +19,8 @@ public class Explosion : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D col){
         if(col.gameObject.tag.Equals("Player")){
             Vector2 dir=(this.transform.position-col.gameObject.transform.position);
-            float distance = dir.magnitude;
-            float aoeProximityMultiplier=(aoe.radius-distance)*30;
-            Helpers.HitPlayer((int)(damage*aoeProximityMultiplier),col.gameObject,knockback*-dir.normalized*aoeProximityMultiplier);
-            Debug.Log("Exploded player");
+            Helpers.HitPlayer((int)(damage),col.gameObject,knockback*-dir.normalized);
+            //Debug.Log("Exploded player");
         }
     }
 }
