@@ -22,12 +22,13 @@ public class FallThroughPlatform : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_playerOnPlarform && playerInput.actions["FallThroughPlatform"].triggered)
+        if (_collider!=null&&_playerOnPlarform && playerInput.actions["FallThroughPlatform"].triggered)
         {
             Physics2D.IgnoreCollision(_collider, body);
             StartCoroutine(EnableCollider(_collider)); // must reference to same object which has the ignored collision
         }
     }
+
 
     /// <summary>
     /// 
