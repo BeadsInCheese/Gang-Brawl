@@ -14,14 +14,14 @@ public class CharacterControl : MonoBehaviour
     public float maxJumpHeight = 800;
     public float LightAttackCancelTime = 0;
     public float HeavyAttackCancelTime = 0.3f;
-    private float ConcurrentAttackCancelTime = 0;
-    private int attackBuffer = 0;
+    protected float ConcurrentAttackCancelTime = 0;
+    protected int attackBuffer = 0;
     private bool jumpButtonDown = false;
     public float jumpBuffer = 0.5f;
     private float jumpLastPressed = 0;
-    private float timeLeftGrounded;
+    protected float timeLeftGrounded;
     public float jumpEndEarlyGravityModifier = 5;
-    private Vector2 colliderDims;
+    protected Vector2 colliderDims;
     [SerializeField] private float coyoteTimeThreshold = 0.1f;
 
     public GameObject HeavyAttackHitbox;
@@ -35,29 +35,29 @@ public class CharacterControl : MonoBehaviour
 
     public float friction=1;
 
-    Vector2 vel = new Vector2(0, 0);
+    protected Vector2 vel = new Vector2(0, 0);
     public PlayerInput playerInput;
     /// <summary>
     /// True when character is facing right
     /// </summary>
-    bool spriteFlipped = false;
-    Animator animationControl;
+    protected bool spriteFlipped = false;
+    protected Animator animationControl;
 
     //jump Control
-    bool isgrounded = false;
-    bool doubleJump = true;
+    protected bool isgrounded = false;
+    protected bool doubleJump = true;
     private void turnOffJumpAnimation()
     {
         animationControl.SetBool("Jumping", false);
     }
-    private void jump()
+    protected void jump()
     {
         animationControl.SetBool("Jumping", true);
         Invoke("turnOffJumpAnimation", JumpAnimationDuration);
         physicsBody.velocity = new Vector2(physicsBody.velocity.x, 0);
         physicsBody.AddForce(new Vector2(0, jumpHeight * physicsBody.gravityScale));
     }
-    private void applyJumpReleasedEarlyModifier()
+    protected void applyJumpReleasedEarlyModifier()
     {
         physicsBody.AddForce(new Vector2(0, jumpEndEarlyGravityModifier * physicsBody.gravityScale));
     }
@@ -245,7 +245,7 @@ public class CharacterControl : MonoBehaviour
         physicsBody.velocity = vel;
     }
 
-    private bool isPlayerAiming(PlayerInput playerInput)
+    protected bool isPlayerAiming(PlayerInput playerInput)
     {
         return (playerInput.actions["Aim"].ReadValue<Vector2>().x != 0 || playerInput.actions["Aim"].ReadValue<Vector2>().y != 0);
     }
