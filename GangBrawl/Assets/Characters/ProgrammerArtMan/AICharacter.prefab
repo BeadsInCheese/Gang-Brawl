@@ -593,6 +593,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 512132735300724998}
+  - component: {fileID: 369898824263387636}
   m_Layer: 0
   m_Name: bone_3
   m_TagString: Untagged
@@ -616,6 +617,23 @@ Transform:
   m_Father: {fileID: 512132733877458633}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &369898824263387636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512132735300724997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff63c11a706646e8394da2fd12a94b62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootingPoint: {fileID: 7971185651825727799}
+  bulletPrefab: {fileID: 0}
+  gun: {fileID: 0}
+  shootingArm: {fileID: 512132735300724998}
+  body: {fileID: 512132734166966827}
 --- !u!1 &512132735629636743
 GameObject:
   m_ObjectHideFlags: 0
