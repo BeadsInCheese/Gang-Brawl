@@ -15,21 +15,34 @@ public static class Helpers
     /// <param name="knockback">How far player should be knocked back</param>
     public static void HitPlayer(int damage, GameObject gameObject, GameObject collisionGO, float knockback)
     {
-        if (collisionGO.tag.Equals("Player")||collisionGO.tag.Equals("ExplosivesBarrel"))
+        if (shouldTakeDamage(collisionGO))
         {
             collisionGO.GetComponent<HPSystem>().takeDamage(damage);
-            collisionGO.GetComponent<Rigidbody2D>().AddForce(gameObject.transform.rotation.eulerAngles.y != 0 ? new Vector2(knockback, knockback) : new Vector2(-knockback, knockback));
+            // Generator does not have rigidbody!
+            if (collisionGO != null && collisionGO.GetComponent<Rigidbody2D>() != null)
+            {
+                collisionGO.GetComponent<Rigidbody2D>().AddForce(gameObject.transform.rotation.eulerAngles.y != 0 ? new Vector2(knockback, knockback) : new Vector2(-knockback, knockback));
+            }
         }
     }
 
     public static void HitPlayer(int damage, GameObject collisionGO, Vector2 knockback)
     {
-        if (collisionGO.tag.Equals("Player")||collisionGO.tag.Equals("ExplosivesBarrel"))
+        if (shouldTakeDamage(collisionGO))
         {
             collisionGO.GetComponent<HPSystem>().takeDamage(damage);
-            Debug.Log("Explosion strenght: "+knockback);
-            collisionGO.GetComponent<Rigidbody2D>().AddForce(knockback);
+            // Generator does not have rigidbody!
+            if (collisionGO != null && collisionGO.GetComponent<Rigidbody2D>() != null)
+            {
+                collisionGO.GetComponent<Rigidbody2D>().AddForce(knockback);
+
+            }
         }
+    }
+
+    private static bool shouldTakeDamage(GameObject collisionGO)
+    {
+        return collisionGO.tag.Equals("Player") || collisionGO.tag.Equals("ExplosivesBarrel") || collisionGO.tag.Equals("Generator");
     }
     /// <summary>
     /// 
