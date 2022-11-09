@@ -106,10 +106,8 @@ public class AICharacter : CharacterControl
     float targetUpdateCooldown=2;
     void Update()
     {
-    if(targetUpdateCooldown<=0){
     updateTarget();
-    targetUpdateCooldown=2;
-    }
+    
     targetUpdateCooldown-=Time.deltaTime;
      AI.Process();
         if (ConcurrentAttackCancelTime <= 0)
