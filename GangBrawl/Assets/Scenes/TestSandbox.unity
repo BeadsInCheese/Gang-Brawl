@@ -1525,7 +1525,7 @@ GameObject:
   - component: {fileID: 852995246}
   m_Layer: 0
   m_Name: Generator
-  m_TagString: Platform
+  m_TagString: Generator
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1651,8 +1651,6 @@ MonoBehaviour:
   currentHp: 0
   health_Bar: {fileID: 0}
   deathcounter: {fileID: 0}
-  gravity: 0
-  gravity2: 0
 --- !u!1 &875366994
 GameObject:
   m_ObjectHideFlags: 0

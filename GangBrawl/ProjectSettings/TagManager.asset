@@ -8,6 +8,7 @@ TagManager:
   - Bullet
   - ExplosivesBarrel
   - ObjectSpawner
+  - Generator
   layers:
   - Default
   - TransparentFX
