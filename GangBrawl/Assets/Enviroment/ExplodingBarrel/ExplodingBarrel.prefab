@@ -193,7 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f638d637791cb616a91df6e38b17364, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 100
+  maxHp: 20
   currentHp: 0
   health_Bar: {fileID: 0}
   deathcounter: {fileID: 0}
