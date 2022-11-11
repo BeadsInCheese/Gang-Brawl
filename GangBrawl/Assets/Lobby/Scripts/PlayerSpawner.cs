@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerSpawner : MonoBehaviour
 {
+    public GameObject PlayerCPU;
     PlayerInputManager playerInputManager;
     public void spawnPlayers(){
         int playerNo=0;
@@ -14,6 +15,13 @@ public class PlayerSpawner : MonoBehaviour
             playerNo=playerNo+1;
             
         }
+        for(int i=0; i<LobbyManager.CPUCount; i++){
+            var c=Instantiate(PlayerCPU);
+            var ai=c.GetComponent<AICharacter>();
+            ai.index=playerNo;
+            playerNo+=1;
+        }
+        LobbyManager.CPUCount=0;
         LobbyManager.playerData=new List<PlayerData>();
         
     }
