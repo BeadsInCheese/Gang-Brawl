@@ -6,22 +6,42 @@ public class AICharacter : CharacterControl
 {
     Vector2 target;
     public float proximityTreshold;
+    public float innerProximityTreshold;
     private float xin=0;
     public int index=3;
     private BTTree AI=new BTTree();
+    private AIFallThrough aIFallThrough;
+    AIShoot aIShoot;
     Node.Status GoToTarget(){
-        if(Mathf.Abs(transform.position.x-target.x)>proximityTreshold){
-            if(this.physicsBody.velocity.y<-20 &&target.y>transform.position.y){
+        aIShoot.target=target;
+        if(Mathf.Abs(transform.position.y-target.y)>1f){
+            if(transform.position.y-target.y<0){
+                TryToJump();
+                
+                aIFallThrough.goDown=false;
+            }else{
+                aIFallThrough.goDown=true;
+            }
+        }else{
+
+                aIFallThrough.goDown=false;
+        }
+        if(Mathf.Abs(transform.position.x-target.x)>proximityTreshold||(Mathf.Abs(transform.position.x-target.x)<innerProximityTreshold)){
+            if(this.physicsBody.velocity.y<-2 &&target.y>transform.position.y){
                 TryToJump();
             }
-            xin=Mathf.Sign(target.x-transform.position.x)*speed;
-            return Node.Status.RUNNING;
-        }else if(Mathf.Abs(transform.position.y-target.y)>0.4f){
-            xin=0;
-            TryToJump();
+            xin=Mathf.Sign(target.x+Mathf.Sign(transform.position.x-target.x)-transform.position.x)*speed;
+        }
+        if((target-(Vector2)transform.position).magnitude>proximityTreshold||(Mathf.Abs(transform.position.x-target.x)<innerProximityTreshold)){
             return Node.Status.RUNNING;
         }else{
             xin=0;
+            var dir=Mathf.Sign(transform.position.x-target.x);
+            if(dir<0){
+                setSpriteFlipped(true);
+            }else{
+                setSpriteFlipped(false);
+            }
             return Node.Status.SUCCESS;
         }
 
@@ -78,6 +98,8 @@ public class AICharacter : CharacterControl
     // Start is called before the first frame update
      void Start()
     {
+        aIShoot=GetComponentInChildren<AIShoot>();
+        aIFallThrough=GetComponent<AIFallThrough>();
         animationControl = this.transform.GetChild(0).GetComponent<Animator>();
         physicsBody = GetComponent<Rigidbody2D>();
         transform.position = GameObject.Find("Player-" + index + "-SpawnPoint").transform.position;

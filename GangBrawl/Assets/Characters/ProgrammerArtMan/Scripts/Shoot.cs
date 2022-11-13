@@ -9,13 +9,13 @@ public class Shoot : MonoBehaviour
     public GameObject bulletPrefab;
     public GameObject gun;
     private PlayerInput playerInput;
-    private CharacterControl charControl;
+    protected CharacterControl charControl;
 
     public Transform shootingArm;
     public Transform body;
 
-    private float x, y;
-    double radians, angle;
+    protected float x, y;
+    protected double radians, angle;
 
     // Start is called before the first frame update
     void Start()
@@ -25,15 +25,15 @@ public class Shoot : MonoBehaviour
         charControl = gameObject.GetComponentInParent<CharacterControl>();
 
     }
-    private float spread = 0;
-    private float cooldown = 2;
-    private int ammo = 5;
-    private bool canShoot = true;
-    private Transform barrel;
-    private int bulletsShotAtOnce = 5;
-    private AudioSource gunSound;
-    private float recoil=5;
-    private float knockback;
+    protected float spread = 0;
+    protected float cooldown = 2;
+    protected int ammo = 5;
+    protected bool canShoot = true;
+    protected Transform barrel;
+    protected int bulletsShotAtOnce = 5;
+    protected AudioSource gunSound;
+    protected float recoil=5;
+    protected float knockback;
     public void newGunSetup()
     {
 
@@ -49,7 +49,7 @@ public class Shoot : MonoBehaviour
         gunSound = g.gameObject.GetComponent<AudioSource>();
         bulletPrefab=g.BulletPrefab;
     }
-    private void reload()
+    protected void reload()
     {
         canShoot = true;
     }
@@ -131,7 +131,7 @@ public class Shoot : MonoBehaviour
     /// </summary>
     /// <param name="charControl"></param>
     /// <returns>0 if player is shooting right, 180 if player is shooting left</returns>
-    private float getShootingDirection(CharacterControl charControl)
+    protected float getShootingDirection(CharacterControl charControl)
     {
         // Character is moving right
 
@@ -139,7 +139,7 @@ public class Shoot : MonoBehaviour
         
     }
 
-    private bool isPlayerAiming(PlayerInput playerInput)
+    protected bool isPlayerAiming(PlayerInput playerInput)
     {
         return (playerInput.actions["Aim"].ReadValue<Vector2>().x != 0 || playerInput.actions["Aim"].ReadValue<Vector2>().y != 0);
     }
