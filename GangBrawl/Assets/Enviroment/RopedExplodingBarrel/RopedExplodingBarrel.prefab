@@ -113,7 +113,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: d56e5c069a5f0867d8f954c1f866ef65, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -220,6 +220,7 @@ MonoBehaviour:
   currentHp: 0
   health_Bar: {fileID: 0}
   deathcounter: {fileID: 0}
+  spriteRenderer: {fileID: 1414138997048666545}
   explosion: {fileID: 1321848076755306698, guid: add91e78018b76b478ad79004695b3c8, type: 3}
   respawnTime: 5
   linked: 1
