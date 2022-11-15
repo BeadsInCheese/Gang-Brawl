@@ -34,12 +34,14 @@ public class Shoot : MonoBehaviour
     protected AudioSource gunSound;
     protected float recoil=5;
     protected float knockback;
+    protected bool automatic;
     public void newGunSetup()
     {
-
+        
         gun.transform.SetParent(shootingArm);
         Gun g = gun.GetComponentInChildren<Gun>();
         spread = g.spread / 2;
+        automatic=g.automatic;
         cooldown = g.cooldown;
         ammo = g.ammo;
         barrel = g.barrel;
@@ -102,7 +104,7 @@ public class Shoot : MonoBehaviour
                 shootingArm.rotation = Quaternion.Euler(new Vector3(Eangles.x, 180, Eangles.z));
             }
         }
-        if (playerInput.actions["Shoot"].triggered && gun != null && canShoot)
+        if (((automatic&&playerInput.actions["Shoot"].inProgress)||playerInput.actions["Shoot"].triggered) && gun != null && canShoot)
         {   //Debug.Log((body.transform.position-shootingPoint.position).normalized*recoil);
             charControl.physicsBody.AddForce((body.transform.position-shootingPoint.position).normalized*recoil);
             gunSound.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
