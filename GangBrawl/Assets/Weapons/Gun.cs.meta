@@ -3,7 +3,10 @@ guid: ce3104164752b73fe8772d55a4f71975
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - barrel: {instanceID: 0}
+  - BulletPrefab: {instanceID: 0}
+  - muzzleflash: {fileID: 183068629765512111, guid: 898dcefc40a5208d1abf6cfa26a57386, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

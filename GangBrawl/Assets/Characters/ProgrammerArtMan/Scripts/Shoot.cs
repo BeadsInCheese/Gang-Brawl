@@ -35,6 +35,7 @@ public class Shoot : MonoBehaviour
     protected float recoil=5;
     protected float knockback;
     protected bool automatic;
+    protected GameObject muzzleflash;
     public void newGunSetup()
     {
         
@@ -44,6 +45,7 @@ public class Shoot : MonoBehaviour
         automatic=g.automatic;
         cooldown = g.cooldown;
         ammo = g.ammo;
+        muzzleflash=g.muzzleflash;
         barrel = g.barrel;
         this.recoil=g.recoil;
         this.knockback=g.bulletKnockback;
@@ -114,7 +116,11 @@ public class Shoot : MonoBehaviour
                 float fAngle = isPlayerAiming(playerInput) ? (float)angle : getShootingDirection(charControl);
                 Quaternion rotation = Quaternion.Euler(0, 0, fAngle + UnityEngine.Random.Range(-spread, spread));
                 shootingPoint.position = barrel.position;
+                if(muzzleflash!=null){
+                    Instantiate(muzzleflash,shootingPoint.position,rotation);
+                }
                 var bullet=Instantiate(bulletPrefab, shootingPoint.position, rotation);
+
                 bullet.GetComponent<Bullet>().knockback=this.knockback;
             }
             ammo -= 1;
