@@ -14,6 +14,12 @@ public class GravityOffWhenDies : HPSystem
 {
 
     private Collider2D _collider;
+
+    [Header("How long gravity modifying")]
+    public float secondsTheMotorIsOff;
+
+    [Header("Gravity after engine is off (normal gravity -9.8 and gravity to starting to float upwards is 9.8)")]
+    public float gravityModifier;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,13 +47,13 @@ public class GravityOffWhenDies : HPSystem
     override
     public void die()
     {
-        Physics2D.gravity = new Vector2(0, 9.8f);
+        Physics2D.gravity = new Vector2(0, gravityModifier);
         StartCoroutine(EnableGravity());
     }
 
     private IEnumerator EnableGravity()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(secondsTheMotorIsOff);
         Physics2D.gravity = new Vector2(0, -9.8f);
         HealToFull();
     }

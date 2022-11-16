@@ -1603,6 +1603,8 @@ MonoBehaviour:
   health_Bar: {fileID: 0}
   deathcounter: {fileID: 0}
   spriteRenderer: {fileID: 0}
+  secondsTheMotorIsOff: 1
+  gravityModifier: 9.8
 --- !u!1 &875366994
 GameObject:
   m_ObjectHideFlags: 0
