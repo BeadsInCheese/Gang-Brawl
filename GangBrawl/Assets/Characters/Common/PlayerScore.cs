@@ -13,6 +13,7 @@ public class PlayerScore : MonoBehaviour
     {
         this.gameObject.name="player"+DirectorBehaviour.PlayersAlive.Count;
         DirectorBehaviour.PlayersAlive.Add(this.gameObject.name,lives);
+        DirectorBehaviour.PlayerKills.Add(this.gameObject.name,0);
     }
     
     // Update is called once per frame

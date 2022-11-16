@@ -67,7 +67,10 @@ public class AIShoot : Shoot
                     Instantiate(muzzleflash,shootingPoint.position,rotation);
                 }
                 var bullet=Instantiate(bulletPrefab, shootingPoint.position, rotation);
-                bullet.GetComponent<Bullet>().knockback=this.knockback;
+                var b=bullet.GetComponent<Bullet>();
+                b.knockback=this.knockback;
+                b.owner=this.body.parent.parent.gameObject.name;
+                b.damage=(int)damage;
             }
             ammo -= 1;
             if (ammo <= 0) { Destroy(gun); }

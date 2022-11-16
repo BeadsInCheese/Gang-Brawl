@@ -649,7 +649,8 @@ MonoBehaviour:
   bulletPrefab: {fileID: 0}
   gun: {fileID: 0}
   shootingArm: {fileID: 512132735300724998}
-  body: {fileID: 512132734166966827}
+  body: {fileID: 512132733711734152}
+  target: {x: 0, y: 0}
 --- !u!1 &512132735629636743
 GameObject:
   m_ObjectHideFlags: 0

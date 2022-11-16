@@ -124,6 +124,7 @@ public class Shoot : MonoBehaviour
                 var bullet=Instantiate(bulletPrefab, shootingPoint.position, rotation);
                 var b=bullet.GetComponent<Bullet>();
                 b.knockback=this.knockback;
+                b.owner=this.body.parent.parent.gameObject.name;
                 b.damage=(int)damage;
             }
             ammo -= 1;

@@ -10,6 +10,14 @@ public class MeleeAttack : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.tag.Equals("Player")){
+            var p=collision.gameObject;
+            if(p.GetComponent<HPSystem>().currentHp-damage<=0){
+                DirectorBehaviour.PlayerKills[transform.parent.gameObject.name]+=1;
+                Debug.Log(transform.parent.gameObject.name+" has "+DirectorBehaviour.PlayerKills[transform.parent.gameObject.name]+ " kills.");
+            }
+        
+        }
         Helpers.HitPlayer(damage, gameObject, collision.gameObject, knockback);
     }
 }
