@@ -20,7 +20,7 @@ public class Explosion : MonoBehaviour
         if(col.gameObject.tag.Equals("Player")){
             Vector2 dir=(this.transform.position-col.gameObject.transform.position);
             Helpers.HitPlayer((int)(damage),col.gameObject,knockback*-dir.normalized);
-            //Debug.Log("Exploded player");
+            //Debug.Log(knockback*-dir.normalized);
         }
     }
 }

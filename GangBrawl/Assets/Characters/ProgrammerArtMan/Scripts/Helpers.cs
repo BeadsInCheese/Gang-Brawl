@@ -34,7 +34,7 @@ public static class Helpers
             // Generator does not have rigidbody!
             if (collisionGO != null && collisionGO.GetComponent<Rigidbody2D>() != null)
             {
-                collisionGO.GetComponent<Rigidbody2D>().AddForce(knockback);
+                collisionGO.GetComponent<Rigidbody2D>().velocity=(knockback);
 
             }
         }

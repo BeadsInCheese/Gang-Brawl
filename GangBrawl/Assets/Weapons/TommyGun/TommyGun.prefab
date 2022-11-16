@@ -171,7 +171,7 @@ MonoBehaviour:
   automatic: 1
   recoil: 100
   damage: 12
-  bulletKnockback: 100
+  bulletKnockback: 5
   muzzleflash: {fileID: 183068629765512111, guid: 898dcefc40a5208d1abf6cfa26a57386, type: 3}
 --- !u!82 &1792386945564148003
 AudioSource:

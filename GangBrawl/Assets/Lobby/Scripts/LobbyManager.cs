@@ -85,6 +85,7 @@ public class LobbyManager : MonoBehaviour
     void Start()
     {
         DirectorBehaviour.PlayersAlive=new Dictionary<string, int>();
+        DirectorBehaviour.PlayerKills=new Dictionary<string, int>();
     }
 
     // Update is called once per frame
