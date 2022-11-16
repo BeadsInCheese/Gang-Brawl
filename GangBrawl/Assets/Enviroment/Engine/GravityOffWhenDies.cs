@@ -22,9 +22,25 @@ public class GravityOffWhenDies : HPSystem
     }
 
     override
+    public void takeDamage(int amount)
+    {
+        currentHp -= amount;
+
+        if (currentHp <= 0)
+        {
+            die();
+        }
+    }
+
+    override
+            public void HealToFull()
+    {
+        currentHp = maxHp;
+    }
+
+    override
     public void die()
     {
-        Debug.Log("GENERATOR DIES");
         Physics2D.gravity = new Vector2(0, 9.8f);
         StartCoroutine(EnableGravity());
     }
