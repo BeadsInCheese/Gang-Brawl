@@ -48,7 +48,7 @@ public class FallThroughPlatform : MonoBehaviour
     private void setPlayerOnPlatform(Collision2D other, bool value)
     {
         //var player = other.gameObject.GetComponent<CharacterControl>();
-        if (other != null)
+        if (other != null && other.gameObject.tag.Equals("Platform"))
         {
             //Debug.Log("PassThroughPlatform script");
             _collider = other.collider;
