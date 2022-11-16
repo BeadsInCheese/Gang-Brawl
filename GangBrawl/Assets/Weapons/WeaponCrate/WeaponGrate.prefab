@@ -128,6 +128,7 @@ MonoBehaviour:
   guntemplates:
   - {fileID: 987653528329830354, guid: 71c087b10699b4e0c93d045a4b4d757c, type: 3}
   - {fileID: 9082944868365698016, guid: e4f16c8c8d8985158928225a3781a36b, type: 3}
+  - {fileID: 987653528329830354, guid: 88cab232b6ac18614876e86265ce5abf, type: 3}
 --- !u!50 &1520117572268941776
 Rigidbody2D:
   serializedVersion: 4
@@ -158,6 +159,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3773014929676666327}
+  - component: {fileID: 2310398738419848786}
   m_Layer: 0
   m_Name: WeaponGrate
   m_TagString: Untagged
@@ -181,3 +183,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2310398738419848786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8336248614094019405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f18c43e932b73af3aa326fdebfaa61b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

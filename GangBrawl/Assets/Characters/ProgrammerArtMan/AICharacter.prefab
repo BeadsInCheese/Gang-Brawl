@@ -80,6 +80,7 @@ GameObject:
   - component: {fileID: 512132733879327768}
   - component: {fileID: 512132733879327775}
   - component: {fileID: 828428759685739343}
+  - component: {fileID: 2593931084568813328}
   m_Layer: 8
   m_Name: AICharacter
   m_TagString: Player
@@ -139,7 +140,8 @@ MonoBehaviour:
   JumpAnimationDuration: 0.5
   friction: 1
   playerInput: {fileID: 0}
-  proximityTreshold: 1
+  proximityTreshold: 1.6
+  innerProximityTreshold: 1
   index: 3
 --- !u!50 &512132733879327772
 Rigidbody2D:
@@ -204,6 +206,7 @@ MonoBehaviour:
   currentHp: 100
   health_Bar: {fileID: 6013716671772605161}
   deathcounter: {fileID: 7748358103384006885}
+  spriteRenderer: {fileID: 512132734166966821}
 --- !u!114 &512132733879327775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,6 +233,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   death: {fileID: 7748358103384006885}
   MaxLives: 5
+--- !u!114 &2593931084568813328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512132733879327840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab8c6bc81ab31ed3a85841b9e461dec8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goDown: 0
 --- !u!1 &512132734166966826
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,7 +303,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: d56e5c069a5f0867d8f954c1f866ef65, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

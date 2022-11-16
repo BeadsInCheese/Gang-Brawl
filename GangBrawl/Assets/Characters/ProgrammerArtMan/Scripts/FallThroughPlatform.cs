@@ -7,11 +7,11 @@ using UnityEngine.InputSystem;
  */
 public class FallThroughPlatform : MonoBehaviour
 {
-    private Collider2D _collider;
-    private bool _playerOnPlarform;
+    protected Collider2D _collider;
+    protected bool _playerOnPlarform;
     // Start is called before the first frame update
     PlayerInput playerInput;
-    BoxCollider2D body;
+    protected BoxCollider2D body;
     void Start()
     {
 
@@ -35,7 +35,7 @@ public class FallThroughPlatform : MonoBehaviour
     /// </summary>
     /// <param name="coll"> Collider of the object which collided with the player character</param>
     /// <returns></returns>
-    private IEnumerator EnableCollider(Collider2D coll)
+    protected IEnumerator EnableCollider(Collider2D coll)
     {
         yield return new WaitForSeconds(1f);
         Physics2D.IgnoreCollision(coll, body, false);

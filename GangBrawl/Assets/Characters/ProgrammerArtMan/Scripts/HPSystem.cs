@@ -9,6 +9,7 @@ public class HPSystem : MonoBehaviour
     public int currentHp;
     public Health_bar health_Bar;
     public DeathCounter deathcounter;
+    public SpriteRenderer spriteRenderer;
     public virtual void die()
     {
         HealToFull();
@@ -16,6 +17,15 @@ public class HPSystem : MonoBehaviour
         this.transform.position = new Vector2(0, 5);
 
     }
+        IEnumerator Flash_Cor(){
+            spriteRenderer.material.SetInt("_Hit",1);
+            yield return new WaitForSeconds(0.1f);
+            spriteRenderer.material.SetInt("_Hit",0);       
+        }
+    public void flash(){
+
+        StartCoroutine(Flash_Cor());
+    }    
     public virtual void takeDamage(int amount)
     {
         currentHp -= amount;
@@ -25,7 +35,7 @@ public class HPSystem : MonoBehaviour
         {
             die();
         }
-
+        flash();
     }
     public virtual void HealToFull()
     {

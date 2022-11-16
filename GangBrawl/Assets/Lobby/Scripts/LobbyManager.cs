@@ -16,6 +16,7 @@ public class LobbyManager : MonoBehaviour
     int playersReady=0;
     float countdown=5;
     public TMPro.TextMeshProUGUI countdownText;
+    public static int CPUCount=0;
     public static List<PlayerData> playerData=new List<PlayerData>();
     public void playerPressedReady(){
         playersReady+=1;
@@ -24,6 +25,29 @@ public class LobbyManager : MonoBehaviour
         playersReady-=1;
     }
     public static LobbyManager instance;
+    public void AddAI(){
+        if(!player1.tag.Equals("Player")){
+            //player1.transform.SetParent(playerInput.transform,false);
+            player1.tag="Player";
+            player1.GetComponentInChildren<TMPro.TextMeshProUGUI>().text="Ready";
+        }else if(!player2.tag.Equals("Player")){
+            //player2.transform.SetParent(playerInput.transform,false);
+            player2.tag="Player";
+            player2.GetComponentInChildren<TMPro.TextMeshProUGUI>().text="Ready";
+        }else if(!player3.tag.Equals("Player")){
+            player3.tag="Player";
+            player3.GetComponentInChildren<TMPro.TextMeshProUGUI>().text="Ready";
+        }else if(!player4.tag.Equals("Player")){
+            player4.tag="Player";
+            player4.GetComponentInChildren<TMPro.TextMeshProUGUI>().text="Ready";
+        }else{
+            return;
+        }
+
+        LobbyManager.CPUCount+=1;
+        LobbyManager.instance.playerPressedReady();
+
+    }
     public void OnPlayerJoined(PlayerInput playerInput){
         InputDevice[] d;
         d=playerInput.devices.ToArray();
@@ -50,6 +74,7 @@ public class LobbyManager : MonoBehaviour
     }
         void Awake()
     {
+        CPUCount=0;
         if(instance!=null && instance!=this){
             Destroy(instance);
             instance=this;
@@ -65,7 +90,7 @@ public class LobbyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(playersReady>=playersInGame&&playersInGame>1){
+        if(playersReady>=playersInGame+CPUCount&&playersInGame+CPUCount>1){
             countdown-=Time.deltaTime;
             countdownText.text=Mathf.Ceil(countdown).ToString();
             if(countdown<=0){

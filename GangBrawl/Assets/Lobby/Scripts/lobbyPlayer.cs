@@ -28,10 +28,14 @@ public class lobbyPlayer : MonoBehaviour
     }
 
     // Update is called once per frame
+    
     void Update()
     {
         if(input.actions["LightAttack"].triggered){
-            Debug.Log("Change Hero requested");
+            //Debug.Log("Change Hero requested");
+        }
+        if(input.actions["LightAttack"].triggered){
+            LobbyManager.instance.AddAI();
         }
         if(input.actions["Jump"].triggered){
             if(ready){

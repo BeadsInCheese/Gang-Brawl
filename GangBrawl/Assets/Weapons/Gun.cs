@@ -10,7 +10,7 @@ public class Gun : MonoBehaviour
     public Transform barrel;
     public int bulletsShotAtOnce=5; 
     public GameObject BulletPrefab;
-
+    public bool automatic=false;
     public float recoil=5;
     public float bulletKnockback=5;
     // Start is called before the first frame update

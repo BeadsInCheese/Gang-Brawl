@@ -262,6 +262,7 @@ MonoBehaviour:
   currentHp: 100
   health_Bar: {fileID: 6013716671772605161}
   deathcounter: {fileID: 7748358103384006885}
+  spriteRenderer: {fileID: 512132734166966821}
 --- !u!114 &512132733879327775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -357,7 +358,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: d56e5c069a5f0867d8f954c1f866ef65, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -937,7 +938,6 @@ MonoBehaviour:
   gun: {fileID: 0}
   shootingArm: {fileID: 512132735300724998}
   body: {fileID: 512132733711734152}
-  shooter: 
 --- !u!1 &5418402341519962673
 GameObject:
   m_ObjectHideFlags: 0
@@ -1190,7 +1190,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiflip: {fileID: 6904623402193313728}
   deathCount: 0
-  charcontrol: {fileID: 512132733879327841}
   deaths: {fileID: 4364247909287226378}
 --- !u!114 &6904623402193313728
 MonoBehaviour:
