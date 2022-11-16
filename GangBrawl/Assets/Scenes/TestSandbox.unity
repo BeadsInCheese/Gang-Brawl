@@ -1598,10 +1598,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bf0a954545776248a2290c2b5e1fda0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 100
-  currentHp: 0
+  maxHp: 60
+  currentHp: 60
   health_Bar: {fileID: 0}
   deathcounter: {fileID: 0}
+  spriteRenderer: {fileID: 0}
 --- !u!1 &875366994
 GameObject:
   m_ObjectHideFlags: 0
