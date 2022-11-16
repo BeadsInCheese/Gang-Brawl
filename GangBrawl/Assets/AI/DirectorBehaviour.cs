@@ -10,6 +10,7 @@ public class DirectorBehaviour : MonoBehaviour
     public int MaxLives=5;
     public float intensityTreshold=10;
     public static Dictionary<string,int> PlayersAlive=new Dictionary<string, int>();
+    public static Dictionary<string,int> PlayerKills=new Dictionary<string, int>();
     float countdown=5;
     public bool debugMode=false;
     //Behaviour delegate methods
