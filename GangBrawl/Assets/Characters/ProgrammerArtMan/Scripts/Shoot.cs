@@ -36,11 +36,13 @@ public class Shoot : MonoBehaviour
     protected float knockback;
     protected bool automatic;
     protected GameObject muzzleflash;
+    protected float damage;
     public void newGunSetup()
     {
         
         gun.transform.SetParent(shootingArm);
         Gun g = gun.GetComponentInChildren<Gun>();
+        damage=g.damage;
         spread = g.spread / 2;
         automatic=g.automatic;
         cooldown = g.cooldown;
@@ -120,8 +122,9 @@ public class Shoot : MonoBehaviour
                     Instantiate(muzzleflash,shootingPoint.position,rotation);
                 }
                 var bullet=Instantiate(bulletPrefab, shootingPoint.position, rotation);
-
-                bullet.GetComponent<Bullet>().knockback=this.knockback;
+                var b=bullet.GetComponent<Bullet>();
+                b.knockback=this.knockback;
+                b.damage=(int)damage;
             }
             ammo -= 1;
             if (ammo <= 0) { Destroy(gun); }

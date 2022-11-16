@@ -12,6 +12,7 @@ public class Gun : MonoBehaviour
     public GameObject BulletPrefab;
     public bool automatic=false;
     public float recoil=5;
+    public float damage=17;
     public float bulletKnockback=5;
     public GameObject muzzleflash;
     // Start is called before the first frame update

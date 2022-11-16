@@ -106,6 +106,7 @@ MonoBehaviour:
   BulletPrefab: {fileID: 6777275443525427548, guid: 4d1c0716896657c4dad567fcfb90da20, type: 3}
   automatic: 0
   recoil: 2
+  damage: 60
   bulletKnockback: 20
   muzzleflash: {fileID: 183068629765512111, guid: 898dcefc40a5208d1abf6cfa26a57386, type: 3}
 --- !u!82 &1914519481682333708
