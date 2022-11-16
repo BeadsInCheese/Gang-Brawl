@@ -63,6 +63,9 @@ public class AIShoot : Shoot
                 float fAngle =  (float)angle;
                 Quaternion rotation = Quaternion.Euler(0, 0, fAngle + UnityEngine.Random.Range(-spread, spread));
                 shootingPoint.position = barrel.position;
+                if(muzzleflash!=null){
+                    Instantiate(muzzleflash,shootingPoint.position,rotation);
+                }
                 var bullet=Instantiate(bulletPrefab, shootingPoint.position, rotation);
                 bullet.GetComponent<Bullet>().knockback=this.knockback;
             }
