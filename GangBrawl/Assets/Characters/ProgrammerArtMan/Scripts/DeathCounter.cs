@@ -11,7 +11,13 @@ public class DeathCounter : MonoBehaviour
     public TextMeshProUGUI deaths;
     void Update()
     {
-        deaths.text = "Deaths: " + deathCount.ToString();
+        if(DirectorBehaviour.gameMode==DirectorBehaviour.Gamemode.DEATHMATCH){
+            deaths.text = this.transform.parent.gameObject.name+"\nKills: " + DirectorBehaviour.PlayerKills[this.transform.parent.gameObject.name].ToString();
+        }
+        if(DirectorBehaviour.gameMode==DirectorBehaviour.Gamemode.LASTMANSTANDING){
+            deaths.text = this.transform.parent.gameObject.name+"\nLives: " + DirectorBehaviour.PlayersAlive[this.transform.parent.gameObject.name].ToString();
+        }
+        
         uiflip.FlipUIElement();
     }
 }

@@ -16,8 +16,9 @@ public class DirectorBehaviour : MonoBehaviour
     //Behaviour delegate methods
     public TMPro.TextMeshProUGUI gameOverText;
     public TMPro.TextMeshProUGUI countdownText;
-    public enum Gamemode{DEATHMATCH,LASTMANSTANDING};
-    public static Gamemode gameMode=Gamemode.LASTMANSTANDING;
+    public TMPro.TextMeshProUGUI roundCountDownText;
+    public enum Gamemode{LASTMANSTANDING,DEATHMATCH};
+    public static Gamemode gameMode=Gamemode.DEATHMATCH;
     public float gameTime=120;
     public Node.Status IsLowIntensity(){
         if(intensity>intensityTreshold){
@@ -48,6 +49,7 @@ public class DirectorBehaviour : MonoBehaviour
         return Node.Status.FAILURE;
         }
         else if(gameMode==Gamemode.DEATHMATCH){
+
             if(gameTime<=0){
                 return Node.Status.SUCCESS;
             }else{
@@ -122,7 +124,14 @@ public class DirectorBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(gameMode==Gamemode.DEATHMATCH){
+            roundCountDownText.text=""+Mathf.Ceil(gameTime);
+        }else{
+
+            roundCountDownText.text="";
+        }
         gameTime-=Time.deltaTime;
+        gameTime=Mathf.Max(0,gameTime);
         tree.Process();
     }
 }
