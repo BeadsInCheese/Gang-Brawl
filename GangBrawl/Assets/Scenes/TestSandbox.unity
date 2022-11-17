@@ -2752,6 +2752,8 @@ MonoBehaviour:
   debugMode: 0
   gameOverText: {fileID: 1680856006}
   countdownText: {fileID: 1807889560}
+  gameMode: 0
+  gameTime: 120
 --- !u!4 &1254755913
 Transform:
   m_ObjectHideFlags: 0

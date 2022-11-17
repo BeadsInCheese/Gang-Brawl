@@ -16,6 +16,9 @@ public class DirectorBehaviour : MonoBehaviour
     //Behaviour delegate methods
     public TMPro.TextMeshProUGUI gameOverText;
     public TMPro.TextMeshProUGUI countdownText;
+    public enum Gamemode{DEATHMATCH,LASTMANSTANDING};
+    public static Gamemode gameMode=Gamemode.LASTMANSTANDING;
+    public float gameTime=120;
     public Node.Status IsLowIntensity(){
         if(intensity>intensityTreshold){
             Earthquake.shaking=false;
@@ -27,7 +30,9 @@ public class DirectorBehaviour : MonoBehaviour
         return Node.Status.FAILURE;
 
     }
+    
     public Node.Status GameEnded(){
+        if(gameMode==Gamemode.LASTMANSTANDING){
         int alive=0;
         if(PlayersAlive.Count<=1){
             return Node.Status.FAILURE;
@@ -41,16 +46,36 @@ public class DirectorBehaviour : MonoBehaviour
             return Node.Status.SUCCESS;
         }
         return Node.Status.FAILURE;
-
+        }
+        else if(gameMode==Gamemode.DEATHMATCH){
+            if(gameTime<=0){
+                return Node.Status.SUCCESS;
+            }else{
+                return Node.Status.FAILURE;
+            }
+        }
+        return Node.Status.FAILURE;
     }
     public Node.Status AnnounceVictor(){
         countdown-=Time.deltaTime;
         
         string playername="";
+        if(gameMode== Gamemode.LASTMANSTANDING){
         foreach(var i in PlayersAlive.Keys){
             if(PlayersAlive[i]>0){
                 playername=i;
                 break;
+            }
+        }
+        }else{
+            if(gameMode==Gamemode.DEATHMATCH){
+                int mostplayerkills=-1;
+                 foreach(var i in PlayersAlive.Keys){
+                   if(PlayerKills[i]>mostplayerkills){
+                        playername=i;
+                        mostplayerkills=PlayerKills[i];
+                    }
+                }       
             }
         }
         if(countdown<=0){
@@ -97,6 +122,7 @@ public class DirectorBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        gameTime-=Time.deltaTime;
         tree.Process();
     }
 }

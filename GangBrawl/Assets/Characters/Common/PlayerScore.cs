@@ -20,8 +20,10 @@ public class PlayerScore : MonoBehaviour
     void Update()
     {
         lives=MaxLives-death.deathCount;
-        DirectorBehaviour.PlayersAlive[this.gameObject.name]=lives;
-        if(lives<=0){
+        if(DirectorBehaviour.gameMode==DirectorBehaviour.Gamemode.LASTMANSTANDING){
+            DirectorBehaviour.PlayersAlive[this.gameObject.name]=lives;
+        }
+        if(lives<=0&&DirectorBehaviour.gameMode==DirectorBehaviour.Gamemode.LASTMANSTANDING){
             this.gameObject.transform.position=new Vector2(0,100);
             
         }
