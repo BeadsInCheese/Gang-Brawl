@@ -58,9 +58,10 @@ public class DirectorBehaviour : MonoBehaviour
         }
         return Node.Status.FAILURE;
     }
+    bool VictorFound=false;
     public Node.Status AnnounceVictor(){
         countdown-=Time.deltaTime;
-        
+        bool draw=false;
         string playername="";
         if(gameMode== Gamemode.LASTMANSTANDING){
         foreach(var i in PlayersAlive.Keys){
@@ -76,17 +77,25 @@ public class DirectorBehaviour : MonoBehaviour
                    if(PlayerKills[i]>mostplayerkills){
                         playername=i;
                         mostplayerkills=PlayerKills[i];
+                    }else if(PlayerKills[i]==mostplayerkills){
+                        playername+=" & "+i;
+                        draw=true;
                     }
-                }       
+                }
+                       
             }
         }
         if(countdown<=0){
             SceneManager.LoadScene("Lobby");
             return Node.Status.SUCCESS;
         }
-        gameOverText.text=playername+" wins";
-        countdownText.text="Returning to\n Lobby in\n"+Mathf.Ceil(countdown);
+        if(!VictorFound){
 
+            VictorFound=true;
+            if(draw){ gameOverText.text=playername+" draw";} else{ gameOverText.text=playername+" wins";}
+        }
+            countdownText.text="Returning to\n Lobby in\n"+Mathf.Ceil(countdown);
+        
         return Node.Status.RUNNING;
 
     }

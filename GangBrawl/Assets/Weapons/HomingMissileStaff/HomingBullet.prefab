@@ -104,7 +104,8 @@ MonoBehaviour:
   speed: 5
   rb: {fileID: 0}
   damage: 10
-  knockback: 10
+  owner: 
+  knockback: 0
   max_velocity: 10
   max_force: 5
   mass: 100

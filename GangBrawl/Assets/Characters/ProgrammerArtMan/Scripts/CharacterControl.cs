@@ -64,7 +64,7 @@ public class CharacterControl : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D theCollision)
     {
-        if (theCollision.gameObject.tag == "Platform")
+        if (theCollision.gameObject.tag == "Platform"||theCollision.gameObject.tag == "ExplosivesBarrel" ||theCollision.gameObject.tag == "Generator" )
         {
 
             if (jumpLastPressed + jumpBuffer > Time.time)
@@ -91,7 +91,7 @@ public class CharacterControl : MonoBehaviour
 
     void OnCollisionExit2D(Collision2D theCollision)
     {
-        if (theCollision.gameObject.tag == "Platform")
+        if (theCollision.gameObject.tag == "Platform" ||theCollision.gameObject.tag == "ExplosivesBarrel" ||theCollision.gameObject.tag == "Generator" )
         {
             isgrounded = false;
             timeLeftGrounded = Time.time;

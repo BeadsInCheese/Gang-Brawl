@@ -29,15 +29,15 @@ if (collision.gameObject.tag.Equals("Player")||collision.gameObject.tag.Equals("
         {
         var ex = Instantiate(explosion);
         ex.transform.position=new Vector2(transform.position.x,transform.position.y);
-        }
-        Helpers.HitPlayer(damage,  collision.gameObject,rb.velocity.normalized*knockback);
-        if (!collision.gameObject.tag.Equals("Bullet") && !collision.tag.Equals("ObjectSpawner"))
+        }else if (!collision.tag.Equals("ObjectSpawner"))
         {
 
             var ex = Instantiate(explosion);
             ex.transform.position=new Vector2(transform.position.x,transform.position.y);
             Destroy(gameObject);
         }
+        Helpers.HitPlayer(damage,  collision.gameObject,rb.velocity.normalized*knockback);
+        
 
 
     }

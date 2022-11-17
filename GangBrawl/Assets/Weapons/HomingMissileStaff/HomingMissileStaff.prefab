@@ -166,10 +166,13 @@ MonoBehaviour:
   cooldown: 2
   ammo: 5
   barrel: {fileID: 6094462500632313728}
-  bulletsShotAtOnce: 5
+  bulletsShotAtOnce: 1
   BulletPrefab: {fileID: 6777275443525427548, guid: 785a988997f936bfe8387c8da1ffd265, type: 3}
+  automatic: 0
   recoil: 5
+  damage: 17
   bulletKnockback: 5
+  muzzleflash: {fileID: 0}
 --- !u!82 &6148471755791774760
 AudioSource:
   m_ObjectHideFlags: 0

@@ -14,7 +14,7 @@ public class MeleeAttack : MonoBehaviour
             var p=collision.gameObject;
             if(p.GetComponent<HPSystem>().currentHp-damage<=0){
                 DirectorBehaviour.PlayerKills[transform.parent.gameObject.name]+=1;
-                Debug.Log(transform.parent.gameObject.name+" has "+DirectorBehaviour.PlayerKills[transform.parent.gameObject.name]+ " kills.");
+                //Debug.Log(transform.parent.gameObject.name+" has "+DirectorBehaviour.PlayerKills[transform.parent.gameObject.name]+ " kills.");
             }
         
         }

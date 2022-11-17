@@ -17,7 +17,7 @@ public class Bullet : MonoBehaviour
             var p=collision.gameObject;
             if(p.GetComponent<HPSystem>().currentHp-damage<=0){
                 DirectorBehaviour.PlayerKills[owner]+=1;
-                Debug.Log(owner+ " has "+DirectorBehaviour.PlayerKills[owner]+" kills.");
+                //Debug.Log(owner+ " has "+DirectorBehaviour.PlayerKills[owner]+" kills.");
             }
         
         }
