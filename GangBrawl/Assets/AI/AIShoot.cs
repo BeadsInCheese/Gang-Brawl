@@ -14,8 +14,7 @@ public class AIShoot : Shoot
         radians = Mathf.Atan2(y - 0, x - 0);
         angle = radians * (180 / Mathf.PI);
         // angle is zero if player is currently aiming
-        if (true)
-        {
+
             shootingArm.position = new Vector3(body.position.x + (Mathf.Cos((float)radians)), body.position.y + (Mathf.Sin((float)radians)), body.position.z + body.up.z);
             shootingPoint.position = new Vector2(shootingArm.position.x + (Mathf.Cos((float)radians)), shootingArm.position.y + (Mathf.Sin((float)radians)));
             float rx = Mathf.Cos((float)radians);
@@ -41,18 +40,8 @@ public class AIShoot : Shoot
 
 
             }
-        }
-        else
-        {
-            shootingArm.position = body.position + body.up;
-            shootingPoint.position = shootingArm.position + body.up * 2;
-            shootingArm.transform.right = new Vector2(Mathf.Abs(body.up.x), body.up.y);
-            if (body.up.x <= 0)
-            {
-                Vector3 Eangles = shootingArm.rotation.eulerAngles;
-                shootingArm.rotation = Quaternion.Euler(new Vector3(Eangles.x, 180, Eangles.z));
-            }
-        }
+        
+        
         if (gun != null && canShoot)
         {   //Debug.Log((body.transform.position-shootingPoint.position).normalized*recoil);
             charControl.physicsBody.AddForce((body.transform.position-shootingPoint.position).normalized*recoil);
