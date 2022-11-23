@@ -9,8 +9,12 @@ public class IceBullet : Bullet
         void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag.Equals("Platform")){
-            var wall = Instantiate(IceWall); 
-            wall.transform.position=this.transform.position;  
+            if(collision.gameObject.name.Contains("IceWall")){
+                collision.gameObject.transform.localScale=new Vector3(collision.gameObject.transform.localScale.x,collision.gameObject.transform.localScale.y*1.2f,collision.gameObject.transform.localScale.z);
+            }else{
+                var wall = Instantiate(IceWall); 
+                wall.transform.position=this.transform.position;  
+            }
         }
         if(collision.tag.Equals("Player")){
             //Maybe move speed control to funtion and raise it after time with invoke?
