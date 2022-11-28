@@ -32,7 +32,7 @@ public class GameStarCountDown : MonoBehaviour
     void Update()
     {
         if(loaded){
-            tex.text=""+(MathF.Round(((t2-t1)*1.0f/1000)/1.7f));
+            tex.text=""+(3-(MathF.Round(((t2-t1)*1.0f/1000)/1.7f)));
             t2=getMS();
                 if(secondFrame){
                     secondFrame=false;
