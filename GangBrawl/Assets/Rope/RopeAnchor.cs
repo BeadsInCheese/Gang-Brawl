@@ -21,9 +21,11 @@ public class RopeAnchor : MonoBehaviour
     }
     ropeContainer=new GameObject("RopeContainer");
     GameObject ObjectAtEndInstance = Instantiate(ObjectAtEnd);
+    ObjectAtEnd.transform.position=new Vector3(39,30,ObjectAtEnd.transform.position.z);
     Rigidbody2D prevRb=hook;
     for(int i=0; i<links; i++){
         GameObject link =Instantiate(linkPrefab,ropeContainer.transform);
+        ObjectAtEnd.transform.position=new Vector3(39,30,link.transform.position.z);
         HingeJoint2D joint=link.GetComponent<HingeJoint2D>();
         
         joint.connectedBody=prevRb;

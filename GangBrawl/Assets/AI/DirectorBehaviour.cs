@@ -20,6 +20,7 @@ public class DirectorBehaviour : MonoBehaviour
     public enum Gamemode{LASTMANSTANDING,DEATHMATCH};
     public static Gamemode gameMode=Gamemode.DEATHMATCH;
     public float gameTime=120;
+    public GameObject gameStartCountDown;
     public Node.Status IsLowIntensity(){
         if(intensity>intensityTreshold){
             Earthquake.shaking=false;
@@ -125,6 +126,7 @@ public class DirectorBehaviour : MonoBehaviour
     }
     void Start()
     {
+        Instantiate(gameStartCountDown);
         countdownText.text="";
         gameOverText.text="";
         tree=CreateTree();

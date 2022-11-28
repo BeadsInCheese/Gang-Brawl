@@ -52,10 +52,12 @@ public class CharacterControl : MonoBehaviour
     }
     protected void jump()
     {
+        if(Time.timeScale!=0){
         animationControl.SetBool("Jumping", true);
         Invoke("turnOffJumpAnimation", JumpAnimationDuration);
         physicsBody.velocity = new Vector2(physicsBody.velocity.x, 0);
         physicsBody.AddForce(new Vector2(0, jumpHeight * physicsBody.gravityScale));
+    }
     }
     protected void applyJumpReleasedEarlyModifier()
     {
