@@ -22,15 +22,17 @@ public class lobbyPlayer : MonoBehaviour
     }
     void Start()
     {
+        transform.position=new Vector3(0,0,transform.position.z);
             selectedPlayerPrefab=(GameObject)Resources.Load("/Characters/ProgrammerArtMan/Character.prefab", typeof(GameObject));
             Invoke("removeJoinText",0.1f);
             input=GetComponent<PlayerInput>();
     }
 
     // Update is called once per frame
-    
+    public float speed=1;
     void Update()
     {
+        Vector2 dir=input.actions["Aim"].ReadValue<Vector2>();
         if(input.actions["LightAttack"].triggered){
             //Debug.Log("Change Hero requested");
         }
@@ -54,5 +56,6 @@ public class lobbyPlayer : MonoBehaviour
                 tex.text="Ready";
             }
         }
+        transform.position+=(Vector3)dir*speed*Time.deltaTime;
     }
 }

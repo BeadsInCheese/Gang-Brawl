@@ -9,7 +9,7 @@
                     "name": "Walk",
                     "type": "Value",
                     "id": "b3ad30f7-a508-4b0f-ad85-1bb9f510bb31",
-                    "expectedControlType": "Axis",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
