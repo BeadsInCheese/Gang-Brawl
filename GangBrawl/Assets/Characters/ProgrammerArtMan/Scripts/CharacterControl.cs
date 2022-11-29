@@ -112,139 +112,147 @@ public class CharacterControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        //Attack Control
-
-        if (ConcurrentAttackCancelTime <= 0)
+        if (!PauseMenu.isPaused)
         {
-            animationControl.SetBool("Attacking", false);
-            animationControl.SetBool("HeavyAttacking", false);
-            HeavyAttackHitbox.SetActive(false);
-            LightAttackHitbox.SetActive(false);
-            ConcurrentAttackCancelTime = -1;
-        }
-        else
-        {
-            ConcurrentAttackCancelTime -= Time.deltaTime;
-        }
+            //Attack Control
 
-        if (playerInput.actions["HeavyAttack"].triggered || attackBuffer == 1)
-        {
-            if (ConcurrentAttackCancelTime < -0.5)
+            if (ConcurrentAttackCancelTime <= 0)
             {
-
-                animationControl.SetBool("HeavyAttacking", true);
-                ConcurrentAttackCancelTime = HeavyAttackCancelTime;
-                HeavyAttackHitbox.SetActive(true);
-                attackBuffer = 0;
+                animationControl.SetBool("Attacking", false);
+                animationControl.SetBool("HeavyAttacking", false);
+                HeavyAttackHitbox.SetActive(false);
+                LightAttackHitbox.SetActive(false);
+                ConcurrentAttackCancelTime = -1;
             }
             else
             {
-                attackBuffer = 1;
+                ConcurrentAttackCancelTime -= Time.deltaTime;
             }
-        }
-        if (playerInput.actions["LightAttack"].triggered || attackBuffer == 2)
-        {
-            if (ConcurrentAttackCancelTime < -0.5)
-            {
 
-                animationControl.SetBool("Attacking", true);
-                ConcurrentAttackCancelTime = LightAttackCancelTime;
-                LightAttackHitbox.SetActive(true);
-                attackBuffer = 0;
-            }
-            else
+            if (playerInput.actions["HeavyAttack"].triggered || attackBuffer == 1)
             {
-                attackBuffer = 2;
-            }
-        }
+                if (ConcurrentAttackCancelTime < -0.5)
+                {
 
-
-        if (playerInput.actions["Jump"].triggered)
-        {
-            jumpButtonDown = true;
-            if (isgrounded)
-            {
-                jump();
-            }
-            else if (!isgrounded && timeLeftGrounded + coyoteTimeThreshold > Time.time)
-            {
-                jump();
-            }
-            else if (doubleJump)
-            {
-                jump();
-                doubleJump = false;
-            }
-            else
-            {
-                jumpLastPressed = Time.time;
-            }
-        }
-
-        if (playerInput.actions["Jump"].WasReleasedThisFrame())
-        {
-            if (physicsBody.velocity.y > 0)
-            {
-                applyJumpReleasedEarlyModifier();
-            }
-            jumpButtonDown = false;
-        }
-        vel.y = physicsBody.velocity.y;
-        float xin= playerInput.actions["Walk"].ReadValue<float>() * speed;
-            vel.x=physicsBody.velocity.x;
-            if(vel.x-speed<=0 && xin>=0){
-                vel.x+=xin*Time.deltaTime*speed;
-            }
-            else if(vel.x+speed>=0 && xin<=0){
-                vel.x+=xin*Time.deltaTime*speed;
-            }
-            if(vel.x!=0&&xin==0){
-                if(Mathf.Abs(vel.x)<=1){
-                    vel.x=0;
-                }else{
-                    vel.x-=Mathf.Sign(vel.x)*friction;
+                    animationControl.SetBool("HeavyAttacking", true);
+                    ConcurrentAttackCancelTime = HeavyAttackCancelTime;
+                    HeavyAttackHitbox.SetActive(true);
+                    attackBuffer = 0;
+                }
+                else
+                {
+                    attackBuffer = 1;
                 }
             }
-        if (isgrounded)
-        {
-            animationControl.SetBool("OnGround", true);
-            
-        }
-        else
-        {
-            animationControl.SetBool("OnGround", false);
+            if (playerInput.actions["LightAttack"].triggered || attackBuffer == 2)
+            {
+                if (ConcurrentAttackCancelTime < -0.5)
+                {
 
-            float apexPoint = Mathf.InverseLerp(jumpApexThreshold, 0, Mathf.Abs(vel.y));
-            float apexBonus = Mathf.Abs(xin) > 0 ? Mathf.Sign(xin) * _apexBonus * apexPoint : 0;
-            
-            //vel.x = speed * xin + apexBonus * Time.deltaTime;
-            vel.y += Mathf.Sign(vel.y) * fallSpeedAtApex * (0.1f + apexPoint) * Time.deltaTime;
-            vel.y = Mathf.Clamp(vel.y, maxFallSpeed, minFallSpeed);
-        }
-        animationControl.SetBool("Moving", xin != 0);
-        //Debug.Log(spriteFlipped);
-        // Character is moving right
-        if (xin > 0 && !isPlayerAiming(playerInput))
-        {
-            // Change sprite to right'
-            spriteFlipped = true;
-        }
-        if (xin < 0 && !isPlayerAiming(playerInput))
-        {
-            // Character is moving left
-            spriteFlipped = false;
+                    animationControl.SetBool("Attacking", true);
+                    ConcurrentAttackCancelTime = LightAttackCancelTime;
+                    LightAttackHitbox.SetActive(true);
+                    attackBuffer = 0;
+                }
+                else
+                {
+                    attackBuffer = 2;
+                }
+            }
 
-        }
-        else
-        {
-            // DO NOTHING, because
-            // character is still, keep the orientation of the character
 
-        }
+            if (playerInput.actions["Jump"].triggered)
+            {
+                jumpButtonDown = true;
+                if (isgrounded)
+                {
+                    jump();
+                }
+                else if (!isgrounded && timeLeftGrounded + coyoteTimeThreshold > Time.time)
+                {
+                    jump();
+                }
+                else if (doubleJump)
+                {
+                    jump();
+                    doubleJump = false;
+                }
+                else
+                {
+                    jumpLastPressed = Time.time;
+                }
+            }
 
-        transform.rotation = Quaternion.Euler(new Vector3(0f, spriteFlipped ? 180 : 0f, 0f));
-        physicsBody.velocity = vel;
+            if (playerInput.actions["Jump"].WasReleasedThisFrame())
+            {
+                if (physicsBody.velocity.y > 0)
+                {
+                    applyJumpReleasedEarlyModifier();
+                }
+                jumpButtonDown = false;
+            }
+            vel.y = physicsBody.velocity.y;
+            float xin = playerInput.actions["Walk"].ReadValue<float>() * speed;
+            vel.x = physicsBody.velocity.x;
+            if (vel.x - speed <= 0 && xin >= 0)
+            {
+                vel.x += xin * Time.deltaTime * speed;
+            }
+            else if (vel.x + speed >= 0 && xin <= 0)
+            {
+                vel.x += xin * Time.deltaTime * speed;
+            }
+            if (vel.x != 0 && xin == 0)
+            {
+                if (Mathf.Abs(vel.x) <= 1)
+                {
+                    vel.x = 0;
+                }
+                else
+                {
+                    vel.x -= Mathf.Sign(vel.x) * friction;
+                }
+            }
+            if (isgrounded)
+            {
+                animationControl.SetBool("OnGround", true);
+
+            }
+            else
+            {
+                animationControl.SetBool("OnGround", false);
+
+                float apexPoint = Mathf.InverseLerp(jumpApexThreshold, 0, Mathf.Abs(vel.y));
+                float apexBonus = Mathf.Abs(xin) > 0 ? Mathf.Sign(xin) * _apexBonus * apexPoint : 0;
+
+                //vel.x = speed * xin + apexBonus * Time.deltaTime;
+                vel.y += Mathf.Sign(vel.y) * fallSpeedAtApex * (0.1f + apexPoint) * Time.deltaTime;
+                vel.y = Mathf.Clamp(vel.y, maxFallSpeed, minFallSpeed);
+            }
+            animationControl.SetBool("Moving", xin != 0);
+            //Debug.Log(spriteFlipped);
+            // Character is moving right
+            if (xin > 0 && !isPlayerAiming(playerInput))
+            {
+                // Change sprite to right'
+                spriteFlipped = true;
+            }
+            if (xin < 0 && !isPlayerAiming(playerInput))
+            {
+                // Character is moving left
+                spriteFlipped = false;
+
+            }
+            else
+            {
+                // DO NOTHING, because
+                // character is still, keep the orientation of the character
+
+            }
+
+            transform.rotation = Quaternion.Euler(new Vector3(0f, spriteFlipped ? 180 : 0f, 0f));
+            physicsBody.velocity = vel;
+        }
     }
 
     protected bool isPlayerAiming(PlayerInput playerInput)
