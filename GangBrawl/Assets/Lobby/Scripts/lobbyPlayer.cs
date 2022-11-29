@@ -56,6 +56,8 @@ public class lobbyPlayer : MonoBehaviour
                 tex.text="Ready";
             }
         }
-        transform.position+=(Vector3)dir*speed*Time.deltaTime;
+        Vector2 bounds=Camera.main.ScreenToWorldPoint(new Vector2(Screen.width,Screen.height));
+        
+        transform.position=new Vector3(Mathf.Clamp(transform.position.x+dir.x*speed*Time.deltaTime,-bounds.x,bounds.x),Mathf.Clamp(transform.position.y+dir.y*speed*Time.deltaTime,-bounds.y,bounds.y),transform.position.z);
     }
 }
