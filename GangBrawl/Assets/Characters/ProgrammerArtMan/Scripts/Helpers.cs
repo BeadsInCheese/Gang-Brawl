@@ -17,12 +17,13 @@ public static class Helpers
     {
         if (shouldTakeDamage(collisionGO))
         {
-            collisionGO.GetComponent<HPSystem>().takeDamage(damage);
             // Generator does not have rigidbody!
             if (collisionGO != null && collisionGO.GetComponent<Rigidbody2D>() != null)
             {
                 collisionGO.GetComponent<Rigidbody2D>().AddForce(gameObject.transform.rotation.eulerAngles.y != 0 ? new Vector2(knockback, knockback) : new Vector2(-knockback, knockback));
             }
+            collisionGO.GetComponent<HPSystem>().takeDamage(damage);
+            
         }
     }
 
@@ -30,13 +31,14 @@ public static class Helpers
     {
         if (shouldTakeDamage(collisionGO))
         {
-            collisionGO.GetComponent<HPSystem>().takeDamage(damage);
+
             // Generator does not have rigidbody!
             if (collisionGO != null && collisionGO.GetComponent<Rigidbody2D>() != null)
             {
                 collisionGO.GetComponent<Rigidbody2D>().velocity=(knockback);
 
             }
+            collisionGO.GetComponent<HPSystem>().takeDamage(damage);
         }
     }
 
