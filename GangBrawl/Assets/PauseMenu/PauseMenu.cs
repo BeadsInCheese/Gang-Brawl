@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -55,5 +56,16 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
+    }
+
+    public void goToLobby()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Lobby");
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
