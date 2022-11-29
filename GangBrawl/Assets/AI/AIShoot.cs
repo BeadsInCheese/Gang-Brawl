@@ -42,7 +42,7 @@ public class AIShoot : Shoot
             }
         
         
-        if (gun != null && canShoot)
+        if (gun != null && isAbleToShoot())
         {   //Debug.Log((body.transform.position-shootingPoint.position).normalized*recoil);
             charControl.physicsBody.AddForce((body.transform.position-shootingPoint.position).normalized*recoil);
             gunSound.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
@@ -63,7 +63,7 @@ public class AIShoot : Shoot
             }
             ammo -= 1;
             if (ammo <= 0) { Destroy(gun); }
-            canShoot = false;
+            setCanShoot(false);
             Invoke("reload", cooldown);
         }
 

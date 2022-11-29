@@ -28,36 +28,36 @@ public class Shoot : MonoBehaviour
     protected float spread = 0;
     protected float cooldown = 2;
     protected int ammo = 5;
-    protected bool canShoot = true;
+    private bool canShoot = true;
     protected Transform barrel;
     protected int bulletsShotAtOnce = 5;
     protected AudioSource gunSound;
-    protected float recoil=5;
+    protected float recoil = 5;
     protected float knockback;
     protected bool automatic;
     protected GameObject muzzleflash;
     protected float damage;
     public void newGunSetup()
     {
-        
+
         gun.transform.SetParent(shootingArm);
         Gun g = gun.GetComponentInChildren<Gun>();
-        damage=g.damage;
+        damage = g.damage;
         spread = g.spread / 2;
-        automatic=g.automatic;
+        automatic = g.automatic;
         cooldown = g.cooldown;
         ammo = g.ammo;
-        muzzleflash=g.muzzleflash;
+        muzzleflash = g.muzzleflash;
         barrel = g.barrel;
-        this.recoil=g.recoil;
-        this.knockback=g.bulletKnockback;
+        this.recoil = g.recoil;
+        this.knockback = g.bulletKnockback;
         bulletsShotAtOnce = g.bulletsShotAtOnce;
         gunSound = g.gameObject.GetComponent<AudioSource>();
-        bulletPrefab=g.BulletPrefab;
+        bulletPrefab = g.BulletPrefab;
     }
     protected void reload()
     {
-        canShoot = true;
+        setCanShoot(true);
     }
     // Update is called once per frame
     void Update()
@@ -108,9 +108,9 @@ public class Shoot : MonoBehaviour
                 shootingArm.rotation = Quaternion.Euler(new Vector3(Eangles.x, 180, Eangles.z));
             }
         }
-        if (((automatic&&playerInput.actions["Shoot"].inProgress)||playerInput.actions["Shoot"].triggered) && gun != null && canShoot)
+        if (((automatic && playerInput.actions["Shoot"].inProgress) || playerInput.actions["Shoot"].triggered) && gun != null && isAbleToShoot())
         {   //Debug.Log((body.transform.position-shootingPoint.position).normalized*recoil);
-            charControl.physicsBody.AddForce((body.transform.position-shootingPoint.position).normalized*recoil);
+            charControl.physicsBody.AddForce((body.transform.position - shootingPoint.position).normalized * recoil);
             gunSound.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
             gunSound.Play();
             for (int i = 0; i < bulletsShotAtOnce; i++)
@@ -118,22 +118,33 @@ public class Shoot : MonoBehaviour
                 float fAngle = isPlayerAiming(playerInput) ? (float)angle : getShootingDirection(charControl);
                 Quaternion rotation = Quaternion.Euler(0, 0, fAngle + UnityEngine.Random.Range(-spread, spread));
                 shootingPoint.position = barrel.position;
-                if(muzzleflash!=null){
-                    Instantiate(muzzleflash,shootingPoint.position,rotation);
+                if (muzzleflash != null)
+                {
+                    Instantiate(muzzleflash, shootingPoint.position, rotation);
                 }
-                var bullet=Instantiate(bulletPrefab, shootingPoint.position, rotation);
-                var b=bullet.GetComponent<Bullet>();
-                b.knockback=this.knockback;
-                b.owner=this.body.parent.parent.gameObject.name;
-                b.damage=(int)damage;
+                var bullet = Instantiate(bulletPrefab, shootingPoint.position, rotation);
+                var b = bullet.GetComponent<Bullet>();
+                b.knockback = this.knockback;
+                b.owner = this.body.parent.parent.gameObject.name;
+                b.damage = (int)damage;
             }
             ammo -= 1;
             if (ammo <= 0) { Destroy(gun); }
-            canShoot = false;
+            setCanShoot(false);
             Invoke("reload", cooldown);
         }
 
 
+    }
+
+    protected bool isAbleToShoot()
+    {
+        return canShoot && !PauseMenu.isPaused;
+    }
+
+    protected void setCanShoot(bool val)
+    {
+        canShoot = val;
     }
 
 
@@ -147,8 +158,8 @@ public class Shoot : MonoBehaviour
     {
         // Character is moving right
 
-            return charControl.isSpriteFlipped() ? 0 : 180;
-        
+        return charControl.isSpriteFlipped() ? 0 : 180;
+
     }
 
     protected bool isPlayerAiming(PlayerInput playerInput)
