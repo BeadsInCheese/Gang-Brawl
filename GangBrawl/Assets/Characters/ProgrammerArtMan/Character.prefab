@@ -141,6 +141,7 @@ MonoBehaviour:
   JumpAnimationDuration: 0.5
   friction: 1
   playerInput: {fileID: 0}
+  pauseCursorPrefab: {fileID: 3468557074192926780, guid: 89995416c73797941bacc1c36c46d25e, type: 3}
 --- !u!50 &512132733879327772
 Rigidbody2D:
   serializedVersion: 4

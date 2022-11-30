@@ -9,6 +9,7 @@ TagManager:
   - ExplosivesBarrel
   - ObjectSpawner
   - Generator
+  - cursor
   layers:
   - Default
   - TransparentFX

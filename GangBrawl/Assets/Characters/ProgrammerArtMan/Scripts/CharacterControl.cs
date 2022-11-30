@@ -253,8 +253,26 @@ public class CharacterControl : MonoBehaviour
             transform.rotation = Quaternion.Euler(new Vector3(0f, spriteFlipped ? 180 : 0f, 0f));
             physicsBody.velocity = vel;
         }
-    }
+            pauseCursor();
 
+        
+    }
+    public GameObject pauseCursorPrefab;
+    bool cursorInstanced=false;
+    private void pauseCursor(){
+        if(PauseMenu.isPaused){
+            if(!cursorInstanced){
+                PauseCursor p=Instantiate(pauseCursorPrefab).GetComponent<PauseCursor>();
+                p.playerInput=playerInput;
+                cursorInstanced=true;
+
+            }
+
+        }else{
+            cursorInstanced=false;
+        }
+
+    }
     protected bool isPlayerAiming(PlayerInput playerInput)
     {
         return (playerInput.actions["Aim"].ReadValue<Vector2>().x != 0 || playerInput.actions["Aim"].ReadValue<Vector2>().y != 0);
