@@ -98,6 +98,8 @@ public class AICharacter : CharacterControl
     // Start is called before the first frame update
      void Start()
     {
+        spriteRenderer=GetComponentInChildren<SpriteRenderer>();
+        spriteRenderer.material.SetColor("_Color",tint);
         aIShoot=GetComponentInChildren<AIShoot>();
         aIFallThrough=GetComponent<AIFallThrough>();
         animationControl = this.transform.GetChild(0).GetComponent<Animator>();

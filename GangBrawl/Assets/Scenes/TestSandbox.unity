@@ -1353,7 +1353,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 647057876}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.18, y: -1.48, z: 0.6177167}
+  m_LocalPosition: {x: -21.71, y: -6.99, z: 0.6177167}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1384,7 +1384,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 727207769}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.69, y: 3.25, z: 0.6177167}
+  m_LocalPosition: {x: 17.14, y: -7, z: 0.6177167}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4439,6 +4439,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerCPU: {fileID: 512132733879327840, guid: 0408d61c4c5925b469971b53c3da7336, type: 3}
+  PlayerColorTints:
+  - {r: 1, g: 1, b: 1, a: 0}
+  - {r: 0.5424528, g: 0.7941763, b: 1, a: 0}
+  - {r: 1, g: 0.6745283, b: 0.6745283, a: 0}
+  - {r: 0.5613208, g: 1, b: 0.62574357, a: 0}
 --- !u!1 &1680856004
 GameObject:
   m_ObjectHideFlags: 0
@@ -5424,7 +5429,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2012719420}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.69, y: 3.25, z: 0.6177167}
+  m_LocalPosition: {x: 8.25, y: -6.73, z: 0.6177167}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

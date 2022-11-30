@@ -99,9 +99,12 @@ public class CharacterControl : MonoBehaviour
             timeLeftGrounded = Time.time;
         }
     }
-
+public Color tint=Color.red;
+protected SpriteRenderer spriteRenderer;
     void Start()
     {
+        spriteRenderer=GetComponentInChildren<SpriteRenderer>();
+        spriteRenderer.material.SetColor("_Color",tint);
         animationControl = this.transform.GetChild(0).GetComponent<Animator>();
         playerInput = GetComponent<PlayerInput>();
         physicsBody = GetComponent<Rigidbody2D>();
