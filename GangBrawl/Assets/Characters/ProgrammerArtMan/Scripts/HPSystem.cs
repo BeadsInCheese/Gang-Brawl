@@ -14,6 +14,7 @@ public class HPSystem : MonoBehaviour
     Rigidbody2D rb;
     public virtual void die()
     {
+        StartCoroutine(BecomeTemporarilyInvincible());
         HealToFull();
         deathcounter.deathCount = deathcounter.deathCount + 1;
         this.transform.position = new Vector2(0, 5);
