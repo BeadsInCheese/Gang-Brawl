@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HPSystem : MonoBehaviour
 {
+    protected bool isInvincible;
     // Start is called before the first frame update
     public int maxHp = 100;
     public int currentHp;
@@ -16,17 +17,35 @@ public class HPSystem : MonoBehaviour
         this.transform.position = new Vector2(0, 5);
 
     }
-    public virtual void takeDamage(int amount)
+       public void takeDamage(int amount)
     {
+
+        if (isInvincible) return;
+
         currentHp -= amount;
-        health_Bar.SetHealth(currentHp);
 
         if (currentHp <= 0)
         {
             die();
         }
 
+    } 
+
+    [SerializeField]
+    private float invincibilityDurationSeconds;
+
+    private IEnumerator BecomeTemporarilyInvincible()
+    {
+        Debug.Log("Player turned invincible!");
+        isInvincible = true;
+
+        yield return new WaitForSeconds(invincibilityDurationSeconds);
+
+        isInvincible = false;
+        Debug.Log("Player is no longer invincible!");
     }
+
+    
     public virtual void HealToFull()
     {
         currentHp = maxHp;
@@ -37,5 +56,4 @@ public class HPSystem : MonoBehaviour
         currentHp = maxHp;
         health_Bar.SetMaxHealth(maxHp);
     }
-
 }
