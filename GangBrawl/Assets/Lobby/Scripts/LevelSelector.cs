@@ -15,15 +15,28 @@ public class LevelSelector : MonoBehaviour
 
     // Update is called once per frame
     int modeCounter = 0;
-    public DirectorBehaviour.Gamemode modeChange()
+    private DirectorBehaviour.Gamemode modeChange(int direction)
     {
         DirectorBehaviour.Gamemode[] modes = { DirectorBehaviour.Gamemode.DEATHMATCH, DirectorBehaviour.Gamemode.LASTMANSTANDING };
-        modeCounter = (modeCounter + 1) % modes.Length;
+        int wantedModeNumber = (modeCounter + direction) % modes.Length;
+        // If mode is moved down, under index zero, set it to highest value
+        int modeCounterNumber = wantedModeNumber < 0 ? modes.Length - 1 : wantedModeNumber;
+        modeCounter = modeCounterNumber;
         DirectorBehaviour.Gamemode mode = modes[modeCounter];
         DirectorBehaviour.gameMode = mode;
         // change the mode button text in the settings
         UpdateModeLabel();
         return mode;
+    }
+
+    public void MoveModeUp()
+    {
+        modeChange(1);
+    }
+
+    public void MoveModeDown()
+    {
+        modeChange(-1);
     }
 
     public void UpdateModeLabel()
@@ -44,21 +57,28 @@ public class LevelSelector : MonoBehaviour
     }
     void Update()
     {
-    if(Gamepad.current!=null){
-       if(Gamepad.current.yButton.wasPressedThisFrame){
-            Debug.Log("Map change was requested.");
+
+        if (Gamepad.current != null)
+        {
+            if (Gamepad.current.yButton.wasPressedThisFrame)
+            {
+                Debug.Log("Map change was requested.");
+            }
+            if (Gamepad.current.rightTrigger.wasPressedThisFrame)
+            {
+                Debug.Log("mode: " + modeChange(1));
+            }
         }
-           if(Gamepad.current.rightTrigger.wasPressedThisFrame){
-            Debug.Log("mode: "+modeChange());
+        if (Keyboard.current != null)
+        {
+            if (Keyboard.current.cKey.wasPressedThisFrame)
+            {
+                Debug.Log("Map change was requested.");
+            }
+            if (Keyboard.current.mKey.wasPressedThisFrame)
+            {
+                Debug.Log("mode: " + modeChange(1));
+            }
         }
-    }
-    if(Keyboard.current!=null){
-       if(Keyboard.current.cKey.wasPressedThisFrame){
-            Debug.Log("Map change was requested.");
-        }
-        if(Keyboard.current.mKey.wasPressedThisFrame){
-            Debug.Log("mode: "+modeChange());
-        }
-    }
     }
 }
