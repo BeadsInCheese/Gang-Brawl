@@ -19,7 +19,7 @@ public class DirectorBehaviour : MonoBehaviour
     public TMPro.TextMeshProUGUI roundCountDownText;
     public enum Gamemode{LASTMANSTANDING,DEATHMATCH};
     public static Gamemode gameMode=Gamemode.DEATHMATCH;
-    public float gameTime=120;
+    public static float gameTime = 120;
     public GameObject gameStartCountDown;
     public Node.Status IsLowIntensity(){
         if(intensity>intensityTreshold){

@@ -7,10 +7,14 @@ using UnityEngine.InputSystem;
 public class LevelSelector : MonoBehaviour
 {
     public TMP_Text modeLabel;
+    public TMP_Text TimeLabel;
+
+    private int TIMESCALE = 30;
     // Start is called before the first frame update
     void Start()
     {
         UpdateModeLabel();
+        UpdateTimeLabel();
     }
 
     // Update is called once per frame
@@ -26,6 +30,7 @@ public class LevelSelector : MonoBehaviour
         DirectorBehaviour.gameMode = mode;
         // change the mode button text in the settings
         UpdateModeLabel();
+
         return mode;
     }
 
@@ -37,6 +42,21 @@ public class LevelSelector : MonoBehaviour
     public void MoveModeDown()
     {
         modeChange(-1);
+    }
+
+    public void AddTime()
+    {
+        DirectorBehaviour.gameTime = DirectorBehaviour.gameTime + TIMESCALE;
+        UpdateTimeLabel();
+    }
+
+    public void ReduceTime()
+    {
+        if ((DirectorBehaviour.gameTime - TIMESCALE) > 0)
+        {
+            DirectorBehaviour.gameTime = DirectorBehaviour.gameTime - TIMESCALE;
+        }
+        UpdateTimeLabel();
     }
 
     public void UpdateModeLabel()
@@ -53,6 +73,14 @@ public class LevelSelector : MonoBehaviour
             {
                 modeLabel.text = "Last Man Standing";
             }
+        }
+    }
+
+    public void UpdateTimeLabel()
+    {
+        if (TimeLabel != null)
+        {
+            TimeLabel.text = DirectorBehaviour.gameTime.ToString();
         }
     }
     void Update()
