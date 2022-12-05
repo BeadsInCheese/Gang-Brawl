@@ -52,9 +52,9 @@ public class HPSystem : MonoBehaviour
     {
         Debug.Log("Player turned invincible!");
         isInvincible = true;
-
+        spriteRenderer.material.SetInt("_iframes", 1);
         yield return new WaitForSeconds(invincibilityDurationSeconds);
-
+        spriteRenderer.material.SetInt("_iframes", 0);
         isInvincible = false;
         Debug.Log("Player is no longer invincible!");
     }
