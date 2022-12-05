@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Lobby.unity
     guid: b035d25ffe5906ac486ec6bf630d637a
+  - enabled: 1
+    path: Assets/Scenes/OnlineTestSandbox.unity
+    guid: 40894d836fcfafd609b3dde166d56670
   m_configObjects: {}
