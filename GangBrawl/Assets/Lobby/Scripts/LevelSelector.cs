@@ -8,15 +8,22 @@ public class LevelSelector : MonoBehaviour
 {
     public TMP_Text modeLabel;
 
+    /// <summary>
+    /// "Time(S)" or "Starting Lives"
+    /// </summary>
     public TMP_Text SecondaryModifierHeaderText;
-    public TMP_Text TimeLabel;
+
+    /// <summary>
+    /// Can be lives or time in S
+    /// </summary>
+    public TMP_Text SecondaryModifierLabel;
 
     private int TIMESCALE = 30;
     // Start is called before the first frame update
     void Start()
     {
         UpdateModeLabel();
-        UpdateTimeLabel();
+        UpdateSecondaryModifierLabel();
     }
 
     // Update is called once per frame
@@ -32,7 +39,7 @@ public class LevelSelector : MonoBehaviour
         DirectorBehaviour.gameMode = mode;
         // change the mode button text in the settings
         UpdateModeLabel();
-        UpdateTimeLabel();
+        UpdateSecondaryModifierLabel();
 
         return mode;
     }
@@ -57,7 +64,7 @@ public class LevelSelector : MonoBehaviour
         {
             DirectorBehaviour.MaxLives = DirectorBehaviour.MaxLives + 1;
         }
-        UpdateTimeLabel();
+        UpdateSecondaryModifierLabel();
     }
 
     public void ReduceTime()
@@ -70,7 +77,7 @@ public class LevelSelector : MonoBehaviour
         {
             DirectorBehaviour.MaxLives = DirectorBehaviour.MaxLives - 1;
         }
-        UpdateTimeLabel();
+        UpdateSecondaryModifierLabel();
     }
 
     public void UpdateModeLabel()
@@ -90,20 +97,20 @@ public class LevelSelector : MonoBehaviour
         }
     }
 
-    public void UpdateTimeLabel()
+    public void UpdateSecondaryModifierLabel()
     {
-        if (TimeLabel != null)
+        if (SecondaryModifierLabel != null)
         {
             if (isGameModeDeathMatch())
             {
                 SecondaryModifierHeaderText.text = "Time (S)";
-                TimeLabel.text = DirectorBehaviour.gameTime.ToString();
+                SecondaryModifierLabel.text = DirectorBehaviour.gameTime.ToString();
 
             }
             else if (isGameModeLastManStanding())
             {
                 SecondaryModifierHeaderText.text = "Starting Lives";
-                TimeLabel.text = DirectorBehaviour.MaxLives.ToString();
+                SecondaryModifierLabel.text = DirectorBehaviour.MaxLives.ToString();
             }
         }
     }

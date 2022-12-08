@@ -542,7 +542,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modeLabel: {fileID: 0}
   SecondaryModifierHeaderText: {fileID: 0}
-  TimeLabel: {fileID: 0}
+  SecondaryModifierLabel: {fileID: 0}
 --- !u!1 &188249901
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,7 +598,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modeLabel: {fileID: 0}
   SecondaryModifierHeaderText: {fileID: 0}
-  TimeLabel: {fileID: 0}
+  SecondaryModifierLabel: {fileID: 0}
 --- !u!114 &188249904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -705,7 +705,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modeLabel: {fileID: 0}
   SecondaryModifierHeaderText: {fileID: 0}
-  TimeLabel: {fileID: 0}
+  SecondaryModifierLabel: {fileID: 0}
 --- !u!1 &314601299
 GameObject:
   m_ObjectHideFlags: 0
@@ -2729,7 +2729,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modeLabel: {fileID: 0}
   SecondaryModifierHeaderText: {fileID: 0}
-  TimeLabel: {fileID: 0}
+  SecondaryModifierLabel: {fileID: 0}
 --- !u!1 &1206041302
 GameObject:
   m_ObjectHideFlags: 0
@@ -2962,7 +2962,7 @@ GameObject:
   - component: {fileID: 1269388359}
   - component: {fileID: 1269388358}
   m_Layer: 5
-  m_Name: TimeLayout
+  m_Name: SecondaryModifierLayout
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3030,7 +3030,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modeLabel: {fileID: 0}
   SecondaryModifierHeaderText: {fileID: 0}
-  TimeLabel: {fileID: 0}
+  SecondaryModifierLabel: {fileID: 0}
 --- !u!1 &1296779122
 GameObject:
   m_ObjectHideFlags: 0
@@ -3208,7 +3208,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modeLabel: {fileID: 0}
   SecondaryModifierHeaderText: {fileID: 0}
-  TimeLabel: {fileID: 0}
+  SecondaryModifierLabel: {fileID: 0}
 --- !u!114 &1304758102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3845,7 +3845,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modeLabel: {fileID: 405580223}
   SecondaryModifierHeaderText: {fileID: 1512225104}
-  TimeLabel: {fileID: 1642211600}
+  SecondaryModifierLabel: {fileID: 1642211600}
 --- !u!4 &1640201125
 Transform:
   m_ObjectHideFlags: 0
@@ -4141,7 +4141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modeLabel: {fileID: 0}
   SecondaryModifierHeaderText: {fileID: 0}
-  TimeLabel: {fileID: 0}
+  SecondaryModifierLabel: {fileID: 0}
 --- !u!1 &1828409493
 GameObject:
   m_ObjectHideFlags: 0
