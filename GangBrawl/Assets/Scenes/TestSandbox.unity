@@ -182,6 +182,7 @@ GameObject:
   - component: {fileID: 168963797}
   - component: {fileID: 168963796}
   - component: {fileID: 168963802}
+  - component: {fileID: 168963803}
   m_Layer: 0
   m_Name: Circle
   m_TagString: ExplosivesBarrel
@@ -324,6 +325,19 @@ MonoBehaviour:
   spriteRenderer: {fileID: 168963800}
   invincibilityDurationSeconds: 0
   explosion: {fileID: 1321848076755306698, guid: add91e78018b76b478ad79004695b3c8, type: 3}
+--- !u!114 &168963803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 168963795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ba1ffc879bef29d6b439750c62a582e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 0}
 --- !u!1001 &243377699
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5484,7 +5498,7 @@ BoxCollider2D:
     adaptiveTilingThreshold: 0.5
     drawMode: 2
     adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_AutoTiling: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
