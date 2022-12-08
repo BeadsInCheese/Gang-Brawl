@@ -127,7 +127,7 @@ public class LobbyManager : MonoBehaviour
     /// Has Enough players and/or CPU characters. Currently requires at least two characters for game to start
     /// </summary>
     /// <returns></returns>
-    private bool hasEnoughPlayersAndCPU()
+    private bool HasEnoughPlayersAndCPU()
     {
         return playersInGame + CPUCount > 1;
     }
@@ -144,7 +144,7 @@ public class LobbyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (AllPlayersHasPressedReady() && hasEnoughPlayersAndCPU())
+        if (AllPlayersHasPressedReady() && HasEnoughPlayersAndCPU())
         {
             StartButton.interactable = true;
         }
@@ -152,8 +152,8 @@ public class LobbyManager : MonoBehaviour
         {
             StartButton.interactable = false;
         }
-        //(playersReady >= playersInGame + CPUCount && hasEnoughPlayersAndCPU())  ||
-        if (startHasBeenPressed && AllPlayersHasPressedReady() && hasEnoughPlayersAndCPU())
+        //(playersReady >= playersInGame + CPUCount && HasEnoughPlayersAndCPU())  ||
+        if (startHasBeenPressed && AllPlayersHasPressedReady() && HasEnoughPlayersAndCPU())
         {
             countdown -= Time.deltaTime;
             countdownText.text = Mathf.Ceil(countdown).ToString();
