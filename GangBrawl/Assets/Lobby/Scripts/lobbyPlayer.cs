@@ -38,7 +38,7 @@ public class lobbyPlayer : MonoBehaviour
         {
             //Debug.Log("Change Hero requested");
         }
-        if (input.actions["LightAttack"].triggered)
+        if (input.actions["HeavyAttack"].triggered)
         {
             LobbyManager.instance.AddAI();
         }
