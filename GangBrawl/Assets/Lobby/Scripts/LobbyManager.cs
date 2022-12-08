@@ -132,15 +132,28 @@ public class LobbyManager : MonoBehaviour
         return playersInGame + CPUCount > 1;
     }
 
+    /// <summary>
+    /// I guess this is what this does, not sure :D
+    /// </summary>
+    /// <returns></returns>
+    private bool AllPlayersHasPressedReady()
+    {
+        return playersReady >= playersInGame + CPUCount;
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (playersReady >= playersInGame + CPUCount && hasEnoughPlayersAndCPU())
+        if (AllPlayersHasPressedReady() && hasEnoughPlayersAndCPU())
         {
             StartButton.interactable = true;
         }
+        else
+        {
+            StartButton.interactable = false;
+        }
         //(playersReady >= playersInGame + CPUCount && hasEnoughPlayersAndCPU())  ||
-        if (startHasBeenPressed && hasEnoughPlayersAndCPU())
+        if (startHasBeenPressed && AllPlayersHasPressedReady() && hasEnoughPlayersAndCPU())
         {
             countdown -= Time.deltaTime;
             countdownText.text = Mathf.Ceil(countdown).ToString();
