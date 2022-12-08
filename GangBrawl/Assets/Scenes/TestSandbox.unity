@@ -6425,13 +6425,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4155624538ef5676fb9e4934b91c8bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxLives: 5
   intensityTreshold: 10
   debugMode: 0
   gameOverText: {fileID: 1680856006}
   countdownText: {fileID: 1807889560}
   roundCountDownText: {fileID: 1536802165}
-  gameTime: 120
   gameStartCountDown: {fileID: 3262626927029982811, guid: 9b369a02724dff255aa370cde70fcc45, type: 3}
 --- !u!4 &1254755913
 Transform:
@@ -8612,7 +8610,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2065919868}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3765a5531cba39d49ba47ad2a8f0e455, type: 3}
+  m_Script: {fileID: 11500000, guid: a042f3d14c5e2534496b45f55023ea7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &2065919870
