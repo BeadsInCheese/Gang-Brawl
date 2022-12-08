@@ -118,10 +118,20 @@ public class LobbyManager : MonoBehaviour
         startHasBeenPressed = true;
     }
 
+    /// <summary>
+    /// Has Enough players and/or CPU characters. Currently requires at least two characters for game to start
+    /// </summary>
+    /// <returns></returns>
+    private bool hasEnoughPlayersAndCPU()
+    {
+        return playersInGame + CPUCount > 1;
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if ((playersReady >= playersInGame + CPUCount && playersInGame + CPUCount > 1) || startHasBeenPressed)
+        //(playersReady >= playersInGame + CPUCount && hasEnoughPlayersAndCPU())  ||
+        if (startHasBeenPressed && hasEnoughPlayersAndCPU())
         {
             countdown -= Time.deltaTime;
             countdownText.text = Mathf.Ceil(countdown).ToString();

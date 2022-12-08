@@ -541,6 +541,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   modeLabel: {fileID: 0}
+  SecondaryModifierHeaderText: {fileID: 0}
   TimeLabel: {fileID: 0}
 --- !u!1 &188249901
 GameObject:
@@ -596,6 +597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   modeLabel: {fileID: 0}
+  SecondaryModifierHeaderText: {fileID: 0}
   TimeLabel: {fileID: 0}
 --- !u!114 &188249904
 MonoBehaviour:
@@ -702,6 +704,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   modeLabel: {fileID: 0}
+  SecondaryModifierHeaderText: {fileID: 0}
   TimeLabel: {fileID: 0}
 --- !u!1 &314601299
 GameObject:
@@ -2660,6 +2663,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   modeLabel: {fileID: 0}
+  SecondaryModifierHeaderText: {fileID: 0}
   TimeLabel: {fileID: 0}
 --- !u!1 &1206041302
 GameObject:
@@ -2960,6 +2964,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   modeLabel: {fileID: 0}
+  SecondaryModifierHeaderText: {fileID: 0}
   TimeLabel: {fileID: 0}
 --- !u!1 &1296779122
 GameObject:
@@ -3137,6 +3142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   modeLabel: {fileID: 0}
+  SecondaryModifierHeaderText: {fileID: 0}
   TimeLabel: {fileID: 0}
 --- !u!114 &1304758102
 MonoBehaviour:
@@ -3383,7 +3389,7 @@ GameObject:
   - component: {fileID: 1512225105}
   - component: {fileID: 1512225104}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: SecondaryModifierHeader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3773,6 +3779,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   modeLabel: {fileID: 405580223}
+  SecondaryModifierHeaderText: {fileID: 1512225104}
   TimeLabel: {fileID: 1642211600}
 --- !u!4 &1640201125
 Transform:
@@ -4068,6 +4075,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   modeLabel: {fileID: 0}
+  SecondaryModifierHeaderText: {fileID: 0}
   TimeLabel: {fileID: 0}
 --- !u!1 &1828409493
 GameObject:

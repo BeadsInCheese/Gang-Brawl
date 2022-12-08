@@ -7,6 +7,8 @@ using UnityEngine.InputSystem;
 public class LevelSelector : MonoBehaviour
 {
     public TMP_Text modeLabel;
+
+    public TMP_Text SecondaryModifierHeaderText;
     public TMP_Text TimeLabel;
 
     private int TIMESCALE = 30;
@@ -30,6 +32,7 @@ public class LevelSelector : MonoBehaviour
         DirectorBehaviour.gameMode = mode;
         // change the mode button text in the settings
         UpdateModeLabel();
+        UpdateTimeLabel();
 
         return mode;
     }
@@ -46,7 +49,14 @@ public class LevelSelector : MonoBehaviour
 
     public void AddTime()
     {
-        DirectorBehaviour.gameTime = DirectorBehaviour.gameTime + TIMESCALE;
+        if (isGameModeDeathMatch())
+        {
+            DirectorBehaviour.gameTime = DirectorBehaviour.gameTime + TIMESCALE;
+        }
+        else if (isGameModeLastManStanding())
+        {
+            DirectorBehaviour.MaxLives = DirectorBehaviour.MaxLives + 1;
+        }
         UpdateTimeLabel();
     }
 
@@ -55,6 +65,10 @@ public class LevelSelector : MonoBehaviour
         if ((DirectorBehaviour.gameTime - TIMESCALE) > 0)
         {
             DirectorBehaviour.gameTime = DirectorBehaviour.gameTime - TIMESCALE;
+        }
+        else if (isGameModeLastManStanding() && DirectorBehaviour.MaxLives >= 2)
+        {
+            DirectorBehaviour.MaxLives = DirectorBehaviour.MaxLives - 1;
         }
         UpdateTimeLabel();
     }
@@ -65,11 +79,11 @@ public class LevelSelector : MonoBehaviour
         if (modeLabel != null)
         {
             Debug.Log("ModeLabel was updated and was not null");
-            if (DirectorBehaviour.gameMode == DirectorBehaviour.Gamemode.DEATHMATCH)
+            if (isGameModeDeathMatch())
             {
                 modeLabel.text = "Deathmatch";
             }
-            else if (DirectorBehaviour.gameMode == DirectorBehaviour.Gamemode.LASTMANSTANDING)
+            else if (isGameModeLastManStanding())
             {
                 modeLabel.text = "Last Man Standing";
             }
@@ -80,7 +94,17 @@ public class LevelSelector : MonoBehaviour
     {
         if (TimeLabel != null)
         {
-            TimeLabel.text = DirectorBehaviour.gameTime.ToString();
+            if (isGameModeDeathMatch())
+            {
+                SecondaryModifierHeaderText.text = "Time (S)";
+                TimeLabel.text = DirectorBehaviour.gameTime.ToString();
+
+            }
+            else if (isGameModeLastManStanding())
+            {
+                SecondaryModifierHeaderText.text = "Starting Lives";
+                TimeLabel.text = DirectorBehaviour.MaxLives.ToString();
+            }
         }
     }
     void Update()
@@ -109,4 +133,14 @@ public class LevelSelector : MonoBehaviour
             }
         }
     }
+
+    private bool isGameModeDeathMatch()
+    {
+        return DirectorBehaviour.gameMode == DirectorBehaviour.Gamemode.DEATHMATCH;
+    }
+    private bool isGameModeLastManStanding()
+    {
+        return DirectorBehaviour.gameMode == DirectorBehaviour.Gamemode.LASTMANSTANDING;
+    }
+
 }
