@@ -12,9 +12,13 @@ public class ButtonInvoker : MonoBehaviour
     Button button;
     void Start()
     {
-        button=this.GetComponent<Button>();
-        btOnClick=button.onClick;
-        btSelect=button.Select;
+        button = this.GetComponent<Button>();
+        if (button)
+        {
+            btOnClick = button.onClick;
+            btSelect = button.Select;
+
+        }
     }
 
 }

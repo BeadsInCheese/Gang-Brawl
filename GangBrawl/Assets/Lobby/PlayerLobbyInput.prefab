@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2406449372013115737}
   m_Layer: 5
   m_Name: PlayerLobbyInput
-  m_TagString: Untagged
+  m_TagString: cursor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
