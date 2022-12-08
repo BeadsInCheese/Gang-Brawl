@@ -19,7 +19,10 @@ public class LobbyManager : MonoBehaviour
     public static int CPUCount=0;
     public static List<PlayerData> playerData=new List<PlayerData>();
     public void playerPressedReady(){
-        playersReady+=1;
+    public static bool startHasBeenPressed;
+    public void playerPressedReady()
+    {
+        playersReady += 1;
     }
     public void playerPressedUnready(){
         playersReady-=1;
@@ -86,20 +89,27 @@ public class LobbyManager : MonoBehaviour
     {
         DirectorBehaviour.PlayersAlive=new Dictionary<string, int>();
         DirectorBehaviour.PlayerKills=new Dictionary<string, int>();
+    public static void pressStart()
+    {
+        startHasBeenPressed = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(playersReady>=playersInGame+CPUCount&&playersInGame+CPUCount>1){
-            countdown-=Time.deltaTime;
-            countdownText.text=Mathf.Ceil(countdown).ToString();
-            if(countdown<=0){
+        if ((playersReady >= playersInGame + CPUCount && playersInGame + CPUCount > 1) || startHasBeenPressed)
+        {
+            countdown -= Time.deltaTime;
+            countdownText.text = Mathf.Ceil(countdown).ToString();
+            if (countdown <= 0)
+            {
                 SceneManager.LoadScene("TestSandbox");
             }
-        }else{
-            countdown=5;
-            countdownText.text="";
+        }
+        else
+        {
+            countdown = 5;
+            countdownText.text = "";
         }
     }
 }
