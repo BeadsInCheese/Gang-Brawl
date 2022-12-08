@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using TMPro;
 public class LobbyManager : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class LobbyManager : MonoBehaviour
     public GameObject player2;
     public GameObject player3;
     public GameObject player4;
+
+    public Button StartButton;
     int playersInGame = 0;
     int playersReady = 0;
     float countdown = 5;
@@ -112,11 +115,12 @@ public class LobbyManager : MonoBehaviour
         DirectorBehaviour.PlayersAlive = new Dictionary<string, int>();
         DirectorBehaviour.PlayerKills = new Dictionary<string, int>();
         DirectorBehaviour.gameTime = DirectorBehaviour.INITIAL_STARTING_GAMETIME;
+        StartButton.interactable = false;
     }
 
     public static void pressStart()
     {
-        startHasBeenPressed = true;
+        startHasBeenPressed = !startHasBeenPressed;
     }
 
     /// <summary>
@@ -131,6 +135,10 @@ public class LobbyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (playersReady >= playersInGame + CPUCount && hasEnoughPlayersAndCPU())
+        {
+            StartButton.interactable = true;
+        }
         //(playersReady >= playersInGame + CPUCount && hasEnoughPlayersAndCPU())  ||
         if (startHasBeenPressed && hasEnoughPlayersAndCPU())
         {
