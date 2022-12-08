@@ -20,6 +20,7 @@ public class DirectorBehaviour : MonoBehaviour
     public enum Gamemode{LASTMANSTANDING,DEATHMATCH};
     public static Gamemode gameMode=Gamemode.DEATHMATCH;
     public static float gameTime = 120;
+    public static float INITIAL_STARTING_GAMETIME = 120;
     public GameObject gameStartCountDown;
     public Node.Status IsLowIntensity(){
         if(intensity>intensityTreshold){
