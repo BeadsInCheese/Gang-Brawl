@@ -36,6 +36,7 @@ public class GravityOffWhenDies : HPSystem
         {
             die();
         }
+        flash();
     }
 
     override
