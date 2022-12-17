@@ -13,6 +13,7 @@ using System.Collections;
 public class GravityOffWhenDies : HPSystem
 {
 
+    public GameObject Electricity;
     private Collider2D _collider;
 
     [Header("How long gravity modifying")]
@@ -48,6 +49,9 @@ public class GravityOffWhenDies : HPSystem
     override
     public void die()
     {
+        var e = Instantiate(Electricity);
+        e.transform.position=transform.position;
+        Destroy(e,secondsTheMotorIsOff);
         Physics2D.gravity = new Vector2(0, gravityModifier);
         StartCoroutine(EnableGravity());
     }
