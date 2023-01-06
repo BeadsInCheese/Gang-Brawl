@@ -14,6 +14,6 @@ public class ClockArm : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(spinSpeed);
+        transform.Rotate(spinSpeed*Time.deltaTime);
     }
 }
