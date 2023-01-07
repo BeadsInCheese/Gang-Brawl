@@ -22,6 +22,16 @@ public class LobbyManager : MonoBehaviour
     public static int CPUCount = 0;
     public static List<PlayerData> playerData = new List<PlayerData>();
 
+
+
+    //Map
+    public string map="TestSandbox";
+
+
+
+
+
+
     public static bool startHasBeenPressed;
     public void playerPressedReady()
     {
@@ -164,7 +174,7 @@ public class LobbyManager : MonoBehaviour
             countdownText.text = Mathf.Ceil(countdown).ToString();
             if (countdown <= 0)
             {
-                SceneManager.LoadScene("TestSandbox");
+                SceneManager.LoadScene(map);
             }
         }
         else

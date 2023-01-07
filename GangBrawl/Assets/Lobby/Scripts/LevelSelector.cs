@@ -7,7 +7,6 @@ using UnityEngine.InputSystem;
 public class LevelSelector : MonoBehaviour
 {
     public TMP_Text modeLabel;
-
     /// <summary>
     /// "Time(S)" or "Starting Lives"
     /// </summary>
@@ -19,6 +18,27 @@ public class LevelSelector : MonoBehaviour
     public TMP_Text SecondaryModifierLabel;
 
     private int TIMESCALE = 30;
+
+
+    //Map change logic
+    public List<string> maps;
+    private int mapIndex=0;
+
+    public void NextMap(){
+        mapIndex++;
+        mapIndex=mapIndex%(maps.Count);
+        LobbyManager.instance.map=maps[mapIndex];
+        Debug.Log(maps[mapIndex]);
+    } 
+    public void PreviousMap(){
+        mapIndex--;
+        if(mapIndex<0){
+            mapIndex=maps.Count-1;
+        }
+        LobbyManager.instance.map=maps[mapIndex];
+    }
+    //Map Logic End
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +50,7 @@ public class LevelSelector : MonoBehaviour
     int modeCounter = 0;
     private DirectorBehaviour.Gamemode modeChange(int direction)
     {
+
         DirectorBehaviour.Gamemode[] modes = { DirectorBehaviour.Gamemode.DEATHMATCH, DirectorBehaviour.Gamemode.LASTMANSTANDING };
         int wantedModeNumber = (modeCounter + direction) % modes.Length;
         // If mode is moved down, under index zero, set it to highest value
