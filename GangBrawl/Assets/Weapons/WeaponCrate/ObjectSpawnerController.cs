@@ -5,7 +5,7 @@ using UnityEngine;
 
 /// <summary>
 /// Object spawner controller. All instances of object spawner class are controlled through this class
-///  and they are added automatically to the spawnObjects list in their start method when they are initiated.
+///  and they are added automatically to the spawnPoints list in their start method when they are initiated.
 /// </summary>
 public class ObjectSpawnerController : MonoBehaviour
 {
@@ -13,7 +13,7 @@ public class ObjectSpawnerController : MonoBehaviour
     /// All spawners all added automatically in their start function 
     /// in the "ObjectSpawner.cs" class.
     /// </summary>
-    public static List<ObjectSpawner> spawnObjects;
+    public static List<ObjectSpawner> spawnPoints;
     [Tooltip("Chance in float to spawn multiple instance at the same frame. set a double value between 0 and 1")]
     public double chanceToSpawnMultiple;
 
@@ -25,7 +25,7 @@ public class ObjectSpawnerController : MonoBehaviour
 
     void Awake()
     {
-        spawnObjects = new List<ObjectSpawner>();
+        spawnPoints = new List<ObjectSpawner>();
         r = new System.Random();
     }
 
@@ -48,15 +48,15 @@ public class ObjectSpawnerController : MonoBehaviour
     private void spawnToAvailableSpawner(int spawningTried)
     {
         int maxAmountOfTries = 10;
-        int index = r.Next(0, spawnObjects.Count);
+        int index = r.Next(0, spawnPoints.Count);
 
-        if (spawnObjects[index].isNotCurrentlyColliding())
+        if (spawnPoints[index].isNotCurrentlyColliding())
         {
-            spawnObjects[index].spawnObject();
+            spawnPoints[index].spawnObject();
         }
         else
         {
-            if (spawningTried < spawnObjects.Count && spawningTried < maxAmountOfTries)
+            if (spawningTried < spawnPoints.Count && spawningTried < maxAmountOfTries)
                 spawnToAvailableSpawner(spawningTried++);
         }
     }

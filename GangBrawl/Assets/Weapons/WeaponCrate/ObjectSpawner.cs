@@ -23,7 +23,7 @@ public class ObjectSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ObjectSpawnerController.spawnObjects.Add(this);
+        ObjectSpawnerController.spawnPoints.Add(this);
         activelyColliding = new List<Collider2D>();
         _collider = gameObject.GetComponent<BoxCollider2D>();
     }
