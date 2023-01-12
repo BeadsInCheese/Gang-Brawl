@@ -16,7 +16,7 @@ public class ObjectSpawner : MonoBehaviour
     private List<Collider2D> activelyColliding;
     public float minTime;
     public float maxTime;
-    private bool isCycleStarted;
+
 
     private BoxCollider2D _collider;
 
@@ -51,18 +51,20 @@ public class ObjectSpawner : MonoBehaviour
         }
     }
 
-    private void spawnObject()
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns>True if the spawner is not colliding with a game object with isn't bullet</returns>
+    public bool isNotCurrentlyColliding()
     {
-        if (isCycleStarted && (activelyColliding.Count == 0))
-        {
-            int randomIndex = UnityEngine.Random.Range(0, spawnObjects.Length);
-            Instantiate(spawnObjects[randomIndex], this.transform.position, Quaternion.identity);
+        return activelyColliding != null && activelyColliding.Count == 0;
+    }
 
-        }
+    public void spawnObject()
+    {
 
-        float nextSpawnIn = UnityEngine.Random.Range(minTime, maxTime);
-        Invoke("spawnObject", nextSpawnIn);
-        isCycleStarted = true;
+        int randomIndex = UnityEngine.Random.Range(0, spawnObjects.Length);
+        Instantiate(spawnObjects[randomIndex], this.transform.position, Quaternion.identity);
     }
 
     /// <summary>
