@@ -23,15 +23,9 @@ public class ObjectSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("spawnObject", 0.5f);
+        ObjectSpawnerController.spawnObjects.Add(this);
         activelyColliding = new List<Collider2D>();
         _collider = gameObject.GetComponent<BoxCollider2D>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     void OnTriggerEnter2D(Collider2D other)
