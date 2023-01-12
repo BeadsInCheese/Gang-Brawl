@@ -82,7 +82,8 @@ public class ObjectSpawnerController : MonoBehaviour
         if (spawnMultiple)
         {
             // Spawn atleast two items
-            int howMany = r.Next(1, maximumOfSpawnedItems >= 1 ? maximumOfSpawnedItems : 1);
+            int howMany = r.Next(2, maximumOfSpawnedItems >= 2 ? maximumOfSpawnedItems : 2);
+            Debug.Log(howMany);
             for (int i = 0; i < howMany; i++)
             {
                 spawnToAvailableSpawner(0);
