@@ -18,6 +18,11 @@ public class ObjectSpawnerController : MonoBehaviour
     [Tooltip("Chance in float to spawn multiple instance at the same frame. set a double value between 0 and 1")]
     public double chanceToSpawnMultiple;
 
+    /// <summary>
+    /// Now the same spawn point can't be used multiple times in a same frame (hopefully)
+    /// </summary>
+    private static List<ObjectSpawner> spawnPointsAlreadyUsedInThisCycle;
+
     [Tooltip("Maximum of spawned items in a same frame. NOTE: this does not limit max amount of items in arena!")]
     public int maximumOfSpawnedItems;
     public float minTime;
@@ -29,6 +34,7 @@ public class ObjectSpawnerController : MonoBehaviour
     void Awake()
     {
         spawnPoints = new List<ObjectSpawner>();
+        spawnPointsAlreadyUsedInThisCycle = new List<ObjectSpawner>();
         r = new System.Random();
     }
 
@@ -54,8 +60,9 @@ public class ObjectSpawnerController : MonoBehaviour
         int maxAmountOfTries = 10;
         int index = r.Next(0, spawnPoints.Count);
 
-        if (spawnPoints[index].isNotCurrentlyColliding())
+        if (spawnPoints[index].isNotCurrentlyColliding() && !spawnPointsAlreadyUsedInThisCycle.Contains(spawnPoints[index]))
         {
+            spawnPointsAlreadyUsedInThisCycle.Add(spawnPoints[index]);
             spawnPoints[index].spawnObject();
         }
         else
@@ -89,6 +96,7 @@ public class ObjectSpawnerController : MonoBehaviour
         isFirstSpawn = false;
 
         float nextSpawnIn = UnityEngine.Random.Range(minTime, maxTime);
+        spawnPointsAlreadyUsedInThisCycle.Clear();
         Invoke("spawnObject", nextSpawnIn);
     }
 }
