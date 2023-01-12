@@ -51,7 +51,7 @@ public class ObjectSpawnerController : MonoBehaviour
         }
         else
         {
-            if (spawningTried < spawnObjects.Count || spawningTried < maxAmountOfTries)
+            if (spawningTried < spawnObjects.Count && spawningTried < maxAmountOfTries)
                 spawnToAvailableSpawner(spawningTried++);
         }
     }
