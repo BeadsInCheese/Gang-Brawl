@@ -21,6 +21,8 @@ public class ObjectSpawnerController : MonoBehaviour
     public int maximumOfSpawnedItems;
     public float minTime;
     public float maxTime;
+
+    private bool isFirstSpawn;
     private System.Random r;
 
     void Awake()
@@ -32,6 +34,7 @@ public class ObjectSpawnerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        isFirstSpawn = true;
         Invoke("spawnObject", 0.5f);
     }
 
@@ -64,7 +67,7 @@ public class ObjectSpawnerController : MonoBehaviour
     public void spawnObject()
     {
         double ranDouble = r.NextDouble();
-        bool spawnMultiple = ranDouble < chanceToSpawnMultiple;
+        bool spawnMultiple = ranDouble < chanceToSpawnMultiple || isFirstSpawn;
         if (spawnMultiple)
         {
             int howMany = r.Next(maximumOfSpawnedItems);
@@ -77,6 +80,9 @@ public class ObjectSpawnerController : MonoBehaviour
         {
             spawnToAvailableSpawner(0);
         }
+
+        isFirstSpawn = false;
+
         float nextSpawnIn = UnityEngine.Random.Range(minTime, maxTime);
         Invoke("spawnObject", nextSpawnIn);
     }
