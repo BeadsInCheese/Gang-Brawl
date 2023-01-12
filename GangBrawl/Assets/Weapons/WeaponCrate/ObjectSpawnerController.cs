@@ -14,6 +14,11 @@ public class ObjectSpawnerController : MonoBehaviour
     /// in the "ObjectSpawner.cs" class.
     /// </summary>
     public static List<ObjectSpawner> spawnObjects;
+    [Tooltip("Chance in float to spawn multiple instance at the same frame. set a double value between 0 and 1")]
+    public double chanceToSpawnMultiple;
+
+    [Tooltip("Maximum of spawned items in a same frame. NOTE: this does not limit max amount of items in arena!")]
+    public int maximumOfSpawnedItems;
     public float minTime;
     public float maxTime;
     private System.Random r;
@@ -58,7 +63,20 @@ public class ObjectSpawnerController : MonoBehaviour
 
     public void spawnObject()
     {
-        spawnToAvailableSpawner(0);
+        double ranDouble = r.NextDouble();
+        bool spawnMultiple = ranDouble < chanceToSpawnMultiple;
+        if (spawnMultiple)
+        {
+            int howMany = r.Next(maximumOfSpawnedItems);
+            for (int i = 0; i < howMany; i++)
+            {
+                spawnToAvailableSpawner(0);
+            }
+        }
+        else
+        {
+            spawnToAvailableSpawner(0);
+        }
         float nextSpawnIn = UnityEngine.Random.Range(minTime, maxTime);
         Invoke("spawnObject", nextSpawnIn);
     }
