@@ -70,7 +70,7 @@ public class ObjectSpawnerController : MonoBehaviour
         bool spawnMultiple = ranDouble < chanceToSpawnMultiple || isFirstSpawn;
         if (spawnMultiple)
         {
-            int howMany = r.Next(maximumOfSpawnedItems);
+            int howMany = r.Next(1, maximumOfSpawnedItems);
             for (int i = 0; i < howMany; i++)
             {
                 spawnToAvailableSpawner(0);
