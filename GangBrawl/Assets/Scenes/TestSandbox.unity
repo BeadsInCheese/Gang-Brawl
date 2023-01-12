@@ -1010,7 +1010,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deda2fba57dafa544934012e6ada1b5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chanceToSpawnMultiple: 0.9
+  chanceToSpawnMultiple: 0.8
   maximumOfSpawnedItems: 3
   minTime: 2
   maxTime: 4
