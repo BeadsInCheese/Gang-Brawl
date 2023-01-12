@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Spawns object only if there is nothing colliding with the spawner!
+/// Spawns object only if there is nothing colliding with the spawner! 
+/// NOTE: requires ObjectSpawnerController to be added scene to work!.
 /// </summary>
 public class ObjectSpawner : MonoBehaviour
 {
