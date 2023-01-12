@@ -10,8 +10,9 @@ using UnityEngine;
 public class ObjectSpawnerController : MonoBehaviour
 {
     /// <summary>
-    /// All spawners all added automatically in their start function 
-    /// in the "ObjectSpawner.cs" class.
+    /// Holds spawnpoints of all objectsSpawners (they spawn power-ups, weapons etc. consumables) in the scene.
+    ///  All spawners are added automatically when they are created. Adding to the list is done in start() method in the 
+    /// "ObjectSpawner.cs" class.
     /// </summary>
     public static List<ObjectSpawner> spawnPoints;
     [Tooltip("Chance in float to spawn multiple instance at the same frame. set a double value between 0 and 1")]
