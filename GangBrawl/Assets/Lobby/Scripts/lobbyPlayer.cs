@@ -14,11 +14,15 @@ public class lobbyPlayer : MonoBehaviour
     public GameObject selectedPlayerPrefab;
     private bool ready = false;
     TMPro.TextMeshProUGUI tex;
+    TMPro.TextMeshProUGUI controllerTypeText;
+
+    private ControllerType controllerType;
 
     private void removeJoinText()
     {
 
         tex = this.LobbyObject.GetComponentInChildren<TMPro.TextMeshProUGUI>();
+
         tex.text = "";
     }
     void Start()
@@ -26,6 +30,12 @@ public class lobbyPlayer : MonoBehaviour
         transform.position = new Vector3(0, 0, transform.position.z);
         selectedPlayerPrefab = (GameObject)Resources.Load("/Characters/ProgrammerArtMan/Character.prefab", typeof(GameObject));
         Invoke("removeJoinText", 0.1f);
+        TMPro.TextMeshProUGUI[] a = this.LobbyObject.GetComponentsInChildren<TMPro.TextMeshProUGUI>();
+        // THE controller placeholder text is 2, this is quick and dirty
+        if (a.Length == 2)
+        {
+            controllerTypeText = a[1];
+        }
         input = GetComponent<PlayerInput>();
     }
 
@@ -66,6 +76,25 @@ public class lobbyPlayer : MonoBehaviour
             {
                 tex.text = "Ready";
             }
+        }
+        if (controllerTypeText != null)
+        {
+            controllerType = PlayerData.recogniseControllerType(input.currentControlScheme);
+            if (controllerType == ControllerType.Gamepad)
+            {
+                controllerTypeText.text = "Gamepad";
+            }
+            else if (controllerType == ControllerType.Keyboard)
+            {
+                controllerTypeText.text = "Keyboard";
+            }
+            else
+            {
+                // This should probably be a default behaviour, maybe just default to gamepad?
+                controllerTypeText.text = "Not recognized";
+
+            }
+
         }
         Vector2 bounds = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
 

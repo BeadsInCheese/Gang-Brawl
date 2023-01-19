@@ -106,7 +106,6 @@ public class LevelSelector : MonoBehaviour
         // Not entirely sure why this requires a null check
         if (modeLabel != null)
         {
-            Debug.Log("ModeLabel was updated and was not null");
             if (isGameModeDeathMatch())
             {
                 modeLabel.text = "Deathmatch";
