@@ -25,7 +25,7 @@ public class LobbyManager : MonoBehaviour
 
 
     //Map
-    public string map="TestSandbox";
+    public string map = "TestSandbox";
 
 
 
@@ -49,7 +49,7 @@ public class LobbyManager : MonoBehaviour
             //player1.transform.SetParent(playerInput.transform,false);
             player1.tag = "Player";
             player1.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "Ready";
-            
+
         }
         else if (!player2.tag.Equals("Player"))
         {
@@ -86,30 +86,33 @@ public class LobbyManager : MonoBehaviour
         if (!player1.tag.Equals("Player"))
         {
             //player1.transform.SetParent(playerInput.transform,false);
-            playerInput.transform.gameObject.GetComponent<lobbyPlayer>().LobbyObject = player1;
-            player1.tag = "Player";
-            player1.transform.Find("ReadyPrompt").gameObject.SetActive(true);
+            SetPlayerReadyOnUI(playerInput, player1);
         }
         else if (!player2.tag.Equals("Player"))
         {
-            //player2.transform.SetParent(playerInput.transform,false);
-            playerInput.transform.gameObject.GetComponent<lobbyPlayer>().LobbyObject = player2;
-            player2.tag = "Player";
-            player2.transform.Find("ReadyPrompt").gameObject.SetActive(true);
+            SetPlayerReadyOnUI(playerInput, player2);
         }
         else if (!player3.tag.Equals("Player"))
         {
-            playerInput.transform.gameObject.GetComponent<lobbyPlayer>().LobbyObject = player3;
-            player3.tag = "Player";
-            player3.transform.Find("ReadyPrompt").gameObject.SetActive(true);
+            SetPlayerReadyOnUI(playerInput, player3);
         }
         else if (!player4.tag.Equals("Player"))
         {
-            playerInput.transform.gameObject.GetComponent<lobbyPlayer>().LobbyObject = player4;
-            player4.tag = "Player";
-            player4.transform.Find("ReadyPrompt").gameObject.SetActive(true);
+            SetPlayerReadyOnUI(playerInput, player4);
         }
 
+
+    }
+
+    private void SetPlayerReadyOnUI(PlayerInput playerInput, GameObject player)
+    {
+        playerInput.transform.gameObject.GetComponent<lobbyPlayer>().LobbyObject = player;
+        player.tag = "Player";
+        if (PlayerData.recogniseControllerType(playerInput.currentControlScheme) == ControllerType.Gamepad)
+        {
+            player.transform.Find("ReadyPrompt").gameObject.SetActive(true);
+            player.transform.Find("ControllerImg").gameObject.SetActive(true);
+        }
 
     }
     void Awake()

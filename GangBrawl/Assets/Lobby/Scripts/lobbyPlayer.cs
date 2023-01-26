@@ -16,7 +16,7 @@ public class lobbyPlayer : MonoBehaviour
     TMPro.TextMeshProUGUI tex;
     TMPro.TextMeshProUGUI controllerTypeText;
 
-    private ControllerType controllerType;
+    public ControllerType controllerType;
 
     private void removeJoinText()
     {
