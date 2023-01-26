@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayGame()
     {
-                SceneManager.LoadScene("Lobby");
+        SceneManager.LoadScene("Lobby");
     }
 
     public void Quitgame()
@@ -18,6 +18,10 @@ public class MainMenu : MonoBehaviour
     public void Start()
     {
         if (gameObject.name.Equals("SettingsMenu"))
+        {
+            gameObject.SetActive(false);
+        }
+        else if (gameObject.name.Equals("CreditsMenu"))
         {
             gameObject.SetActive(false);
         }
