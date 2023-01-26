@@ -117,8 +117,7 @@ public class LobbyManager : MonoBehaviour
         {
 
             player.transform.Find("KeyboardSpaceImg").gameObject.SetActive(true);
-            //TODO find a good image
-            //player.transform.Find("ControllerImg").gameObject.SetActive(true);
+            player.transform.Find("KeyboardIndicator").gameObject.SetActive(true);
         }
 
     }
