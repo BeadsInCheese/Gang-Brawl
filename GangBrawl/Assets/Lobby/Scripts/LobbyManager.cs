@@ -46,30 +46,20 @@ public class LobbyManager : MonoBehaviour
     {
         if (!player1.tag.Equals("Player"))
         {
-            //player1.transform.SetParent(playerInput.transform,false);
-            player1.tag = "Player";
-            player1.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "Ready";
-            player1.transform.Find("ImageCPUJoined").gameObject.SetActive(true);
+            SetCPUReadyOnUI(player1);
 
         }
         else if (!player2.tag.Equals("Player"))
         {
-            //player2.transform.SetParent(playerInput.transform,false);
-            player2.tag = "Player";
-            player2.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "Ready";
-            player2.transform.Find("ImageCPUJoined").gameObject.SetActive(true);
+            SetCPUReadyOnUI(player2);
         }
         else if (!player3.tag.Equals("Player"))
         {
-            player3.tag = "Player";
-            player3.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "Ready";
-            player3.transform.Find("ImageCPUJoined").gameObject.SetActive(true);
+            SetCPUReadyOnUI(player3);
         }
         else if (!player4.tag.Equals("Player"))
         {
-            player4.tag = "Player";
-            player4.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "Ready";
-            player4.transform.Find("ImageCPUJoined").gameObject.SetActive(true);
+            SetCPUReadyOnUI(player4);
         }
         else
         {
@@ -80,6 +70,19 @@ public class LobbyManager : MonoBehaviour
         LobbyManager.instance.playerPressedReady();
 
     }
+
+    /// <summary>
+    /// Enables correct UI components to display that the "player" joined in the game is CPU.
+    /// </summary>
+    /// <param name="cpu">This is actually the player object, just different images are set visible when it is CPU</param>
+    private void SetCPUReadyOnUI(GameObject cpu)
+    {
+        cpu.tag = "Player";
+        cpu.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "Ready";
+        cpu.transform.Find("ImageCPUJoined").gameObject.SetActive(true);
+        cpu.transform.Find("CPUImg").gameObject.SetActive(true);
+    }
+
     public void OnPlayerJoined(PlayerInput playerInput)
     {
         InputDevice[] d;
