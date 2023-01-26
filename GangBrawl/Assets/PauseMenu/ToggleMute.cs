@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class ToggleMute : MonoBehaviour
 {
-    public void MuteToggle(bool muted)
+    public void MuteToggle()
     {
-        if (muted)
+        if (AudioListener.volume == 0)
         {
-            AudioListener.volume = 0;
+            AudioListener.volume = 1;
         }
         else
         {
-            AudioListener.volume = 1;
+            AudioListener.volume = 0;
         }
     }
 }
