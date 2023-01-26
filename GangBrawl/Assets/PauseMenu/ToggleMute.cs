@@ -8,7 +8,8 @@ public class ToggleMute : MonoBehaviour
     {
         if (AudioListener.volume == 0)
         {
-            AudioListener.volume = 1;
+            float volumeValue = PlayerPrefs.GetFloat("VolumeValue");
+            AudioListener.volume = volumeValue;
         }
         else
         {
