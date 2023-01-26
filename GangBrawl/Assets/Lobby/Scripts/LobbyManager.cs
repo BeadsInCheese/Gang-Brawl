@@ -49,6 +49,7 @@ public class LobbyManager : MonoBehaviour
             //player1.transform.SetParent(playerInput.transform,false);
             player1.tag = "Player";
             player1.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "Ready";
+            player1.transform.Find("ImageCPUJoined").gameObject.SetActive(true);
 
         }
         else if (!player2.tag.Equals("Player"))
@@ -56,16 +57,19 @@ public class LobbyManager : MonoBehaviour
             //player2.transform.SetParent(playerInput.transform,false);
             player2.tag = "Player";
             player2.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "Ready";
+            player2.transform.Find("ImageCPUJoined").gameObject.SetActive(true);
         }
         else if (!player3.tag.Equals("Player"))
         {
             player3.tag = "Player";
             player3.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "Ready";
+            player3.transform.Find("ImageCPUJoined").gameObject.SetActive(true);
         }
         else if (!player4.tag.Equals("Player"))
         {
             player4.tag = "Player";
             player4.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "Ready";
+            player4.transform.Find("ImageCPUJoined").gameObject.SetActive(true);
         }
         else
         {
@@ -119,6 +123,8 @@ public class LobbyManager : MonoBehaviour
             player.transform.Find("KeyboardSpaceImg").gameObject.SetActive(true);
             player.transform.Find("KeyboardIndicator").gameObject.SetActive(true);
         }
+
+        player.transform.Find("ImagePlayerJoined").gameObject.SetActive(true);
 
     }
     void Awake()
