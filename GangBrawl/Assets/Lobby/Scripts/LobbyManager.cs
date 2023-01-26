@@ -113,6 +113,13 @@ public class LobbyManager : MonoBehaviour
             player.transform.Find("ReadyPrompt").gameObject.SetActive(true);
             player.transform.Find("ControllerImg").gameObject.SetActive(true);
         }
+        else if (PlayerData.recogniseControllerType(playerInput.currentControlScheme) == ControllerType.Keyboard)
+        {
+
+            player.transform.Find("KeyboardSpaceImg").gameObject.SetActive(true);
+            //TODO find a good image
+            //player.transform.Find("ControllerImg").gameObject.SetActive(true);
+        }
 
     }
     void Awake()
