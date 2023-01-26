@@ -15,10 +15,13 @@ public class lobbyPlayer : MonoBehaviour
     private bool ready = false;
     TMPro.TextMeshProUGUI tex;
 
+    public ControllerType controllerType;
+
     private void removeJoinText()
     {
 
         tex = this.LobbyObject.GetComponentInChildren<TMPro.TextMeshProUGUI>();
+
         tex.text = "";
     }
     void Start()
@@ -26,6 +29,7 @@ public class lobbyPlayer : MonoBehaviour
         transform.position = new Vector3(0, 0, transform.position.z);
         selectedPlayerPrefab = (GameObject)Resources.Load("/Characters/ProgrammerArtMan/Character.prefab", typeof(GameObject));
         Invoke("removeJoinText", 0.1f);
+        TMPro.TextMeshProUGUI[] a = this.LobbyObject.GetComponentsInChildren<TMPro.TextMeshProUGUI>();
         input = GetComponent<PlayerInput>();
     }
 
