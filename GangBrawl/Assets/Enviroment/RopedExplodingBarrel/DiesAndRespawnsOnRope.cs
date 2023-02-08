@@ -15,7 +15,7 @@ public class DiesAndRespawnsOnRope : ExplodeOnDeath
         var ex = Instantiate(explosion);
         ex.transform.position=new Vector2(transform.position.x,transform.position.y);
         HealToFull();
-        //anchor.Invoke("DestroyRopeContainer", 0);
+        anchor.Invoke("DestroyRopeContainer", 0);
         anchor.Invoke("GenerateRope", respawnTime);
         Destroy(gameObject.transform.parent.gameObject);
     }
