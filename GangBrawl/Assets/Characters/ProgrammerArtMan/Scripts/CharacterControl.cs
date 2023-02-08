@@ -50,7 +50,7 @@ public class CharacterControl : MonoBehaviour
     {
         animationControl.SetBool("Jumping", false);
     }
-    protected void jump()
+    public void jump()
     {
         if(Time.timeScale!=0){
         animationControl.SetBool("Jumping", true);
