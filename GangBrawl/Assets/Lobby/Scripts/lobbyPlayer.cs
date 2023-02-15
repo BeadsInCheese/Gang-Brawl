@@ -26,6 +26,10 @@ public class lobbyPlayer : MonoBehaviour
     }
     void Start()
     {
+        if(LobbyObject == null){
+            Destroy(this.gameObject);
+            return;
+        }
         transform.position = new Vector3(0, 0, transform.position.z);
         selectedPlayerPrefab = (GameObject)Resources.Load("/Characters/ProgrammerArtMan/Character.prefab", typeof(GameObject));
         Invoke("removeJoinText", 0.1f);
@@ -37,6 +41,11 @@ public class lobbyPlayer : MonoBehaviour
     public float speed = 1;
     void Update()
     {
+        if(input == null){
+            Destroy(this.gameObject);
+            return ;
+        }
+
         Vector2 dir = input.actions["Aim"].ReadValue<Vector2>();
         if (input.actions["LightAttack"].triggered)
         {
