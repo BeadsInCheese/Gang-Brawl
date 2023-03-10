@@ -5651,6 +5651,10 @@ PrefabInstance:
       propertyPath: spawnObjects.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4227013761278231618, guid: 01c7ae8d124ddfb4d8eea925fee58da4, type: 3}
+      propertyPath: spawnObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 8336248614094019405, guid: 3fea7de37674e53dab491cdee87fc860, type: 3}
     - target: {fileID: 4227013761278231619, guid: 01c7ae8d124ddfb4d8eea925fee58da4, type: 3}
       propertyPath: m_Name
       value: WeaponObjectSpawner (2)
@@ -5712,6 +5716,10 @@ PrefabInstance:
       propertyPath: spawnObjects.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4227013761278231618, guid: 01c7ae8d124ddfb4d8eea925fee58da4, type: 3}
+      propertyPath: spawnObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 8336248614094019405, guid: 3fea7de37674e53dab491cdee87fc860, type: 3}
     - target: {fileID: 4227013761278231619, guid: 01c7ae8d124ddfb4d8eea925fee58da4, type: 3}
       propertyPath: m_Name
       value: WeaponObjectSpawner (3)
@@ -6156,6 +6164,10 @@ PrefabInstance:
       propertyPath: spawnObjects.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4227013761278231618, guid: 01c7ae8d124ddfb4d8eea925fee58da4, type: 3}
+      propertyPath: spawnObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 8336248614094019405, guid: 3fea7de37674e53dab491cdee87fc860, type: 3}
     - target: {fileID: 4227013761278231619, guid: 01c7ae8d124ddfb4d8eea925fee58da4, type: 3}
       propertyPath: m_Name
       value: WeaponObjectSpawner
@@ -7290,6 +7302,10 @@ PrefabInstance:
       propertyPath: spawnObjects.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4227013761278231618, guid: 01c7ae8d124ddfb4d8eea925fee58da4, type: 3}
+      propertyPath: spawnObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 8336248614094019405, guid: 3fea7de37674e53dab491cdee87fc860, type: 3}
     - target: {fileID: 4227013761278231619, guid: 01c7ae8d124ddfb4d8eea925fee58da4, type: 3}
       propertyPath: m_Name
       value: WeaponObjectSpawner (1)
