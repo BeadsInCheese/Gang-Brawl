@@ -11,10 +11,18 @@ public class Earthquake : MonoBehaviour
     {
         
     }
-    void OnCollisionEnter2D(Collision2D collider){
-        
-        if(shaking){
-            collider.collider.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-100*amplitude,100*amplitude),100*amplitude));
+
+    void OnCollisionStay2D(Collision2D collider)
+    {
+
+        if (shaking)
+        {
+            var body = collider.collider.gameObject.GetComponent<Rigidbody2D>();
+            if (body != null)
+            {
+                body.AddForce(new Vector2(Random.Range(-100 * amplitude, 100 * amplitude), 100 * amplitude));
+            }
+
         }
     }
     // Update is called once per frame
