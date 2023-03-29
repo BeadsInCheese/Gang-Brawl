@@ -30,12 +30,8 @@ public class LevelSelector : MonoBehaviour
     public void NextMap(){
         mapIndex++;
         mapIndex=mapIndex%(maps.Count);
-        Debug.Log(maps.Count);
-        Debug.Log(mapIndex);
-        Debug.Log(maps);
-        Debug.Log(maps[mapIndex]);
-        Debug.Log(maps[mapIndex].asd);
-        LobbyManager.instance.map=maps[mapIndex].asd;
+        LobbyManager.instance.map=maps[mapIndex].map;
+        mapThumbnail.sprite=maps[mapIndex].mapImage;
         Debug.Log(maps[mapIndex]);
     } 
     public void PreviousMap(){
@@ -44,6 +40,7 @@ public class LevelSelector : MonoBehaviour
             mapIndex=maps.Count-1;
         }
         LobbyManager.instance.map=maps[mapIndex].map;
+        mapThumbnail.sprite=maps[mapIndex].mapImage;
     }
     //Map Logic End
 
