@@ -60,6 +60,7 @@ public class lobbyPlayer : MonoBehaviour
             if (ready)
             {
                 ready = false;
+                Debug.Log(LobbyManager.instance);
                 LobbyManager.instance.playerPressedUnready();
             }
             else

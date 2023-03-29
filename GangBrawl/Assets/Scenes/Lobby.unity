@@ -543,6 +543,7 @@ MonoBehaviour:
   modeLabel: {fileID: 0}
   SecondaryModifierHeaderText: {fileID: 0}
   SecondaryModifierLabel: {fileID: 0}
+  mapThumbnail: {fileID: 0}
   maps: []
 --- !u!1 &188249901
 GameObject:
@@ -600,6 +601,7 @@ MonoBehaviour:
   modeLabel: {fileID: 0}
   SecondaryModifierHeaderText: {fileID: 0}
   SecondaryModifierLabel: {fileID: 0}
+  mapThumbnail: {fileID: 0}
   maps: []
 --- !u!114 &188249904
 MonoBehaviour:
@@ -708,6 +710,7 @@ MonoBehaviour:
   modeLabel: {fileID: 0}
   SecondaryModifierHeaderText: {fileID: 0}
   SecondaryModifierLabel: {fileID: 0}
+  mapThumbnail: {fileID: 0}
   maps: []
 --- !u!1 &314601299
 GameObject:
@@ -3153,9 +3156,10 @@ MonoBehaviour:
   modeLabel: {fileID: 0}
   SecondaryModifierHeaderText: {fileID: 0}
   SecondaryModifierLabel: {fileID: 0}
+  mapThumbnail: {fileID: 0}
   maps:
-  - TestSandbox
-  - ClockTower
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &1206041302
 GameObject:
   m_ObjectHideFlags: 0
@@ -3620,6 +3624,7 @@ MonoBehaviour:
   modeLabel: {fileID: 0}
   SecondaryModifierHeaderText: {fileID: 0}
   SecondaryModifierLabel: {fileID: 0}
+  mapThumbnail: {fileID: 0}
   maps: []
 --- !u!1 &1296779122
 GameObject:
@@ -3799,6 +3804,7 @@ MonoBehaviour:
   modeLabel: {fileID: 0}
   SecondaryModifierHeaderText: {fileID: 0}
   SecondaryModifierLabel: {fileID: 0}
+  mapThumbnail: {fileID: 0}
   maps: []
 --- !u!114 &1304758102
 MonoBehaviour:
@@ -4683,7 +4689,10 @@ MonoBehaviour:
   modeLabel: {fileID: 405580223}
   SecondaryModifierHeaderText: {fileID: 1512225104}
   SecondaryModifierLabel: {fileID: 1642211600}
-  maps: []
+  mapThumbnail: {fileID: 657154564}
+  maps:
+  - {fileID: 11400000, guid: 7283c160050418c4fb5b2daba9a1f2dc, type: 2}
+  - {fileID: 11400000, guid: df5b04df3bbb5b741b52eb9ecda4acb3, type: 2}
 --- !u!4 &1640201125
 Transform:
   m_ObjectHideFlags: 0
@@ -4980,6 +4989,7 @@ MonoBehaviour:
   modeLabel: {fileID: 0}
   SecondaryModifierHeaderText: {fileID: 0}
   SecondaryModifierLabel: {fileID: 0}
+  mapThumbnail: {fileID: 0}
   maps: []
 --- !u!1 &1828409493
 GameObject:

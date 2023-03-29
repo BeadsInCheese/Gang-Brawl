@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
 
@@ -17,17 +18,24 @@ public class LevelSelector : MonoBehaviour
     /// </summary>
     public TMP_Text SecondaryModifierLabel;
 
+    public Image mapThumbnail;
+
     private int TIMESCALE = 30;
 
 
     //Map change logic
-    public List<string> maps;
+    public List<Map> maps;
     private int mapIndex=0;
 
     public void NextMap(){
         mapIndex++;
         mapIndex=mapIndex%(maps.Count);
-        LobbyManager.instance.map=maps[mapIndex];
+        Debug.Log(maps.Count);
+        Debug.Log(mapIndex);
+        Debug.Log(maps);
+        Debug.Log(maps[mapIndex]);
+        Debug.Log(maps[mapIndex].asd);
+        LobbyManager.instance.map=maps[mapIndex].asd;
         Debug.Log(maps[mapIndex]);
     } 
     public void PreviousMap(){
@@ -35,7 +43,7 @@ public class LevelSelector : MonoBehaviour
         if(mapIndex<0){
             mapIndex=maps.Count-1;
         }
-        LobbyManager.instance.map=maps[mapIndex];
+        LobbyManager.instance.map=maps[mapIndex].map;
     }
     //Map Logic End
 
