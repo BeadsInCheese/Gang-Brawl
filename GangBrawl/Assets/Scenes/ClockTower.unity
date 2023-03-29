@@ -9477,8 +9477,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3feca4e2a00c2a067840f6c75e6203f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arenaLowerBound: -20
-  arenaSideBound: 30
+  arenaLowerBound: -25
+  arenaSideBound: 40
 --- !u!1 &2075746061
 GameObject:
   m_ObjectHideFlags: 0
