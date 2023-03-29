@@ -1305,7 +1305,7 @@ MonoBehaviour:
   player4: {fileID: 2013547732}
   StartButton: {fileID: 750551425}
   countdownText: {fileID: 755002885}
-  map: TestSandbox
+  map: Airship
 --- !u!82 &471324228
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4342,7 +4342,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1130978531}
+      - m_Target: {fileID: 1640201124}
         m_TargetAssemblyTypeName: LevelSelector, Assembly-CSharp
         m_MethodName: NextMap
         m_Mode: 1

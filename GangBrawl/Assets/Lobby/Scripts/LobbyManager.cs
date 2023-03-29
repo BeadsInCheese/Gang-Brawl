@@ -25,7 +25,7 @@ public class LobbyManager : MonoBehaviour
 
 
     //Map
-    public string map = "TestSandbox";
+    public string map = "Airship";
 
 
 
