@@ -6,6 +6,7 @@ public class PlayerData
     public string characterPrefabPath;
     public int playerIndex;
     public string controlScheme;
+    public Sprite hat;
     public InputDevice[] pairWithDevices;
 
     // public ControllerType controllerType;

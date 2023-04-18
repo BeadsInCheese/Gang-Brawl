@@ -20,7 +20,7 @@ public class LobbyManager : MonoBehaviour
     float countdown = 5;
     public TMPro.TextMeshProUGUI countdownText;
     public static int CPUCount = 0;
-    public static List<PlayerData> playerData = new List<PlayerData>();
+    public static Dictionary<string,PlayerData> playerData = new Dictionary<string,PlayerData>();
 
 
 
@@ -87,8 +87,21 @@ public class LobbyManager : MonoBehaviour
     {
         InputDevice[] d;
         d = playerInput.devices.ToArray();
-        playerData.Add(new PlayerData("", -1, playerInput.currentControlScheme, d));
+
         playersInGame += 1;
+        string playerID="";
+        GameObject ob=null;
+        foreach(Transform i in player1.transform.parent){
+        if (!i.gameObject.tag.Equals("Player"))
+        {
+            SetPlayerReadyOnUI(playerInput, i.gameObject); 
+            ob=i.Find("Hat").gameObject;
+            playerID=i.gameObject.name;
+            break;
+        }
+        }
+        /*
+        
         //playerInput.transform.SetParent(row1.transform,false);
         if (!player1.tag.Equals("Player"))
         {
@@ -98,16 +111,21 @@ public class LobbyManager : MonoBehaviour
         else if (!player2.tag.Equals("Player"))
         {
             SetPlayerReadyOnUI(playerInput, player2);
+            playerID=player4.name;
         }
         else if (!player3.tag.Equals("Player"))
         {
             SetPlayerReadyOnUI(playerInput, player3);
+            playerID=player3.name;
         }
         else if (!player4.tag.Equals("Player"))
         {
             SetPlayerReadyOnUI(playerInput, player4);
+            playerID=player4.name;
         }
-
+        */
+        playerData.Add(playerID,new PlayerData("", -1, playerInput.currentControlScheme, d));
+        ob.SetActive(true);
 
     }
 

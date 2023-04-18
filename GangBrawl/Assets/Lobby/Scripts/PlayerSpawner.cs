@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerSpawner : MonoBehaviour
 {
@@ -10,10 +11,14 @@ public class PlayerSpawner : MonoBehaviour
     public List<Color> PlayerColorTints=new List<Color>();
     public void spawnPlayers(){
         int playerNo=0;
-        foreach(PlayerData i in LobbyManager.playerData){
+        foreach(PlayerData i in LobbyManager.playerData.Values){
 
             var player=playerInputManager.JoinPlayer(playerNo,-1,null,i.pairWithDevices);
             player.gameObject.GetComponent<CharacterControl>().tint=PlayerColorTints[playerNo];
+            var hob=player.gameObject.transform.Find("FactionDownscaled/bone_1/bone_2/Hat");
+            Debug.Log(hob);
+            Debug.Log(i.hat);
+            hob.gameObject.GetComponent<SpriteRenderer>().sprite=i.hat;
             playerNo=playerNo+1;
             
         }
@@ -25,7 +30,7 @@ public class PlayerSpawner : MonoBehaviour
             playerNo+=1;
         }
         LobbyManager.CPUCount=0;
-        LobbyManager.playerData=new List<PlayerData>();
+        LobbyManager.playerData=new Dictionary<string, PlayerData>();
         
     }
 
