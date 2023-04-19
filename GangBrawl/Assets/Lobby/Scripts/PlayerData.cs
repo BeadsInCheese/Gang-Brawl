@@ -20,6 +20,7 @@ public class PlayerData
 
     public static ControllerType recogniseControllerType(string controlScheme)
     {
+        if(controlScheme!=null){
         // I could swear that my ps5 controller gave one time it's type as "wireless controller", not sure why
         if (controlScheme.ToLower().Contains("controller") || controlScheme.ToLower().Contains("gamepad"))
         {
@@ -35,7 +36,10 @@ public class PlayerData
             return ControllerType.Not_Recognized;
         }
 
+    }else
+    {
+      return ControllerType.Not_Recognized;   
     }
-}
+}}
 
 

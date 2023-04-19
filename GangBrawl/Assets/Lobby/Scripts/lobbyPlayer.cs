@@ -5,7 +5,8 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-public class lobbyPlayer : MonoBehaviour
+using Unity.Netcode;
+public class lobbyPlayer : NetworkBehaviour
 {
     // Start is called before the first frame update
     Image characterImage;
@@ -41,6 +42,7 @@ public class lobbyPlayer : MonoBehaviour
     public float speed = 1;
     void Update()
     {
+        if(!IsOwner) return;
         if(input == null){
             Destroy(this.gameObject);
             return ;
@@ -104,5 +106,5 @@ public class lobbyPlayer : MonoBehaviour
             }
         }
 
-    }
-}
+    }}
+

@@ -85,6 +85,7 @@ public class LobbyManager : MonoBehaviour
 
     public void OnPlayerJoined(PlayerInput playerInput)
     {
+        
         InputDevice[] d;
         d = playerInput.devices.ToArray();
 
