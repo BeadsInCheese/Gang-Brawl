@@ -6,7 +6,7 @@ public class FlameBullet : Bullet
 {
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(owner!=collision.gameObject.tag){
+        if(owner!=collision.gameObject.name){
         if (collision.gameObject.tag.Equals("Player")){
             var p=collision.gameObject;
             if(p.GetComponent<HPSystem>().currentHp-damage<=0){
@@ -14,7 +14,7 @@ public class FlameBullet : Bullet
                 //Debug.Log(owner+ " has "+DirectorBehaviour.PlayerKills[owner]+" kills.");
             }
         
-        }
+        
         Helpers.HitPlayer(damage,  collision.gameObject,rb.velocity.normalized*knockback);
 
         
@@ -24,7 +24,7 @@ public class FlameBullet : Bullet
         }
 
 
-    }}
+    }}}
     // Start is called before the first frame update
     void Start()
     {

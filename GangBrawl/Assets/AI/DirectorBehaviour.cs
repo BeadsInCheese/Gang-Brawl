@@ -7,7 +7,7 @@ public class DirectorBehaviour : MonoBehaviour
 {
     BTTree tree;
     float intensity=11;
-    public int MaxLives=5;
+    public static int MaxLives = 5;
     public float intensityTreshold=10;
     public static Dictionary<string,int> PlayersAlive=new Dictionary<string, int>();
     public static Dictionary<string,int> PlayerKills=new Dictionary<string, int>();
@@ -19,7 +19,8 @@ public class DirectorBehaviour : MonoBehaviour
     public TMPro.TextMeshProUGUI roundCountDownText;
     public enum Gamemode{LASTMANSTANDING,DEATHMATCH};
     public static Gamemode gameMode=Gamemode.DEATHMATCH;
-    public float gameTime=120;
+    public static float gameTime = 120;
+    public static float INITIAL_STARTING_GAMETIME = 120;
     public GameObject gameStartCountDown;
     public Node.Status IsLowIntensity(){
         if(intensity>intensityTreshold){

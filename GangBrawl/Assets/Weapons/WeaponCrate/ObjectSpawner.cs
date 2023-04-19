@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Spawns object only if there is nothing colliding with the spawner!
+/// Spawns object only if there is nothing colliding with the spawner! 
+/// NOTE: requires ObjectSpawnerController to be added scene to work!.
 /// </summary>
 public class ObjectSpawner : MonoBehaviour
 {
@@ -16,22 +17,16 @@ public class ObjectSpawner : MonoBehaviour
     private List<Collider2D> activelyColliding;
     public float minTime;
     public float maxTime;
-    private bool isCycleStarted;
+
 
     private BoxCollider2D _collider;
 
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("spawnObject", 0.5f);
+        ObjectSpawnerController.spawnPoints.Add(this);
         activelyColliding = new List<Collider2D>();
         _collider = gameObject.GetComponent<BoxCollider2D>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -51,18 +46,20 @@ public class ObjectSpawner : MonoBehaviour
         }
     }
 
-    private void spawnObject()
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns>True if the spawner is not colliding with a game object with isn't bullet</returns>
+    public bool isNotCurrentlyColliding()
     {
-        if (isCycleStarted && (activelyColliding.Count == 0))
-        {
-            int randomIndex = UnityEngine.Random.Range(0, spawnObjects.Length);
-            Instantiate(spawnObjects[randomIndex], this.transform.position, Quaternion.identity);
+        return activelyColliding != null && activelyColliding.Count == 0;
+    }
 
-        }
+    public void spawnObject()
+    {
 
-        float nextSpawnIn = UnityEngine.Random.Range(minTime, maxTime);
-        Invoke("spawnObject", nextSpawnIn);
-        isCycleStarted = true;
+        int randomIndex = UnityEngine.Random.Range(0, spawnObjects.Length);
+        Instantiate(spawnObjects[randomIndex], this.transform.position, Quaternion.identity);
     }
 
     /// <summary>

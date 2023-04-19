@@ -13,8 +13,9 @@ using System.Collections;
 public class GravityOffWhenDies : HPSystem
 {
 
+    public GameObject Electricity;
     private Collider2D _collider;
-
+    public SpriteRenderer fogRenderer;
     [Header("How long gravity modifying")]
     public float secondsTheMotorIsOff;
 
@@ -36,6 +37,7 @@ public class GravityOffWhenDies : HPSystem
         {
             die();
         }
+        flash();
     }
 
     override
@@ -47,13 +49,18 @@ public class GravityOffWhenDies : HPSystem
     override
     public void die()
     {
+        var e = Instantiate(Electricity);
+        e.transform.position=transform.position;
+        Destroy(e,secondsTheMotorIsOff);
         Physics2D.gravity = new Vector2(0, gravityModifier);
         StartCoroutine(EnableGravity());
     }
 
     private IEnumerator EnableGravity()
     {
+        fogRenderer.material.SetVector("_FogSpeed",new Vector2(-0.5f,1));
         yield return new WaitForSeconds(secondsTheMotorIsOff);
+        fogRenderer.material.SetVector("_FogSpeed",new Vector2(-0.5f,0));
         Physics2D.gravity = new Vector2(0, -9.8f);
         HealToFull();
     }
