@@ -46,20 +46,20 @@ public class LobbyManager : MonoBehaviour
     {
         if (!player1.tag.Equals("Player"))
         {
-            SetCPUReadyOnUI(player1);
+            SetCPUReadyOnUI(player1, 0);
 
         }
         else if (!player2.tag.Equals("Player"))
         {
-            SetCPUReadyOnUI(player2);
+            SetCPUReadyOnUI(player2, 1);
         }
         else if (!player3.tag.Equals("Player"))
         {
-            SetCPUReadyOnUI(player3);
+            SetCPUReadyOnUI(player3, 2);
         }
         else if (!player4.tag.Equals("Player"))
         {
-            SetCPUReadyOnUI(player4);
+            SetCPUReadyOnUI(player4, 3);
         }
         else
         {
@@ -75,12 +75,13 @@ public class LobbyManager : MonoBehaviour
     /// Enables correct UI components to display that the "player" joined in the game is CPU.
     /// </summary>
     /// <param name="cpu">This is actually the player object, just different images are set visible when it is CPU</param>
-    private void SetCPUReadyOnUI(GameObject cpu)
+    private void SetCPUReadyOnUI(GameObject cpu, int playerIndex)
     {
         cpu.tag = "Player";
         cpu.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "Ready";
         cpu.transform.Find("ImageCPUJoined").gameObject.SetActive(true);
         cpu.transform.Find("CPUImg").gameObject.SetActive(true);
+        setTintColor(cpu, playerIndex);
     }
 
     public void OnPlayerJoined(PlayerInput playerInput)
@@ -93,25 +94,25 @@ public class LobbyManager : MonoBehaviour
         if (!player1.tag.Equals("Player"))
         {
             //player1.transform.SetParent(playerInput.transform,false);
-            SetPlayerReadyOnUI(playerInput, player1);
+            SetPlayerReadyOnUI(playerInput, player1, 0);
         }
         else if (!player2.tag.Equals("Player"))
         {
-            SetPlayerReadyOnUI(playerInput, player2);
+            SetPlayerReadyOnUI(playerInput, player2, 1);
         }
         else if (!player3.tag.Equals("Player"))
         {
-            SetPlayerReadyOnUI(playerInput, player3);
+            SetPlayerReadyOnUI(playerInput, player3, 2);
         }
         else if (!player4.tag.Equals("Player"))
         {
-            SetPlayerReadyOnUI(playerInput, player4);
+            SetPlayerReadyOnUI(playerInput, player4, 3);
         }
 
 
     }
 
-    private void SetPlayerReadyOnUI(PlayerInput playerInput, GameObject player)
+    private void SetPlayerReadyOnUI(PlayerInput playerInput, GameObject player, int playerIndex)
     {
         playerInput.transform.gameObject.GetComponent<lobbyPlayer>().LobbyObject = player;
         player.tag = "Player";
@@ -128,7 +129,16 @@ public class LobbyManager : MonoBehaviour
         }
 
         player.transform.Find("ImagePlayerJoined").gameObject.SetActive(true);
+        setTintColor(player, playerIndex);
 
+    }
+
+    void setTintColor(GameObject player, int playerIndex)
+    {
+        player.transform.Find("TintColor").gameObject.SetActive(true);
+        Image img = player.transform.Find("TintColor").gameObject.GetComponent<Image>();
+        Color tempCol = PlayerColors.Colors[playerIndex];
+        img.color = new Color(tempCol.r, tempCol.g, tempCol.b, 0.32f);
     }
     void Awake()
     {
