@@ -824,15 +824,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: press any button to join
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b08b89abe0d10674993a4861787cdb3e, type: 2}
+  m_sharedMaterial: {fileID: -3647738162611914738, guid: b08b89abe0d10674993a4861787cdb3e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4287013324
-  m_fontColor: {r: 0.8018868, g: 0.6309521, b: 0.5257654, a: 1}
+    rgba: 4285236395
+  m_fontColor: {r: 0.6698113, g: 0.5164859, b: 0.42021182, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -849,8 +849,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 12
-  m_fontSizeBase: 12
+  m_fontSize: 17.8
+  m_fontSizeBase: 17.8
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

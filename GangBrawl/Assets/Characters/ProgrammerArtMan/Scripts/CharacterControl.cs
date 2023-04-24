@@ -32,7 +32,7 @@ public class CharacterControl : MonoBehaviour
     public float _apexBonus = 3;
     public float minFallSpeed = -300;
     public float JumpAnimationDuration = 0.5f;
-
+    public AudioClip walk;
     public float friction=1;
 
     protected Vector2 vel = new Vector2(0, 0);
@@ -111,7 +111,7 @@ protected SpriteRenderer spriteRenderer;
         transform.position = GameObject.Find("Player-" + playerInput.playerIndex + "-SpawnPoint").transform.position;
         colliderDims=GetComponent<BoxCollider2D>().size;
     }
-
+    float audiocooldown = 0f;
     // Update is called once per frame
     void Update()
     {
@@ -136,11 +136,11 @@ protected SpriteRenderer spriteRenderer;
             {
                 if (ConcurrentAttackCancelTime < -0.5)
                 {
-
                     animationControl.SetBool("HeavyAttacking", true);
                     ConcurrentAttackCancelTime = HeavyAttackCancelTime;
                     HeavyAttackHitbox.SetActive(true);
                     attackBuffer = 0;
+
                 }
                 else
                 {
@@ -233,6 +233,16 @@ protected SpriteRenderer spriteRenderer;
                 vel.y = Mathf.Clamp(vel.y, maxFallSpeed, minFallSpeed);
             }
             animationControl.SetBool("Moving", xin != 0);
+            if(isgrounded&& xin != 0)
+            {
+                if (audiocooldown <= 0)
+                {
+                    AudioManager.instance.Sounds.pitch = 1;
+                    AudioManager.instance.playSoundAtPoint(walk, transform.position);
+                    audiocooldown = 0.3f;
+                }
+                }
+            audiocooldown -= Time.deltaTime;
             //Debug.Log(spriteFlipped);
             // Character is moving right
             if (xin > 0 && !isPlayerAiming(playerInput))

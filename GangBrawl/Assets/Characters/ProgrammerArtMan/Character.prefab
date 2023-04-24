@@ -141,6 +141,7 @@ MonoBehaviour:
   _apexBonus: 312
   minFallSpeed: 20
   JumpAnimationDuration: 0.5
+  walk: {fileID: 8300000, guid: 9082fa66e4d3cef4bbaebb05a3224327, type: 3}
   friction: 1
   playerInput: {fileID: 0}
   tint: {r: 1, g: 0, b: 0, a: 1}
@@ -597,6 +598,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 20
   knockback: 200
+  punchSound: {fileID: 8300000, guid: 020d9797ff2d7124696d6d9850941321, type: 3}
 --- !u!1 &512132734733068967
 GameObject:
   m_ObjectHideFlags: 0
@@ -817,6 +819,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   knockback: 100
+  punchSound: {fileID: 8300000, guid: 020d9797ff2d7124696d6d9850941321, type: 3}
 --- !u!1 &668841378313046338
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ public class AudioManager : MonoBehaviour
     public AudioSource Sounds;
     public AudioSource Dialogue;
     public static AudioManager instance;
-    public Dictionary<string,AudioClip> SoundTrack;
+    public List<AudioClip> SoundTrack;
     void Awake(){
         if(instance!=null){
             Destroy(this.gameObject);
@@ -21,7 +21,8 @@ public class AudioManager : MonoBehaviour
     }
     void Start()
     {
-        music=GetComponent<AudioSource>();
+        DontDestroyOnLoad(this.gameObject);
+        //music=GetComponent<AudioSource>();
     }
     public void playSoundAtPoint(AudioClip audio,Vector3 pos){
         Sounds.transform.position=pos;
@@ -31,7 +32,7 @@ public class AudioManager : MonoBehaviour
       Dialogue.transform.position=pos;
         Dialogue.PlayOneShot(audio);
     }
-    public void changeMusic(string key){
+    public void changeMusic(int key){
         music.clip=SoundTrack[key];
         music.Play();
         music.loop=true;

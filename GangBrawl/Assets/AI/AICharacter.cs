@@ -82,11 +82,13 @@ public class AICharacter : CharacterControl
             if (isgrounded)
             {
                 jump();
+            isgrounded = false;
             }
             else if (doubleJump)
             {
                 jump();
                 doubleJump = false;
+                
             }
             else
             {
