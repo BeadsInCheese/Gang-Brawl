@@ -8448,6 +8448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: 2
+  ambiant: {fileID: 8300000, guid: 4e5335bf1a5a5f24c862cc62e70b5965, type: 3}
 --- !u!1 &1471077909
 GameObject:
   m_ObjectHideFlags: 0
