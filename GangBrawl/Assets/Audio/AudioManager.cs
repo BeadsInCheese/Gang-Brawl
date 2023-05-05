@@ -10,6 +10,7 @@ public class AudioManager : MonoBehaviour
     public AudioSource music;
     public AudioSource Sounds;
     public AudioSource Dialogue;
+    public AudioSource Ambiant;
     public static AudioManager instance;
     public List<AudioClip> SoundTrack;
     void Awake(){
@@ -37,8 +38,18 @@ public class AudioManager : MonoBehaviour
         music.Play();
         music.loop=true;
     }
-    // Update is called once per frame
-    void Update()
+    public void StartAmbiant(AudioClip ambiant)
+    {
+        Ambiant.clip = ambiant;
+        Ambiant.Play();
+        Ambiant.loop = true;
+    }
+    public void StopAmbiant()
+    {
+        Ambiant.Stop();
+    }
+        // Update is called once per frame
+        void Update()
     {
         
     }

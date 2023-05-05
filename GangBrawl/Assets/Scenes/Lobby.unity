@@ -3346,6 +3346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: 0
+  ambiant: {fileID: 0}
 --- !u!1001 &1241585258
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5401,6 +5402,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3552465227631694273, guid: f802f404655b7544f91ebd9539744e64, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8004651483964519833, guid: f802f404655b7544f91ebd9539744e64, type: 3}
       propertyPath: m_RootOrder
       value: 7
