@@ -11,10 +11,12 @@ public class Explosion : MonoBehaviour
     public void Dissipate(){
        Destroy(gameObject);
     }
+    public AudioClip sound;
     void Start(){
         aoe=GetComponent<CircleCollider2D>();
         Invoke("Dissipate",0.5f);
         if(Time.timeScale!=0){
+        AudioManager.instance.playSoundAtPoint(sound,transform.position);
         StartCoroutine(CameraShake.Instance.ScreenShake(0.3f,0.3f));
     }}
     
