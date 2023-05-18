@@ -14,7 +14,9 @@ public class Explosion : MonoBehaviour
     void Start(){
         aoe=GetComponent<CircleCollider2D>();
         Invoke("Dissipate",0.5f);
-    }
+        if(Time.timeScale!=0){
+        StartCoroutine(CameraShake.Instance.ScreenShake(0.3f,0.3f));
+    }}
     
     public void OnTriggerEnter2D(Collider2D col){
         if(col.gameObject.tag.Equals("Player")){
