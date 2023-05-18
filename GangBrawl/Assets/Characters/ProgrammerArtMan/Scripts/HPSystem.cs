@@ -8,6 +8,7 @@ public class HPSystem : MonoBehaviour
     // Start is called before the first frame update
     public int maxHp = 100;
     public int currentHp;
+    public bool SquashAndStretch=true;
     public Health_bar health_Bar;
     public DeathCounter deathcounter;
     public SpriteRenderer spriteRenderer;
@@ -43,6 +44,9 @@ public class HPSystem : MonoBehaviour
             die();
         }
         flash();
+                if(SquashAndStretch){
+            StartCoroutine(GetComponent<SquashAndStretch>().anim());
+        }
     }
 
     [SerializeField]
