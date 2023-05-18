@@ -33,7 +33,7 @@ private void Awake()
     }
     public IEnumerator ScreenShake(float duration, float magnitude)
     {
-        
+
         Vector3 originalPos = position;
         //Quaternion originalRot = transform.rotation;
 
@@ -41,6 +41,11 @@ private void Awake()
 
         while (elapsed < duration)
         {
+                    if(Time.timeScale==0){
+                        transform.position = originalPos;
+                        transform.rotation = originalRot;
+                        yield break;
+                    }
             // Generate a random offset
             float x = Random.Range(-1f, 1f) * magnitude;
             float y = Random.Range(-1f, 1f) * magnitude;
