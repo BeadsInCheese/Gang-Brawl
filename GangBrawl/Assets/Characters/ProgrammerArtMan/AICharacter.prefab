@@ -207,7 +207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   physicsBody: {fileID: 0}
-  speed: 6
+  speed: 12
   maxMovementSpeed: 20
   jumpHeight: 400
   maxJumpHeight: 800
