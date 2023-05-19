@@ -1757,6 +1757,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: 0
+  ambiant: {fileID: 0}
 --- !u!1 &970721988
 GameObject:
   m_ObjectHideFlags: 0
