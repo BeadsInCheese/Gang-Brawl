@@ -266,6 +266,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 100
   currentHp: 100
+  SquashAndStretch: 1
   health_Bar: {fileID: 6013716671772605161}
   deathcounter: {fileID: 7748358103384006885}
   spriteRenderer: {fileID: 512132734166966821}
@@ -282,6 +283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 128823ecd0db85116bde212ce2f859d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sound: {fileID: 8300000, guid: 2ba0cdde9a2c824f5a409f74cc48f336, type: 3}
 --- !u!114 &7207197898894411218
 MonoBehaviour:
   m_ObjectHideFlags: 0

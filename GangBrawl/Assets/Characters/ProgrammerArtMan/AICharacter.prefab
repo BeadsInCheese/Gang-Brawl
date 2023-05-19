@@ -224,7 +224,7 @@ MonoBehaviour:
   _apexBonus: 312
   minFallSpeed: 20
   JumpAnimationDuration: 0.5
-  punchSound: {fileID: 0}
+  walk: {fileID: 0}
   friction: 1
   playerInput: {fileID: 0}
   tint: {r: 1, g: 0, b: 0, a: 1}
@@ -310,6 +310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 128823ecd0db85116bde212ce2f859d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sound: {fileID: 8300000, guid: 2ba0cdde9a2c824f5a409f74cc48f336, type: 3}
 --- !u!114 &828428759685739343
 MonoBehaviour:
   m_ObjectHideFlags: 0
