@@ -165,6 +165,7 @@ GameObject:
   - component: {fileID: 512132733879327775}
   - component: {fileID: 828428759685739343}
   - component: {fileID: 2593931084568813328}
+  - component: {fileID: 1432822129281619866}
   m_Layer: 8
   m_Name: AICharacter
   m_TagString: Player
@@ -206,7 +207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   physicsBody: {fileID: 0}
-  speed: 6
+  speed: 12
   maxMovementSpeed: 20
   jumpHeight: 400
   maxJumpHeight: 800
@@ -223,7 +224,7 @@ MonoBehaviour:
   _apexBonus: 312
   minFallSpeed: 20
   JumpAnimationDuration: 0.5
-  punchSound: {fileID: 0}
+  walk: {fileID: 0}
   friction: 1
   playerInput: {fileID: 0}
   tint: {r: 1, g: 0, b: 0, a: 1}
@@ -292,6 +293,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 100
   currentHp: 100
+  SquashAndStretch: 1
   health_Bar: {fileID: 6013716671772605161}
   deathcounter: {fileID: 7748358103384006885}
   spriteRenderer: {fileID: 512132734166966821}
@@ -308,6 +310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 128823ecd0db85116bde212ce2f859d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sound: {fileID: 8300000, guid: 2ba0cdde9a2c824f5a409f74cc48f336, type: 3}
 --- !u!114 &828428759685739343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -334,6 +337,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goDown: 0
+--- !u!114 &1432822129281619866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512132733879327840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7966284e998e41a0eb85a6a6ea8fc539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &512132734166966826
 GameObject:
   m_ObjectHideFlags: 0
