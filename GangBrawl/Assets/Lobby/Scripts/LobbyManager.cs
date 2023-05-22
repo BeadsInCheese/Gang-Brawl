@@ -46,20 +46,20 @@ public class LobbyManager : MonoBehaviour
     {
         if (!player1.tag.Equals("Player"))
         {
-            SetCPUReadyOnUI(player1, 0);
+            SetCPUReadyOnUI(player1, playersInGame);
 
         }
         else if (!player2.tag.Equals("Player"))
         {
-            SetCPUReadyOnUI(player2, 1);
+            SetCPUReadyOnUI(player2, playersInGame + CPUCount);
         }
         else if (!player3.tag.Equals("Player"))
         {
-            SetCPUReadyOnUI(player3, 2);
+            SetCPUReadyOnUI(player3, playersInGame + CPUCount);
         }
         else if (!player4.tag.Equals("Player"))
         {
-            SetCPUReadyOnUI(player4, 3);
+            SetCPUReadyOnUI(player4, playersInGame + CPUCount);
         }
         else
         {
@@ -96,7 +96,7 @@ public class LobbyManager : MonoBehaviour
         {
             if (!i.gameObject.tag.Equals("Player"))
             {
-                SetPlayerReadyOnUI(playerInput, i.gameObject, playersInGame - 1);
+                SetPlayerReadyOnUI(playerInput, i.gameObject, (playersInGame + CPUCount) - 1);
                 ob = i.Find("Hat").gameObject;
                 playerID = i.gameObject.name;
                 break;
