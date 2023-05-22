@@ -129,6 +129,7 @@ public class DirectorBehaviour : MonoBehaviour
     }
     void Start()
     {
+        Physics2D.gravity = new Vector2(0, -9.8f);
         Instantiate(gameStartCountDown);
         countdownText.text="";
         gameOverText.text="";
