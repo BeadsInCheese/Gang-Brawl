@@ -44,22 +44,25 @@ public class LobbyManager : MonoBehaviour
     public static LobbyManager instance;
     public void AddAI()
     {
+        Color tintColor = PlayerColors.Colors[playersInGame + CPUCount];
         if (!player1.tag.Equals("Player"))
         {
-            SetCPUReadyOnUI(player1, playersInGame);
+            SetCPUReadyOnUI(player1, tintColor);
+            // Og did not use the CPU count, check if works
+            //SetCPUReadyOnUI(player1, playersInGame);
 
         }
         else if (!player2.tag.Equals("Player"))
         {
-            SetCPUReadyOnUI(player2, playersInGame + CPUCount);
+            SetCPUReadyOnUI(player2, tintColor);
         }
         else if (!player3.tag.Equals("Player"))
         {
-            SetCPUReadyOnUI(player3, playersInGame + CPUCount);
+            SetCPUReadyOnUI(player3, tintColor);
         }
         else if (!player4.tag.Equals("Player"))
         {
-            SetCPUReadyOnUI(player4, playersInGame + CPUCount);
+            SetCPUReadyOnUI(player4, tintColor);
         }
         else
         {
@@ -75,13 +78,13 @@ public class LobbyManager : MonoBehaviour
     /// Enables correct UI components to display that the "player" joined in the game is CPU.
     /// </summary>
     /// <param name="cpu">This is actually the player object, just different images are set visible when it is CPU</param>
-    private void SetCPUReadyOnUI(GameObject cpu, int playerIndex)
+    private void SetCPUReadyOnUI(GameObject cpu, Color tintColor)
     {
         cpu.tag = "Player";
         cpu.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "Ready";
         cpu.transform.Find("ImageCPUJoined").gameObject.SetActive(true);
         cpu.transform.Find("CPUImg").gameObject.SetActive(true);
-        setTintColor(cpu, playerIndex);
+        setTintColor(cpu, tintColor);
     }
 
     public void OnPlayerJoined(PlayerInput playerInput)
@@ -92,11 +95,13 @@ public class LobbyManager : MonoBehaviour
         playersInGame += 1;
         string playerID = "";
         GameObject ob = null;
+        int playerIndex = (playersInGame + CPUCount) - 1;
+        Color tintColor = PlayerColors.Colors[playerIndex];
         foreach (Transform i in player1.transform.parent)
         {
             if (!i.gameObject.tag.Equals("Player"))
             {
-                SetPlayerReadyOnUI(playerInput, i.gameObject, (playersInGame + CPUCount) - 1);
+                SetPlayerReadyOnUI(playerInput, i.gameObject, tintColor);
                 ob = i.Find("Hat").gameObject;
                 playerID = i.gameObject.name;
                 break;
@@ -135,7 +140,7 @@ public class LobbyManager : MonoBehaviour
 
     }
 
-    private void SetPlayerReadyOnUI(PlayerInput playerInput, GameObject player, int playersInGame)
+    private void SetPlayerReadyOnUI(PlayerInput playerInput, GameObject player, Color tintColor)
     {
         playerInput.transform.gameObject.GetComponent<lobbyPlayer>().LobbyObject = player;
         player.tag = "Player";
@@ -152,16 +157,16 @@ public class LobbyManager : MonoBehaviour
         }
 
         player.transform.Find("ImagePlayerJoined").gameObject.SetActive(true);
-        setTintColor(player, playersInGame);
+        setTintColor(player, tintColor);
 
     }
 
-    void setTintColor(GameObject player, int playerIndex)
+    void setTintColor(GameObject player, Color tintColor)
     {
         player.transform.Find("TintColor").gameObject.SetActive(true);
         Image img = player.transform.Find("TintColor").gameObject.GetComponent<Image>();
-        Color tempCol = PlayerColors.Colors[playerIndex];
-        img.color = new Color(tempCol.r, tempCol.g, tempCol.b, 0.32f);
+        //Color tempCol = PlayerColors.Colors[playerIndex];
+        img.color = new Color(tintColor.r, tintColor.g, tintColor.b, 0.32f);
     }
 
     void Awake()
