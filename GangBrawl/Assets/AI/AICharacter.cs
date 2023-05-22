@@ -119,14 +119,67 @@ public class AICharacter : CharacterControl
     }
 
     // Update is called once per frame
+    int TargetFrame = 0;
+    public float ManhattanDistance(Vector2 a, Vector2 b)
+    {
+        checked
+        {
+            return Mathf.Abs(a.x - b.x) + Mathf.Abs(a.y - b.y);
+        }
+    }
     private void updateTarget(){
+        bool targetChanged = false;
+        bool itemFound=false;
+        /*
+        TargetFrame += 1;
+        if (TargetFrame > 3) {
+            TargetFrame = 0;
+            return;
+        }*/
 
-        foreach(var i in DirectorBehaviour.PlayersAlive.Keys){
-            if(!i.Equals(this.gameObject.name)&&DirectorBehaviour.PlayersAlive[i]>0){
-                target=GameObject.Find(i).transform.position;
-                break;
+        if (aIShoot.gun == null && DirectorBehaviour.items.Count>0)
+        {
+            foreach (GameObject i in DirectorBehaviour.items)
+            {
+                if (!targetChanged)
+                {
+                    target = i.transform.position;
+                    targetChanged = true;
+                }
+
+                if (ManhattanDistance(target, transform.position) > ManhattanDistance(i.transform.position, transform.position))
+                {
+                    itemFound = true;
+                    targetChanged = true;
+                    target = i.transform.position;
+                }
             }
         }
+
+        if (!itemFound)
+        {
+            foreach (var i in DirectorBehaviour.PlayersAlive.Keys)
+            {
+                if (!i.Equals(this.gameObject.name) && DirectorBehaviour.PlayersAlive[i] > 0)
+                {
+                    if (!targetChanged)
+                    {
+                        target = GameObject.Find(i).transform.position;
+                        targetChanged = true;
+                    }
+                    else
+                    {
+                        var temp = (Vector2)GameObject.Find(i).transform.position;
+                        if (ManhattanDistance(target, transform.position) > ManhattanDistance(temp, transform.position))
+                        {
+                            target = temp;
+                        }
+
+                    }
+                }
+            }
+        }
+        
         
     }
     float targetUpdateCooldown=2;

@@ -160,6 +160,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3773014929676666327}
   - component: {fileID: 2310398738419848786}
+  - component: {fileID: 3482248715650371875}
   m_Layer: 0
   m_Name: WeaponGrate SlowDrop
   m_TagString: Untagged
@@ -195,3 +196,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f18c43e932b73af3aa326fdebfaa61b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3482248715650371875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8336248614094019405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 128823ecd0db85116bde212ce2f859d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 0}
