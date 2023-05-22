@@ -135,7 +135,7 @@ public class LobbyManager : MonoBehaviour
         {
             playerData.Clear();
         }
-        playerData.Add(playerID, new PlayerData("", -1, playerInput.currentControlScheme, d));
+        playerData.Add(playerID, new PlayerData("", -1, playerInput.currentControlScheme, d, tintColor));
         ob.SetActive(true);
 
     }
