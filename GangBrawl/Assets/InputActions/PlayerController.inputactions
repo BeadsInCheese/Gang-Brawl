@@ -205,10 +205,10 @@
                 {
                     "name": "",
                     "id": "628bfbef-3792-4c60-bfd7-7103554478ac",
-                    "path": "<Mouse>/position",
+                    "path": "<Gamepad>/rightStick",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Gamepad",
                     "action": "Aim",
                     "isComposite": false,
                     "isPartOfComposite": false

@@ -129,7 +129,8 @@ public class Shoot : MonoBehaviour
             gunSound.Play();
             for (int i = 0; i < bulletsShotAtOnce; i++)
             {
-                float fAngle = isPlayerAiming(playerInput) ? (float)angle : getShootingDirection(charControl);
+                float fAngle = (isPlayerAiming(playerInput)||keyboard) ? (float)angle : getShootingDirection(charControl);
+                
                 Quaternion rotation = Quaternion.Euler(0, 0, fAngle + UnityEngine.Random.Range(-spread, spread));
                 shootingPoint.position = barrel.position;
                 if (muzzleflash != null)
@@ -153,7 +154,7 @@ public class Shoot : MonoBehaviour
 
     protected bool isAbleToShoot()
     {
-        return transform.position.y<99&& canShoot && !PauseMenu.isPaused;
+        return transform.position.y<99 && canShoot && !PauseMenu.isPaused;
     }
 
     protected void setCanShoot(bool val)
