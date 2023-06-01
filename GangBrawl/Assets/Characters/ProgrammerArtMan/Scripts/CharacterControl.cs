@@ -113,8 +113,12 @@ protected SpriteRenderer spriteRenderer;
     }
     float audiocooldown = 0f;
     // Update is called once per frame
+    public bool InputDisabled = false;
     void Update()
     {
+        if (InputDisabled) {
+            physicsBody.velocity = Vector2.zero;
+            return; }
         if (!PauseMenu.isPaused)
         {
             //Attack Control
@@ -132,7 +136,7 @@ protected SpriteRenderer spriteRenderer;
                 ConcurrentAttackCancelTime -= Time.deltaTime;
             }
 
-            if (playerInput.actions["HeavyAttack"].triggered || attackBuffer == 1)
+            if (!InputDisabled&&(playerInput.actions["HeavyAttack"].triggered || attackBuffer == 1))
             {
                 if (ConcurrentAttackCancelTime < -0.5)
                 {
@@ -147,7 +151,7 @@ protected SpriteRenderer spriteRenderer;
                     attackBuffer = 1;
                 }
             }
-            if (playerInput.actions["LightAttack"].triggered || attackBuffer == 2)
+            if (!InputDisabled && (playerInput.actions["LightAttack"].triggered || attackBuffer == 2))
             {
                 if (ConcurrentAttackCancelTime < -0.5)
                 {
@@ -164,7 +168,7 @@ protected SpriteRenderer spriteRenderer;
             }
 
 
-            if (playerInput.actions["Jump"].triggered)
+            if (!InputDisabled && playerInput.actions["Jump"].triggered)
             {
                 jumpButtonDown = true;
                 if (isgrounded)
@@ -186,7 +190,7 @@ protected SpriteRenderer spriteRenderer;
                 }
             }
 
-            if (playerInput.actions["Jump"].WasReleasedThisFrame())
+            if (!InputDisabled && playerInput.actions["Jump"].WasReleasedThisFrame())
             {
                 if (physicsBody.velocity.y > 0)
                 {

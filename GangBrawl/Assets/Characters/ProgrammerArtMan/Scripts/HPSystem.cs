@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class HPSystem : MonoBehaviour
 {
@@ -12,15 +13,25 @@ public class HPSystem : MonoBehaviour
     public Health_bar health_Bar;
     public DeathCounter deathcounter;
     public SpriteRenderer spriteRenderer;
+    public UnityEvent<float> damageTaken;
     Rigidbody2D rb;
+    public bool dead = false;
     public virtual void die()
     {
         StartCoroutine(BecomeTemporarilyInvincible());
         HealToFull();
+        dead = false;
         deathcounter.deathCount = deathcounter.deathCount + 1;
         this.transform.position = new Vector2(0, 5);
         rb.velocity = new Vector2(0, 0);
 
+    }
+    public void Update()
+    {
+        if (dead)
+        {
+            this.gameObject.transform.position = new Vector2(0, 100);
+        }
     }
     IEnumerator Flash_Cor()
     {
@@ -36,12 +47,14 @@ public class HPSystem : MonoBehaviour
     public virtual void takeDamage(int amount)
     {
         if (isInvincible) return;
+        damageTaken.Invoke(amount);
         currentHp -= amount;
         health_Bar.SetHealth(currentHp);
 
         if (currentHp <= 0)
         {
-            die();
+            dead = true;
+            Invoke("die",3);
         }
         flash();
                 if(SquashAndStretch){

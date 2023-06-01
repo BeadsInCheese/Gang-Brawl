@@ -185,24 +185,26 @@ public class AICharacter : CharacterControl
     float targetUpdateCooldown=2;
     void Update()
     {
-    updateTarget();
-    
-    targetUpdateCooldown-=Time.deltaTime;
-     AI.Process();
-        if (ConcurrentAttackCancelTime <= 0)
-        {
-            animationControl.SetBool("Attacking", false);
-            animationControl.SetBool("HeavyAttacking", false);
-            HeavyAttackHitbox.SetActive(false);
-            LightAttackHitbox.SetActive(false);
-            ConcurrentAttackCancelTime = -1;
-        }
-        else
-        {
-            ConcurrentAttackCancelTime -= Time.deltaTime;
-        }
+        if (InputDisabled) { return; }
+        
+            updateTarget();
 
+            targetUpdateCooldown -= Time.deltaTime;
+            AI.Process();
+            if (ConcurrentAttackCancelTime <= 0)
+            {
+                animationControl.SetBool("Attacking", false);
+                animationControl.SetBool("HeavyAttacking", false);
+                HeavyAttackHitbox.SetActive(false);
+                LightAttackHitbox.SetActive(false);
+                ConcurrentAttackCancelTime = -1;
+            }
+            else
+            {
+                ConcurrentAttackCancelTime -= Time.deltaTime;
+            }
 
+        
 
         
 

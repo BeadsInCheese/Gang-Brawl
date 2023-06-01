@@ -202,6 +202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 128823ecd0db85116bde212ce2f859d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sound: {fileID: 0}
 --- !u!50 &168963797
 Rigidbody2D:
   serializedVersion: 4
@@ -320,9 +321,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 1
   currentHp: 1
+  SquashAndStretch: 1
   health_Bar: {fileID: 0}
   deathcounter: {fileID: 0}
   spriteRenderer: {fileID: 168963800}
+  damageTaken:
+    m_PersistentCalls:
+      m_Calls: []
+  dead: 0
   invincibilityDurationSeconds: 0
   explosion: {fileID: 1321848076755306698, guid: add91e78018b76b478ad79004695b3c8, type: 3}
 --- !u!114 &168963803
@@ -1332,6 +1338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: 1
+  ambiant: {fileID: 0}
 --- !u!1 &556345666
 GameObject:
   m_ObjectHideFlags: 0
@@ -5222,9 +5229,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 60
   currentHp: 60
+  SquashAndStretch: 1
   health_Bar: {fileID: 0}
   deathcounter: {fileID: 0}
   spriteRenderer: {fileID: 852995244}
+  damageTaken:
+    m_PersistentCalls:
+      m_Calls: []
+  dead: 0
   invincibilityDurationSeconds: 0
   Electricity: {fileID: 6170624717899521065, guid: 719d656fbeaa5845ba08dddc25072460, type: 3}
   fogRenderer: {fileID: 556345667}
@@ -6779,6 +6791,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intensityTreshold: 10
+  items2: []
   debugMode: 0
   gameOverText: {fileID: 1680856006}
   countdownText: {fileID: 1807889560}
@@ -7753,6 +7766,7 @@ MonoBehaviour:
   - {r: 0.5424528, g: 0.7941763, b: 1, a: 0}
   - {r: 1, g: 0.6745283, b: 0.6745283, a: 0}
   - {r: 0.5613208, g: 1, b: 0.62574357, a: 0}
+  usedColors: []
 --- !u!1 &1680856004
 GameObject:
   m_ObjectHideFlags: 0
