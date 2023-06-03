@@ -89,6 +89,9 @@ public class LobbyManager : MonoBehaviour
 
     public void OnPlayerJoined(PlayerInput playerInput)
     {
+        // This if statement fixes a bug where joining with keyboard after the lobby is full causes null pointer.
+        if(playersInGame + CPUCount < 4){return;}
+
         InputDevice[] d;
         d = playerInput.devices.ToArray();
 
