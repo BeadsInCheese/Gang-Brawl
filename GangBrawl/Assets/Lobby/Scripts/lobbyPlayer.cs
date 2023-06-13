@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 public class lobbyPlayer : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class lobbyPlayer : MonoBehaviour
     public GameObject selectedPlayerPrefab;
     private bool ready = false;
     TMPro.TextMeshProUGUI tex;
-
+    List<Button> buttons;
     public ControllerType controllerType;
 
     private void removeJoinText()
@@ -26,7 +27,9 @@ public class lobbyPlayer : MonoBehaviour
     }
     void Start()
     {
-        if(LobbyObject == null){
+        buttons = new List<Button>(FindObjectsOfType<Button>());
+        EventSystem.current.SetSelectedGameObject(buttons[0].gameObject);
+        if (LobbyObject == null){
             Destroy(this.gameObject);
             return;
         }
@@ -81,6 +84,8 @@ public class lobbyPlayer : MonoBehaviour
                 tex.text = "Ready";
             }
         }
+        //Cursor logic
+        /*
         Vector2 bounds = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
 
         transform.position = new Vector3(Mathf.Clamp(transform.position.x + dir.x * speed * Time.deltaTime, -bounds.x, bounds.x), Mathf.Clamp(transform.position.y + dir.y * speed * Time.deltaTime, -bounds.y, bounds.y), transform.position.z);
@@ -102,7 +107,7 @@ public class lobbyPlayer : MonoBehaviour
                     //Debug.Log("Button Hover");
                 }
             }
-        }
+        }*/
 
     }
 }
