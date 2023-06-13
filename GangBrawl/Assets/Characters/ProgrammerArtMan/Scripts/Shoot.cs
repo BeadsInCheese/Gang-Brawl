@@ -69,6 +69,9 @@ public class Shoot : MonoBehaviour
         //Debug.Log(playerInput.currentControlScheme);
         if (keyboard)
         {
+            if(playerInput.actions["Shoot"].triggered && gun == null){
+                charControl.shootLightattackOverride = true;
+            }
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosition = -(body.transform.position - mousePosition).normalized;
             x = mousePosition.x;

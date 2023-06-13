@@ -114,6 +114,7 @@ protected SpriteRenderer spriteRenderer;
     float audiocooldown = 0f;
     // Update is called once per frame
     public bool InputDisabled = false;
+   public bool shootLightattackOverride = false;
     void Update()
     {
         if (InputDisabled) {
@@ -151,8 +152,9 @@ protected SpriteRenderer spriteRenderer;
                     attackBuffer = 1;
                 }
             }
-            if (!InputDisabled && (playerInput.actions["LightAttack"].triggered || attackBuffer == 2))
+            if (!InputDisabled && (playerInput.actions["LightAttack"].triggered || shootLightattackOverride || attackBuffer == 2))
             {
+                shootLightattackOverride = false;
                 if (ConcurrentAttackCancelTime < -0.5)
                 {
 
