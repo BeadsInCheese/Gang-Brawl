@@ -6,6 +6,8 @@ using TMPro;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem.UI;
+
 public class lobbyPlayer : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -27,8 +29,9 @@ public class lobbyPlayer : MonoBehaviour
     }
     void Start()
     {
-        buttons = new List<Button>(FindObjectsOfType<Button>());
-        EventSystem.current.SetSelectedGameObject(buttons[0].gameObject);
+        //buttons = new List<Button>(FindObjectsOfType<Button>());
+        //EventSystem.current.SetSelectedGameObject(buttons[0].gameObject);
+        
         if (LobbyObject == null){
             Destroy(this.gameObject);
             return;
@@ -38,6 +41,8 @@ public class lobbyPlayer : MonoBehaviour
         Invoke("removeJoinText", 0.1f);
         TMPro.TextMeshProUGUI[] a = this.LobbyObject.GetComponentsInChildren<TMPro.TextMeshProUGUI>();
         input = GetComponent<PlayerInput>();
+        input.uiInputModule = LobbyObject.GetComponent<InputSystemUIInputModule>();
+        Debug.Log("input"+ input.uiInputModule.tag);
     }
 
     // Update is called once per frame
