@@ -147,6 +147,7 @@ public class LobbyManager : MonoBehaviour
     {
         playerInput.transform.gameObject.GetComponent<lobbyPlayer>().LobbyObject = player;
         player.tag = "Player";
+        player.transform.Find("sign1").gameObject.SetActive(true);
         if (PlayerData.recogniseControllerType(playerInput.currentControlScheme) == ControllerType.Gamepad)
         {
             player.transform.Find("ReadyPrompt").gameObject.SetActive(true);

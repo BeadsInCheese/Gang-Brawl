@@ -13,6 +13,7 @@ public class lobbyPlayer : MonoBehaviour
     // Start is called before the first frame update
     Image characterImage;
     public GameObject LobbyObject;
+    Animator Ready;
     PlayerInput input;
     public GameObject selectedPlayerPrefab;
     private bool ready = false;
@@ -31,7 +32,7 @@ public class lobbyPlayer : MonoBehaviour
     {
         //buttons = new List<Button>(FindObjectsOfType<Button>());
         //EventSystem.current.SetSelectedGameObject(buttons[0].gameObject);
-        
+        Ready=LobbyObject.transform.Find("sign1").gameObject.GetComponent<Animator>();
         if (LobbyObject == null){
             Destroy(this.gameObject);
             return;
@@ -68,12 +69,14 @@ public class lobbyPlayer : MonoBehaviour
             if (ready)
             {
                 ready = false;
+                Ready.SetBool("Ready",false);
                 Debug.Log(LobbyManager.instance);
                 LobbyManager.instance.playerPressedUnready();
             }
             else
             {
                 ready = true;
+                Ready.SetBool("Ready",true);
                 LobbyManager.instance.playerPressedReady();
             }
         }
