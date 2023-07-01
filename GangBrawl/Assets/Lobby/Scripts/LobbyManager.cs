@@ -44,6 +44,7 @@ public class LobbyManager : MonoBehaviour
     public static LobbyManager instance;
     public void AddAI()
     {
+        if (playersInGame + CPUCount >= 4) { return; }
         Color tintColor = PlayerColors.Colors[playersInGame + CPUCount];
         if (!player1.tag.Equals("Player"))
         {
