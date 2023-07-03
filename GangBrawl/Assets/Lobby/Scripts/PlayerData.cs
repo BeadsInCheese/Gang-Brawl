@@ -7,6 +7,9 @@ public class PlayerData
     public int playerIndex;
     public string controlScheme;
     public Sprite hat;
+    public Sprite Body;
+    public Sprite Hands;
+    public Sprite Legs;
     public InputDevice[] pairWithDevices;
 
     public Color tintColor;

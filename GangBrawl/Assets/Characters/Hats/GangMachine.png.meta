@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 48976900505325946ae100b81e703eda
+guid: 81668937b26bc634db86e343751ae227
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -42,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -103,112 +103,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: GoblinMan_0
-      rect:
-        serializedVersion: 2
-        x: 93
-        y: 702
-        width: 225
-        height: 207
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 804231fccbcdab447bbdd35958e3c0fc
-      internalID: -851620910
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GoblinMan_1
-      rect:
-        serializedVersion: 2
-        x: 276
-        y: 415
-        width: 477
-        height: 356
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e8b443bdd83c42f42b8c454fa5221641
-      internalID: 728073779
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GoblinMan_2
-      rect:
-        serializedVersion: 2
-        x: 831
-        y: 590
-        width: 137
-        height: 133
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a82e8a43bebc6ab41a6c715bf10cb92b
-      internalID: -625479557
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GoblinMan_3
-      rect:
-        serializedVersion: 2
-        x: 194
-        y: 254
-        width: 205
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fb78f27c02c26464894a4326a150dac7
-      internalID: 508445625
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GoblinMan_4
-      rect:
-        serializedVersion: 2
-        x: 452
-        y: 248
-        width: 205
-        height: 84
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4c963a10722fad64497221f498f1616a
-      internalID: -1398642354
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -219,12 +114,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      GoblinMan_3: 508445625
-      GoblinMan_1: 728073779
-      GoblinMan_0: -851620910
-      GoblinMan_4: -1398642354
-      GoblinMan_2: -625479557
+    nameFileIdTable: {}
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -99,6 +99,10 @@ public class LobbyManager : MonoBehaviour
         playersInGame += 1;
         string playerID = "";
         GameObject ob = null;
+
+        GameObject body = null;
+        GameObject hands = null;
+        GameObject legs = null;
         int playerIndex = (playersInGame + CPUCount) - 1;
         Color tintColor = PlayerColors.Colors[playerIndex];
         foreach (Transform i in player1.transform.parent)
@@ -107,6 +111,9 @@ public class LobbyManager : MonoBehaviour
             {
                 SetPlayerReadyOnUI(playerInput, i.gameObject, tintColor);
                 ob = i.Find("Hat").gameObject;
+                body = i.Find("Body").gameObject;
+                hands = i.Find("Hands").gameObject;
+                legs = i.Find("Legs").gameObject;
                 playerID = i.gameObject.name;
                 break;
             }
@@ -141,6 +148,9 @@ public class LobbyManager : MonoBehaviour
         }
         playerData.Add(playerID, new PlayerData("", -1, playerInput.currentControlScheme, d, tintColor));
         ob.SetActive(true);
+        body.SetActive(true);
+        hands.SetActive(true);
+        legs.SetActive(true);
 
     }
 

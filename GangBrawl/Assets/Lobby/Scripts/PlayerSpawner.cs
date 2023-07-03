@@ -10,6 +10,7 @@ public class PlayerSpawner : MonoBehaviour
     PlayerInputManager playerInputManager;
     public List<Color> PlayerColorTints = new List<Color>();
     public List<Color> usedColors = new List<Color>();
+
     public void spawnPlayers()
     {
         int playerNo = 0;
@@ -20,9 +21,19 @@ public class PlayerSpawner : MonoBehaviour
             player.gameObject.GetComponent<CharacterControl>().tint = i.tintColor;
             usedColors.Add(i.tintColor);
             var hob = player.gameObject.transform.Find("FactionDownscaled/bone_1/bone_2/Hat");
+            var bodyOB = player.gameObject.transform.Find("FactionDownscaled/bone_1/Body");
+            var HandOB1 = player.gameObject.transform.Find("FactionDownscaled/bone_1/bone_2/bone_3/HandShoot");
+            var HandOB2 = player.gameObject.transform.Find("FactionDownscaled/bone_1/bone_2/bone_4/HandPunch");
+            var LegOB = player.gameObject.transform.Find("FactionDownscaled/bone_5/Leg1");
+            var LegOB2 = player.gameObject.transform.Find("FactionDownscaled/bone_6/Leg2");
             Debug.Log(hob);
             Debug.Log(i.hat);
             hob.gameObject.GetComponent<SpriteRenderer>().sprite = i.hat;
+            bodyOB.gameObject.GetComponent<SpriteRenderer>().sprite = i.Body;
+            HandOB1.gameObject.GetComponent<SpriteRenderer>().sprite = i.Hands;
+            HandOB2.gameObject.GetComponent<SpriteRenderer>().sprite = i.Hands;
+            LegOB2.gameObject.GetComponent<SpriteRenderer>().sprite = i.Legs;
+            LegOB.gameObject.GetComponent<SpriteRenderer>().sprite = i.Legs;
             playerNo = playerNo + 1;
 
         }
