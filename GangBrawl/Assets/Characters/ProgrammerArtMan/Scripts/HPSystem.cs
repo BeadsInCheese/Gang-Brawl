@@ -13,6 +13,7 @@ public class HPSystem : MonoBehaviour
     public Health_bar health_Bar;
     public DeathCounter deathcounter;
     public SpriteRenderer spriteRenderer;
+    public List<SpriteRenderer> LimbSpriteRenderers;
     public UnityEvent<float> damageTaken;
     Rigidbody2D rb;
     public bool dead = false;
@@ -36,8 +37,16 @@ public class HPSystem : MonoBehaviour
     IEnumerator Flash_Cor()
     {
         spriteRenderer.material.SetInt("_Hit", 1);
+        foreach (SpriteRenderer sr in LimbSpriteRenderers)
+        {
+            sr.material.SetInt("_Hit", 1);
+        }
         yield return new WaitForSeconds(0.1f);
         spriteRenderer.material.SetInt("_Hit", 0);
+        foreach (SpriteRenderer sr in LimbSpriteRenderers)
+        {
+            sr.material.SetInt("_Hit", 0);
+        }
     }
     public void flash()
     {
