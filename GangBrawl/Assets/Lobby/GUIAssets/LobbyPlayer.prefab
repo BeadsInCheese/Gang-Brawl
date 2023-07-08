@@ -2418,6 +2418,7 @@ MonoBehaviour:
   - {fileID: 728073779, guid: 48976900505325946ae100b81e703eda, type: 3}
   - {fileID: 2101611781, guid: b2992528bb9123545864da562e30c3a2, type: 3}
   - {fileID: -1261558217, guid: 0b5b843e08d7be245ba825d049437439, type: 3}
+  - {fileID: -1551067914, guid: 88c1b48a6c1d7484b852fa108e48df05, type: 3}
   Hands:
   - {fileID: -1729384233, guid: b2992528bb9123545864da562e30c3a2, type: 3}
   - {fileID: -625479557, guid: 48976900505325946ae100b81e703eda, type: 3}
