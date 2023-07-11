@@ -2419,17 +2419,20 @@ MonoBehaviour:
   - {fileID: 2101611781, guid: b2992528bb9123545864da562e30c3a2, type: 3}
   - {fileID: -1261558217, guid: 0b5b843e08d7be245ba825d049437439, type: 3}
   - {fileID: -1551067914, guid: 88c1b48a6c1d7484b852fa108e48df05, type: 3}
+  - {fileID: 501848637, guid: 5f176c2083eaed5499e051931eb32a64, type: 3}
   Hands:
   - {fileID: -1729384233, guid: b2992528bb9123545864da562e30c3a2, type: 3}
   - {fileID: -625479557, guid: 48976900505325946ae100b81e703eda, type: 3}
   - {fileID: -1910707923, guid: 256ee7febd74c327ea921016ce07b066, type: 3}
   - {fileID: -851620910, guid: 48976900505325946ae100b81e703eda, type: 3}
   - {fileID: -203784977, guid: 0b5b843e08d7be245ba825d049437439, type: 3}
+  - {fileID: -6351506, guid: 5f176c2083eaed5499e051931eb32a64, type: 3}
   Legs:
   - {fileID: -2065522513, guid: 256ee7febd74c327ea921016ce07b066, type: 3}
   - {fileID: 508445625, guid: 48976900505325946ae100b81e703eda, type: 3}
   - {fileID: -2126112364, guid: b2992528bb9123545864da562e30c3a2, type: 3}
   - {fileID: -823505315, guid: 0b5b843e08d7be245ba825d049437439, type: 3}
+  - {fileID: 632124875, guid: 5f176c2083eaed5499e051931eb32a64, type: 3}
   HatIndex: 0
   BodyIndex: 0
   HandIndex: 0
