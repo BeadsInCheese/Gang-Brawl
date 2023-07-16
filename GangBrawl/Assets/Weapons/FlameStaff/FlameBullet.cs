@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FlameBullet : Bullet
 {
+    public float lifetime = 0.5f;
     void OnTriggerEnter2D(Collider2D collision)
     {
         if(owner!=collision.gameObject.name){
@@ -31,7 +32,7 @@ public class FlameBullet : Bullet
         
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = transform.right * speed;
-        Destroy(gameObject,0.5f);
+        Destroy(gameObject,lifetime);
     }
 
     // Update is called once per frame
