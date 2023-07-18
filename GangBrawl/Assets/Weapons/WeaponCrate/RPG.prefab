@@ -131,6 +131,7 @@ MonoBehaviour:
   - {fileID: 987653528329830354, guid: 88cab232b6ac18614876e86265ce5abf, type: 3}
   - {fileID: 6474387362996466111, guid: b11f7245c71b3d9458316a1b89a2a2c9, type: 3}
   - {fileID: 987653528329830354, guid: ab029474543ddb046845b0389107bb6d, type: 3}
+  - {fileID: 987653528329830354, guid: 20287201ec734eb41ac01e1901cf4701, type: 3}
 --- !u!50 &1520117572268941776
 Rigidbody2D:
   serializedVersion: 4
@@ -163,7 +164,7 @@ GameObject:
   - component: {fileID: 3773014929676666327}
   - component: {fileID: 2310398738419848786}
   m_Layer: 0
-  m_Name: WeaponGrate
+  m_Name: RPG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
