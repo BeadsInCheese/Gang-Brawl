@@ -6,13 +6,15 @@ using UnityEngine.InputSystem.UI;
 public class Player1NavigationManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    InputSystemUIInputModule top;
-    InputSystemUIInputModule bottom;
+    public Texture2D cursorTexture;
     void Start()
     {
-        
+        Cursor.SetCursor(cursorTexture,new Vector2(0,0),CursorMode.ForceSoftware);
     }
-
+    private void OnDestroy()
+    {
+        Cursor.SetCursor(null, new Vector2(0, 0), CursorMode.ForceSoftware);
+    }
     // Update is called once per frame
     void Update()
     {
