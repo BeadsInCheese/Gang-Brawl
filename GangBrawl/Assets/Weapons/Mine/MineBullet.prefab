@@ -170,7 +170,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -227,7 +227,7 @@ MonoBehaviour:
   owner: 
   knockback: 10
   explosion: {fileID: 1321848076755306698, guid: add91e78018b76b478ad79004695b3c8, type: 3}
-  activationTime: 4
+  activationTime: 2
 --- !u!114 &809163044043166194
 MonoBehaviour:
   m_ObjectHideFlags: 0

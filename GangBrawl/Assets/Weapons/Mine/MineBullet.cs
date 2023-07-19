@@ -17,6 +17,7 @@ public class MineBullet :  Bullet
         rb = GetComponent<Rigidbody2D>();
         Invoke("activate", activationTime);
     }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         if ((collision.gameObject.tag.Equals("Player") || collision.gameObject.tag.Equals("ExplosivesBarrel"))&&activated)
