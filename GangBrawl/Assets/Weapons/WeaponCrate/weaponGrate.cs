@@ -6,12 +6,17 @@ public class weaponGrate : MonoBehaviour
 {
     // Start is called before the first frame update
     public List<GameObject> guntemplates=new List<GameObject>();
+    public List<AudioClip> crunchSounds;
     void Start()
     {
         DirectorBehaviour.items.Add(this.gameObject);
     }
      void OnCollisionEnter2D(Collision2D col){
         if(col.gameObject.tag.Equals("Player")){
+            if (crunchSounds.Count > 0)
+            {
+                AudioManager.instance.playSoundAtPoint(crunchSounds[(int)Random.Range(0, crunchSounds.Count)], transform.position);
+            }
             Shoot s= col.gameObject.GetComponentInChildren<Shoot>();
             if(s.gun!=null){
                 Destroy(s.gun);
