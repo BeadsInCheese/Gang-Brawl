@@ -18,7 +18,33 @@ public class HatSelector : MonoBehaviour
     public int HandIndex = 0;
     public int LegsIndex = 0;
     // Start is called before the first frame update
-    public void updateSprite(){
+    public void loadLoadout()
+    {
+        if (CustomasationManager.instance.customisationValues.ContainsKey(gameObject.transform.parent.parent.gameObject.name))
+        {
+            HatIndex = CustomasationManager.instance.customisationValues[gameObject.transform.parent.parent.gameObject.name][0];
+            BodyIndex = CustomasationManager.instance.customisationValues[gameObject.transform.parent.parent.gameObject.name][1];
+            HandIndex = CustomasationManager.instance.customisationValues[gameObject.transform.parent.parent.gameObject.name][2];
+            LegsIndex = CustomasationManager.instance.customisationValues[gameObject.transform.parent.parent.gameObject.name][3];
+        }
+        else
+        {
+            CustomasationManager.instance.customisationValues[gameObject.transform.parent.parent.gameObject.name] = new int[] { 0,0,0,0};
+        }
+    }
+     
+        public void saveCustomValues()
+    {
+        if (CustomasationManager.instance.customisationValues.ContainsKey(gameObject.transform.parent.parent.gameObject.name))
+        {
+            CustomasationManager.instance.customisationValues[gameObject.transform.parent.parent.gameObject.name][0]=HatIndex;
+            CustomasationManager.instance.customisationValues[gameObject.transform.parent.parent.gameObject.name][1]=BodyIndex;
+             CustomasationManager.instance.customisationValues[gameObject.transform.parent.parent.gameObject.name][2]=HandIndex;
+             CustomasationManager.instance.customisationValues[gameObject.transform.parent.parent.gameObject.name][3]=LegsIndex;
+        }
+    }
+    
+        public void updateSprite(){
 
         HatSprite.sprite=Hats[HatIndex];
         BodySprite.sprite = Body[BodyIndex];
@@ -29,10 +55,11 @@ public class HatSelector : MonoBehaviour
         temp.Body = Body[BodyIndex];
         temp.Hands = Hands[HandIndex];
         temp.Legs = Legs[LegsIndex];
-
+        saveCustomValues();
     }
     void OnEnable()
     {
+        loadLoadout();
         updateSprite();
     }
     public void MoveUp(){

@@ -28,6 +28,7 @@ public class lobbyPlayer : MonoBehaviour
 
         tex.text = "";
     }
+
     void Start()
     {
         //buttons = new List<Button>(FindObjectsOfType<Button>());
