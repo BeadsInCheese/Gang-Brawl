@@ -115,16 +115,36 @@ protected SpriteRenderer spriteRenderer;
     // Update is called once per frame
     public bool InputDisabled = false;
    public bool shootLightattackOverride = false;
+    private bool ControlsOff = false;
+
+
+    IEnumerator WaitAndRestoreControls(float time)
+    {
+        yield return new WaitForSeconds(time);
+        ControlsOff = false;
+        animationControl.SetBool("Taunt", false);
+    }
     void Update()
     {
         if (InputDisabled) {
             physicsBody.velocity = Vector2.zero;
             return; }
+        if (ControlsOff)
+        {
+            return;
+        }
+
         if (!PauseMenu.isPaused)
         {
-            //Attack Control
+            if (playerInput.actions["Taunt"].triggered)
+            {
+                ControlsOff = true;
+                animationControl.SetBool("Taunt", true);
+                StartCoroutine(WaitAndRestoreControls(1));
+            }
+                //Attack Control
 
-            if (ConcurrentAttackCancelTime <= 0)
+                if (ConcurrentAttackCancelTime <= 0)
             {
                 animationControl.SetBool("Attacking", false);
                 animationControl.SetBool("HeavyAttacking", false);
