@@ -10,10 +10,23 @@ public class Missile : Bullet
     public float max_force = 5;
     public float mass = 5;
     public float max_speed = 5;
+    public float activateTime=0;
+    bool active = false;
     public GameObject explosion;
-
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        rb.velocity = transform.right * speed;
+        StartCoroutine(activate(activateTime));
+    }
+    IEnumerator activate(float time)
+    {
+        yield return new WaitForSeconds(time);
+        active = true;
+    }
     void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!active) { return; }
         if (collision.gameObject.tag.Equals("Player") || collision.gameObject.tag.Equals("ExplosivesBarrel"))
         {
             var ex = Instantiate(explosion);
