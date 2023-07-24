@@ -12,6 +12,7 @@ public class AudioManager : MonoBehaviour
     public AudioSource Dialogue;
     public AudioSource Ambiant;
     public static AudioManager instance;
+    public AudioClip clickAudio;
     public List<AudioClip> SoundTrack;
     void Awake(){
         if(instance!=null){

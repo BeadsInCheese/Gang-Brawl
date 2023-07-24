@@ -309,6 +309,7 @@ MonoBehaviour:
   Sounds: {fileID: 8004651484850029468}
   Dialogue: {fileID: 8004651483585723993}
   Ambiant: {fileID: 8473838507620136176}
+  clickAudio: {fileID: 8300000, guid: 7df6dd3a4da294244b4a8f82825f9694, type: 3}
   SoundTrack:
   - {fileID: 8300000, guid: beafe7f2d74ec9c4195fe5797eeaba67, type: 3}
   - {fileID: 8300000, guid: 1b40235322598ed49b90151721ef7cca, type: 3}
