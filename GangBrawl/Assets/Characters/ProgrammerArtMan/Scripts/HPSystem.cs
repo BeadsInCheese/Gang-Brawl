@@ -8,6 +8,7 @@ public class HPSystem : MonoBehaviour
     protected bool isInvincible;
     // Start is called before the first frame update
     public int maxHp = 100;
+    public bool poisoned = false;
     public int currentHp;
     public bool SquashAndStretch=true;
     public Health_bar health_Bar;
@@ -27,8 +28,20 @@ public class HPSystem : MonoBehaviour
         rb.velocity = new Vector2(0, 0);
 
     }
+    float poisontimer = 1;
     public void Update()
     {
+        if (poisoned )
+        {
+            if (poisontimer <= 0)
+            {
+                takeDamage(3);
+                poisoned = false;
+                poisontimer = 0.3f;
+            }
+            poisontimer -= Time.deltaTime;
+        }
+        
         if (dead)
         {
             this.gameObject.transform.position = new Vector2(0, 100);
