@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
+    public GameObject explosion;
     int maxEffectID=4;
     public List<AudioClip> powerUpSounds;
          void OnCollisionEnter2D(Collision2D col){
@@ -14,6 +15,8 @@ public class PowerUp : MonoBehaviour
             if (powerUpSounds.Count > 1)
             {
                 AudioManager.instance.playSoundAtPoint(powerUpSounds[(int)Random.Range(0, powerUpSounds.Count)], transform.position);
+                var x=Instantiate(explosion);
+                x.transform.position = this.transform.position;
             }
         }
 
