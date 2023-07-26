@@ -129,6 +129,13 @@ MonoBehaviour:
   - {fileID: 6474387362996466111, guid: 886113d86bff3dbc0bc8838721aa4c80, type: 3}
   - {fileID: 3907479806859016900, guid: 637ea6e3ad82b4885975019d6f7a9214, type: 3}
   - {fileID: 987653528329830354, guid: 3b228f48965afc884a3fa0a7ff0dd1e5, type: 3}
+  crunchSounds:
+  - {fileID: 8300000, guid: bd13095a7133ea642989b72ab0fe62ba, type: 3}
+  - {fileID: 8300000, guid: 02375cf21b1b3f44a89b485795a4aa63, type: 3}
+  - {fileID: 8300000, guid: 73a22e5bd1bcf97409e710db9c0b9d4b, type: 3}
+  - {fileID: 8300000, guid: 3f2ee108937a14f47b076d67956cff23, type: 3}
+  - {fileID: 8300000, guid: 95d3426b24b71624d94be3bdb645e80f, type: 3}
+  exp: {fileID: 2743864410272782234, guid: a981db569ca224c4487fc9ba9ac00161, type: 3}
 --- !u!50 &1520117572268941776
 Rigidbody2D:
   serializedVersion: 4

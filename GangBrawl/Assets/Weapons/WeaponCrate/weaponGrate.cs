@@ -7,6 +7,7 @@ public class weaponGrate : MonoBehaviour
     // Start is called before the first frame update
     public List<GameObject> guntemplates=new List<GameObject>();
     public List<AudioClip> crunchSounds;
+    public GameObject exp;
     void Start()
     {
         DirectorBehaviour.items.Add(this.gameObject);
@@ -16,6 +17,8 @@ public class weaponGrate : MonoBehaviour
             if (crunchSounds.Count > 0)
             {
                 AudioManager.instance.playSoundAtPoint(crunchSounds[(int)Random.Range(0, crunchSounds.Count)], transform.position);
+                var x=Instantiate(exp);
+                x.transform.position = transform.position;
             }
             Shoot s= col.gameObject.GetComponentInChildren<Shoot>();
             if(s.gun!=null){
