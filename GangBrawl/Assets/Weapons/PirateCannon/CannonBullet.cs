@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CannonBullet : Bullet
 {
+    public GameObject explosion;
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag.Equals("Player"))
@@ -22,6 +23,8 @@ public class CannonBullet : Bullet
         if (collision.gameObject.tag.Equals("Platform") )
         {
             Destroy(gameObject);
+            var x = Instantiate(explosion);
+            x.transform.position = transform.position;
         }
 
 

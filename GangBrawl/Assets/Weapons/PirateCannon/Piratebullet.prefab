@@ -242,6 +242,7 @@ MonoBehaviour:
   damage: 40
   owner: 
   knockback: 100
+  explosion: {fileID: 2743864410272782234, guid: 1cb5ece6af838404c91430588b908300, type: 3}
 --- !u!1 &8647181542678641914
 GameObject:
   m_ObjectHideFlags: 0
