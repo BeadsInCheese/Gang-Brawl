@@ -16,13 +16,13 @@ public class CameraControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float maX = 0 ;
-        float minx=0;
-        float maxy=0;
-        float miny=0;
+        float maX = -111111110 ;
+        float minx=111111110;
+        float maxy=-11111110;
+        float miny=11111110;
         center.x =  0;
         center.y = 0;
-        int p = 0;
+        int p = 1;
         foreach (Transform i in players)
         {
 
@@ -38,9 +38,14 @@ public class CameraControl : MonoBehaviour
             }
 
         }
-        center=center / Mathf.Max(1,p);
-        var temp= Vector2.Lerp(transform.position, center, 0.2f);
+        center.x=center.x / Mathf.Max(1,p);
+        center.y = center.y / Mathf.Max(1, p);
+        Debug.Log("Camera Center is: " + center);
+        //var temp= Vector2.Lerp(transform.position, center, 0.2f);
+        var temp = (Vector2)transform.position + ((center-((Vector2)transform.position) ) * Time.deltaTime);
         transform.position =new  Vector3(temp.x, temp.y, transform.position.z);
-        cam.orthographicSize = Mathf.Lerp(cam.orthographicSize,new Vector2(Mathf.Max(5,Mathf.Min(maX - minx,10)), Mathf.Max(8, Mathf.Min(maxy - miny,10))).magnitude,0.2f);
+        var tempsize = new Vector2(Mathf.Max(5, Mathf.Min(maX - minx, 10)), Mathf.Max(8, Mathf.Min(maxy - miny, 10))).magnitude;
+        //cam.orthographicSize = Mathf.Lerp(cam.orthographicSize,tempsize,0.2f);
+        cam.orthographicSize = cam.orthographicSize + (tempsize-cam.orthographicSize ) * Time.deltaTime;
     }
 }

@@ -34,7 +34,7 @@ private void Awake()
     public IEnumerator ScreenShake(float duration, float magnitude)
     {
 
-        Vector3 originalPos = position;
+        Vector3 originalPos = transform.position;
         //Quaternion originalRot = transform.rotation;
 
         float elapsed = 0f;
@@ -76,8 +76,6 @@ private void Awake()
     {
      if(Earthquake.shaking){
         this.transform.position=position+new Vector3(UnityEngine.Random.Range(-100*shakeAmount,100*shakeAmount),Random.Range(-100*shakeAmount,100*shakeAmount));
-     }else{
-        transform.position=position;
      }
     }
 }
