@@ -6904,6 +6904,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intensityTreshold: 10
+  items2: []
   debugMode: 0
   gameOverText: {fileID: 911615304}
   countdownText: {fileID: 582741186}
@@ -7153,12 +7154,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faab157bcf0a5eee89f4b26107ad1d87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  group: {fileID: 0}
   PlayerCPU: {fileID: 512132733879327840, guid: 0408d61c4c5925b469971b53c3da7336, type: 3}
   PlayerColorTints:
   - {r: 1, g: 1, b: 1, a: 0}
   - {r: 0.5424528, g: 0.7941763, b: 1, a: 0}
   - {r: 1, g: 0.6745283, b: 0.6745283, a: 0}
   - {r: 0.5613208, g: 1, b: 0.62574357, a: 0}
+  usedColors: []
 --- !u!114 &863736380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8233,6 +8236,7 @@ GameObject:
   - component: {fileID: 1250889227}
   - component: {fileID: 1250889228}
   - component: {fileID: 1250889229}
+  - component: {fileID: 1250889230}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -8449,6 +8453,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key: 2
   ambiant: {fileID: 8300000, guid: 4e5335bf1a5a5f24c862cc62e70b5965, type: 3}
+--- !u!114 &1250889230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1250889223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7964ae3493bcb5f4fb4bbc11d8e1c27d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  players: []
 --- !u!1 &1471077909
 GameObject:
   m_ObjectHideFlags: 0

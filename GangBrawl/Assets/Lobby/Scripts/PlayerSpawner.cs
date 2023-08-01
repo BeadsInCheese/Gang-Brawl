@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -35,6 +36,7 @@ public class PlayerSpawner : MonoBehaviour
             LegOB2.gameObject.GetComponent<SpriteRenderer>().sprite = i.Legs;
             LegOB.gameObject.GetComponent<SpriteRenderer>().sprite = i.Legs;
             playerNo = playerNo + 1;
+            Camera.main.GetComponent<CameraControl>().players.Add(player.transform);
 
         }
         for (int i = 0; i < LobbyManager.CPUCount; i++)
@@ -44,6 +46,7 @@ public class PlayerSpawner : MonoBehaviour
             ai.tint = getAITintColor();
             ai.index = playerNo;
             playerNo += 1;
+            Camera.main.GetComponent<CameraControl>().players.Add(ai.transform);
         }
         LobbyManager.CPUCount = 0;
         LobbyManager.playerData = new Dictionary<string, PlayerData>();
