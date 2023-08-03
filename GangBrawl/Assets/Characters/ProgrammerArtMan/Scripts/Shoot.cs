@@ -41,6 +41,12 @@ public class Shoot : MonoBehaviour
     protected bool automatic;
     protected GameObject muzzleflash;
     protected float damage;
+
+    public void resetValues()
+    {
+        Destroy(gun);
+
+    }
     public void newGunSetup()
     {
 

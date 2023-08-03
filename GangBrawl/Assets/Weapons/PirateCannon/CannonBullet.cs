@@ -31,10 +31,6 @@ public class CannonBullet : Bullet
                  velNormal = (col.normal);
                 rb.velocity = -(2 * Vector2.Dot(rb.velocity, (velNormal)) * velNormal - rb.velocity);
             }
-            else {
-                 velNormal = -rb.velocity;
-                    
-                    }
            
             var x = Instantiate(explosion);
             x.transform.position = transform.position;
