@@ -40,7 +40,7 @@ public class CameraControl : MonoBehaviour
         }
         center.x=center.x / Mathf.Max(1,p);
         center.y = center.y / Mathf.Max(1, p);
-        Debug.Log("Camera Center is: " + center);
+        //Debug.Log("Camera Center is: " + center);
         //var temp= Vector2.Lerp(transform.position, center, 0.2f);
         var temp = (Vector2)transform.position + ((center-((Vector2)transform.position) ) * Time.deltaTime);
         transform.position =new  Vector3(temp.x, temp.y, transform.position.z);
