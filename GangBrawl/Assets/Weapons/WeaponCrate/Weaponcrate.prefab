@@ -137,11 +137,10 @@ MonoBehaviour:
   - {fileID: 987653528329830354, guid: 5bbff19aacb28314a927e1c779d8cd91, type: 3}
   - {fileID: 987653528329830354, guid: b16eecd87c0de0c40877239dec0cec60, type: 3}
   crunchSounds:
-  - {fileID: 8300000, guid: bd13095a7133ea642989b72ab0fe62ba, type: 3}
-  - {fileID: 8300000, guid: 02375cf21b1b3f44a89b485795a4aa63, type: 3}
-  - {fileID: 8300000, guid: 73a22e5bd1bcf97409e710db9c0b9d4b, type: 3}
-  - {fileID: 8300000, guid: 3f2ee108937a14f47b076d67956cff23, type: 3}
-  - {fileID: 8300000, guid: 95d3426b24b71624d94be3bdb645e80f, type: 3}
+  - {fileID: 8300000, guid: 0a58e298e10b7c44f83f776e42f86f4c, type: 3}
+  - {fileID: 8300000, guid: a35a13b4f9a04f74baa15de9ffebc2f0, type: 3}
+  - {fileID: 8300000, guid: 7b47f824af8bbf344b1106671eca1230, type: 3}
+  - {fileID: 8300000, guid: 362f7f8aa3348424aaf2090b2d7c0214, type: 3}
   exp: {fileID: 2743864410272782234, guid: a981db569ca224c4487fc9ba9ac00161, type: 3}
 --- !u!50 &1520117572268941776
 Rigidbody2D:
