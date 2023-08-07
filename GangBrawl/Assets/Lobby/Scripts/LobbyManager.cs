@@ -20,7 +20,7 @@ public class LobbyManager : MonoBehaviour
     float countdown = 5;
     public TMPro.TextMeshProUGUI countdownText;
     public static int CPUCount = 0;
-    public static Dictionary<string,PlayerData> playerData = new Dictionary<string,PlayerData>();
+    public static Dictionary<string, PlayerData> playerData = new Dictionary<string, PlayerData>();
 
 
 
@@ -44,22 +44,26 @@ public class LobbyManager : MonoBehaviour
     public static LobbyManager instance;
     public void AddAI()
     {
+        if (playersInGame + CPUCount >= 4) { return; }
+        Color tintColor = PlayerColors.Colors[playersInGame + CPUCount];
         if (!player1.tag.Equals("Player"))
         {
-            SetCPUReadyOnUI(player1);
+            SetCPUReadyOnUI(player1, tintColor);
+            // Og did not use the CPU count, check if works
+            //SetCPUReadyOnUI(player1, playersInGame);
 
         }
         else if (!player2.tag.Equals("Player"))
         {
-            SetCPUReadyOnUI(player2);
+            SetCPUReadyOnUI(player2, tintColor);
         }
         else if (!player3.tag.Equals("Player"))
         {
-            SetCPUReadyOnUI(player3);
+            SetCPUReadyOnUI(player3, tintColor);
         }
         else if (!player4.tag.Equals("Player"))
         {
-            SetCPUReadyOnUI(player4);
+            SetCPUReadyOnUI(player4, tintColor);
         }
         else
         {
@@ -75,31 +79,44 @@ public class LobbyManager : MonoBehaviour
     /// Enables correct UI components to display that the "player" joined in the game is CPU.
     /// </summary>
     /// <param name="cpu">This is actually the player object, just different images are set visible when it is CPU</param>
-    private void SetCPUReadyOnUI(GameObject cpu)
+    private void SetCPUReadyOnUI(GameObject cpu, Color tintColor)
     {
         cpu.tag = "Player";
         cpu.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = "Ready";
         cpu.transform.Find("ImageCPUJoined").gameObject.SetActive(true);
         cpu.transform.Find("CPUImg").gameObject.SetActive(true);
+        setTintColor(cpu, tintColor);
     }
 
     public void OnPlayerJoined(PlayerInput playerInput)
     {
-        
+        // This if statement fixes a bug where joining with keyboard to full causes error.
+        if(playersInGame + CPUCount > 4){return;}
+
         InputDevice[] d;
         d = playerInput.devices.ToArray();
 
         playersInGame += 1;
-        string playerID="";
-        GameObject ob=null;
-        foreach(Transform i in player1.transform.parent){
-        if (!i.gameObject.tag.Equals("Player"))
+        string playerID = "";
+        GameObject ob = null;
+
+        GameObject body = null;
+        GameObject hands = null;
+        GameObject legs = null;
+        int playerIndex = (playersInGame + CPUCount) - 1;
+        Color tintColor = PlayerColors.Colors[playerIndex];
+        foreach (Transform i in player1.transform.parent)
         {
-            SetPlayerReadyOnUI(playerInput, i.gameObject); 
-            ob=i.Find("Hat").gameObject;
-            playerID=i.gameObject.name;
-            break;
-        }
+            if (!i.gameObject.tag.Equals("Player"))
+            {
+                SetPlayerReadyOnUI(playerInput, i.gameObject, tintColor);
+                ob = i.Find("Hat").gameObject;
+                body = i.Find("Body").gameObject;
+                hands = i.Find("Hands").gameObject;
+                legs = i.Find("Legs").gameObject;
+                playerID = i.gameObject.name;
+                break;
+            }
         }
         /*
         
@@ -125,15 +142,23 @@ public class LobbyManager : MonoBehaviour
             playerID=player4.name;
         }
         */
-        playerData.Add(playerID,new PlayerData("", -1, playerInput.currentControlScheme, d));
+        if (playerData.ContainsKey(playerID))
+        {
+            playerData.Clear();
+        }
+        playerData.Add(playerID, new PlayerData("", -1, playerInput.currentControlScheme, d, tintColor));
         ob.SetActive(true);
+        body.SetActive(true);
+        hands.SetActive(true);
+        legs.SetActive(true);
 
     }
 
-    private void SetPlayerReadyOnUI(PlayerInput playerInput, GameObject player)
+    private void SetPlayerReadyOnUI(PlayerInput playerInput, GameObject player, Color tintColor)
     {
         playerInput.transform.gameObject.GetComponent<lobbyPlayer>().LobbyObject = player;
         player.tag = "Player";
+        player.transform.Find("sign1").gameObject.SetActive(true);
         if (PlayerData.recogniseControllerType(playerInput.currentControlScheme) == ControllerType.Gamepad)
         {
             player.transform.Find("ReadyPrompt").gameObject.SetActive(true);
@@ -147,8 +172,18 @@ public class LobbyManager : MonoBehaviour
         }
 
         player.transform.Find("ImagePlayerJoined").gameObject.SetActive(true);
+        setTintColor(player, tintColor);
 
     }
+
+    void setTintColor(GameObject player, Color tintColor)
+    {
+        player.transform.Find("TintColor").gameObject.SetActive(true);
+        Image img = player.transform.Find("TintColor").gameObject.GetComponent<Image>();
+        //Color tempCol = PlayerColors.Colors[playerIndex];
+        img.color = new Color(tintColor.r, tintColor.g, tintColor.b, 0.32f);
+    }
+
     void Awake()
     {
         CPUCount = 0;

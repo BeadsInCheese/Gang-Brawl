@@ -11,6 +11,8 @@ public class DirectorBehaviour : MonoBehaviour
     public float intensityTreshold=10;
     public static Dictionary<string,int> PlayersAlive=new Dictionary<string, int>();
     public static Dictionary<string,int> PlayerKills=new Dictionary<string, int>();
+    public List<GameObject> items2 = new List<GameObject>();
+    public static List<GameObject> items = new List<GameObject>();
     float countdown=5;
     public bool debugMode=false;
     //Behaviour delegate methods
@@ -127,6 +129,7 @@ public class DirectorBehaviour : MonoBehaviour
     }
     void Start()
     {
+        Physics2D.gravity = new Vector2(0, -9.8f);
         Instantiate(gameStartCountDown);
         countdownText.text="";
         gameOverText.text="";
@@ -136,6 +139,7 @@ public class DirectorBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        items2 = items;
         if(gameMode==Gamemode.DEATHMATCH){
             roundCountDownText.text=""+Mathf.Ceil(gameTime);
         }else{

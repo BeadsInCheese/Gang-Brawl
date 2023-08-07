@@ -18,6 +18,8 @@ public class ObjectSpawner : MonoBehaviour
     public float minTime;
     public float maxTime;
 
+    public GameObject currentlyCreatedObject;
+
 
     private BoxCollider2D _collider;
 
@@ -59,7 +61,11 @@ public class ObjectSpawner : MonoBehaviour
     {
 
         int randomIndex = UnityEngine.Random.Range(0, spawnObjects.Length);
-        Instantiate(spawnObjects[randomIndex], this.transform.position, Quaternion.identity);
+        // Prevent spawning multiple objects on top of each other.
+        if (!currentlyCreatedObject)
+        {
+            currentlyCreatedObject = Instantiate(spawnObjects[randomIndex], this.transform.position, Quaternion.identity);
+        }
     }
 
     /// <summary>

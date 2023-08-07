@@ -32,7 +32,7 @@ public class CharacterControl : MonoBehaviour
     public float _apexBonus = 3;
     public float minFallSpeed = -300;
     public float JumpAnimationDuration = 0.5f;
-
+    public AudioClip walk;
     public float friction=1;
 
     protected Vector2 vel = new Vector2(0, 0);
@@ -59,6 +59,7 @@ public class CharacterControl : MonoBehaviour
         physicsBody.AddForce(new Vector2(0, jumpHeight * physicsBody.gravityScale));
     }
     }
+
     protected void applyJumpReleasedEarlyModifier()
     {
         physicsBody.AddForce(new Vector2(0, jumpEndEarlyGravityModifier * physicsBody.gravityScale));
@@ -111,15 +112,40 @@ protected SpriteRenderer spriteRenderer;
         transform.position = GameObject.Find("Player-" + playerInput.playerIndex + "-SpawnPoint").transform.position;
         colliderDims=GetComponent<BoxCollider2D>().size;
     }
-
+    float audiocooldown = 0f;
     // Update is called once per frame
+    public bool InputDisabled = false;
+   public bool shootLightattackOverride = false;
+    private bool ControlsOff = false;
+
+
+    IEnumerator WaitAndRestoreControls(float time)
+    {
+        yield return new WaitForSeconds(time);
+        ControlsOff = false;
+        animationControl.SetBool("Taunt", false);
+    }
     void Update()
     {
+        if (InputDisabled) {
+            physicsBody.velocity = Vector2.zero;
+            return; }
+        if (ControlsOff)
+        {
+            return;
+        }
+
         if (!PauseMenu.isPaused)
         {
-            //Attack Control
+            if (playerInput.actions["Taunt"].triggered)
+            {
+                ControlsOff = true;
+                animationControl.SetBool("Taunt", true);
+                StartCoroutine(WaitAndRestoreControls(1));
+            }
+                //Attack Control
 
-            if (ConcurrentAttackCancelTime <= 0)
+                if (ConcurrentAttackCancelTime <= 0)
             {
                 animationControl.SetBool("Attacking", false);
                 animationControl.SetBool("HeavyAttacking", false);
@@ -132,23 +158,24 @@ protected SpriteRenderer spriteRenderer;
                 ConcurrentAttackCancelTime -= Time.deltaTime;
             }
 
-            if (playerInput.actions["HeavyAttack"].triggered || attackBuffer == 1)
+            if (!InputDisabled&&(playerInput.actions["HeavyAttack"].triggered || attackBuffer == 1))
             {
                 if (ConcurrentAttackCancelTime < -0.5)
                 {
-
                     animationControl.SetBool("HeavyAttacking", true);
                     ConcurrentAttackCancelTime = HeavyAttackCancelTime;
                     HeavyAttackHitbox.SetActive(true);
                     attackBuffer = 0;
+
                 }
                 else
                 {
                     attackBuffer = 1;
                 }
             }
-            if (playerInput.actions["LightAttack"].triggered || attackBuffer == 2)
+            if (!InputDisabled && (playerInput.actions["LightAttack"].triggered || shootLightattackOverride || attackBuffer == 2))
             {
+                shootLightattackOverride = false;
                 if (ConcurrentAttackCancelTime < -0.5)
                 {
 
@@ -164,7 +191,7 @@ protected SpriteRenderer spriteRenderer;
             }
 
 
-            if (playerInput.actions["Jump"].triggered)
+            if (!InputDisabled && playerInput.actions["Jump"].triggered)
             {
                 jumpButtonDown = true;
                 if (isgrounded)
@@ -186,7 +213,7 @@ protected SpriteRenderer spriteRenderer;
                 }
             }
 
-            if (playerInput.actions["Jump"].WasReleasedThisFrame())
+            if (!InputDisabled && playerInput.actions["Jump"].WasReleasedThisFrame())
             {
                 if (physicsBody.velocity.y > 0)
                 {
@@ -233,6 +260,16 @@ protected SpriteRenderer spriteRenderer;
                 vel.y = Mathf.Clamp(vel.y, maxFallSpeed, minFallSpeed);
             }
             animationControl.SetBool("Moving", xin != 0);
+            if(isgrounded&& xin != 0)
+            {
+                if (audiocooldown <= 0)
+                {
+                    AudioManager.instance.Sounds.pitch = 1;
+                    AudioManager.instance.playSoundAtPoint(walk, transform.position);
+                    audiocooldown = 0.3f;
+                }
+                }
+            audiocooldown -= Time.deltaTime;
             //Debug.Log(spriteFlipped);
             // Character is moving right
             if (xin > 0 && !isPlayerAiming(playerInput))

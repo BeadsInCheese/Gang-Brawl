@@ -18,12 +18,16 @@ public class Shoot : MonoBehaviour
     protected double radians, angle;
 
     // Start is called before the first frame update
+    bool keyboard = false;
     void Start()
     {
         //playerInput = GetComponent<PlayerInput>();
         playerInput = gameObject.GetComponentInParent<PlayerInput>();
         charControl = gameObject.GetComponentInParent<CharacterControl>();
-
+        if (playerInput != null)
+        {
+            keyboard = playerInput.currentControlScheme.Equals("keyboard");
+        }
     }
     protected float spread = 0;
     protected float cooldown = 2;
@@ -37,6 +41,12 @@ public class Shoot : MonoBehaviour
     protected bool automatic;
     protected GameObject muzzleflash;
     protected float damage;
+
+    public void resetValues()
+    {
+        Destroy(gun);
+
+    }
     public void newGunSetup()
     {
 
@@ -62,14 +72,27 @@ public class Shoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        x = playerInput.actions["Aim"].ReadValue<Vector2>().x;
-        y = playerInput.actions["Aim"].ReadValue<Vector2>().y;
-
+        //Debug.Log(playerInput.currentControlScheme);
+        if (keyboard)
+        {
+            if(playerInput.actions["Shoot"].triggered && gun == null){
+                charControl.shootLightattackOverride = true;
+            }
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePosition = -(body.transform.position - mousePosition).normalized;
+            x = mousePosition.x;
+            y = mousePosition.y;
+        }
+        else
+        {
+            x = playerInput.actions["Aim"].ReadValue<Vector2>().x;
+            y = playerInput.actions["Aim"].ReadValue<Vector2>().y;
+        }
         //Debug.Log(playerInput.actions["Aim"].ReadValue<Vector2>().x);
         radians = Math.Atan2(y - 0, x - 0);
         angle = radians * (180 / Math.PI);
         // angle is zero if player is currently aiming
-        if (isPlayerAiming(playerInput))
+        if (keyboard||isPlayerAiming(playerInput))
         {
             shootingArm.position = new Vector3(body.position.x + (MathF.Cos((float)radians)), body.position.y + (MathF.Sin((float)radians)), body.position.z + body.up.z);
             shootingPoint.position = new Vector2(shootingArm.position.x + (MathF.Cos((float)radians)), shootingArm.position.y + (MathF.Sin((float)radians)));
@@ -115,7 +138,8 @@ public class Shoot : MonoBehaviour
             gunSound.Play();
             for (int i = 0; i < bulletsShotAtOnce; i++)
             {
-                float fAngle = isPlayerAiming(playerInput) ? (float)angle : getShootingDirection(charControl);
+                float fAngle = (isPlayerAiming(playerInput)||keyboard) ? (float)angle : getShootingDirection(charControl);
+                
                 Quaternion rotation = Quaternion.Euler(0, 0, fAngle + UnityEngine.Random.Range(-spread, spread));
                 shootingPoint.position = barrel.position;
                 if (muzzleflash != null)
@@ -139,7 +163,7 @@ public class Shoot : MonoBehaviour
 
     protected bool isAbleToShoot()
     {
-        return canShoot && !PauseMenu.isPaused;
+        return transform.position.y<99 && canShoot && !PauseMenu.isPaused;
     }
 
     protected void setCanShoot(bool val)

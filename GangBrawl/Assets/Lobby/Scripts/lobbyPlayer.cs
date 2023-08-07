@@ -4,18 +4,21 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
-using Unity.Netcode;
-public class lobbyPlayer : NetworkBehaviour
+using UnityEngine.InputSystem.UI;
+
+public class lobbyPlayer : MonoBehaviour
 {
     // Start is called before the first frame update
     Image characterImage;
     public GameObject LobbyObject;
+    Animator Ready;
     PlayerInput input;
     public GameObject selectedPlayerPrefab;
     private bool ready = false;
     TMPro.TextMeshProUGUI tex;
-
+    List<Button> buttons;
     public ControllerType controllerType;
 
     private void removeJoinText()
@@ -25,9 +28,13 @@ public class lobbyPlayer : NetworkBehaviour
 
         tex.text = "";
     }
+
     void Start()
     {
-        if(LobbyObject == null){
+        //buttons = new List<Button>(FindObjectsOfType<Button>());
+        //EventSystem.current.SetSelectedGameObject(buttons[0].gameObject);
+        Ready=LobbyObject.transform.Find("sign1").gameObject.GetComponent<Animator>();
+        if (LobbyObject == null){
             Destroy(this.gameObject);
             return;
         }
@@ -36,13 +43,14 @@ public class lobbyPlayer : NetworkBehaviour
         Invoke("removeJoinText", 0.1f);
         TMPro.TextMeshProUGUI[] a = this.LobbyObject.GetComponentsInChildren<TMPro.TextMeshProUGUI>();
         input = GetComponent<PlayerInput>();
+        input.uiInputModule = LobbyObject.GetComponent<InputSystemUIInputModule>();
+        Debug.Log("input"+ input.uiInputModule.tag);
     }
 
     // Update is called once per frame
     public float speed = 1;
     void Update()
     {
-        if(!IsOwner) return;
         if(input == null){
             Destroy(this.gameObject);
             return ;
@@ -62,12 +70,14 @@ public class lobbyPlayer : NetworkBehaviour
             if (ready)
             {
                 ready = false;
+                Ready.SetBool("Ready",false);
                 Debug.Log(LobbyManager.instance);
                 LobbyManager.instance.playerPressedUnready();
             }
             else
             {
                 ready = true;
+                Ready.SetBool("Ready",true);
                 LobbyManager.instance.playerPressedReady();
             }
         }
@@ -83,6 +93,8 @@ public class lobbyPlayer : NetworkBehaviour
                 tex.text = "Ready";
             }
         }
+        //Cursor logic
+        /*
         Vector2 bounds = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
 
         transform.position = new Vector3(Mathf.Clamp(transform.position.x + dir.x * speed * Time.deltaTime, -bounds.x, bounds.x), Mathf.Clamp(transform.position.y + dir.y * speed * Time.deltaTime, -bounds.y, bounds.y), transform.position.z);
@@ -104,7 +116,7 @@ public class lobbyPlayer : NetworkBehaviour
                     //Debug.Log("Button Hover");
                 }
             }
-        }
+        }*/
 
-    }}
-
+    }
+}

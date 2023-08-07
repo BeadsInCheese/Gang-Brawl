@@ -150,7 +150,7 @@ public class LevelSelector : MonoBehaviour
             }
             if (Gamepad.current.rightTrigger.wasPressedThisFrame)
             {
-                Debug.Log("mode: " + modeChange(1));
+                //Debug.Log("mode: " + modeChange(1));
             }
         }
         if (Keyboard.current != null)
@@ -161,7 +161,7 @@ public class LevelSelector : MonoBehaviour
             }
             if (Keyboard.current.mKey.wasPressedThisFrame)
             {
-                Debug.Log("mode: " + modeChange(1));
+                //Debug.Log("mode: " + modeChange(1));
             }
         }
     }
