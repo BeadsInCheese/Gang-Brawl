@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerSpawner : NetworkBehaviour
@@ -53,13 +54,13 @@ public class PlayerSpawner : NetworkBehaviour
             ai.index = playerNo;
             playerNo += 1;
             Camera.main.GetComponent<CameraControl>().players.Add(ai.transform);
+
             c.GetComponent<NetworkObject>().SpawnAsPlayerObject(NetworkManager.Singleton.LocalClientId);
         }
         LobbyManager.CPUCount = 0;
         LobbyManager.playerData = new Dictionary<string, PlayerData>();
 
     }
-
     /// <summary>
     ///   AI does not have assigned tintColor. Therefore only thing that matters is that
     /// players have correct tint colors and the AI uses the unused ones.
@@ -83,12 +84,18 @@ public class PlayerSpawner : NetworkBehaviour
     }
 
     // Start is called before the first frame update
+    private void OnLoadComplete( string sceneName, LoadSceneMode loadSceneMode, List<ulong> clientsCompleted, List<ulong> clientsTimedOut)
+    {
+        Debug.Log("OnLoadComplete clientId: "  + " scene: " + sceneName + " mode: " + loadSceneMode);
+        spawnPlayers();
+    }
     void Start()
     {
         playerInputManager = GetComponent<PlayerInputManager>();
-        spawnPlayers();
+        //spawnPlayers();
+        NetworkManager.Singleton.SceneManager.OnLoadEventCompleted += OnLoadComplete;
     }
-
+    
     // Update is called once per frame
     void Update()
     {

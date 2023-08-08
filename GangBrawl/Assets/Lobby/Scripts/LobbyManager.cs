@@ -110,7 +110,7 @@ public class LobbyManager : NetworkBehaviour
         setTintColor(cpu, tintColor);
     }
     [ClientRpc]
-    public void OnlineJoin_ClientRpc(ulong id)
+    public void OnlineJoin_ClientRpc(ulong id, string controlSceme)
     {
         if (id == NetworkManager.Singleton.LocalClientId) { return; }
         Debug.Log("OhOuh");
@@ -137,7 +137,7 @@ public class LobbyManager : NetworkBehaviour
 
     }
     [ServerRpc(RequireOwnership = false)]
-    public void OnlineJoin_ServerRpc(ulong id)
+    public void OnlineJoin_ServerRpc(ulong id,string controlSceme)
     {
         if (id == NetworkManager.Singleton.LocalClientId) { return; }
         Debug.Log("OhOuh");
@@ -228,8 +228,8 @@ public class LobbyManager : NetworkBehaviour
         body.SetActive(true);
         hands.SetActive(true);
         legs.SetActive(true);
-        OnlineJoin_ClientRpc(NetworkManager.Singleton.LocalClientId);
-        OnlineJoin_ServerRpc(NetworkManager.Singleton.LocalClientId);
+        OnlineJoin_ClientRpc(NetworkManager.Singleton.LocalClientId, playerInput.currentControlScheme);
+        OnlineJoin_ServerRpc(NetworkManager.Singleton.LocalClientId, playerInput.currentControlScheme);
     }
 
     private void SetPlayerReadyOnUI(PlayerInput playerInput, GameObject player, Color tintColor)

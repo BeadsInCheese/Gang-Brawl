@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 [SerializeField]
-public class weaponGrate : MonoBehaviour
+public class weaponGrate : NetworkBehaviour
 {
     // Start is called before the first frame update
     public List<GameObject> guntemplates=new List<GameObject>();
@@ -30,10 +31,12 @@ public class weaponGrate : MonoBehaviour
         }
 
      }
-    private void OnDestroy()
+    override
+    public void OnDestroy()
     {
-        Debug.Log(DirectorBehaviour.items.Count);
+
         DirectorBehaviour.items.Remove(this.gameObject);
+        base.OnDestroy();
     }
     // Update is called once per frame
     void Update()

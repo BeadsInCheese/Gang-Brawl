@@ -112,6 +112,10 @@ protected SpriteRenderer spriteRenderer;
         physicsBody = GetComponent<Rigidbody2D>();
         transform.position = GameObject.Find("Player-" + playerInput.playerIndex + "-SpawnPoint").transform.position;
         colliderDims=GetComponent<BoxCollider2D>().size;
+        if (!IsHost)
+        {
+            Camera.main.GetComponent<CameraControl>().players.Add(transform);
+        }
     }
     float audiocooldown = 0f;
     // Update is called once per frame
