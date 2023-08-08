@@ -174,6 +174,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3773014929676666327}
   - component: {fileID: 2310398738419848786}
+  - component: {fileID: 2729254909044086762}
   m_Layer: 0
   m_Name: Weaponcrate
   m_TagString: Untagged
@@ -209,3 +210,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f18c43e932b73af3aa326fdebfaa61b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2729254909044086762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8336248614094019405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 951099334
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1

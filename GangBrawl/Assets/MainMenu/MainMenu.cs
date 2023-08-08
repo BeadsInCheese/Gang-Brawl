@@ -8,8 +8,13 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         SceneManager.LoadScene("Lobby");
+        LobbyManager.host = true;
     }
-
+    public void JoinGame()
+    {
+        SceneManager.LoadScene("Lobby");
+        LobbyManager.host = false;
+    }
     public void Quitgame()
     {
         Application.Quit();

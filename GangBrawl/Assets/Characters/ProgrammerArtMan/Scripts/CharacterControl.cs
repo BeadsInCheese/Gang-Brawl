@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class CharacterControl : MonoBehaviour
+public class CharacterControl : NetworkBehaviour
 {
     // Start is called before the first frame update
     public Rigidbody2D physicsBody;
@@ -127,6 +128,7 @@ protected SpriteRenderer spriteRenderer;
     }
     void Update()
     {
+        if (!IsOwner) { return; }
         if (InputDisabled) {
             physicsBody.velocity = Vector2.zero;
             return; }

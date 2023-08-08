@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 public class Shoot : MonoBehaviour
@@ -148,9 +149,11 @@ public class Shoot : MonoBehaviour
                 }
                 var bullet = Instantiate(bulletPrefab, shootingPoint.position, rotation);
                 var b = bullet.GetComponent<Bullet>();
+                
                 b.knockback = this.knockback;
                 b.owner = this.body.parent.parent.gameObject.name;
                 b.damage = (int)damage;
+                bullet.GetComponent<NetworkObject>().Spawn();
             }
             ammo -= 1;
             if (ammo <= 0) { Destroy(gun); }

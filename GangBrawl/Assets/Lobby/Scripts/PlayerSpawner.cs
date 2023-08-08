@@ -1,11 +1,12 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class PlayerSpawner : MonoBehaviour
+public class PlayerSpawner : NetworkBehaviour
 {
     public GameObject PlayerCPU;
     PlayerInputManager playerInputManager;
@@ -14,6 +15,10 @@ public class PlayerSpawner : MonoBehaviour
 
     public void spawnPlayers()
     {
+        if (!NetworkManager.Singleton.IsHost)
+        {
+            return;
+        }
         int playerNo = 0;
         foreach (PlayerData i in LobbyManager.playerData.Values)
         {
@@ -37,6 +42,7 @@ public class PlayerSpawner : MonoBehaviour
             LegOB.gameObject.GetComponent<SpriteRenderer>().sprite = i.Legs;
             playerNo = playerNo + 1;
             Camera.main.GetComponent<CameraControl>().players.Add(player.transform);
+            player.GetComponent<NetworkObject>().SpawnAsPlayerObject(i.clientID);
 
         }
         for (int i = 0; i < LobbyManager.CPUCount; i++)
@@ -47,6 +53,7 @@ public class PlayerSpawner : MonoBehaviour
             ai.index = playerNo;
             playerNo += 1;
             Camera.main.GetComponent<CameraControl>().players.Add(ai.transform);
+            c.GetComponent<NetworkObject>().SpawnAsPlayerObject(NetworkManager.Singleton.LocalClientId);
         }
         LobbyManager.CPUCount = 0;
         LobbyManager.playerData = new Dictionary<string, PlayerData>();

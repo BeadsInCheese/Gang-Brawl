@@ -7,8 +7,9 @@ using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem.UI;
+using Unity.Netcode;
 
-public class lobbyPlayer : MonoBehaviour
+public class lobbyPlayer : NetworkBehaviour
 {
     // Start is called before the first frame update
     Image characterImage;
@@ -31,6 +32,7 @@ public class lobbyPlayer : MonoBehaviour
 
     void Start()
     {
+        //this.gameObject.GetComponent<NetworkObject>().SpawnWithOwnership(NetworkManager.Singleton.LocalClientId);
         //buttons = new List<Button>(FindObjectsOfType<Button>());
         //EventSystem.current.SetSelectedGameObject(buttons[0].gameObject);
         Ready=LobbyObject.transform.Find("sign1").gameObject.GetComponent<Animator>();

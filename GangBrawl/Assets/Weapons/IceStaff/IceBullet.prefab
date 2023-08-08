@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5760052851024378203}
   - component: {fileID: 668553080987826304}
   - component: {fileID: 2111550057434992067}
+  - component: {fileID: 7297619029716183378}
   m_Layer: 0
   m_Name: IceBullet
   m_TagString: Bullet
@@ -104,8 +105,25 @@ MonoBehaviour:
   speed: 20
   rb: {fileID: 0}
   damage: 10
+  owner: 
   knockback: 10
   IceWall: {fileID: 3376767444990559352, guid: 58dc87ecb01d4ecddac52bddde53c216, type: 3}
+--- !u!114 &7297619029716183378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6777275443525427548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 951099334
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!1 &8647181542678641914
 GameObject:
   m_ObjectHideFlags: 0

@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 5760052851024378203}
   - component: {fileID: 668553080987826304}
   - component: {fileID: 1117478567581181954}
+  - component: {fileID: 6027417849101808855}
   m_Layer: 0
   m_Name: Flame
   m_TagString: Bullet
@@ -218,6 +219,23 @@ MonoBehaviour:
   damage: 10
   owner: 
   knockback: 0
+  lifetime: 0.5
+--- !u!114 &6027417849101808855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6777275443525427548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 951099334
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!1 &8425100825201169813
 GameObject:
   m_ObjectHideFlags: 0

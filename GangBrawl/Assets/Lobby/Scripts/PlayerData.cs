@@ -10,18 +10,20 @@ public class PlayerData
     public Sprite Body;
     public Sprite Hands;
     public Sprite Legs;
+    public ulong clientID;
     public InputDevice[] pairWithDevices;
 
     public Color tintColor;
 
     // public ControllerType controllerType;
-    public PlayerData(string characterPrefab, int playerIndex, string controlScheme, InputDevice[] devices, Color tintColor)
+    public PlayerData(string characterPrefab, int playerIndex, string controlScheme, InputDevice[] devices, Color tintColor,ulong clientID)
     {
         characterPrefabPath = characterPrefab;
         this.playerIndex = playerIndex;
         this.controlScheme = controlScheme;
         this.pairWithDevices = devices;
         this.tintColor = tintColor;
+        this.clientID = clientID;
     }
 
     public static ControllerType recogniseControllerType(string controlScheme)

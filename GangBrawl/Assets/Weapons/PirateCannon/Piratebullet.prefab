@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3962164998088780858}
   - component: {fileID: 4464017655310141513}
   - component: {fileID: 4299477564705280232}
+  - component: {fileID: 4823167313047091602}
   m_Layer: 0
   m_Name: Piratebullet
   m_TagString: Bullet
@@ -226,6 +227,22 @@ CircleCollider2D:
   m_Offset: {x: 0.01663208, y: -0.064522624}
   serializedVersion: 2
   m_Radius: 0.9905268
+--- !u!114 &4823167313047091602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6777275443525427548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 951099334
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!1 &8647181542678641914
 GameObject:
   m_ObjectHideFlags: 0

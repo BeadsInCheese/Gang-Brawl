@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6319278275250973788}
   - component: {fileID: 2821441030544387618}
   - component: {fileID: 3560192250391511121}
+  - component: {fileID: 7574455914293456767}
   m_Layer: 0
   m_Name: Gas
   m_TagString: Untagged
@@ -86,6 +87,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e59be9f88c3633b4b865ce8c85815494, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7574455914293456767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 992262436302067803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 951099334
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!1 &5409984399768009575
 GameObject:
   m_ObjectHideFlags: 0

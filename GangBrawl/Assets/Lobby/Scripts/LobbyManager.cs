@@ -5,7 +5,9 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
-public class LobbyManager : MonoBehaviour
+using Unity.Netcode;
+
+public class LobbyManager : NetworkBehaviour
 {
     // Start is called before the first frame update
     public GameObject row1;
@@ -20,6 +22,7 @@ public class LobbyManager : MonoBehaviour
     float countdown = 5;
     public TMPro.TextMeshProUGUI countdownText;
     public static int CPUCount = 0;
+    public static bool host = true;
     public static Dictionary<string, PlayerData> playerData = new Dictionary<string, PlayerData>();
 
 
@@ -87,7 +90,59 @@ public class LobbyManager : MonoBehaviour
         cpu.transform.Find("CPUImg").gameObject.SetActive(true);
         setTintColor(cpu, tintColor);
     }
+    [ClientRpc]
 
+    public void OnlineJoin_ClientRpc(ulong id)
+    {
+        if (id == NetworkManager.Singleton.LocalClientId) { return; }
+        Debug.Log("OhOuh");
+        if (playersInGame + CPUCount > 4) { return; }
+        playersInGame += 1;
+        string playerID = "";
+        int playerIndex = (playersInGame + CPUCount) - 1;
+        Color tintColor = PlayerColors.Colors[playerIndex];
+        foreach (Transform i in player1.transform.parent)
+        {
+            if (!i.gameObject.tag.Equals("Player"))
+            {
+                i.gameObject.tag = "Player";
+                playerID = i.gameObject.name;
+                break;
+            }
+        }
+        if (playerData.ContainsKey(playerID))
+        {
+            playerData.Clear();
+        }
+        playerData.Add(playerID, new PlayerData("", -1, null, null, tintColor, id));
+
+    }
+    [ServerRpc]
+    public void OnlineJoin_ServerRpc(ulong id)
+    {
+        if (id == NetworkManager.Singleton.LocalClientId) { return; }
+        Debug.Log("OhOuh");
+        if (playersInGame + CPUCount > 4) { return; }
+        playersInGame += 1;
+        string playerID = "";
+        int playerIndex = (playersInGame + CPUCount) - 1;
+        Color tintColor = PlayerColors.Colors[playerIndex];
+        foreach (Transform i in player1.transform.parent)
+        {
+            if (!i.gameObject.tag.Equals("Player"))
+            {
+                i.gameObject.tag = "Player";
+                playerID = i.gameObject.name;
+                break;
+            }
+        }
+        if (playerData.ContainsKey(playerID))
+        {
+            playerData.Clear();
+        }
+        playerData.Add(playerID, new PlayerData("", -1, null, null, tintColor, id));
+
+    }
     public void OnPlayerJoined(PlayerInput playerInput)
     {
         // This if statement fixes a bug where joining with keyboard to full causes error.
@@ -117,6 +172,8 @@ public class LobbyManager : MonoBehaviour
                 playerID = i.gameObject.name;
                 break;
             }
+
+
         }
         /*
         
@@ -146,12 +203,13 @@ public class LobbyManager : MonoBehaviour
         {
             playerData.Clear();
         }
-        playerData.Add(playerID, new PlayerData("", -1, playerInput.currentControlScheme, d, tintColor));
+        playerData.Add(playerID, new PlayerData("", -1, playerInput.currentControlScheme, d, tintColor,NetworkManager.Singleton.LocalClientId));
         ob.SetActive(true);
         body.SetActive(true);
         hands.SetActive(true);
         legs.SetActive(true);
-
+        OnlineJoin_ClientRpc(NetworkManager.Singleton.LocalClientId);
+        OnlineJoin_ServerRpc(NetworkManager.Singleton.LocalClientId);
     }
 
     private void SetPlayerReadyOnUI(PlayerInput playerInput, GameObject player, Color tintColor)
@@ -203,6 +261,16 @@ public class LobbyManager : MonoBehaviour
         DirectorBehaviour.PlayerKills = new Dictionary<string, int>();
         DirectorBehaviour.gameTime = DirectorBehaviour.INITIAL_STARTING_GAMETIME;
         StartButton.interactable = false;
+        if (host)
+        {
+            NetworkManager.Singleton.StartHost();
+
+        }
+        else
+        {
+            NetworkManager.Singleton.StartClient();
+
+        }
     }
 
     public static void pressStart()
@@ -246,7 +314,7 @@ public class LobbyManager : MonoBehaviour
             countdownText.text = Mathf.Ceil(countdown).ToString();
             if (countdown <= 0)
             {
-                SceneManager.LoadScene(map);
+                NetworkManager.Singleton.SceneManager.LoadScene(map,LoadSceneMode.Single);
             }
         }
         else

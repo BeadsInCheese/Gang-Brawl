@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5516904060334690881}
   - component: {fileID: 715156745695096948}
   - component: {fileID: 5816048289734785914}
+  - component: {fileID: 4458401912814981688}
   m_Layer: 0
   m_Name: Muzzleflash2
   m_TagString: Untagged
@@ -98,6 +99,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7929ba6113393149ca760013faf5a2fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4458401912814981688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183068629765512111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 951099334
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!1 &1524021449024483578
 GameObject:
   m_ObjectHideFlags: 0
