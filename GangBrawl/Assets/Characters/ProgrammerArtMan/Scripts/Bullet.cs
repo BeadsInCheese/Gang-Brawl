@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : NetworkBehaviour
 {
     public float speed;
     public Rigidbody2D rb;
@@ -45,7 +46,7 @@ public class Bullet : MonoBehaviour
         // The if clause is directly taken from diesOutOfBounds 
         if (Helpers.isOutOfArena(gameObject))
         {
-            Destroy(gameObject);
+            NetworkManager.Destroy(gameObject);
         }
     }
 }

@@ -27,7 +27,7 @@ public class weaponGrate : NetworkBehaviour
             }
             s.gun=Instantiate(guntemplates[(int)Random.Range(0,guntemplates.Count)],s.shootingArm.position,s.shootingArm.rotation);
             s.newGunSetup();
-            Destroy(transform.parent.gameObject);
+            NetworkManager.Destroy(transform.parent.gameObject);
         }
 
      }
