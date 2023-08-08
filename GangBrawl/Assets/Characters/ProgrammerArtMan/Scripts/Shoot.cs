@@ -144,7 +144,6 @@ public class Shoot : NetworkBehaviour
                 Quaternion rotation = Quaternion.Euler(0, 0, fAngle + UnityEngine.Random.Range(-spread, spread));
                 shootingPoint.position = barrel.position;
                 ShootServerRpc(shootingPoint.position,rotation);
-                ShootClientRpc(shootingPoint.position, rotation);
             }
             ammo -= 1;
             if (ammo <= 0) { Destroy(gun); }
@@ -169,21 +168,7 @@ public class Shoot : NetworkBehaviour
         b.damage = (int)damage;
         bullet.GetComponent<NetworkObject>().Spawn();
     }
-    [ClientRpc]
-    public void ShootClientRpc(Vector3 pos, Quaternion rot)
-    {
-        if (muzzleflash != null)
-        {
-            Instantiate(muzzleflash, pos, rot).GetComponent<NetworkObject>().Spawn();
-        }
-        var bullet = Instantiate(bulletPrefab, shootingPoint.position, rot);
-        var b = bullet.GetComponent<Bullet>();
 
-        b.knockback = this.knockback;
-        b.owner = this.body.parent.parent.gameObject.name;
-        b.damage = (int)damage;
-        bullet.GetComponent<NetworkObject>().Spawn();
-    }
     protected bool isAbleToShoot()
     {
         return transform.position.y<99 && canShoot && !PauseMenu.isPaused;
