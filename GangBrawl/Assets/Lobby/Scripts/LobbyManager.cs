@@ -39,8 +39,27 @@ public class LobbyManager : NetworkBehaviour
     public void playerPressedReady()
     {
         playersReady += 1;
+        if (NetworkManager.Singleton.IsConnectedClient)
+        {
+            playerPressedReadyServerRpc();
+        }
     }
     public void playerPressedUnready()
+    {
+        playersReady -= 1;
+        if (NetworkManager.Singleton.IsConnectedClient)
+        {
+            playerPressedUnreadyServerRpc();
+        }
+    }
+    [ServerRpc(RequireOwnership = false)]
+    public void playerPressedReadyServerRpc()
+    {
+        Debug.Log(playersReady);
+        playersReady += 1;
+    }
+    [ServerRpc(RequireOwnership = false)]
+    public void playerPressedUnreadyServerRpc()
     {
         playersReady -= 1;
     }
@@ -91,7 +110,6 @@ public class LobbyManager : NetworkBehaviour
         setTintColor(cpu, tintColor);
     }
     [ClientRpc]
-
     public void OnlineJoin_ClientRpc(ulong id)
     {
         if (id == NetworkManager.Singleton.LocalClientId) { return; }
@@ -105,7 +123,8 @@ public class LobbyManager : NetworkBehaviour
         {
             if (!i.gameObject.tag.Equals("Player"))
             {
-                i.gameObject.tag = "Player";
+                //i.gameObject.tag = "Player";
+                SetPlayerReadyOnUI(null, i.gameObject, tintColor);
                 playerID = i.gameObject.name;
                 break;
             }
@@ -117,7 +136,7 @@ public class LobbyManager : NetworkBehaviour
         playerData.Add(playerID, new PlayerData("", -1, null, null, tintColor, id));
 
     }
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     public void OnlineJoin_ServerRpc(ulong id)
     {
         if (id == NetworkManager.Singleton.LocalClientId) { return; }
@@ -131,7 +150,8 @@ public class LobbyManager : NetworkBehaviour
         {
             if (!i.gameObject.tag.Equals("Player"))
             {
-                i.gameObject.tag = "Player";
+                //i.gameObject.tag = "Player";
+                SetPlayerReadyOnUI(null, i.gameObject, tintColor);
                 playerID = i.gameObject.name;
                 break;
             }
@@ -214,20 +234,24 @@ public class LobbyManager : NetworkBehaviour
 
     private void SetPlayerReadyOnUI(PlayerInput playerInput, GameObject player, Color tintColor)
     {
-        playerInput.transform.gameObject.GetComponent<lobbyPlayer>().LobbyObject = player;
+        if (playerInput != null)
+        {
+            playerInput.transform.gameObject.GetComponent<lobbyPlayer>().LobbyObject = player;
+            if (PlayerData.recogniseControllerType(playerInput.currentControlScheme) == ControllerType.Gamepad)
+            {
+                player.transform.Find("ReadyPrompt").gameObject.SetActive(true);
+                player.transform.Find("ControllerImg").gameObject.SetActive(true);
+            }
+            else if (PlayerData.recogniseControllerType(playerInput.currentControlScheme) == ControllerType.Keyboard)
+            {
+
+                player.transform.Find("KeyboardSpaceImg").gameObject.SetActive(true);
+                player.transform.Find("KeyboardIndicator").gameObject.SetActive(true);
+            }
+        }
         player.tag = "Player";
         player.transform.Find("sign1").gameObject.SetActive(true);
-        if (PlayerData.recogniseControllerType(playerInput.currentControlScheme) == ControllerType.Gamepad)
-        {
-            player.transform.Find("ReadyPrompt").gameObject.SetActive(true);
-            player.transform.Find("ControllerImg").gameObject.SetActive(true);
-        }
-        else if (PlayerData.recogniseControllerType(playerInput.currentControlScheme) == ControllerType.Keyboard)
-        {
-
-            player.transform.Find("KeyboardSpaceImg").gameObject.SetActive(true);
-            player.transform.Find("KeyboardIndicator").gameObject.SetActive(true);
-        }
+        
 
         player.transform.Find("ImagePlayerJoined").gameObject.SetActive(true);
         setTintColor(player, tintColor);
