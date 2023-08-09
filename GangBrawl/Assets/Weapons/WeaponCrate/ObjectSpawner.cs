@@ -1,13 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
 /// <summary>
 /// Spawns object only if there is nothing colliding with the spawner! 
 /// NOTE: requires ObjectSpawnerController to be added scene to work!.
 /// </summary>
-public class ObjectSpawner : MonoBehaviour
+public class ObjectSpawner : NetworkBehaviour
 {
     public GameObject[] spawnObjects;
 
@@ -62,9 +63,10 @@ public class ObjectSpawner : MonoBehaviour
 
         int randomIndex = UnityEngine.Random.Range(0, spawnObjects.Length);
         // Prevent spawning multiple objects on top of each other.
-        if (!currentlyCreatedObject)
+        if (!currentlyCreatedObject&&NetworkManager.Singleton.IsHost)
         {
             currentlyCreatedObject = Instantiate(spawnObjects[randomIndex], this.transform.position, Quaternion.identity);
+            currentlyCreatedObject.GetComponent<NetworkObject>().Spawn();
         }
     }
 

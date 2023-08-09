@@ -13,8 +13,9 @@ public class weaponGrate : NetworkBehaviour
     {
         DirectorBehaviour.items.Add(this.gameObject);
     }
+
      void OnCollisionEnter2D(Collision2D col){
-        if(col.gameObject.tag.Equals("Player")){
+        if(col.gameObject.tag.Equals("Player") && IsHost){
             if (crunchSounds.Count > 0)
             {
                 AudioManager.instance.playSoundAtPoint(crunchSounds[(int)Random.Range(0, crunchSounds.Count)], transform.position);
