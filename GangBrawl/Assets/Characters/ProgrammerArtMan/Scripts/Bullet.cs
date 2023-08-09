@@ -46,7 +46,7 @@ public class Bullet : NetworkBehaviour
         // The if clause is directly taken from diesOutOfBounds 
         if (Helpers.isOutOfArena(gameObject))
         {
-            NetworkManager.Destroy(gameObject);
+            Destroy(gameObject);
         }
     }
 }

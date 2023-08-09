@@ -18,8 +18,10 @@ public class PlayerSpawner : NetworkBehaviour
     {
         if (!NetworkManager.Singleton.IsHost)
         {
+
             return;
         }
+
         int playerNo = 0;
         foreach (PlayerData i in LobbyManager.playerData.Values)
         {
@@ -58,7 +60,7 @@ public class PlayerSpawner : NetworkBehaviour
             c.GetComponent<NetworkObject>().SpawnAsPlayerObject(NetworkManager.Singleton.LocalClientId);
         }
         LobbyManager.CPUCount = 0;
-        LobbyManager.playerData = new Dictionary<string, PlayerData>();
+        //LobbyManager.playerData = new Dictionary<string, PlayerData>();
 
     }
     /// <summary>
@@ -87,13 +89,14 @@ public class PlayerSpawner : NetworkBehaviour
     private void OnLoadComplete( string sceneName, LoadSceneMode loadSceneMode, List<ulong> clientsCompleted, List<ulong> clientsTimedOut)
     {
         Debug.Log("OnLoadComplete clientId: "  + " scene: " + sceneName + " mode: " + loadSceneMode);
-        spawnPlayers();
+        //spawnPlayers();
     }
     void Start()
     {
         playerInputManager = GetComponent<PlayerInputManager>();
         //spawnPlayers();
         NetworkManager.Singleton.SceneManager.OnLoadEventCompleted += OnLoadComplete;
+        spawnPlayers();
     }
     
     // Update is called once per frame

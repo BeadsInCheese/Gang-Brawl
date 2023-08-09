@@ -31,6 +31,7 @@ public class weaponGrate : NetworkBehaviour
         }
 
      }
+
     override
     public void OnDestroy()
     {

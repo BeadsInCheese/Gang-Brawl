@@ -112,10 +112,10 @@ protected SpriteRenderer spriteRenderer;
         physicsBody = GetComponent<Rigidbody2D>();
         transform.position = GameObject.Find("Player-" + playerInput.playerIndex + "-SpawnPoint").transform.position;
         colliderDims=GetComponent<BoxCollider2D>().size;
-        if (!IsHost)
-        {
-            Camera.main.GetComponent<CameraControl>().players.Add(transform);
-        }
+
+            //Camera.main.GetComponent<CameraControl>().players.Add(transform);
+            playerInput.SwitchCurrentControlScheme(LobbyManager.playerData["Player" + (1+DirectorBehaviour.PlayersAlive.Count)].pairWithDevices);
+        
     }
     float audiocooldown = 0f;
     // Update is called once per frame

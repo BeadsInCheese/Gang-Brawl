@@ -133,7 +133,7 @@ public class LobbyManager : NetworkBehaviour
         {
             playerData.Clear();
         }
-        playerData.Add(playerID, new PlayerData("", -1, null, null, tintColor, id));
+        playerData.Add(playerID, new PlayerData("", -1, controlSceme, null, tintColor, id));
 
     }
     [ServerRpc(RequireOwnership = false)]
@@ -160,7 +160,7 @@ public class LobbyManager : NetworkBehaviour
         {
             playerData.Clear();
         }
-        playerData.Add(playerID, new PlayerData("", -1, null, null, tintColor, id));
+        playerData.Add(playerID, new PlayerData("", -1, controlSceme, null, tintColor, id));
 
     }
     public void OnPlayerJoined(PlayerInput playerInput)
