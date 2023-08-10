@@ -20,6 +20,7 @@ public class Shoot : NetworkBehaviour
 
     // Start is called before the first frame update
     bool keyboard = false;
+
     void Start()
     {
         //playerInput = GetComponent<PlayerInput>();
@@ -48,11 +49,18 @@ public class Shoot : NetworkBehaviour
         Destroy(gun);
 
     }
+    [ClientRpc]
+    public void findgunClientRpc(string name)
+    {
+        gun = GameObject.Find(name);
+
+    }
     public void newGunSetup()
     {
 
-        gun.transform.SetParent(shootingArm);
+        //gun.transform.SetParent(shootingArm);
         Gun g = gun.GetComponentInChildren<Gun>();
+        findgunClientRpc(g.name);
         damage = g.damage;
         spread = g.spread / 2;
         automatic = g.automatic;
@@ -73,6 +81,12 @@ public class Shoot : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if (!charControl.IsOwner) { return; }
+        if (gun != null)
+        {
+            gun.transform.parent.position = shootingArm.position;
+            gun.transform.parent.rotation = shootingArm.transform.rotation;
+        }
         //Debug.Log(playerInput.currentControlScheme);
         if (keyboard)
         {
@@ -132,43 +146,68 @@ public class Shoot : NetworkBehaviour
                 shootingArm.rotation = Quaternion.Euler(new Vector3(Eangles.x, 180, Eangles.z));
             }
         }
-        if (((automatic && playerInput.actions["Shoot"].inProgress) || playerInput.actions["Shoot"].triggered) && gun != null && isAbleToShoot())
+        if (((automatic && playerInput.actions["Shoot"].inProgress) || playerInput.actions["Shoot"].triggered) )
         {   //Debug.Log((body.transform.position-shootingPoint.position).normalized*recoil);
-            charControl.physicsBody.AddForce((body.transform.position - shootingPoint.position).normalized * recoil);
+
+
+
+                float fAngle = (isPlayerAiming(playerInput)||keyboard) ? (float)angle : getShootingDirection(charControl);
+
+
+      
+                ShootServerRpc(shootingPoint.position, fAngle);
+   
+
+        }
+
+
+    }
+    [ServerRpc(RequireOwnership = false)]
+    public void ShootServerRpc(Vector3 pos, float fAngle)
+    {
+        shoot(pos,fAngle);
+        ShootClientRpc(pos, fAngle);
+
+    }
+    [ClientRpc]
+    public void ShootClientRpc(Vector3 pos, float fAngle)
+    {
+        shoot(pos, fAngle);
+
+
+    }
+    public void shoot(Vector3 pos, float fAngle)
+    {
+        if (gun != null && isAbleToShoot())
+        {
+            charControl.physicsBody.AddForce((body.transform.position - pos).normalized * recoil);
+            Quaternion rotation = Quaternion.Euler(0, 0, fAngle); 
+            Vector3 rotatedPosition = rotation * barrel.localPosition;
+            shootingPoint.position = pos + rotatedPosition;
             gunSound.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
             gunSound.Play();
             for (int i = 0; i < bulletsShotAtOnce; i++)
             {
-                float fAngle = (isPlayerAiming(playerInput)||keyboard) ? (float)angle : getShootingDirection(charControl);
+                Quaternion rot = Quaternion.Euler(0, 0, fAngle + UnityEngine.Random.Range(-spread, spread));
+                if (muzzleflash != null)
+                {
+                    Instantiate(muzzleflash, pos, rot).GetComponent<NetworkObject>().Spawn();
+                }
+                var bullet = Instantiate(bulletPrefab, shootingPoint.position, rot);
+                var b = bullet.GetComponent<Bullet>();
                 
-                Quaternion rotation = Quaternion.Euler(0, 0, fAngle + UnityEngine.Random.Range(-spread, spread));
-                shootingPoint.position = barrel.position;
-                ShootServerRpc(shootingPoint.position,rotation);
+                b.knockback = this.knockback;
+                b.owner = this.body.parent.parent.gameObject.name;
+                b.damage = (int)damage;
+
             }
             ammo -= 1;
-            if (ammo <= 0) { Destroy(gun); }
+            if (ammo <= 0) { gun.transform.parent.GetComponent<NetworkObject>().Despawn(); }
             setCanShoot(false);
             Invoke("reload", cooldown);
         }
 
-
     }
-    [ServerRpc(RequireOwnership =false)]
-    public void ShootServerRpc(Vector3 pos,Quaternion rot)
-    {
-        if (muzzleflash != null)
-        {
-            Instantiate(muzzleflash, pos, rot).GetComponent<NetworkObject>().Spawn();
-        }
-        var bullet = Instantiate(bulletPrefab, shootingPoint.position, rot);
-        var b = bullet.GetComponent<Bullet>();
-
-        b.knockback = this.knockback;
-        b.owner = this.body.parent.parent.gameObject.name;
-        b.damage = (int)damage;
-        bullet.GetComponent<NetworkObject>().Spawn();
-    }
-
     protected bool isAbleToShoot()
     {
         return transform.position.y<99 && canShoot && !PauseMenu.isPaused;

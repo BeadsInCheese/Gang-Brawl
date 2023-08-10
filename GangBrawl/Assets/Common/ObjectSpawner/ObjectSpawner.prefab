@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4227013761278231617}
   - component: {fileID: 4227013761278231618}
   - component: {fileID: 4227013761278231616}
+  - component: {fileID: 493994171579025911}
   m_Layer: 0
   m_Name: ObjectSpawner
   m_TagString: ObjectSpawner
@@ -50,6 +51,7 @@ MonoBehaviour:
   - {fileID: 6614459214473391359, guid: 2e051ed000f600ccfad735c8c7c73295, type: 3}
   minTime: 10
   maxTime: 25
+  currentlyCreatedObject: {fileID: 0}
 --- !u!61 &4227013761278231616
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -76,3 +78,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &493994171579025911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4227013761278231619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 951099334
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1

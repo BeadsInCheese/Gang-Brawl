@@ -28,6 +28,7 @@ public class PlayerSpawner : NetworkBehaviour
 
             var player = playerInputManager.JoinPlayer(playerNo, -1, null, i.pairWithDevices);
             player.gameObject.GetComponent<CharacterControl>().tint = i.tintColor;
+            
             usedColors.Add(i.tintColor);
             var hob = player.gameObject.transform.Find("FactionDownscaled/bone_1/bone_2/Hat");
             var bodyOB = player.gameObject.transform.Find("FactionDownscaled/bone_1/Body");

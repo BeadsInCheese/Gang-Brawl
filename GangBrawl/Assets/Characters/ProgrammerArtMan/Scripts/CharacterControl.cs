@@ -132,6 +132,8 @@ protected SpriteRenderer spriteRenderer;
     }
     void Update()
     {
+        HeavyAttackHitbox.SetActive(false);
+        LightAttackHitbox.SetActive(false);
         if (!IsOwner) { return; }
         if (InputDisabled) {
             physicsBody.velocity = Vector2.zero;

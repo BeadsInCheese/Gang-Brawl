@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5760052851024378203}
   - component: {fileID: 668553080987826304}
   - component: {fileID: 6888016682278480578}
-  - component: {fileID: 6098914307976488551}
   m_Layer: 0
   m_Name: GasGrenade
   m_TagString: Bullet
@@ -113,22 +112,6 @@ MonoBehaviour:
   max_speed: 5
   activateTime: 0
   gas: {fileID: 992262436302067803, guid: ac448321e13a7cf4487fdeede79b802c, type: 3}
---- !u!114 &6098914307976488551
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6777275443525427548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 951099334
-  AlwaysReplicateAsRoot: 0
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
 --- !u!1 &8866176715875614674
 GameObject:
   m_ObjectHideFlags: 0
