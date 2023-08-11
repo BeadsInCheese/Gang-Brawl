@@ -50,17 +50,41 @@ public class Shoot : NetworkBehaviour
 
     }
     [ClientRpc]
+    public void creategunClientRpc(int index)
+    {
+        gun=Instantiate(Weaponlists.Instance.Normalcrate[index], shootingArm.position, shootingArm.rotation);
+        newGunSetup();
+    }
+    [ClientRpc]
+    public void DestroygunClientRpc()
+    {
+        Destroy(gun.transform.parent.gameObject);
+    }
+        [ClientRpc]
     public void findgunClientRpc(string name)
     {
         gun = GameObject.Find(name);
+        Gun g = gun.GetComponentInChildren<Gun>();
+        damage = g.damage;
+        spread = g.spread / 2;
+        automatic = g.automatic;
+        cooldown = g.cooldown;
+        ammo = g.ammo;
+        muzzleflash = g.muzzleflash;
+        barrel = g.barrel;
+        this.recoil = g.recoil;
+        this.knockback = g.bulletKnockback;
+        bulletsShotAtOnce = g.bulletsShotAtOnce;
+        gunSound = g.gameObject.GetComponent<AudioSource>();
+        bulletPrefab = g.BulletPrefab;
 
     }
     public void newGunSetup()
     {
 
-        //gun.transform.SetParent(shootingArm);
+        gun.transform.SetParent(shootingArm);
         Gun g = gun.GetComponentInChildren<Gun>();
-        findgunClientRpc(g.name);
+        //findgunClientRpc(g.name);
         damage = g.damage;
         spread = g.spread / 2;
         automatic = g.automatic;
@@ -84,8 +108,8 @@ public class Shoot : NetworkBehaviour
         //if (!charControl.IsOwner) { return; }
         if (gun != null)
         {
-            gun.transform.parent.position = shootingArm.position;
-            gun.transform.parent.rotation = shootingArm.transform.rotation;
+            //gun.transform.parent.position = shootingArm.position;
+            //gun.transform.parent.rotation = shootingArm.transform.rotation;
         }
         //Debug.Log(playerInput.currentControlScheme);
         if (keyboard)
@@ -191,7 +215,7 @@ public class Shoot : NetworkBehaviour
                 Quaternion rot = Quaternion.Euler(0, 0, fAngle + UnityEngine.Random.Range(-spread, spread));
                 if (muzzleflash != null)
                 {
-                    Instantiate(muzzleflash, pos, rot).GetComponent<NetworkObject>().Spawn();
+                    Instantiate(muzzleflash, pos, rot);
                 }
                 var bullet = Instantiate(bulletPrefab, shootingPoint.position, rot);
                 var b = bullet.GetComponent<Bullet>();
@@ -202,7 +226,7 @@ public class Shoot : NetworkBehaviour
 
             }
             ammo -= 1;
-            if (ammo <= 0) { gun.transform.parent.GetComponent<NetworkObject>().Despawn(); }
+            if (ammo <= 0) { Destroy(gun.transform.gameObject); }
             setCanShoot(false);
             Invoke("reload", cooldown);
         }

@@ -34,14 +34,15 @@ public class weaponGrate : NetworkBehaviour
             }
             Shoot s= col.gameObject.GetComponentInChildren<Shoot>();
             if(s.gun!=null){
-                
-                s.gun.transform.parent.GetComponent<NetworkObject>().Despawn();
+
+                Destroy(s.gun.transform.gameObject);
             }
 
             int index = (int)Random.Range(0, guntemplates.Count);
-            s.gun=Instantiate(guntemplates[index],s.shootingArm.position,s.shootingArm.rotation);
-            s.gun.GetComponent<NetworkObject>().SpawnWithOwnership(col.gameObject.GetComponent<NetworkObject>().OwnerClientId);
-            s.newGunSetup();
+            //s.gun=Instantiate(guntemplates[index],s.shootingArm.position,s.shootingArm.rotation);
+            //s.gun.GetComponent<NetworkObject>().SpawnWithOwnership(col.gameObject.GetComponent<NetworkObject>().OwnerClientId);
+            //s.newGunSetup();
+            s.creategunClientRpc(index);
 
 
             //GunPickedUpClientRpc(index,s.body.parent.parent.gameObject.name);

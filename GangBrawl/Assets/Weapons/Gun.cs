@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 
-public class Gun : NetworkBehaviour
+public class Gun : MonoBehaviour
 {
     public float spread=0;
     public float cooldown=2;
