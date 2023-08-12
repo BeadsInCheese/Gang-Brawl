@@ -319,7 +319,7 @@ public class LobbyManager : NetworkBehaviour
     {
         return playersReady >= playersInGame + CPUCount;
     }
-
+    private bool m_SceneLoadingStarted=false;
     // Update is called once per frame
     void Update()
     {
@@ -338,7 +338,12 @@ public class LobbyManager : NetworkBehaviour
             countdownText.text = Mathf.Ceil(countdown).ToString();
             if (countdown <= 0)
             {
-                NetworkManager.Singleton.SceneManager.LoadScene(map,LoadSceneMode.Single);
+                if (!m_SceneLoadingStarted)
+                {
+                    // Set the flag to true
+                    m_SceneLoadingStarted = true;
+                    NetworkManager.Singleton.SceneManager.LoadScene(map, LoadSceneMode.Single);
+                }
             }
         }
         else

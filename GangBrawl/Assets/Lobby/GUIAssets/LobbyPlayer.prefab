@@ -232,7 +232,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 665927520858966327}
+      - m_Target: {fileID: 4038034760260490700}
         m_TargetAssemblyTypeName: HatSelector, Assembly-CSharp
         m_MethodName: MoveDown
         m_Mode: 1
@@ -257,6 +257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   s: {fileID: 8300000, guid: 8164d6701dffdbd428c8df56194e0c9c, type: 3}
+  Click: {fileID: 0}
 --- !u!1 &512817205214939369
 GameObject:
   m_ObjectHideFlags: 0
@@ -458,7 +459,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 665927520858966327}
+      - m_Target: {fileID: 4038034760260490700}
         m_TargetAssemblyTypeName: HatSelector, Assembly-CSharp
         m_MethodName: LegsMoveUp
         m_Mode: 1
@@ -483,6 +484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   s: {fileID: 8300000, guid: 8164d6701dffdbd428c8df56194e0c9c, type: 3}
+  Click: {fileID: 0}
 --- !u!1 &904823804425197396
 GameObject:
   m_ObjectHideFlags: 0
@@ -912,7 +914,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 665927520858966327}
+      - m_Target: {fileID: 4038034760260490700}
         m_TargetAssemblyTypeName: HatSelector, Assembly-CSharp
         m_MethodName: BodyMoveUp
         m_Mode: 1
@@ -937,6 +939,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   s: {fileID: 8300000, guid: 8164d6701dffdbd428c8df56194e0c9c, type: 3}
+  Click: {fileID: 0}
 --- !u!1 &2346752931121122057
 GameObject:
   m_ObjectHideFlags: 0
@@ -1138,7 +1141,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 665927520858966327}
+      - m_Target: {fileID: 4038034760260490700}
         m_TargetAssemblyTypeName: HatSelector, Assembly-CSharp
         m_MethodName: HandsMoveUp
         m_Mode: 1
@@ -1163,6 +1166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   s: {fileID: 8300000, guid: 8164d6701dffdbd428c8df56194e0c9c, type: 3}
+  Click: {fileID: 0}
 --- !u!1 &2691802619904478503
 GameObject:
   m_ObjectHideFlags: 0
@@ -1319,7 +1323,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 665927520858966327}
+      - m_Target: {fileID: 4038034760260490700}
         m_TargetAssemblyTypeName: HatSelector, Assembly-CSharp
         m_MethodName: MoveUp
         m_Mode: 1
@@ -1344,6 +1348,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   s: {fileID: 8300000, guid: 8164d6701dffdbd428c8df56194e0c9c, type: 3}
+  Click: {fileID: 0}
 --- !u!1 &3284858357887558589
 GameObject:
   m_ObjectHideFlags: 0
@@ -1873,6 +1878,8 @@ GameObject:
   - component: {fileID: 7814748693643196755}
   - component: {fileID: 424020349106705665}
   - component: {fileID: 4647290355111602702}
+  - component: {fileID: 9144348822512982889}
+  - component: {fileID: 4038034760260490700}
   m_Layer: 5
   m_Name: LobbyPlayer
   m_TagString: Untagged
@@ -2020,6 +2027,73 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &9144348822512982889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4991897995451148888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 951099334
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+--- !u!114 &4038034760260490700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4991897995451148888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 856beb4d30507d8f1a4ef324a52daed6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatSprite: {fileID: 6586210209035665112}
+  BodySprite: {fileID: 9000693069584770180}
+  HandsSprite: {fileID: 9090660577825352870}
+  LegsSprite: {fileID: 8962807095569635171}
+  Hats:
+  - {fileID: 21300000, guid: 5b01db4d514f50668ab4cd4cd04b796c, type: 3}
+  - {fileID: 21300000, guid: 35ff60d88b54260cb8f6d57bc9569fcd, type: 3}
+  - {fileID: 21300000, guid: 71c1a26952f05e02fbcd15a23b124fb1, type: 3}
+  - {fileID: 21300000, guid: 8fc5b7adfcf8c9146990e2d2f4f61160, type: 3}
+  - {fileID: 21300000, guid: 81668937b26bc634db86e343751ae227, type: 3}
+  - {fileID: 21300000, guid: 29f697b04b7561643ae4bf0dc5860843, type: 3}
+  - {fileID: 21300000, guid: 50f53a8c2b10d584e984756bb6b84261, type: 3}
+  Body:
+  - {fileID: -525799124, guid: 256ee7febd74c327ea921016ce07b066, type: 3}
+  - {fileID: 728073779, guid: 48976900505325946ae100b81e703eda, type: 3}
+  - {fileID: 2101611781, guid: b2992528bb9123545864da562e30c3a2, type: 3}
+  - {fileID: -1261558217, guid: 0b5b843e08d7be245ba825d049437439, type: 3}
+  - {fileID: -1551067914, guid: 88c1b48a6c1d7484b852fa108e48df05, type: 3}
+  - {fileID: 501848637, guid: 5f176c2083eaed5499e051931eb32a64, type: 3}
+  - {fileID: -750599526, guid: 791f13a9b27869944b8a789eb04b4f62, type: 3}
+  Hands:
+  - {fileID: -1729384233, guid: b2992528bb9123545864da562e30c3a2, type: 3}
+  - {fileID: -625479557, guid: 48976900505325946ae100b81e703eda, type: 3}
+  - {fileID: -1910707923, guid: 256ee7febd74c327ea921016ce07b066, type: 3}
+  - {fileID: -851620910, guid: 48976900505325946ae100b81e703eda, type: 3}
+  - {fileID: -203784977, guid: 0b5b843e08d7be245ba825d049437439, type: 3}
+  - {fileID: -6351506, guid: 5f176c2083eaed5499e051931eb32a64, type: 3}
+  - {fileID: -755442100, guid: 791f13a9b27869944b8a789eb04b4f62, type: 3}
+  Legs:
+  - {fileID: -2065522513, guid: 256ee7febd74c327ea921016ce07b066, type: 3}
+  - {fileID: 508445625, guid: 48976900505325946ae100b81e703eda, type: 3}
+  - {fileID: -2126112364, guid: b2992528bb9123545864da562e30c3a2, type: 3}
+  - {fileID: -823505315, guid: 0b5b843e08d7be245ba825d049437439, type: 3}
+  - {fileID: 632124875, guid: 5f176c2083eaed5499e051931eb32a64, type: 3}
+  - {fileID: 1639342339, guid: 791f13a9b27869944b8a789eb04b4f62, type: 3}
+  HatIndex: 0
+  BodyIndex: 0
+  HandIndex: 0
+  LegsIndex: 0
 --- !u!1 &5048750207306927445
 GameObject:
   m_ObjectHideFlags: 0
@@ -2294,9 +2368,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 665927520858966327}
+      - m_Target: {fileID: 4038034760260490700}
         m_TargetAssemblyTypeName: HatSelector, Assembly-CSharp
-        m_MethodName: HandsMoveDown
+        m_MethodName: LegsMoveDown
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2319,6 +2393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   s: {fileID: 8300000, guid: 8164d6701dffdbd428c8df56194e0c9c, type: 3}
+  Click: {fileID: 0}
 --- !u!1 &6465304010952311786
 GameObject:
   m_ObjectHideFlags: 0
@@ -2409,7 +2484,7 @@ GameObject:
   - component: {fileID: 6674279524963381687}
   - component: {fileID: 8288753117671272580}
   - component: {fileID: 6586210209035665112}
-  - component: {fileID: 665927520858966327}
+  - component: {fileID: 2008455373900203114}
   m_Layer: 5
   m_Name: HatImage
   m_TagString: Untagged
@@ -2475,7 +2550,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &665927520858966327
+--- !u!114 &2008455373900203114
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2484,48 +2559,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6670632315422754664}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 856beb4d30507d8f1a4ef324a52daed6, type: 3}
+  m_Script: {fileID: 11500000, guid: b8290dde924258e4c8a99356c380679d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HatSprite: {fileID: 6586210209035665112}
-  BodySprite: {fileID: 9000693069584770180}
-  HandsSprite: {fileID: 9090660577825352870}
-  LegsSprite: {fileID: 8962807095569635171}
-  Hats:
-  - {fileID: 21300000, guid: 5b01db4d514f50668ab4cd4cd04b796c, type: 3}
-  - {fileID: 21300000, guid: 35ff60d88b54260cb8f6d57bc9569fcd, type: 3}
-  - {fileID: 21300000, guid: 71c1a26952f05e02fbcd15a23b124fb1, type: 3}
-  - {fileID: 21300000, guid: 8fc5b7adfcf8c9146990e2d2f4f61160, type: 3}
-  - {fileID: 21300000, guid: 81668937b26bc634db86e343751ae227, type: 3}
-  - {fileID: 21300000, guid: 29f697b04b7561643ae4bf0dc5860843, type: 3}
-  - {fileID: 21300000, guid: 50f53a8c2b10d584e984756bb6b84261, type: 3}
-  Body:
-  - {fileID: -525799124, guid: 256ee7febd74c327ea921016ce07b066, type: 3}
-  - {fileID: 728073779, guid: 48976900505325946ae100b81e703eda, type: 3}
-  - {fileID: 2101611781, guid: b2992528bb9123545864da562e30c3a2, type: 3}
-  - {fileID: -1261558217, guid: 0b5b843e08d7be245ba825d049437439, type: 3}
-  - {fileID: -1551067914, guid: 88c1b48a6c1d7484b852fa108e48df05, type: 3}
-  - {fileID: 501848637, guid: 5f176c2083eaed5499e051931eb32a64, type: 3}
-  - {fileID: -750599526, guid: 791f13a9b27869944b8a789eb04b4f62, type: 3}
-  Hands:
-  - {fileID: -1729384233, guid: b2992528bb9123545864da562e30c3a2, type: 3}
-  - {fileID: -625479557, guid: 48976900505325946ae100b81e703eda, type: 3}
-  - {fileID: -1910707923, guid: 256ee7febd74c327ea921016ce07b066, type: 3}
-  - {fileID: -851620910, guid: 48976900505325946ae100b81e703eda, type: 3}
-  - {fileID: -203784977, guid: 0b5b843e08d7be245ba825d049437439, type: 3}
-  - {fileID: -6351506, guid: 5f176c2083eaed5499e051931eb32a64, type: 3}
-  - {fileID: -755442100, guid: 791f13a9b27869944b8a789eb04b4f62, type: 3}
-  Legs:
-  - {fileID: -2065522513, guid: 256ee7febd74c327ea921016ce07b066, type: 3}
-  - {fileID: 508445625, guid: 48976900505325946ae100b81e703eda, type: 3}
-  - {fileID: -2126112364, guid: b2992528bb9123545864da562e30c3a2, type: 3}
-  - {fileID: -823505315, guid: 0b5b843e08d7be245ba825d049437439, type: 3}
-  - {fileID: 632124875, guid: 5f176c2083eaed5499e051931eb32a64, type: 3}
-  - {fileID: 1639342339, guid: 791f13a9b27869944b8a789eb04b4f62, type: 3}
-  HatIndex: 0
-  BodyIndex: 0
-  HandIndex: 0
-  LegsIndex: 0
+  hs: {fileID: 4038034760260490700}
 --- !u!1 &7348971049630453510
 GameObject:
   m_ObjectHideFlags: 0
@@ -2648,7 +2685,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 665927520858966327}
+      - m_Target: {fileID: 4038034760260490700}
         m_TargetAssemblyTypeName: HatSelector, Assembly-CSharp
         m_MethodName: LegsMoveDown
         m_Mode: 1
@@ -2673,6 +2710,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   s: {fileID: 8300000, guid: 8164d6701dffdbd428c8df56194e0c9c, type: 3}
+  Click: {fileID: 0}
 --- !u!1 &7621373857482314130
 GameObject:
   m_ObjectHideFlags: 0
@@ -2955,7 +2993,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 665927520858966327}
+      - m_Target: {fileID: 4038034760260490700}
         m_TargetAssemblyTypeName: HatSelector, Assembly-CSharp
         m_MethodName: BodyMoveDown
         m_Mode: 1
@@ -2980,6 +3018,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   s: {fileID: 8300000, guid: 8164d6701dffdbd428c8df56194e0c9c, type: 3}
+  Click: {fileID: 0}
 --- !u!1 &8601498017113235545
 GameObject:
   m_ObjectHideFlags: 0

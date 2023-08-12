@@ -13,7 +13,7 @@ public class PlayerSpawner : NetworkBehaviour
     PlayerInputManager playerInputManager;
     public List<Color> PlayerColorTints = new List<Color>();
     public List<Color> usedColors = new List<Color>();
-
+    
     public void spawnPlayers()
     {
         if (!NetworkManager.Singleton.IsHost)
@@ -45,7 +45,7 @@ public class PlayerSpawner : NetworkBehaviour
             LegOB2.gameObject.GetComponent<SpriteRenderer>().sprite = i.Legs;
             LegOB.gameObject.GetComponent<SpriteRenderer>().sprite = i.Legs;
             playerNo = playerNo + 1;
-            Camera.main.GetComponent<CameraControl>().players.Add(player.transform);
+            //Camera.main.GetComponent<CameraControl>().players.Add(player.transform);
             player.GetComponent<NetworkObject>().SpawnAsPlayerObject(i.clientID);
 
         }
@@ -87,17 +87,49 @@ public class PlayerSpawner : NetworkBehaviour
     }
 
     // Start is called before the first frame update
+    private NetworkSceneManager m_NetworkSceneManager;
+
+    private void Awake()
+    {
+        // Get the NetworkSceneManager component from the NetworkManager GameObject
+        m_NetworkSceneManager = NetworkManager.Singleton.SceneManager;
+
+        // Register a callback function for the OnSceneEvent event
+        m_NetworkSceneManager.OnSceneEvent += OnSceneEvent;
+    }
+
+    private void OnDestroy()
+    {
+        // Unregister the callback function when this GameObject is destroyed
+        m_NetworkSceneManager.OnSceneEvent -= OnSceneEvent;
+
+        NetworkManager.Singleton.SceneManager.OnLoadEventCompleted -= OnLoadComplete;
+    }
+
+    private void OnSceneEvent(SceneEvent sceneEvent)
+    {
+        // Check if the scene event type is SynchronizeComplete
+        Debug.Log(sceneEvent.SceneEventType);
+        if (sceneEvent.SceneEventType == SceneEventType.SynchronizeComplete)
+        {
+            // Log a message on the console
+//            Debug.Log($"Client {sceneEvent.ClientId} has loaded the scene and spawned {sceneEvent..NetworkObjectIds.Count} Netcode objects.");
+            
+            // Call your spawnPlayers method here
+            spawnPlayers();
+        }
+    }
     private void OnLoadComplete( string sceneName, LoadSceneMode loadSceneMode, List<ulong> clientsCompleted, List<ulong> clientsTimedOut)
     {
         Debug.Log("OnLoadComplete clientId: "  + " scene: " + sceneName + " mode: " + loadSceneMode);
-        //spawnPlayers();
+        spawnPlayers();
     }
     void Start()
     {
         playerInputManager = GetComponent<PlayerInputManager>();
         //spawnPlayers();
         NetworkManager.Singleton.SceneManager.OnLoadEventCompleted += OnLoadComplete;
-        spawnPlayers();
+        //spawnPlayers();
     }
     
     // Update is called once per frame

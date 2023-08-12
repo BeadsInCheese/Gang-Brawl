@@ -26,9 +26,19 @@ public class Shoot : NetworkBehaviour
         //playerInput = GetComponent<PlayerInput>();
         playerInput = gameObject.GetComponentInParent<PlayerInput>();
         charControl = gameObject.GetComponentInParent<CharacterControl>();
-        if (playerInput != null)
+        if (playerInput != null )
         {
-            keyboard = playerInput.currentControlScheme.Equals("keyboard");
+
+
+
+        if(playerInput.currentControlScheme == null)
+            {
+                keyboard = true;
+            }
+            else
+            {
+                keyboard = playerInput.currentControlScheme.Equals("keyboard");
+            }
         }
     }
     protected float spread = 0;

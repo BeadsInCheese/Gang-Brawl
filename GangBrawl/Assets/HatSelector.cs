@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HatSelector : MonoBehaviour
+public class HatSelector : NetworkBehaviour
 {
     public Image HatSprite;
     public Image BodySprite;
@@ -20,44 +21,70 @@ public class HatSelector : MonoBehaviour
     // Start is called before the first frame update
     public void loadLoadout()
     {
-        if (CustomasationManager.instance.customisationValues.ContainsKey(gameObject.transform.parent.parent.gameObject.name))
+        if (CustomasationManager.instance.customisationValues.ContainsKey(gameObject.name))
         {
-            HatIndex = CustomasationManager.instance.customisationValues[gameObject.transform.parent.parent.gameObject.name][0];
-            BodyIndex = CustomasationManager.instance.customisationValues[gameObject.transform.parent.parent.gameObject.name][1];
-            HandIndex = CustomasationManager.instance.customisationValues[gameObject.transform.parent.parent.gameObject.name][2];
-            LegsIndex = CustomasationManager.instance.customisationValues[gameObject.transform.parent.parent.gameObject.name][3];
+            HatIndex = CustomasationManager.instance.customisationValues[gameObject.name][0];
+            BodyIndex = CustomasationManager.instance.customisationValues[gameObject.name][1];
+            HandIndex = CustomasationManager.instance.customisationValues[gameObject.name][2];
+            LegsIndex = CustomasationManager.instance.customisationValues[gameObject.name][3];
         }
         else
         {
-            CustomasationManager.instance.customisationValues[gameObject.transform.parent.parent.gameObject.name] = new int[] { 0,0,0,0};
+            CustomasationManager.instance.customisationValues[gameObject.name] = new int[] { 0,0,0,0};
         }
     }
      
         public void saveCustomValues()
     {
-        if (CustomasationManager.instance.customisationValues.ContainsKey(gameObject.transform.parent.parent.gameObject.name))
+        if (CustomasationManager.instance.customisationValues.ContainsKey(gameObject.name))
         {
-            CustomasationManager.instance.customisationValues[gameObject.transform.parent.parent.gameObject.name][0]=HatIndex;
-            CustomasationManager.instance.customisationValues[gameObject.transform.parent.parent.gameObject.name][1]=BodyIndex;
-             CustomasationManager.instance.customisationValues[gameObject.transform.parent.parent.gameObject.name][2]=HandIndex;
-             CustomasationManager.instance.customisationValues[gameObject.transform.parent.parent.gameObject.name][3]=LegsIndex;
+            CustomasationManager.instance.customisationValues[gameObject.name][0]=HatIndex;
+            CustomasationManager.instance.customisationValues[gameObject.name][1]=BodyIndex;
+             CustomasationManager.instance.customisationValues[gameObject.name][2]=HandIndex;
+             CustomasationManager.instance.customisationValues[gameObject.name][3]=LegsIndex;
         }
     }
     
         public void updateSprite(){
-
+        SetCustomisationValuesServerRpc(HatIndex, BodyIndex, HandIndex, LegsIndex);
         HatSprite.sprite=Hats[HatIndex];
         BodySprite.sprite = Body[BodyIndex];
         HandsSprite.sprite = Hands[HandIndex];
         LegsSprite.sprite = Legs[LegsIndex];
-        var temp = LobbyManager.playerData[gameObject.transform.parent.parent.gameObject.name];
+        var temp = LobbyManager.playerData[gameObject.name];
         temp.hat=Hats[HatIndex];
         temp.Body = Body[BodyIndex];
         temp.Hands = Hands[HandIndex];
         temp.Legs = Legs[LegsIndex];
         saveCustomValues();
     }
-    void OnEnable()
+    [ClientRpc]
+    public void SetCustomisationValuesClientRpc(int netHatIndex,int netBodyIndex, int netHandIndex, int netLegsIndex)
+    {
+        Debug.Log("Client custom values changed");
+        HatIndex = netHatIndex;
+        BodyIndex = netBodyIndex;
+        HandIndex=netHandIndex;
+        LegsIndex=netLegsIndex;
+        HatSprite.sprite = Hats[HatIndex];
+        BodySprite.sprite = Body[BodyIndex];
+        HandsSprite.sprite = Hands[HandIndex];
+        LegsSprite.sprite = Legs[LegsIndex];
+        var temp = LobbyManager.playerData[gameObject.name];
+        temp.hat = Hats[HatIndex];
+        temp.Body = Body[BodyIndex];
+        temp.Hands = Hands[HandIndex];
+        temp.Legs = Legs[LegsIndex];
+        saveCustomValues();
+
+    }
+    [ServerRpc(RequireOwnership = false)]
+    public void SetCustomisationValuesServerRpc(int netHatIndex, int netBodyIndex, int netHandIndex, int netLegsIndex)
+    {
+        Debug.Log("Client custom values Called");
+        SetCustomisationValuesClientRpc(netHatIndex, netBodyIndex, netHandIndex, netLegsIndex);
+    }
+        public void turnOn()
     {
         loadLoadout();
         updateSprite();
