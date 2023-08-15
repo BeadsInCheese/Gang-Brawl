@@ -15,6 +15,7 @@ public class LobbyManager : MonoBehaviour
     public GameObject player4;
 
     public Button StartButton;
+    private TextMeshProUGUI StartButtonText;
     int playersInGame = 0;
     int playersReady = 0;
     float countdown = 5;
@@ -91,7 +92,7 @@ public class LobbyManager : MonoBehaviour
     public void OnPlayerJoined(PlayerInput playerInput)
     {
         // This if statement fixes a bug where joining with keyboard to full causes error.
-        if(playersInGame + CPUCount > 4){return;}
+        if (playersInGame + CPUCount > 4) { return; }
 
         InputDevice[] d;
         d = playerInput.devices.ToArray();
@@ -203,6 +204,10 @@ public class LobbyManager : MonoBehaviour
         DirectorBehaviour.PlayerKills = new Dictionary<string, int>();
         DirectorBehaviour.gameTime = DirectorBehaviour.INITIAL_STARTING_GAMETIME;
         StartButton.interactable = false;
+        if (StartButton != null)
+        {
+            StartButtonText = StartButton.GetComponentInChildren<TextMeshProUGUI>();
+        }
     }
 
     public static void pressStart()
@@ -225,6 +230,22 @@ public class LobbyManager : MonoBehaviour
     /// <returns></returns>
     private bool AllPlayersHasPressedReady()
     {
+        if (StartButtonText != null)
+        {
+            if (playersInGame + CPUCount <= 1)
+            {
+                StartButtonText.text = "Waiting for more players";
+            }
+            else
+            {
+                if (playersReady >= playersInGame + CPUCount)
+                {
+                    StartButtonText.text = "Start Match!";
+                }
+
+                StartButtonText.text = "Ready" + playersReady + "/" + (playersInGame + CPUCount);
+            }
+        }
         return playersReady >= playersInGame + CPUCount;
     }
 
@@ -234,6 +255,7 @@ public class LobbyManager : MonoBehaviour
         if (AllPlayersHasPressedReady() && HasEnoughPlayersAndCPU())
         {
             StartButton.interactable = true;
+            StartButtonText.text = "Ready to start!";
         }
         else
         {
