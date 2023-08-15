@@ -341,6 +341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   s: {fileID: 8300000, guid: 8164d6701dffdbd428c8df56194e0c9c, type: 3}
+  Click: {fileID: 0}
 --- !u!1 &60095985
 GameObject:
   m_ObjectHideFlags: 0
@@ -1348,6 +1349,7 @@ MonoBehaviour:
   player2: {fileID: 1898162624}
   player3: {fileID: 1017831655}
   player4: {fileID: 2013547732}
+  player1EventSystem: {fileID: 1505154864}
   StartButton: {fileID: 750551425}
   countdownText: {fileID: 755002885}
   map: Airship
@@ -2118,6 +2120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   s: {fileID: 8300000, guid: 8164d6701dffdbd428c8df56194e0c9c, type: 3}
+  Click: {fileID: 0}
 --- !u!1 &755002883
 GameObject:
   m_ObjectHideFlags: 0
@@ -2928,6 +2931,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   s: {fileID: 8300000, guid: 8164d6701dffdbd428c8df56194e0c9c, type: 3}
+  Click: {fileID: 0}
 --- !u!1 &1037683147
 GameObject:
   m_ObjectHideFlags: 0
@@ -3141,6 +3145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   s: {fileID: 8300000, guid: 8164d6701dffdbd428c8df56194e0c9c, type: 3}
+  Click: {fileID: 0}
 --- !u!1 &1107736012
 GameObject:
   m_ObjectHideFlags: 0
@@ -4325,6 +4330,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4991897995451148889, guid: 700bde5b49483900ba3bfa66ec9d6e04, type: 3}
   m_PrefabInstance: {fileID: 4991897994219453814}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1505154864 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7814748693643196755, guid: 700bde5b49483900ba3bfa66ec9d6e04, type: 3}
+  m_PrefabInstance: {fileID: 4991897994219453814}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8029427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b16c6f78230fa4964a222622d8aae332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1507405105
 GameObject:
   m_ObjectHideFlags: 0
@@ -4473,6 +4489,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   s: {fileID: 8300000, guid: 8164d6701dffdbd428c8df56194e0c9c, type: 3}
+  Click: {fileID: 0}
 --- !u!1 &1512225102
 GameObject:
   m_ObjectHideFlags: 0
@@ -4892,6 +4909,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   s: {fileID: 8300000, guid: 8164d6701dffdbd428c8df56194e0c9c, type: 3}
+  Click: {fileID: 0}
 --- !u!1001 &1633783548
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6137,6 +6155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   s: {fileID: 8300000, guid: 8164d6701dffdbd428c8df56194e0c9c, type: 3}
+  Click: {fileID: 0}
 --- !u!1 &2003403882
 GameObject:
   m_ObjectHideFlags: 0

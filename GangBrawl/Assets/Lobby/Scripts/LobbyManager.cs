@@ -5,6 +5,9 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem.UI;
+
 public class LobbyManager : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -13,8 +16,9 @@ public class LobbyManager : MonoBehaviour
     public GameObject player2;
     public GameObject player3;
     public GameObject player4;
-
+    public MultiplayerEventSystem player1EventSystem;
     public Button StartButton;
+    private TextMeshProUGUI StartButtonText;
     int playersInGame = 0;
     int playersReady = 0;
     float countdown = 5;
@@ -39,6 +43,9 @@ public class LobbyManager : MonoBehaviour
     }
     public void playerPressedUnready()
     {
+        if(AllPlayersHasPressedReady()){
+        player1EventSystem.SetSelectedGameObject(player1EventSystem.firstSelectedGameObject);
+        }
         playersReady -= 1;
     }
     public static LobbyManager instance;
@@ -91,7 +98,7 @@ public class LobbyManager : MonoBehaviour
     public void OnPlayerJoined(PlayerInput playerInput)
     {
         // This if statement fixes a bug where joining with keyboard to full causes error.
-        if(playersInGame + CPUCount > 4){return;}
+        if (playersInGame + CPUCount > 4) { return; }
 
         InputDevice[] d;
         d = playerInput.devices.ToArray();
@@ -203,6 +210,10 @@ public class LobbyManager : MonoBehaviour
         DirectorBehaviour.PlayerKills = new Dictionary<string, int>();
         DirectorBehaviour.gameTime = DirectorBehaviour.INITIAL_STARTING_GAMETIME;
         StartButton.interactable = false;
+        if (StartButton != null)
+        {
+            StartButtonText = StartButton.GetComponentInChildren<TextMeshProUGUI>();
+        }
     }
 
     public static void pressStart()
@@ -225,7 +236,28 @@ public class LobbyManager : MonoBehaviour
     /// <returns></returns>
     private bool AllPlayersHasPressedReady()
     {
+        updateStartButtonText();
         return playersReady >= playersInGame + CPUCount;
+    }
+
+    private void updateStartButtonText(){
+        if (StartButtonText != null)
+                {
+                    if (playersInGame + CPUCount <= 1)
+                    {
+                        StartButtonText.text = "Waiting for more players";
+                    }
+                    else
+                    {
+                        if (playersReady >= playersInGame + CPUCount)
+                        {
+                            StartButtonText.text = "Start Match!";
+                        }else
+                        {
+
+                        StartButtonText.text = "Ready " + playersReady + "/" + (playersInGame + CPUCount);
+                    }}
+                }
     }
 
     // Update is called once per frame
@@ -234,6 +266,7 @@ public class LobbyManager : MonoBehaviour
         if (AllPlayersHasPressedReady() && HasEnoughPlayersAndCPU())
         {
             StartButton.interactable = true;
+            StartButtonText.text = "Ready to start!";
         }
         else
         {
