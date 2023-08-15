@@ -5,6 +5,9 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem.UI;
+
 public class LobbyManager : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -13,7 +16,7 @@ public class LobbyManager : MonoBehaviour
     public GameObject player2;
     public GameObject player3;
     public GameObject player4;
-
+    public MultiplayerEventSystem player1EventSystem;
     public Button StartButton;
     private TextMeshProUGUI StartButtonText;
     int playersInGame = 0;
@@ -40,6 +43,9 @@ public class LobbyManager : MonoBehaviour
     }
     public void playerPressedUnready()
     {
+        if(AllPlayersHasPressedReady()){
+        player1EventSystem.SetSelectedGameObject(player1EventSystem.firstSelectedGameObject);
+        }
         playersReady -= 1;
     }
     public static LobbyManager instance;
@@ -230,23 +236,28 @@ public class LobbyManager : MonoBehaviour
     /// <returns></returns>
     private bool AllPlayersHasPressedReady()
     {
-        if (StartButtonText != null)
-        {
-            if (playersInGame + CPUCount <= 1)
-            {
-                StartButtonText.text = "Waiting for more players";
-            }
-            else
-            {
-                if (playersReady >= playersInGame + CPUCount)
-                {
-                    StartButtonText.text = "Start Match!";
-                }
-
-                StartButtonText.text = "Ready" + playersReady + "/" + (playersInGame + CPUCount);
-            }
-        }
+        updateStartButtonText();
         return playersReady >= playersInGame + CPUCount;
+    }
+
+    private void updateStartButtonText(){
+        if (StartButtonText != null)
+                {
+                    if (playersInGame + CPUCount <= 1)
+                    {
+                        StartButtonText.text = "Waiting for more players";
+                    }
+                    else
+                    {
+                        if (playersReady >= playersInGame + CPUCount)
+                        {
+                            StartButtonText.text = "Start Match!";
+                        }else
+                        {
+
+                        StartButtonText.text = "Ready " + playersReady + "/" + (playersInGame + CPUCount);
+                    }}
+                }
     }
 
     // Update is called once per frame
