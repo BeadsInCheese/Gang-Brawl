@@ -378,6 +378,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 71377b8d-0f72-423e-9a8f-0680ac767a62
     m_ActionName: UI1/NavigateSecondary[/XInputControllerWindows/leftStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/leftStick/right,/Keyboard/downArrow,/Keyboard/upArrow,/Keyboard/rightArrow,/Keyboard/leftArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4e7ae367-00ac-4ca3-964a-309d81da8700
+    m_ActionName: Land/Taunt[/XInputControllerWindows/dpad/up,/Keyboard/t]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Land
@@ -396,6 +400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 100
+  poisoned: 0
   currentHp: 100
   SquashAndStretch: 1
   health_Bar: {fileID: 6013716671772605161}
@@ -411,6 +416,21 @@ MonoBehaviour:
   damageTaken:
     m_PersistentCalls:
       m_Calls: []
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1811923248138802825}
+        m_TargetAssemblyTypeName: Shoot, Assembly-CSharp
+        m_MethodName: resetValues
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   dead: 0
   invincibilityDurationSeconds: 2
 --- !u!114 &512132733879327775

@@ -59,6 +59,7 @@ public class CharacterControl : MonoBehaviour
         physicsBody.AddForce(new Vector2(0, jumpHeight * physicsBody.gravityScale));
     }
     }
+
     protected void applyJumpReleasedEarlyModifier()
     {
         physicsBody.AddForce(new Vector2(0, jumpEndEarlyGravityModifier * physicsBody.gravityScale));

@@ -22,7 +22,16 @@ public class CannonBullet : Bullet
 
         if (collision.gameObject.tag.Equals("Platform") )
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            Vector2 velNormal;
+            
+            var col = Physics2D.Raycast(transform.position , rb.velocity, Mathf.Infinity);
+            if (col)
+            {
+                 velNormal = (col.normal);
+                rb.velocity = -(2 * Vector2.Dot(rb.velocity, (velNormal)) * velNormal - rb.velocity);
+            }
+           
             var x = Instantiate(explosion);
             x.transform.position = transform.position;
         }

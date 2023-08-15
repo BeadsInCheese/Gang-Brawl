@@ -16,6 +16,7 @@ public class HPSystem : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public List<SpriteRenderer> LimbSpriteRenderers;
     public UnityEvent<float> damageTaken;
+    public UnityEvent OnDeath;
     Rigidbody2D rb;
     public bool dead = false;
     public virtual void die()
@@ -26,7 +27,7 @@ public class HPSystem : MonoBehaviour
         deathcounter.deathCount = deathcounter.deathCount + 1;
         this.transform.position = new Vector2(0, 5);
         rb.velocity = new Vector2(0, 0);
-
+        OnDeath.Invoke();
     }
     float poisontimer = 1;
     public void Update()
