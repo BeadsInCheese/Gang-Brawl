@@ -2263,6 +2263,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1470932963}
     m_Modifications:
+    - target: {fileID: 424020349106705665, guid: 700bde5b49483900ba3bfa66ec9d6e04, type: 3}
+      propertyPath: m_SubmitAction
+      value: 
+      objectReference: {fileID: -1099527685148167708, guid: 26923033bf8bef9749a77f88189f612c, type: 3}
     - target: {fileID: 3082383860622236995, guid: 700bde5b49483900ba3bfa66ec9d6e04, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -7.9999924
@@ -3472,7 +3476,7 @@ PrefabInstance:
     - target: {fileID: 424020349106705665, guid: 700bde5b49483900ba3bfa66ec9d6e04, type: 3}
       propertyPath: m_SubmitAction
       value: 
-      objectReference: {fileID: -2058944679307591853, guid: 26923033bf8bef9749a77f88189f612c, type: 3}
+      objectReference: {fileID: -1099527685148167708, guid: 26923033bf8bef9749a77f88189f612c, type: 3}
     - target: {fileID: 424020349106705665, guid: 700bde5b49483900ba3bfa66ec9d6e04, type: 3}
       propertyPath: m_LeftClickAction
       value: 
@@ -4687,7 +4691,7 @@ MonoBehaviour:
   m_ActionsAsset: {fileID: -944628639613478452, guid: 26923033bf8bef9749a77f88189f612c, type: 3}
   m_PointAction: {fileID: -1327377717059100278, guid: 26923033bf8bef9749a77f88189f612c, type: 3}
   m_MoveAction: {fileID: -8231878522813550449, guid: 26923033bf8bef9749a77f88189f612c, type: 3}
-  m_SubmitAction: {fileID: -2058944679307591853, guid: 26923033bf8bef9749a77f88189f612c, type: 3}
+  m_SubmitAction: {fileID: -1099527685148167708, guid: 26923033bf8bef9749a77f88189f612c, type: 3}
   m_CancelAction: {fileID: 980850413049161252, guid: 26923033bf8bef9749a77f88189f612c, type: 3}
   m_LeftClickAction: {fileID: 3406655131069607071, guid: 26923033bf8bef9749a77f88189f612c, type: 3}
   m_MiddleClickAction: {fileID: 4136598053989748886, guid: 26923033bf8bef9749a77f88189f612c, type: 3}
@@ -4917,6 +4921,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1470932963}
     m_Modifications:
+    - target: {fileID: 424020349106705665, guid: 700bde5b49483900ba3bfa66ec9d6e04, type: 3}
+      propertyPath: m_SubmitAction
+      value: 
+      objectReference: {fileID: -1099527685148167708, guid: 26923033bf8bef9749a77f88189f612c, type: 3}
     - target: {fileID: 3082383860622236995, guid: 700bde5b49483900ba3bfa66ec9d6e04, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -7.9999924
@@ -6442,6 +6450,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sign1
       objectReference: {fileID: 0}
+    - target: {fileID: 424020349106705665, guid: 700bde5b49483900ba3bfa66ec9d6e04, type: 3}
+      propertyPath: m_SubmitAction
+      value: 
+      objectReference: {fileID: -1099527685148167708, guid: 26923033bf8bef9749a77f88189f612c, type: 3}
     - target: {fileID: 3082383860622236995, guid: 700bde5b49483900ba3bfa66ec9d6e04, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -8
