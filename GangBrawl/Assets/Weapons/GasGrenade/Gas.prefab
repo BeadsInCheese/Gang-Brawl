@@ -86,6 +86,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e59be9f88c3633b4b865ce8c85815494, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owner: 
 --- !u!1 &5409984399768009575
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,7 +372,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3.22
+      scalar: 200
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -424,7 +425,7 @@ ParticleSystem:
     startSizeY:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 200
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -477,7 +478,7 @@ ParticleSystem:
     startSizeZ:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 200
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -689,7 +690,7 @@ ParticleSystem:
     randomizeRotationDirection: 0
     maxNumParticles: 1000
     customEmitterVelocity: {x: 0, y: 0, z: 0}
-    size3D: 0
+    size3D: 1
     rotation3D: 1
     gravityModifier:
       serializedVersion: 2
@@ -4889,7 +4890,7 @@ ParticleSystemRenderer:
   m_FreeformStretching: 0
   m_RotateWithStretchDirection: 1
   m_VertexStreams: 00010304
-  m_Mesh: {fileID: 8176287986315557724, guid: 3e0db39ddc7622f4dbcb1c10d5862a0d, type: 3}
+  m_Mesh: {fileID: 8176287986315557724, guid: c103ee0e535a27c41874dda81e6b0bdc, type: 3}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
