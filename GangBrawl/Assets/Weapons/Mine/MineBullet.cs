@@ -25,6 +25,7 @@ public class MineBullet :  Bullet
             var ex = Instantiate(explosion);
             Helpers.HitPlayer(damage, collision.gameObject, rb.velocity.normalized * knockback);
             ex.transform.position = new Vector2(transform.position.x, transform.position.y);
+            ex.GetComponent<Explosion>().owner = this.owner;
             Destroy(gameObject);
         }
 

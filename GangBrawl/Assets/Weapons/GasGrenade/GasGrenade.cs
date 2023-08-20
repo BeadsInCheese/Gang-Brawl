@@ -31,6 +31,7 @@ public class GasGrenade : Bullet
         {
             var gasInstance = Instantiate(gas);
             gasInstance.transform.position = this.transform.position;
+            gasInstance.GetComponent<PoisonGas>().owner = owner;
             gasTimer = 1;
         }
         gasTimer -= Time.deltaTime;

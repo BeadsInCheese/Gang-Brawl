@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PoisonGas : MonoBehaviour
 {
+    public string owner = "";
     // Start is called before the first frame update
     void Start()
     {
@@ -19,8 +20,11 @@ public class PoisonGas : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Player"))
         {
+
             Debug.Log("poison");
-            collision.gameObject.GetComponent<HPSystem>().poisoned=true;
+            var target = collision.gameObject.GetComponent<HPSystem>();
+            target.poisoned=true;
+            target.poisoner = owner;
         }
     }
 }

@@ -49,6 +49,24 @@ public class lobbyPlayer : MonoBehaviour
 
     // Update is called once per frame
     public float speed = 1;
+
+    public void toggleReady()
+    {
+
+        if (ready)
+        {
+            ready = false;
+            Ready.SetBool("Ready", false);
+            Debug.Log(LobbyManager.instance);
+            LobbyManager.instance.playerPressedUnready();
+        }
+        else
+        {
+            ready = true;
+            Ready.SetBool("Ready", true);
+            LobbyManager.instance.playerPressedReady();
+        }
+    }
     void Update()
     {
         if(input == null){
@@ -59,7 +77,7 @@ public class lobbyPlayer : MonoBehaviour
         Vector2 dir = input.actions["Aim"].ReadValue<Vector2>();
         if (input.actions["LightAttack"].triggered)
         {
-            //Debug.Log("Change Hero requested");
+            toggleReady();
         }
         if (input.actions["HeavyAttack"].triggered)
         {
@@ -67,19 +85,7 @@ public class lobbyPlayer : MonoBehaviour
         }
         if (input.actions["Jump"].triggered)
         {
-            if (ready)
-            {
-                ready = false;
-                Ready.SetBool("Ready",false);
-                Debug.Log(LobbyManager.instance);
-                LobbyManager.instance.playerPressedUnready();
-            }
-            else
-            {
-                ready = true;
-                Ready.SetBool("Ready",true);
-                LobbyManager.instance.playerPressedReady();
-            }
+
         }
         if (tex != null)
         {

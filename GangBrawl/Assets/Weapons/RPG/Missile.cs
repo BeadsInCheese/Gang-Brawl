@@ -30,12 +30,14 @@ public class Missile : Bullet
         if (collision.gameObject.tag.Equals("Player") || collision.gameObject.tag.Equals("ExplosivesBarrel"))
         {
             var ex = Instantiate(explosion);
+            ex.GetComponent<Explosion>().owner = this.owner;
             ex.transform.position = new Vector2(transform.position.x, transform.position.y);
         }
         else if (!collision.tag.Equals("ObjectSpawner"))
         {
 
             var ex = Instantiate(explosion);
+            ex.GetComponent<Explosion>().owner = this.owner; 
             ex.transform.position = new Vector2(transform.position.x, transform.position.y);
             Destroy(gameObject);
         }

@@ -618,7 +618,7 @@
                 {
                     "name": "",
                     "id": "241b527a-aa5e-4562-963a-7d330fcf8dbc",
-                    "path": "<Gamepad>/leftTrigger",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse;Gamepad;Touch;Joystick;XR",

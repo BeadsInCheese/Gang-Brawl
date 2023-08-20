@@ -15,7 +15,7 @@ public class MeleeAttack : MonoBehaviour
             AudioManager.instance.playSoundAtPoint(punchSound, this.transform.position);
             AudioManager.instance.Sounds.pitch = 1;
             var p=collision.gameObject;
-            if(p.GetComponent<HPSystem>().currentHp-damage<=0){
+            if(p.GetComponent<HPSystem>().currentHp-damage<=0&&!p.GetComponent<HPSystem>().dead){
                 DirectorBehaviour.PlayerKills[transform.parent.gameObject.name]+=1;
                 //Debug.Log(transform.parent.gameObject.name+" has "+DirectorBehaviour.PlayerKills[transform.parent.gameObject.name]+ " kills.");
             }

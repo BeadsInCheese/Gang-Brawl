@@ -29,6 +29,7 @@ public class HPSystem : MonoBehaviour
         rb.velocity = new Vector2(0, 0);
         OnDeath.Invoke();
     }
+    public string poisoner = "";
     float poisontimer = 1;
     public void Update()
     {
@@ -39,6 +40,10 @@ public class HPSystem : MonoBehaviour
                 takeDamage(3);
                 poisoned = false;
                 poisontimer = 0.3f;
+                if (poisoner.Length>0&&currentHp - 3 <= 0 && !dead)
+                {
+                    DirectorBehaviour.PlayerKills[poisoner] += 1;
+                }
             }
             poisontimer -= Time.deltaTime;
         }
@@ -74,7 +79,7 @@ public class HPSystem : MonoBehaviour
         currentHp -= amount;
         health_Bar.SetHealth(currentHp);
 
-        if (currentHp <= 0)
+        if (currentHp <= 0 && !dead)
         {
             dead = true;
             Invoke("die",3);
