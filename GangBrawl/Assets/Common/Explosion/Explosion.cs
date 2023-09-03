@@ -26,6 +26,7 @@ public class Explosion : MonoBehaviour
             if (owner.Length>0&&col.gameObject.GetComponent<HPSystem>().currentHp - damage <= 0 && !col.gameObject.GetComponent<HPSystem>().dead)
             {
                 DirectorBehaviour.PlayerKills[owner] += 1;
+                DirectorBehaviour.TestAndSetGoldenSpiritLead(col.gameObject.name, owner);
             }
             Vector2 dir=(this.transform.position-col.gameObject.transform.position);
             Helpers.HitPlayer((int)(damage),col.gameObject,knockback*-dir.normalized);

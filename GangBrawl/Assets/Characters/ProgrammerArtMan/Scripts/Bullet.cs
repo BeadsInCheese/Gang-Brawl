@@ -18,6 +18,7 @@ public class Bullet : MonoBehaviour
             if(p.GetComponent<HPSystem>().currentHp-damage<=0&& !p.GetComponent<HPSystem>().dead)
             {
                 DirectorBehaviour.PlayerKills[owner]+=1;
+                DirectorBehaviour.TestAndSetGoldenSpiritLead(collision.gameObject.name,owner);
                 //Debug.Log(owner+ " has "+DirectorBehaviour.PlayerKills[owner]+" kills.");
             }
         

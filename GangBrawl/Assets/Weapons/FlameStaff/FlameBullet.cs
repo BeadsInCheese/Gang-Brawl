@@ -12,8 +12,9 @@ public class FlameBullet : Bullet
             var p=collision.gameObject;
             if(p.GetComponent<HPSystem>().currentHp-damage<=0){
                 DirectorBehaviour.PlayerKills[owner]+=1;
-                //Debug.Log(owner+ " has "+DirectorBehaviour.PlayerKills[owner]+" kills.");
-            }
+                    DirectorBehaviour.TestAndSetGoldenSpiritLead(collision.gameObject.name, owner);
+                    //Debug.Log(owner+ " has "+DirectorBehaviour.PlayerKills[owner]+" kills.");
+                }
         
         
         Helpers.HitPlayer(damage,  collision.gameObject,rb.velocity.normalized*knockback);

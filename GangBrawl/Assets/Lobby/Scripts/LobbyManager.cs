@@ -208,7 +208,9 @@ public class LobbyManager : MonoBehaviour
     {
         DirectorBehaviour.PlayersAlive = new Dictionary<string, int>();
         DirectorBehaviour.PlayerKills = new Dictionary<string, int>();
+        DirectorBehaviour.PlayerTime = new Dictionary<string, float>();
         DirectorBehaviour.gameTime = DirectorBehaviour.INITIAL_STARTING_GAMETIME;
+
         StartButton.interactable = false;
         if (StartButton != null)
         {

@@ -14,6 +14,8 @@ public class PlayerScore : MonoBehaviour
         this.gameObject.name = "player" + DirectorBehaviour.PlayersAlive.Count;
         DirectorBehaviour.PlayersAlive.Add(this.gameObject.name, lives);
         DirectorBehaviour.PlayerKills.Add(this.gameObject.name, 0);
+        DirectorBehaviour.PlayerTime.Add(this.gameObject.name, DirectorBehaviour.gameTime);
+
     }
 
     // Update is called once per frame
@@ -24,6 +26,7 @@ public class PlayerScore : MonoBehaviour
         {
             DirectorBehaviour.PlayersAlive[this.gameObject.name] = lives;
         }
+
         if (lives <= 0 && DirectorBehaviour.gameMode == DirectorBehaviour.Gamemode.LASTMANSTANDING)
         {
             this.gameObject.transform.position = new Vector2(0, 100);

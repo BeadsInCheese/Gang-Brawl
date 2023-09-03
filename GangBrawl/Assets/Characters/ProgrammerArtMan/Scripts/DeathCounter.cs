@@ -17,7 +17,11 @@ public class DeathCounter : MonoBehaviour
         if(DirectorBehaviour.gameMode==DirectorBehaviour.Gamemode.LASTMANSTANDING){
             deaths.text = this.transform.parent.gameObject.name+"\nLives: " + DirectorBehaviour.PlayersAlive[this.transform.parent.gameObject.name].ToString();
         }
-        
+        if (DirectorBehaviour.gameMode == DirectorBehaviour.Gamemode.GOLDENSPIRIT)
+        {
+            deaths.text = this.transform.parent.gameObject.name + "\nTime: " + DirectorBehaviour.PlayerTime[this.transform.parent.gameObject.name].ToString();
+        }
+
         uiflip.FlipUIElement();
     }
 }

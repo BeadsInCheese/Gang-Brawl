@@ -17,6 +17,7 @@ public class MeleeAttack : MonoBehaviour
             var p=collision.gameObject;
             if(p.GetComponent<HPSystem>().currentHp-damage<=0&&!p.GetComponent<HPSystem>().dead){
                 DirectorBehaviour.PlayerKills[transform.parent.gameObject.name]+=1;
+                DirectorBehaviour.TestAndSetGoldenSpiritLead(collision.gameObject.name, transform.parent.gameObject.name);
                 //Debug.Log(transform.parent.gameObject.name+" has "+DirectorBehaviour.PlayerKills[transform.parent.gameObject.name]+ " kills.");
             }
         

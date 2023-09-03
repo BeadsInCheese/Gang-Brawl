@@ -14,6 +14,7 @@ public class CannonBullet : Bullet
             if (p.GetComponent<HPSystem>().currentHp - damage <= 0)
             {
                 DirectorBehaviour.PlayerKills[owner] += 1;
+                DirectorBehaviour.TestAndSetGoldenSpiritLead(collision.gameObject.name, owner);
                 //Debug.Log(owner+ " has "+DirectorBehaviour.PlayerKills[owner]+" kills.");
             }
 

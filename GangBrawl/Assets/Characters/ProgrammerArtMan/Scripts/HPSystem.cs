@@ -43,6 +43,7 @@ public class HPSystem : MonoBehaviour
                 if (poisoner.Length>0&&currentHp - 3 <= 0 && !dead)
                 {
                     DirectorBehaviour.PlayerKills[poisoner] += 1;
+                    DirectorBehaviour.TestAndSetGoldenSpiritLead(gameObject.name, poisoner);
                 }
             }
             poisontimer -= Time.deltaTime;

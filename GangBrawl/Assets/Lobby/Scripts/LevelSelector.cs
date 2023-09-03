@@ -5,6 +5,8 @@ using UnityEngine;
 using TMPro;
 
 using UnityEngine.InputSystem;
+using System;
+
 public class LevelSelector : MonoBehaviour
 {
     public TMP_Text modeLabel;
@@ -56,7 +58,7 @@ public class LevelSelector : MonoBehaviour
     private DirectorBehaviour.Gamemode modeChange(int direction)
     {
 
-        DirectorBehaviour.Gamemode[] modes = { DirectorBehaviour.Gamemode.DEATHMATCH, DirectorBehaviour.Gamemode.LASTMANSTANDING };
+        DirectorBehaviour.Gamemode[] modes = { DirectorBehaviour.Gamemode.DEATHMATCH, DirectorBehaviour.Gamemode.LASTMANSTANDING,DirectorBehaviour.Gamemode.GOLDENSPIRIT };
         int wantedModeNumber = (modeCounter + direction) % modes.Length;
         // If mode is moved down, under index zero, set it to highest value
         int modeCounterNumber = wantedModeNumber < 0 ? modes.Length - 1 : wantedModeNumber;
@@ -119,7 +121,16 @@ public class LevelSelector : MonoBehaviour
             {
                 modeLabel.text = "Last Man Standing";
             }
+            else if (isGameModeGoldenSpirit())
+            {
+                modeLabel.text = "Golden Spirit";
+            }
         }
+    }
+
+    private bool isGameModeGoldenSpirit()
+    {
+        return DirectorBehaviour.gameMode == DirectorBehaviour.Gamemode.GOLDENSPIRIT;
     }
 
     public void UpdateSecondaryModifierLabel()
@@ -131,6 +142,11 @@ public class LevelSelector : MonoBehaviour
                 SecondaryModifierHeaderText.text = "Time (S)";
                 SecondaryModifierLabel.text = DirectorBehaviour.gameTime.ToString();
 
+            }
+            else if (isGameModeGoldenSpirit())
+            {
+                SecondaryModifierHeaderText.text = "Time (S)";
+                SecondaryModifierLabel.text = DirectorBehaviour.gameTime.ToString();
             }
             else if (isGameModeLastManStanding())
             {

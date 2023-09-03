@@ -11,6 +11,7 @@ public class DirectorBehaviour : MonoBehaviour
     public float intensityTreshold=10;
     public static Dictionary<string,int> PlayersAlive=new Dictionary<string, int>();
     public static Dictionary<string,int> PlayerKills=new Dictionary<string, int>();
+    public static Dictionary<string, float> PlayerTime = new Dictionary<string, float>();
     public List<GameObject> items2 = new List<GameObject>();
     public static List<GameObject> items = new List<GameObject>();
     float countdown=5;
@@ -19,7 +20,7 @@ public class DirectorBehaviour : MonoBehaviour
     public TMPro.TextMeshProUGUI gameOverText;
     public TMPro.TextMeshProUGUI countdownText;
     public TMPro.TextMeshProUGUI roundCountDownText;
-    public enum Gamemode{LASTMANSTANDING,DEATHMATCH};
+    public enum Gamemode{LASTMANSTANDING,DEATHMATCH,GOLDENSPIRIT};
     public static Gamemode gameMode=Gamemode.DEATHMATCH;
     public static float gameTime = 120;
     public static float INITIAL_STARTING_GAMETIME = 120;
@@ -35,7 +36,16 @@ public class DirectorBehaviour : MonoBehaviour
         return Node.Status.FAILURE;
 
     }
-    
+    static string goldenSpiritPlayerInLead = null;
+   static public void TestAndSetGoldenSpiritLead(string lead,string challenger)
+    {
+        Debug.Log(lead + " = " + goldenSpiritPlayerInLead);
+
+        if (goldenSpiritPlayerInLead == null || lead.Equals(goldenSpiritPlayerInLead))
+        {
+            goldenSpiritPlayerInLead = challenger;
+        }
+    }
     public Node.Status GameEnded(){
         if(gameMode==Gamemode.LASTMANSTANDING){
         int alive=0;
@@ -60,6 +70,23 @@ public class DirectorBehaviour : MonoBehaviour
                 return Node.Status.FAILURE;
             }
         }
+        else if (gameMode == Gamemode.GOLDENSPIRIT)
+        {
+            if (goldenSpiritPlayerInLead != null)
+            {
+                PlayerTime[goldenSpiritPlayerInLead] -= Time.deltaTime;
+            }
+            foreach (var i in PlayersAlive.Keys)
+            {
+
+                if (PlayerTime[i] < 0)
+                {
+                    return Node.Status.SUCCESS;
+                }
+            }
+            
+
+        }
         return Node.Status.FAILURE;
     }
     bool VictorFound=false;
@@ -67,6 +94,9 @@ public class DirectorBehaviour : MonoBehaviour
         countdown-=Time.deltaTime;
         bool draw=false;
         string playername="";
+        if (gameMode == Gamemode.GOLDENSPIRIT) {
+            playername = goldenSpiritPlayerInLead;
+        }
         if(gameMode== Gamemode.LASTMANSTANDING){
         foreach(var i in PlayersAlive.Keys){
             if(PlayersAlive[i]>0){
@@ -124,7 +154,7 @@ public class DirectorBehaviour : MonoBehaviour
         selectFromActions.AddChild(LowIntensity);
         selectFromActions.AddChild(new LeafNode("debug",debugTest));
 
-        
+  
         return root;
     }
     void Start()
@@ -134,6 +164,8 @@ public class DirectorBehaviour : MonoBehaviour
         countdownText.text="";
         gameOverText.text="";
         tree=CreateTree();
+        goldenSpiritPlayerInLead = null;
+
     }
 
     // Update is called once per frame
