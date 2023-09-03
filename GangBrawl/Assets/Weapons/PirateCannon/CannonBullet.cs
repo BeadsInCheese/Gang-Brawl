@@ -5,6 +5,7 @@ using UnityEngine;
 public class CannonBullet : Bullet
 {
     public GameObject explosion;
+    int bounces = 3;
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag.Equals("Player"))
@@ -30,6 +31,11 @@ public class CannonBullet : Bullet
             {
                  velNormal = (col.normal);
                 rb.velocity = -(2 * Vector2.Dot(rb.velocity, (velNormal)) * velNormal - rb.velocity);
+                bounces--;
+                if (bounces < 0)
+                {
+                    Destroy(gameObject);
+                }
             }
            
             var x = Instantiate(explosion);
