@@ -8,6 +8,7 @@ public class CameraControl : MonoBehaviour
     public List<Transform> players;
     Vector2 center=new Vector3(0,0);
     Camera cam;
+    public float maxsize=20;
     void Start()
     {
         cam = GetComponent<Camera>();
@@ -16,17 +17,18 @@ public class CameraControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float maX = -111111110 ;
-        float minx=111111110;
-        float maxy=-11111110;
-        float miny=11111110;
-        center.x =  0;
+
+        float maX = -11011110;
+        float minx = 1000000;
+        float maxy = -100000;
+        float miny = 1000000;
+        center.x = 0;
         center.y = 0;
-        int p = 1;
+        int p = 0;
         foreach (Transform i in players)
         {
 
-            if (i.position.y>-30&& i.position.y < 30)
+            if (i.position.y > -30 && i.position.y < 30)
             {
                 maX = Mathf.Max(i.position.x, maX);
                 maxy = Mathf.Max(i.position.y, maxy);
@@ -38,14 +40,21 @@ public class CameraControl : MonoBehaviour
             }
 
         }
-        center.x=center.x / Mathf.Max(1,p);
+        center.x = center.x / Mathf.Max(1, p);
         center.y = center.y / Mathf.Max(1, p);
         //Debug.Log("Camera Center is: " + center);
         //var temp= Vector2.Lerp(transform.position, center, 0.2f);
-        var temp = (Vector2)transform.position + ((center-((Vector2)transform.position) ) * Time.deltaTime);
-        transform.position =new  Vector3(temp.x, temp.y, transform.position.z);
-        var tempsize = new Vector2(Mathf.Max(5, Mathf.Min(maX - minx, 10)), Mathf.Max(8, Mathf.Min(maxy - miny, 10))).magnitude;
+        var temp = (Vector2)transform.position + ((center - ((Vector2)transform.position)) * Time.deltaTime);
+        transform.position = new Vector3(temp.x, temp.y, transform.position.z);
+        var tempsize = new Vector2(Mathf.Max(5, Mathf.Min(maX - minx, maxsize)), Mathf.Max(8, Mathf.Min(maxy - miny, maxsize))).magnitude;
         //cam.orthographicSize = Mathf.Lerp(cam.orthographicSize,tempsize,0.2f);
-        cam.orthographicSize = cam.orthographicSize + (tempsize-cam.orthographicSize ) * Time.deltaTime;
+        if (tempsize < cam.orthographicSize)
+        {
+            cam.orthographicSize = cam.orthographicSize + (tempsize - cam.orthographicSize) * Time.deltaTime;
+        }
+        else
+        {
+            cam.orthographicSize = cam.orthographicSize + (tempsize - cam.orthographicSize) * Time.deltaTime*10;
+        }
     }
 }
