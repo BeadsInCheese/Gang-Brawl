@@ -257,6 +257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   s: {fileID: 8300000, guid: 8164d6701dffdbd428c8df56194e0c9c, type: 3}
+  Click: {fileID: 0}
 --- !u!1 &512817205214939369
 GameObject:
   m_ObjectHideFlags: 0
@@ -483,6 +484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   s: {fileID: 8300000, guid: 8164d6701dffdbd428c8df56194e0c9c, type: 3}
+  Click: {fileID: 0}
 --- !u!1 &904823804425197396
 GameObject:
   m_ObjectHideFlags: 0
@@ -937,6 +939,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   s: {fileID: 8300000, guid: 8164d6701dffdbd428c8df56194e0c9c, type: 3}
+  Click: {fileID: 0}
 --- !u!1 &2346752931121122057
 GameObject:
   m_ObjectHideFlags: 0
@@ -1163,6 +1166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   s: {fileID: 8300000, guid: 8164d6701dffdbd428c8df56194e0c9c, type: 3}
+  Click: {fileID: 0}
 --- !u!1 &2691802619904478503
 GameObject:
   m_ObjectHideFlags: 0
@@ -1344,6 +1348,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   s: {fileID: 8300000, guid: 8164d6701dffdbd428c8df56194e0c9c, type: 3}
+  Click: {fileID: 0}
 --- !u!1 &3284858357887558589
 GameObject:
   m_ObjectHideFlags: 0
@@ -2319,6 +2324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   s: {fileID: 8300000, guid: 8164d6701dffdbd428c8df56194e0c9c, type: 3}
+  Click: {fileID: 0}
 --- !u!1 &6465304010952311786
 GameObject:
   m_ObjectHideFlags: 0
@@ -2673,6 +2679,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   s: {fileID: 8300000, guid: 8164d6701dffdbd428c8df56194e0c9c, type: 3}
+  Click: {fileID: 0}
 --- !u!1 &7621373857482314130
 GameObject:
   m_ObjectHideFlags: 0
@@ -2980,6 +2987,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   s: {fileID: 8300000, guid: 8164d6701dffdbd428c8df56194e0c9c, type: 3}
+  Click: {fileID: 0}
 --- !u!1 &8601498017113235545
 GameObject:
   m_ObjectHideFlags: 0
@@ -3046,7 +3054,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5c51a2df54b5cd7008fb96ca8c5b951f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3076ed6bf0119a1e3b9c2eeed13f261d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3068,7 +3076,7 @@ GameObject:
   - component: {fileID: 8973537826768334537}
   - component: {fileID: 3823841177448750653}
   m_Layer: 5
-  m_Name: KeyboardSpaceImg
+  m_Name: KeyboardReadyBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3092,7 +3100,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -42.8, y: -120.9}
-  m_SizeDelta: {x: 1452, y: 940}
+  m_SizeDelta: {x: 940, y: 940}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8973537826768334537
 CanvasRenderer:
@@ -3122,7 +3130,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e128f5f918a7a9107addde34e0469b72, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0c334950c7d2b211083a44fff2205568, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

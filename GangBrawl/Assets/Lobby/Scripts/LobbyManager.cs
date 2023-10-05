@@ -174,7 +174,7 @@ public class LobbyManager : MonoBehaviour
         else if (PlayerData.recogniseControllerType(playerInput.currentControlScheme) == ControllerType.Keyboard)
         {
 
-            player.transform.Find("KeyboardSpaceImg").gameObject.SetActive(true);
+            player.transform.Find("KeyboardReadyBtn").gameObject.SetActive(true);
             player.transform.Find("KeyboardIndicator").gameObject.SetActive(true);
         }
 
