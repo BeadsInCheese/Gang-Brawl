@@ -75,11 +75,11 @@ public class lobbyPlayer : MonoBehaviour
         }
 
         Vector2 dir = input.actions["Aim"].ReadValue<Vector2>();
-        if (input.actions["Ready"].triggered || input.actions["LightAttack"].triggered)
+        if (input.actions["Ready"].triggered)
         {
             toggleReady();
         }
-        if (input.actions["HeavyAttack"].triggered)
+        if (input.actions["AddAI"].triggered)
         {
             LobbyManager.instance.AddAI();
         }
