@@ -51,6 +51,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _EnableExternalAlpha: 0
+    - _Ghost: 0
     - _Hit: 0
     - _iframes: 0
     m_Colors:
