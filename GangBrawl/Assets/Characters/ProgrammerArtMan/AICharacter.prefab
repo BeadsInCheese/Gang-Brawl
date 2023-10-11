@@ -295,6 +295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 100
+  poisoned: 0
   currentHp: 100
   SquashAndStretch: 1
   health_Bar: {fileID: 6013716671772605161}
@@ -310,7 +311,11 @@ MonoBehaviour:
   damageTaken:
     m_PersistentCalls:
       m_Calls: []
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
   dead: 0
+  poisoner: 
   invincibilityDurationSeconds: 2
 --- !u!114 &512132733879327775
 MonoBehaviour:
@@ -1096,7 +1101,7 @@ GameObject:
   - component: {fileID: 8206669615137161881}
   - component: {fileID: 8438777130195964981}
   m_Layer: 0
-  m_Name: FactionDownscaled_1
+  m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

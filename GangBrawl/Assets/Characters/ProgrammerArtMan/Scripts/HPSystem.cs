@@ -68,6 +68,23 @@ public class HPSystem : MonoBehaviour
             sr.material.SetInt("_Hit", 0);
         }
     }
+    public void setGhost(bool value)
+    {
+        if (value)
+        {
+            foreach (SpriteRenderer sr in LimbSpriteRenderers)
+            {
+                sr.material.SetInt("_Ghost", 1);
+            }
+        }
+        else
+        {
+            foreach (SpriteRenderer sr in LimbSpriteRenderers)
+            {
+                sr.material.SetInt("_Ghost", 0);
+            }
+        }
+    }
     public void flash()
     {
 

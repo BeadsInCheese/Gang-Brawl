@@ -40,9 +40,18 @@ public class DirectorBehaviour : MonoBehaviour
    static public void TestAndSetGoldenSpiritLead(string lead,string challenger)
     {
         Debug.Log(lead + " = " + goldenSpiritPlayerInLead);
-
+        if (gameMode != Gamemode.GOLDENSPIRIT)
+        {
+            return ;
+        }
         if (goldenSpiritPlayerInLead == null || lead.Equals(goldenSpiritPlayerInLead))
         {
+            if (lead != null)
+            {
+                GameObject.Find(lead).GetComponent<HPSystem>().setGhost(false);
+            }
+            GameObject.Find(challenger).GetComponent<HPSystem>().setGhost(true);
+            Debug.Log(GameObject.Find(challenger + "/" + "FactionDownscaled"));
             goldenSpiritPlayerInLead = challenger;
         }
     }
