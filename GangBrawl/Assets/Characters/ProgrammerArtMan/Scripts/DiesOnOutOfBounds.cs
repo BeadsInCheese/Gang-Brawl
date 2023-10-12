@@ -19,6 +19,8 @@ public class DiesOnOutOfBounds : MonoBehaviour
         if (Helpers.isOutOfArena(gameObject))
         {
             hpSystem.takeDamage(10000000);
+            if(gameObject.name.Contains("player"))
+            DirectorBehaviour.TestAndSetGoldenSpiritLead(this.gameObject.name,this.gameObject.name);
             if(sound!=null){
                 AudioManager.instance.playSoundAtPoint(sound,transform.position);
             }

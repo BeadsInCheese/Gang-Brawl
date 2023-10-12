@@ -44,7 +44,14 @@ public class DirectorBehaviour : MonoBehaviour
         {
             return ;
         }
-        if (goldenSpiritPlayerInLead == null || lead.Equals(goldenSpiritPlayerInLead))
+        if( lead.Equals(challenger)){
+            if(lead.Equals(goldenSpiritPlayerInLead) ){
+                
+            GameObject.Find(lead).GetComponent<HPSystem>().setGhost(false);
+            goldenSpiritPlayerInLead=null;
+            }else{return;}
+        }
+        else if (goldenSpiritPlayerInLead == null || lead.Equals(goldenSpiritPlayerInLead))
         {
             if (lead != null)
             {
