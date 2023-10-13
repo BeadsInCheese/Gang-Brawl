@@ -60,11 +60,20 @@ public class LevelSelector : MonoBehaviour
 
         DirectorBehaviour.Gamemode[] modes = { DirectorBehaviour.Gamemode.DEATHMATCH, DirectorBehaviour.Gamemode.LASTMANSTANDING,DirectorBehaviour.Gamemode.GOLDENSPIRIT };
         int wantedModeNumber = (modeCounter + direction) % modes.Length;
+ 
         // If mode is moved down, under index zero, set it to highest value
         int modeCounterNumber = wantedModeNumber < 0 ? modes.Length - 1 : wantedModeNumber;
         modeCounter = modeCounterNumber;
         DirectorBehaviour.Gamemode mode = modes[modeCounter];
         DirectorBehaviour.gameMode = mode;
+        if (DirectorBehaviour.gameMode == DirectorBehaviour.Gamemode.GOLDENSPIRIT)
+        {
+            DirectorBehaviour.gameTime = 30;
+            TIMESCALE = 5;
+        }else if (DirectorBehaviour.gameMode == DirectorBehaviour.Gamemode.DEATHMATCH) {
+            DirectorBehaviour.gameTime = 120;
+            TIMESCALE = 30;
+        }
         // change the mode button text in the settings
         UpdateModeLabel();
         UpdateSecondaryModifierLabel();
@@ -84,7 +93,7 @@ public class LevelSelector : MonoBehaviour
 
     public void AddTime()
     {
-        if (isGameModeDeathMatch())
+        if (isGameModeDeathMatch()||isGameModeGoldenSpirit())
         {
             DirectorBehaviour.gameTime = DirectorBehaviour.gameTime + TIMESCALE;
         }
