@@ -29,7 +29,11 @@ public class HatSelector : MonoBehaviour
         }
         else
         {
-            CustomasationManager.instance.customisationValues[gameObject.transform.parent.parent.gameObject.name] = new int[] { 0,0,0,0};
+            CustomasationManager.instance.customisationValues[gameObject.transform.parent.parent.gameObject.name] = new int[] { Random.Range(0,Hats.Count-1), Random.Range(0, Body.Count - 1), Random.Range(0, Hands.Count - 1), Random.Range(0, Legs.Count - 1) };
+            HatIndex = CustomasationManager.instance.customisationValues[gameObject.transform.parent.parent.gameObject.name][0];
+            BodyIndex = CustomasationManager.instance.customisationValues[gameObject.transform.parent.parent.gameObject.name][1];
+            HandIndex = CustomasationManager.instance.customisationValues[gameObject.transform.parent.parent.gameObject.name][2];
+            LegsIndex = CustomasationManager.instance.customisationValues[gameObject.transform.parent.parent.gameObject.name][3];
         }
     }
      
