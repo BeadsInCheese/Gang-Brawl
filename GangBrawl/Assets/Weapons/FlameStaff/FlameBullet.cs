@@ -10,14 +10,16 @@ public class FlameBullet : Bullet
         if(owner!=collision.gameObject.name){
         if (collision.gameObject.tag.Equals("Player")){
             var p=collision.gameObject;
-            if(p.GetComponent<HPSystem>().currentHp-damage<=0){
+
+                var hpsystem = p.GetComponent<HPSystem>();
+                if (hpsystem.currentHp-damage<=0){
                 DirectorBehaviour.PlayerKills[owner]+=1;
                     DirectorBehaviour.TestAndSetGoldenSpiritLead(collision.gameObject.name, owner);
                     //Debug.Log(owner+ " has "+DirectorBehaviour.PlayerKills[owner]+" kills.");
                 }
         
         
-        Helpers.HitPlayer(damage,  collision.gameObject,rb.velocity.normalized*knockback);
+        Helpers.HitPlayer(damage,  collision.gameObject,rb.velocity.normalized*knockback,owner);
 
         
         if (!collision.gameObject.tag.Equals("Bullet") && !collision.tag.Equals("ObjectSpawner"))

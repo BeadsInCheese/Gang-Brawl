@@ -21,7 +21,7 @@ public class IceBullet : Bullet
             CharacterControl characterController=collision.gameObject.GetComponent<CharacterControl>();
             characterController.speed=Mathf.Clamp(characterController.speed-1,1,characterController.maxMovementSpeed);
         }
-        Helpers.HitPlayer(damage,  collision.gameObject,rb.velocity.normalized*knockback);
+        Helpers.HitPlayer(damage,  collision.gameObject,rb.velocity.normalized*knockback, owner);
         if (!collision.gameObject.tag.Equals("Bullet") && !collision.tag.Equals("ObjectSpawner"))
         {
             Destroy(gameObject);

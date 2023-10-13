@@ -22,6 +22,6 @@ public class MeleeAttack : MonoBehaviour
             }
         
         }
-        Helpers.HitPlayer(damage, gameObject, collision.gameObject, knockback);
+        Helpers.HitPlayer(damage, gameObject, collision.gameObject, knockback, transform.parent.gameObject.name);
     }
 }

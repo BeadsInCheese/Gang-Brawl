@@ -19,7 +19,7 @@ public class CannonBullet : Bullet
             }
 
         }
-        Helpers.HitPlayer(damage, collision.gameObject, rb.velocity.normalized * knockback);
+        Helpers.HitPlayer(damage, collision.gameObject, rb.velocity.normalized * knockback, owner);
 
 
         if (collision.gameObject.tag.Equals("Platform") )

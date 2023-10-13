@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ExplodeOnDeath : HPSystem
@@ -7,7 +8,7 @@ public class ExplodeOnDeath : HPSystem
     public GameObject explosion;
     // Start is called before the first frame update
     override
-     public void takeDamage(int amount)
+     public void takeDamage(int amount, string source)
     {
         currentHp -= amount;
 

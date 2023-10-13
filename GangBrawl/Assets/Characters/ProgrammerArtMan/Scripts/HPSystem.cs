@@ -10,6 +10,7 @@ public class HPSystem : MonoBehaviour
     public int maxHp = 100;
     public bool poisoned = false;
     public int currentHp;
+    public string lastDamagedBy = "";
     public bool SquashAndStretch=true;
     public Health_bar health_Bar;
     public DeathCounter deathcounter;
@@ -29,6 +30,12 @@ public class HPSystem : MonoBehaviour
         rb.velocity = new Vector2(0, 0);
         OnDeath.Invoke();
     }
+    IEnumerator setLastDamageDealer(string lastDamageDealer)
+    {
+        lastDamagedBy = lastDamageDealer;
+        yield return new WaitForSeconds(2);
+        lastDamagedBy = "";
+    }
     public string poisoner = "";
     float poisontimer = 1;
     public void Update()
@@ -37,7 +44,7 @@ public class HPSystem : MonoBehaviour
         {
             if (poisontimer <= 0)
             {
-                takeDamage(3);
+                takeDamage(3,poisoner);
                 poisoned = false;
                 poisontimer = 0.3f;
                 if (poisoner.Length>0&&currentHp - 3 <= 0 && !dead)
@@ -90,9 +97,10 @@ public class HPSystem : MonoBehaviour
 
         StartCoroutine(Flash_Cor());
     }
-    public virtual void takeDamage(int amount)
+    public virtual void takeDamage(int amount,string source)
     {
         if (isInvincible) return;
+        StartCoroutine(setLastDamageDealer(source));
         damageTaken.Invoke(amount);
         currentHp -= amount;
         health_Bar.SetHealth(currentHp);

@@ -29,7 +29,7 @@ public class GravityOffWhenDies : HPSystem
     }
 
     override
-    public void takeDamage(int amount)
+    public void takeDamage(int amount, string source)
     {
         currentHp -= amount;
 

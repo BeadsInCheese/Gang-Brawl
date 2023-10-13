@@ -13,7 +13,7 @@ public static class Helpers
     /// <param name="gameObject"> Gameobject that the script is attached ("this")</param>
     /// <param name="collisionGO"> Collider2D collision.gameObject, Object which collided</param>
     /// <param name="knockback">How far player should be knocked back</param>
-    public static void HitPlayer(int damage, GameObject gameObject, GameObject collisionGO, float knockback)
+    public static void HitPlayer(int damage, GameObject gameObject, GameObject collisionGO, float knockback,string source)
     {
         if (shouldTakeDamage(collisionGO))
         {
@@ -22,12 +22,12 @@ public static class Helpers
             {
                 collisionGO.GetComponent<Rigidbody2D>().AddForce(gameObject.transform.rotation.eulerAngles.y != 0 ? new Vector2(knockback, knockback) : new Vector2(-knockback, knockback));
             }
-            collisionGO.GetComponent<HPSystem>().takeDamage(damage);
+            collisionGO.GetComponent<HPSystem>().takeDamage(damage,source);
             
         }
     }
 
-    public static void HitPlayer(int damage, GameObject collisionGO, Vector2 knockback)
+    public static void HitPlayer(int damage, GameObject collisionGO, Vector2 knockback,string source)
     {
         if (shouldTakeDamage(collisionGO))
         {
@@ -38,7 +38,7 @@ public static class Helpers
                 collisionGO.GetComponent<Rigidbody2D>().velocity=(knockback);
 
             }
-            collisionGO.GetComponent<HPSystem>().takeDamage(damage);
+            collisionGO.GetComponent<HPSystem>().takeDamage(damage, source);
         }
     }
 

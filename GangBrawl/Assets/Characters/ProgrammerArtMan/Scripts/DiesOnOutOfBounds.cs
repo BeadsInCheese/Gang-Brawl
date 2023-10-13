@@ -18,9 +18,20 @@ public class DiesOnOutOfBounds : MonoBehaviour
     {
         if (Helpers.isOutOfArena(gameObject))
         {
-            hpSystem.takeDamage(10000000);
-            if(gameObject.name.Contains("player"))
-            DirectorBehaviour.TestAndSetGoldenSpiritLead(this.gameObject.name,this.gameObject.name);
+            hpSystem.takeDamage(10000000,hpSystem.lastDamagedBy);
+            if (gameObject.name.Contains("player"))
+            {
+                if (hpSystem.lastDamagedBy.Equals(""))
+                {
+                    DirectorBehaviour.TestAndSetGoldenSpiritLead(this.gameObject.name, this.gameObject.name);
+                }
+                else
+                {
+                    DirectorBehaviour.TestAndSetGoldenSpiritLead(this.gameObject.name, hpSystem.lastDamagedBy);
+                    DirectorBehaviour.PlayerKills[hpSystem.lastDamagedBy] += 1;
+                    Debug.Log(gameObject.name + " Fell to their death because of " + hpSystem.lastDamagedBy);
+                }
+            }
             if(sound!=null){
                 AudioManager.instance.playSoundAtPoint(sound,transform.position);
             }

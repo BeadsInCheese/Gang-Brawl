@@ -41,7 +41,7 @@ public class Missile : Bullet
             ex.transform.position = new Vector2(transform.position.x, transform.position.y);
             Destroy(gameObject);
         }
-        Helpers.HitPlayer(damage, collision.gameObject, rb.velocity.normalized * knockback);
+        Helpers.HitPlayer(damage, collision.gameObject, rb.velocity.normalized * knockback, owner);
 
 
 

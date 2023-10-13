@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour
             }
         
         }
-        Helpers.HitPlayer(damage,  collision.gameObject,rb.velocity.normalized*knockback);
+        Helpers.HitPlayer(damage,  collision.gameObject,rb.velocity.normalized*knockback, owner);
 
         
         if (!collision.gameObject.tag.Equals("Bullet") && !collision.tag.Equals("ObjectSpawner"))

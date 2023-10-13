@@ -29,7 +29,7 @@ public class Explosion : MonoBehaviour
                 DirectorBehaviour.TestAndSetGoldenSpiritLead(col.gameObject.name, owner);
             }
             Vector2 dir=(this.transform.position-col.gameObject.transform.position);
-            Helpers.HitPlayer((int)(damage),col.gameObject,knockback*-dir.normalized);
+            Helpers.HitPlayer((int)(damage),col.gameObject,knockback*-dir.normalized,owner);
             
         }
     }
