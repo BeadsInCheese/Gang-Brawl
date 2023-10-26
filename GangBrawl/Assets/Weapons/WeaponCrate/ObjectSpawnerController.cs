@@ -79,6 +79,7 @@ public class ObjectSpawnerController : MonoBehaviour
     {
         double ranDouble = r.NextDouble();
         bool spawnMultiple = ranDouble < chanceToSpawnMultiple || isFirstSpawn;
+        isFirstSpawn = false;
         if (spawnMultiple)
         {
             // Spawn atleast two items
@@ -93,7 +94,6 @@ public class ObjectSpawnerController : MonoBehaviour
             spawnToAvailableSpawner(0);
         }
 
-        isFirstSpawn = false;
 
         float nextSpawnIn = UnityEngine.Random.Range(minTime, maxTime);
         spawnPointsAlreadyUsedInThisCycle.Clear();
