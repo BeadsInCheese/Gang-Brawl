@@ -247,7 +247,7 @@ public class LobbyManager : MonoBehaviour
                 {
                     if (playersInGame + CPUCount <= 1)
                     {
-                        StartButtonText.text = "Waiting for more players";
+                StartButtonText.text = "Please add AI or a player to start!";
                     }
                     else
                     {
