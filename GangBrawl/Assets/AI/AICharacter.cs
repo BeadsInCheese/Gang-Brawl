@@ -127,7 +127,12 @@ public class AICharacter : CharacterControl
             return Mathf.Abs(a.x - b.x) + Mathf.Abs(a.y - b.y);
         }
     }
+    public bool stop = false;
     private void updateTarget(){
+        if (stop)
+        {
+            return;
+        }
         bool targetChanged = false;
         bool itemFound=false;
         /*

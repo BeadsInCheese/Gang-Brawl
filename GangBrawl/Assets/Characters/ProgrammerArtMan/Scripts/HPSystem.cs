@@ -30,11 +30,21 @@ public class HPSystem : MonoBehaviour
         rb.velocity = new Vector2(0, 0);
         OnDeath.Invoke();
     }
+    int damageid = 0;
     IEnumerator setLastDamageDealer(string lastDamageDealer)
     {
+        
+        damageid++;
+        int did = damageid;
+        //Debug.Log("set last damage dealer "+lastDamageDealer);
         lastDamagedBy = lastDamageDealer;
-        yield return new WaitForSeconds(2);
-        lastDamagedBy = "";
+        yield return new WaitForSeconds(3);
+        //prevent turning lastdameged off if called multible times
+        if (did == damageid)
+        {
+            //Debug.Log("reset last damage dealer " + lastDamageDealer);
+            lastDamagedBy = "";
+        }
     }
     public string poisoner = "";
     float poisontimer = 1;
