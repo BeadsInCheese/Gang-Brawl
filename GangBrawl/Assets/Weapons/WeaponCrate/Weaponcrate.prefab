@@ -137,6 +137,7 @@ MonoBehaviour:
   - {fileID: 987653528329830354, guid: 5bbff19aacb28314a927e1c779d8cd91, type: 3}
   - {fileID: 987653528329830354, guid: b16eecd87c0de0c40877239dec0cec60, type: 3}
   - {fileID: 987653528329830354, guid: 60c756b5b1346ca458d98130cd9dc215, type: 3}
+  - {fileID: 987653528329830354, guid: 79e542b05b7eaf64ca7c3cb0f1022841, type: 3}
   crunchSounds:
   - {fileID: 8300000, guid: 0a58e298e10b7c44f83f776e42f86f4c, type: 3}
   - {fileID: 8300000, guid: a35a13b4f9a04f74baa15de9ffebc2f0, type: 3}
