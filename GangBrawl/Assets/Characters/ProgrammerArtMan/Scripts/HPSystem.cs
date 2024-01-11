@@ -30,6 +30,11 @@ public class HPSystem : MonoBehaviour
         rb.velocity = new Vector2(0, 0);
         OnDeath.Invoke();
     }
+    public void CreateCrate()
+    {
+        var ob = Instantiate(LobbyManager.instance.WeaponToSpawnOndeath);
+        ob.transform.position=this.transform.position;
+    }
     int damageid = 0;
     IEnumerator setLastDamageDealer(string lastDamageDealer)
     {
