@@ -1,6 +1,7 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -37,17 +38,28 @@ public class PlayerSpawner : MonoBehaviour
             LegOB.gameObject.GetComponent<SpriteRenderer>().sprite = i.Legs;
             playerNo = playerNo + 1;
             Camera.main.GetComponent<CameraControl>().players.Add(player.transform);
-
+            if (DirectorBehaviour.spawnWithGuns)
+            {
+                var hp = player.gameObject.GetComponent<HPSystem>();
+                
+                hp.OnDeath.AddListener(hp.CreateCrate);
+            }
         }
         for (int i = 0; i < LobbyManager.CPUCount; i++)
         {
             var c = Instantiate(PlayerCPU);
             var ai = c.GetComponent<AICharacter>();
             ai.tint = getAITintColor();
-            ai.index = playerNo;
+            if (DirectorBehaviour.spawnWithGuns)
+            {
+                var hp = c.GetComponent<HPSystem>();
+                    hp.OnDeath.AddListener(hp.CreateCrate);
+            }
+                ai.index = playerNo;
             playerNo += 1;
             Camera.main.GetComponent<CameraControl>().players.Add(ai.transform);
         }
+
         LobbyManager.CPUCount = 0;
         LobbyManager.playerData = new Dictionary<string, PlayerData>();
 

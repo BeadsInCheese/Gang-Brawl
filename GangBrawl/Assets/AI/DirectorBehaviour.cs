@@ -9,9 +9,11 @@ public class DirectorBehaviour : MonoBehaviour
     float intensity=11;
     public static int MaxLives = 5;
     public float intensityTreshold=10;
+
     public static Dictionary<string,int> PlayersAlive=new Dictionary<string, int>();
     public static Dictionary<string,int> PlayerKills=new Dictionary<string, int>();
     public static Dictionary<string, float> PlayerTime = new Dictionary<string, float>();
+    public static bool spawnWithGuns = false; 
     public List<GameObject> items2 = new List<GameObject>();
     public static List<GameObject> items = new List<GameObject>();
     float countdown=5;
@@ -180,6 +182,7 @@ public class DirectorBehaviour : MonoBehaviour
         countdownText.text="";
         gameOverText.text="";
         tree=CreateTree();
+
         goldenSpiritPlayerInLead = null;
 
     }

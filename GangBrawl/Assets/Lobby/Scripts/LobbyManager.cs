@@ -16,6 +16,7 @@ public class LobbyManager : MonoBehaviour
     public GameObject player2;
     public GameObject player3;
     public GameObject player4;
+    public GameObject WeaponToSpawnOndeath;
     public MultiplayerEventSystem player1EventSystem;
     public Button StartButton;
     private TextMeshProUGUI StartButtonText;
