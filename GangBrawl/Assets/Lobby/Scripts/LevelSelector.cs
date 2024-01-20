@@ -7,8 +7,20 @@ using TMPro;
 using UnityEngine.InputSystem;
 using System;
 
+[Serializable]
+public class EnabledWeapon
+{
+    public bool enabled = true;
+    public Sprite graphic;
+    public GameObject prefab;
+
+}
 public class LevelSelector : MonoBehaviour
 {
+
+
+    public List<EnabledWeapon> enabledWeapons;
+    public List<EnabledWeapon> enabledStaffs;
     public TMP_Text modeLabel;
     /// <summary>
     /// "Time(S)" or "Starting Lives"

@@ -555,6 +555,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4da552a2f6c45348f9b8b4d4c0bc12ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enabledWeapons: []
+  enabledStaffs: []
   modeLabel: {fileID: 0}
   SecondaryModifierHeaderText: {fileID: 0}
   SecondaryModifierLabel: {fileID: 0}
@@ -613,6 +615,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4da552a2f6c45348f9b8b4d4c0bc12ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enabledWeapons: []
+  enabledStaffs: []
   modeLabel: {fileID: 0}
   SecondaryModifierHeaderText: {fileID: 0}
   SecondaryModifierLabel: {fileID: 0}
@@ -722,6 +726,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4da552a2f6c45348f9b8b4d4c0bc12ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enabledWeapons: []
+  enabledStaffs: []
   modeLabel: {fileID: 0}
   SecondaryModifierHeaderText: {fileID: 0}
   SecondaryModifierLabel: {fileID: 0}
@@ -3314,6 +3320,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4da552a2f6c45348f9b8b4d4c0bc12ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enabledWeapons: []
+  enabledStaffs: []
   modeLabel: {fileID: 0}
   SecondaryModifierHeaderText: {fileID: 0}
   SecondaryModifierLabel: {fileID: 0}
@@ -3877,6 +3885,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4da552a2f6c45348f9b8b4d4c0bc12ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enabledWeapons: []
+  enabledStaffs: []
   modeLabel: {fileID: 0}
   SecondaryModifierHeaderText: {fileID: 0}
   SecondaryModifierLabel: {fileID: 0}
@@ -4012,6 +4022,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4da552a2f6c45348f9b8b4d4c0bc12ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enabledWeapons: []
+  enabledStaffs: []
   modeLabel: {fileID: 0}
   SecondaryModifierHeaderText: {fileID: 0}
   SecondaryModifierLabel: {fileID: 0}
@@ -5240,6 +5252,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4da552a2f6c45348f9b8b4d4c0bc12ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enabledWeapons:
+  - enabled: 1
+    graphic: {fileID: 21300000, guid: 08847d5bbc898fa06a631ab543b847f8, type: 3}
+    prefab: {fileID: 987653528329830354, guid: 71c087b10699b4e0c93d045a4b4d757c, type: 3}
+  - enabled: 1
+    graphic: {fileID: 1338450214, guid: df4fef490d7858343b7f220e7cc086f0, type: 3}
+    prefab: {fileID: 987653528329830354, guid: ab029474543ddb046845b0389107bb6d, type: 3}
+  - enabled: 1
+    graphic: {fileID: 21300000, guid: 1726c5a5a7e296767b289e00c980c5f7, type: 3}
+    prefab: {fileID: 9082944868365698016, guid: e4f16c8c8d8985158928225a3781a36b, type: 3}
+  - enabled: 1
+    graphic: {fileID: 21300000, guid: b9d8503767b336948af4d4f30ff33812, type: 3}
+    prefab: {fileID: 987653528329830354, guid: 5bbff19aacb28314a927e1c779d8cd91, type: 3}
+  - enabled: 1
+    graphic: {fileID: 21300000, guid: 9213d4532a98d11498b81450243b6770, type: 3}
+    prefab: {fileID: 987653528329830354, guid: f041f98806499704fbb1490a78c0d9ee, type: 3}
+  - enabled: 1
+    graphic: {fileID: -301907320, guid: 50fa993d61a3b874bbcc8a9a61eae0de, type: 3}
+    prefab: {fileID: 6474387362996466111, guid: b11f7245c71b3d9458316a1b89a2a2c9, type: 3}
+  - enabled: 1
+    graphic: {fileID: 293941887, guid: 8e20595b91d59aa40b6cd806fbb9fa0c, type: 3}
+    prefab: {fileID: 987653528329830354, guid: 3a939e25431e12c4db7761953be0082d, type: 3}
+  - enabled: 1
+    graphic: {fileID: 21300000, guid: 2573db292530baa48b8cadfe5dcfb786, type: 3}
+    prefab: {fileID: 987653528329830354, guid: b16eecd87c0de0c40877239dec0cec60, type: 3}
+  - enabled: 1
+    graphic: {fileID: 21300000, guid: 02c7860155e929d43afaa0de703e2552, type: 3}
+    prefab: {fileID: 987653528329830354, guid: 20287201ec734eb41ac01e1901cf4701, type: 3}
+  - enabled: 1
+    graphic: {fileID: 21300000, guid: 37426a6be7b7eb549ab663d447a0ea67, type: 3}
+    prefab: {fileID: 987653528329830354, guid: 60c756b5b1346ca458d98130cd9dc215, type: 3}
+  - enabled: 1
+    graphic: {fileID: 21300000, guid: 0ee4cdb7f33877e9b8db7d9629d0f512, type: 3}
+    prefab: {fileID: 987653528329830354, guid: 88cab232b6ac18614876e86265ce5abf, type: 3}
+  enabledStaffs:
+  - enabled: 1
+    graphic: {fileID: 21300000, guid: 79e1e6f79cd22dca8b5ec31ca289d2a6, type: 3}
+    prefab: {fileID: 987653528329830354, guid: 3b228f48965afc884a3fa0a7ff0dd1e5, type: 3}
+  - enabled: 1
+    graphic: {fileID: 21300000, guid: d9061303a8c0f6062ad2e1d2a7d01e91, type: 3}
+    prefab: {fileID: 6474387362996466111, guid: 886113d86bff3dbc0bc8838721aa4c80, type: 3}
+  - enabled: 1
+    graphic: {fileID: 21300000, guid: 0ea3b3fc8435d31cb8cb754090a5f715, type: 3}
+    prefab: {fileID: 3907479806859016900, guid: 637ea6e3ad82b4885975019d6f7a9214, type: 3}
   modeLabel: {fileID: 405580223}
   SecondaryModifierHeaderText: {fileID: 1512225104}
   SecondaryModifierLabel: {fileID: 1642211600}
@@ -5540,6 +5596,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4da552a2f6c45348f9b8b4d4c0bc12ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enabledWeapons: []
+  enabledStaffs: []
   modeLabel: {fileID: 0}
   SecondaryModifierHeaderText: {fileID: 0}
   SecondaryModifierLabel: {fileID: 0}
