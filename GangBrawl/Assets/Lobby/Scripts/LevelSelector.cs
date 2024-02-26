@@ -6,6 +6,7 @@ using TMPro;
 
 using UnityEngine.InputSystem;
 using System;
+using UnityEngine.InputSystem.UI;
 
 [Serializable]
 public class EnabledWeapon
@@ -41,6 +42,91 @@ public class LevelSelector : MonoBehaviour
     public List<Map> maps;
     private int mapIndex=0;
 
+    public GameObject LobbyGunPrefab;
+    public List<GameObject> weaponmenu=new List<GameObject>();
+    public GameObject canvas;
+    public MultiplayerEventSystem eventsys;
+    public int rowsize = 5;
+    public int columsize = 5;
+    public GameObject closebuttonPrefab;
+    public GameObject resetButton;
+    public void ShowWeaponSetUp()
+    {
+        Debug.Log("Running gun Setup");
+        weaponmenu = new List<GameObject>();
+        int row = 0;
+        int colum = 0;
+        int index = 0;
+        foreach(var i in enabledWeapons)
+        {
+            Debug.Log("Running gun Setup");
+
+            row = index % rowsize;
+            colum = index / columsize;
+            var ob= Instantiate(LobbyGunPrefab);
+            var temp = ob.GetComponent<GunOb>();
+            temp.eweapon = i;
+            temp.im.sprite = i.graphic;
+            ob.transform.parent = canvas.transform;
+            ob.transform.localScale = Vector3.one*10;
+            ob.transform.localPosition = new Vector3(row*200,-colum*200,1000);
+            weaponmenu.Add(ob);
+            index++;
+        }
+        foreach (var i in enabledStaffs)
+        {
+            Debug.Log("Running gun Setup");
+
+            row = index % 5;
+            colum = index / 5;
+            var ob = Instantiate(LobbyGunPrefab);
+            var temp = ob.GetComponent<GunOb>();
+            temp.eweapon = i;
+            temp.im.sprite = i.graphic;
+            ob.transform.parent = canvas.transform;
+            ob.transform.localScale = Vector3.one * 10;
+            ob.transform.localPosition = new Vector3(row * 200, -colum * 200, 1000);
+            weaponmenu.Add(ob);
+            index++;
+        }
+        {
+            row = (index + 1) % 5;
+            colum = (index + 1) / 5;
+            var ob = Instantiate(closebuttonPrefab);
+            ob.transform.parent = canvas.transform;
+            ob.transform.localScale = Vector3.one * 10;
+            ob.transform.localPosition = new Vector3(row * 200, -colum * 200, 1000);
+            ((Button)ob.GetComponent<GunOb>().toggle).onClick.AddListener(()=> {
+                var sys = MultiplayerEventSystem.current;
+                Debug.Log(sys);
+                sys.SetSelectedGameObject(resetButton);
+                Debug.Log(sys);
+                foreach(var i in weaponmenu)
+                {
+                    GameObject.Destroy(i.gameObject);
+                }
+                weaponmenu.Clear();
+            });
+            weaponmenu.Add(ob);
+        }
+        for (int i=0; i<weaponmenu.Count; i++)
+        {
+            var x = weaponmenu[i].gameObject.GetComponent<GunOb>().toggle.navigation;
+            
+            x.selectOnLeft = weaponmenu[Math.Abs((i+weaponmenu.Count-1)%(weaponmenu.Count))].gameObject.GetComponent<GunOb>().toggle;
+            x.selectOnRight = weaponmenu[Math.Abs((i + 1) % (weaponmenu.Count))].gameObject.GetComponent<GunOb>().toggle;
+            x.selectOnDown = weaponmenu[Math.Abs((i + rowsize) % (weaponmenu.Count))].gameObject.GetComponent<GunOb>().toggle;
+            x.selectOnUp = weaponmenu[Math.Abs((i + weaponmenu.Count - rowsize) % (weaponmenu.Count))].gameObject.GetComponent<GunOb>().toggle;
+            weaponmenu[i].gameObject.GetComponent<GunOb>().toggle.navigation = x;
+
+        }
+
+        var sys = MultiplayerEventSystem.current;
+        Debug.Log(sys);
+            sys.SetSelectedGameObject( canvas.transform.GetChild(0).GetChild(0).GetChild(0).gameObject);
+        Debug.Log(sys);
+    }
+    
     public void NextMap(){
         mapIndex++;
         mapIndex=mapIndex%(maps.Count);
