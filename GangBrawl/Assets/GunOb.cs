@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class GunOb : MonoBehaviour
@@ -13,15 +14,19 @@ public class GunOb : MonoBehaviour
         eweapon.enabled = val;
         var x = toggle.colors;
             x.normalColor = !val ? new Color(1,1,1,0.5f): new Color(1, 1, 1, 1);
+            x.selectedColor= !val ? new Color(1, 1, 1, 0.5f) : new Color(1, 1, 1, 1);
         toggle.colors = x;
         Debug.Log(val);
     }
+
+
     void Start()
     {
         var x = toggle.colors;
         if (toggle is Toggle)
         {
             x.normalColor = !eweapon.enabled ? new Color(1, 1, 1, 0.5f) : new Color(1, 1, 1, 1);
+            x.selectedColor = !eweapon.enabled ? new Color(1, 1, 1, 0.5f) : new Color(1, 1, 1, 1);
         }
         toggle.colors = x;
     }
